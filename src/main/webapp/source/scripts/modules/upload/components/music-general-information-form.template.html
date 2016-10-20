@@ -1,0 +1,147 @@
+<form name="ctrl.generalForm" class="form-horizontal form-tab" novalidate>
+    <legend>General Information</legend>
+    <div class="form-group has-feedback"
+         ng-class="{ 'has-success': ctrl.generalForm.title.$valid && ctrl.generalForm.$submitted,
+                     'has-error': ctrl.generalForm.title.$invalid && ctrl.generalForm.$submitted }">
+        <label for="general-title" class="col-xs-2 asterisk-label">
+            Song Title
+        </label>
+        <div class="col-xs-10">
+            <input type="text" name="title" class="form-control" id="general-title"
+                   ng-model="ctrl.data.title" required autofocus />
+            <div class="alert alert-danger" role="alert"
+                 ng-show="ctrl.generalForm.title.$invalid && ctrl.generalForm.$submitted">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span ng-show="ctrl.generalForm.title.$error.required">
+                    Please, provide a song title!
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <hr/>
+
+    <div ng-repeat="artist in ctrl.data.artists">
+        <ng-form name="artistForm">
+            <div class="form-group has-feedback"
+                 ng-class="{ 'has-success': artistForm.artist.$valid && ctrl.generalForm.$submitted,
+                             'has-error': artistForm.artist.$invalid && ctrl.generalForm.$submitted }">
+                <label class="col-xs-2 asterisk-label">Artist&nbsp;<span ng-show="$index">#{{$index + 1}}</span></label>
+                <div class="col-xs-8">
+                    <input type="text" name="artist" class="form-control" ng-model="artist.name" required />
+                    <div class="alert alert-danger" role="alert"
+                         ng-show="artistForm.artist.$invalid && ctrl.generalForm.$submitted">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span ng-show="artistForm.artist.$error.required">
+                            Please, provide an artist name!
+                        </span>
+                    </div>
+                </div>
+                <div class="col-xs-2 text-right">
+                    <a class="btn btn-danger" ng-show="$index" ng-click="ctrl.removeArtist($index)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </a>
+                    <a class="btn btn-success" ng-click="ctrl.addArtist()">
+                        <span class="glyphicon glyphicon-plus-sign"></span>
+                    </a>
+                </div>
+            </div>
+        </ng-form>
+    </div>
+
+    <hr />
+
+    <div class="form-group has-feedback"
+         ng-class="{ 'has-success': ctrl.generalForm.beatRate.$valid && ctrl.generalForm.$submitted,
+                     'has-error': ctrl.generalForm.beatRate.$invalid && ctrl.generalForm.$submitted }">
+        <label for="beat-rate" class="col-xs-2 asterisk-label">
+            Beat Rate/Minute
+        </label>
+        <div class="col-xs-10">
+            <input type="number" name="beatRate" class="form-control" id="beat-rate"
+                   ng-model="ctrl.data.beatRate" min="0" max="320" required />
+            <div class="alert alert-danger" role="alert"
+                 ng-show="ctrl.generalForm.beatRate.$invalid && ctrl.generalForm.$submitted">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span ng-show="ctrl.generalForm.beatRate.$error.required">
+                    Please, provide a beat rate!
+                </span>
+                <span ng-show="ctrl.generalForm.beatRate.$error.min">
+                    Beat rate could not be below zero!
+                </span>
+                <span ng-show="ctrl.generalForm.beatRate.$error.max">
+                    Beat rate could not exceed 320!
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group has-feedback"
+         ng-class="{ 'has-success': ctrl.generalForm.agreement.$valid && ctrl.generalForm.$submitted,
+                     'has-error': ctrl.generalForm.agreement.$invalid && ctrl.generalForm.$submitted }">
+        <label  class="col-xs-2 asterisk-label">
+            Any Written Agreements <span class="glyphicon glyphicon-question-sign" uib-tooltip="Licenses, etc."></span>
+        </label>
+        <div class="col-xs-10">
+            <label class="radio-inline">
+                <input type="radio" name="agreement" ng-model="ctrl.data.agreement" ng-value="true" required>
+                <span>Yes</span>
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="agreement" ng-model="ctrl.data.agreement" ng-value="false" required>
+                <span>No</span>
+            </label>
+
+            <div class="alert alert-danger" role="alert"
+                 ng-show="ctrl.generalForm.agreement.$invalid && ctrl.generalForm.$submitted">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span ng-show="ctrl.generalForm.agreement.$error.required">
+                    Please, specify whether you have any additional agreements or no!
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group has-feedback"
+         ng-class="{ 'has-success': ctrl.generalForm.primaryGenre.$valid && ctrl.generalForm.$submitted,
+                     'has-error': ctrl.generalForm.primaryGenre.$invalid && ctrl.generalForm.$submitted }">
+        <label class="col-xs-2 asterisk-label">
+            Primary Genre
+        </label>
+        <div class="col-xs-10">
+            <select name="primaryGenre" class="form-control" ng-model="ctrl.data.primaryGenre"
+                    ng-options="genre for genre in ctrl.genres"
+                    ng-change="ctrl.selectGenre(genre)"required>
+                <option value="">Select Genre...</option>
+            </select>
+            <div class="alert alert-danger" role="alert"
+                 ng-show="ctrl.generalForm.primaryGenre.$invalid && ctrl.generalForm.$submitted">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span ng-show="ctrl.generalForm.primaryGenre.$error.required">
+                    Please, select a genre!
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group" ng-show="ctrl.data.primaryGenre">
+        <label class="col-xs-2">
+            Secondary Genre
+        </label>
+        <div class="col-xs-10">
+            <select name="secondaryGenre" class="form-control" ng-model="ctrl.data.secondaryGenre"
+                    ng-options="genre for genre in ctrl.genres">
+                <option value="">Select Genre...</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-3 col-xs-offset-6">
+            <button class="btn btn-block btn-default" ng-click="ctrl.reset()">Previous</button>
+        </div>
+        <div class="col-xs-3">
+            <button class="btn btn-block btn-primary" ng-click="ctrl.submit()">Next</button>
+        </div>
+    </div>
+</form>

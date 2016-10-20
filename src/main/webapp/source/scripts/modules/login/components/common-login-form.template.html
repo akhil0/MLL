@@ -1,0 +1,64 @@
+<div>
+    <div class="col-xs-10 col-xs-offset-1 well">
+        <h3 class="text-center no-margin">Login</h3>
+    </div>
+
+    <form name="ctrl.loginForm" class="form-horizontal" novalidate>
+        <div class="form-group"
+             ng-class="{ 'has-success': ctrl.loginForm.email.$valid && ctrl.loginForm.$submitted,
+                         'has-error': ctrl.loginForm.$invalid && ctrl.loginForm.$submitted }">
+            <div class="col-xs-10 col-xs-offset-1">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                    <input type="text" name="userName" class="form-control" placeholder="User Name"
+                           ng-model="ctrl.data.userName" required/>
+                </div>
+
+                <div class="alert alert-danger" role="alert"
+                     ng-show="ctrl.loginForm.userName.$invalid && ctrl.loginForm.$submitted">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span ng-show="ctrl.loginForm.userName.$error.required">
+                        Please, provide a user name!
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group has-feedback"
+             ng-class="{ 'has-success': ctrl.loginForm.password.$valid && ctrl.loginForm.$submitted,
+                         'has-error': ctrl.loginForm.password.$invalid && ctrl.loginForm.$submitted }">
+             <div class="col-xs-10 col-xs-offset-1">
+                 <div class="input-group">
+                     <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                     <input type="password" name="password" class="form-control" id="login-password"
+                            ng-model="ctrl.data.password" placeholder="Password" ng-minlength="8" required/>
+                 </div>
+                 <div class="alert alert-danger" role="alert"
+                      ng-show="ctrl.loginForm.password.$invalid && ctrl.loginForm.$submitted">
+                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                     <span ng-show="ctrl.loginForm.password.$error.required">
+                         Please, provide a password!
+                     </span>
+                     <span ng-show="ctrl.loginForm.password.$error.minlength">
+                         Please, provide a password with at least 8 symbols!
+                     </span>
+                 </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+                <div class="alert alert-danger" role="alert" ng-show="ctrl.loginForm.$serverError">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span ng-bind="ctrl.errorMessage"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-10 col-xs-offset-1">
+                <button class="btn btn-block btn-primary" ng-click="ctrl.login()">Log In</button>
+            </div>
+        </div>
+    </form>
+</div>

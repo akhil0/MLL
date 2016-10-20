@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<testsuite name="Chrome 49.0.2623 (Windows 10 0.0.0)" package="" timestamp="2016-04-19T23:04:40" id="0" hostname="LAPTOP-EMPPAO96" tests="150" errors="0" failures="0" time="0.784">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36"/>
+  </properties>
+  <testcase name="Header Controller: 'home' function should call 'go' on $state" time="0.042" classname="Header Controller:"/>
+  <testcase name="Header Controller: 'logout' function should call 'go' on $state" time="0.007" classname="Header Controller:"/>
+  <testcase name="Login Service: 'login' should fire POST request" time="0.008" classname="Login Service:"/>
+  <testcase name="Login Service: 'login' should fire POST request and send passed data" time="0.006" classname="Login Service:"/>
+  <testcase name="Login Service: 'login' should call authentication regService's 'check' method" time="0.007" classname="Login Service:"/>
+  <testcase name="Login Service: 'login' should not call authentication regService's 'check' method" time="0.006" classname="Login Service:"/>
+  <testcase name="Login Service: 'login' should return unwrapped server response" time="0.005" classname="Login Service:"/>
+  <testcase name="File Selector Controller: 'onSelectHdd' should be defined" time="0.003" classname="File Selector Controller:"/>
+  <testcase name="File Selector Controller: 'onSelectDropbox' should be defined" time="0.002" classname="File Selector Controller:"/>
+  <testcase name="File Selector Controller: 'onSelectHdd' should be a function" time="0.001" classname="File Selector Controller:"/>
+  <testcase name="File Selector Controller: 'onSelectDropbox' should be a function" time="0.003" classname="File Selector Controller:"/>
+  <testcase name="File Selector Controller: 'selectHdd' should call 'onSelectHdd' and set 'selectedFile' field" time="0.002" classname="File Selector Controller:"/>
+  <testcase name="File Selector Controller: 'selectDropbox' should call 'onSelectDropbox' and set 'selectedFile' field" time="0.002" classname="File Selector Controller:"/>
+  <testcase name="File Selector Controller: 'selectHdd' function should pass 'sample.mp3' to 'onSelectHdd'" time="0.002" classname="File Selector Controller:"/>
+  <testcase name="File Selector Controller: 'selectDropbox' function should pass 'demo.wav' to 'onSelectDropbox'" time="0.002" classname="File Selector Controller:"/>
+  <testcase name="HDD File Reader Controller: 'onSelect should be defined" time="0.001" classname="HDD File Reader Controller:"/>
+  <testcase name="HDD File Reader Controller: 'onSelect' should be a function" time="0.008" classname="HDD File Reader Controller:"/>
+  <testcase name="HDD File Reader Controller: 'change' should call 'onSelect'" time="0.003" classname="HDD File Reader Controller:"/>
+  <testcase name="HDD File Reader Controller: 'change' function should pass 'sample.mp3' file to 'onSelect' function" time="0.003" classname="HDD File Reader Controller:"/>
+  <testcase name="HDD File Reader Controller: 'change' function should pass 'sample.wav' file to 'onSelect' function" time="0.005" classname="HDD File Reader Controller:"/>
+  <testcase name="HDD File Reader Controller: 'change' function should throw an exception if the file isn't passed" time="0.002" classname="HDD File Reader Controller:"/>
+  <testcase name="HDD File Reader Directive: selecting a file should trigger controller's 'change' function" time="0.023" classname="HDD File Reader Directive:"/>
+  <testcase name="Registration Service: 'inviteToken' should be injected" time="0.007" classname="Registration Service:"/>
+  <testcase name="Registration Service: 'redirect' should call 'go' on '$state'" time="0.006" classname="Registration Service:"/>
+  <testcase name="Registration Service: 'displayError' should set '$serverError' to 'true'" time="0.004" classname="Registration Service:"/>
+  <testcase name="Registration Service: 'displayError' should set 'errorMessage' property" time="0.007" classname="Registration Service:"/>
+  <testcase name="Registration Service: 'processResponse' should call 'redirect' if the registration succeeded" time="0.005" classname="Registration Service:"/>
+  <testcase name="Registration Service: 'processResponse' should call 'displayError' if the registration failed" time="0.006" classname="Registration Service:"/>
+  <testcase name="Registration Service: 'processResponse' should not call 'redirect' if the registration failed" time="0.01" classname="Registration Service:"/>
+  <testcase name="Registration Service: 'register' should not trigger call to 'registrationService' if the form is invalid" time="0.004" classname="Registration Service:"/>
+  <testcase name="Registration Service: 'register' should set '$submitted' flag to 'true' if the form is invalid" time="0.004" classname="Registration Service:"/>
+  <testcase name="Registration Service: 'register' function should trigger call to 'registrationService' if the form is valid" time="0.006" classname="Registration Service:"/>
+  <testcase name="Registration Service: 'inviteToken' should be injected" time="0.005" classname="Registration Service:"/>
+  <testcase name="Registration Service: 'redirect' should call 'go' on '$state'" time="0.058" classname="Registration Service:"/>
+  <testcase name="Registration Service: 'displayError' should set '$serverError' to 'true'" time="0.009" classname="Registration Service:"/>
+  <testcase name="Registration Service: 'displayError' should set 'errorMessage' property" time="0.005" classname="Registration Service:"/>
+  <testcase name="Registration Service: 'processResponse' should call 'redirect' if the registration succeeded" time="0.011" classname="Registration Service:"/>
+  <testcase name="Registration Service: 'processResponse' should call 'displayError' if the registration failed" time="0.012" classname="Registration Service:"/>
+  <testcase name="Registration Service: 'processResponse' should not call 'redirect' if the registration failed" time="0.003" classname="Registration Service:"/>
+  <testcase name="Registration Service: 'register' should not trigger call to 'registrationService' if the form is invalid" time="0.003" classname="Registration Service:"/>
+  <testcase name="Registration Service: 'register' should set '$submitted' flag to 'true' if the form is invalid" time="0.003" classname="Registration Service:"/>
+  <testcase name="Registration Service: 'register' function should trigger call to 'registrationService' if the form is valid" time="0.005" classname="Registration Service:"/>
+  <testcase name="Registration Service: 'register' should fire POST request" time="0.003" classname="Registration Service:"/>
+  <testcase name="Registration Service: 'register' should fire POST request and send passed data" time="0.004" classname="Registration Service:"/>
+  <testcase name="Registration Service: 'register' should call authentication regService's 'check' method" time="0.002" classname="Registration Service:"/>
+  <testcase name="Registration Service: 'register' should not call authentication regService's 'check' method" time="0.003" classname="Registration Service:"/>
+  <testcase name="Registration Service: 'register' should return unwrapped server response" time="0.006" classname="Registration Service:"/>
+  <testcase name="Scrollable Agreement Controller: 'onAgree should be defined" time="0.002" classname="Scrollable Agreement Controller:"/>
+  <testcase name="Scrollable Agreement Controller: 'onAgree' should be a function" time="0.003" classname="Scrollable Agreement Controller:"/>
+  <testcase name="Scrollable Agreement Controller: 'agree' should call 'onAgree'" time="0.002" classname="Scrollable Agreement Controller:"/>
+  <testcase name="Scrollable Agreement Controller: 'agree' function should pass 'false' to 'onAgree'" time="0.001" classname="Scrollable Agreement Controller:"/>
+  <testcase name="Scrollable Agreement Controller: 'agree' function should pass 'true' to 'onAgree'" time="0.006" classname="Scrollable Agreement Controller:"/>
+  <testcase name="Scrollable Agreement Directive: agreement height should be 300px" time="0.043" classname="Scrollable Agreement Directive:"/>
+  <testcase name="Scrollable Agreement Directive: agreement checkbox should be initially disabled" time="0.015" classname="Scrollable Agreement Directive:"/>
+  <testcase name="Scrollable Agreement Directive: agreement checkbox should be disabled after scrolling by 1%" time="0.016" classname="Scrollable Agreement Directive:"/>
+  <testcase name="Scrollable Agreement Directive: agreement checkbox should be disabled after scrolling by 10%" time="0.01" classname="Scrollable Agreement Directive:"/>
+  <testcase name="Scrollable Agreement Directive: agreement checkbox should be disabled after scrolling by 50%" time="0.013" classname="Scrollable Agreement Directive:"/>
+  <testcase name="Scrollable Agreement Directive: agreement checkbox should be disabled after scrolling by 99%" time="0.012" classname="Scrollable Agreement Directive:"/>
+  <testcase name="Scrollable Agreement Directive: agreement checkbox should be enabled after scrolling by 100%" time="0.019" classname="Scrollable Agreement Directive:"/>
+  <testcase name="Auth Details Service: default state" time="0.003" classname="Auth Details Service:"/>
+  <testcase name="Auth Details Service: 'init' without data" time="0.002" classname="Auth Details Service:"/>
+  <testcase name="Auth Details Service: 'init' with data" time="0.002" classname="Auth Details Service:"/>
+  <testcase name="Auth Details Service: 'clear' should clean up inner properties" time="0.002" classname="Auth Details Service:"/>
+  <testcase name="Auth Details Service: 'change' should set up inner properties" time="0.001" classname="Auth Details Service:"/>
+  <testcase name="Auth Details Service: 'change' should throw an error" time="0.002" classname="Auth Details Service:"/>
+  <testcase name="Authentication Service: 'change' should update details property" time="0.004" classname="Authentication Service:"/>
+  <testcase name="Authentication Service: 'change' should update cookies" time="0.002" classname="Authentication Service:"/>
+  <testcase name="Authentication Service: 'change' should throw error" time="0.002" classname="Authentication Service:"/>
+  <testcase name="Authentication Service: 'clear' should reset details property" time="0.016" classname="Authentication Service:"/>
+  <testcase name="Authentication Service: 'clear' should reset cookies" time="0.006" classname="Authentication Service:"/>
+  <testcase name="Authentication Service: 'check' without any previous information" time="0.003" classname="Authentication Service:"/>
+  <testcase name="Authentication Service: 'check' with previous information" time="0.004" classname="Authentication Service:"/>
+  <testcase name="Invite Token Service: 'validateToken' should fire POST request with appropriate action type" time="0.003" classname="Invite Token Service:"/>
+  <testcase name="Invite Token Service: 'generateToken' should fire POST request with appropriate action type" time="0.003" classname="Invite Token Service:"/>
+  <testcase name="Music File Form Controller: 'musicFormats' should be injected" time="0.002" classname="Music File Form Controller:"/>
+  <testcase name="Music File Form Controller: 'musicSize' should be injected" time="0.002" classname="Music File Form Controller:"/>
+  <testcase name="Music File Form Controller: 'onNext' should be defined" time="0.003" classname="Music File Form Controller:"/>
+  <testcase name="Music File Form Controller: 'onPrevious' should be defined" time="0.013" classname="Music File Form Controller:"/>
+  <testcase name="Music File Form Controller: 'onNext' should be a function" time="0.003" classname="Music File Form Controller:"/>
+  <testcase name="Music File Form Controller: 'onPrevious' should be a function" time="0.002" classname="Music File Form Controller:"/>
+  <testcase name="Music File Form Controller: 'validateFormat' should return 'false' for 'hands up!.mp4'" time="0.003" classname="Music File Form Controller:"/>
+  <testcase name="Music File Form Controller: 'validateFormat' should return 'false' for 'liar.ogg'" time="0.003" classname="Music File Form Controller:"/>
+  <testcase name="Music File Form Controller: 'validateFormat' should return 'false' for 'heartbreak.m4a'" time="0.002" classname="Music File Form Controller:"/>
+  <testcase name="Music File Form Controller: 'validateFormat' should return 'true' for 'skyfall.mp3'" time="0.002" classname="Music File Form Controller:"/>
+  <testcase name="Music File Form Controller: 'validateFormat' should return 'true' for 'placebo.wav'" time="0.003" classname="Music File Form Controller:"/>
+  <testcase name="Music File Form Controller: 'validateSize' should return 'false' for '11MB'" time="0.001" classname="Music File Form Controller:"/>
+  <testcase name="Music File Form Controller: 'validateSize' should return 'true' for '10MB" time="0.014" classname="Music File Form Controller:"/>
+  <testcase name="Music File Form Controller: 'selectDropbox' should set 'data' field and mark 'form.invalid' flag as 'false'" time="0.004" classname="Music File Form Controller:"/>
+  <testcase name="Music File Form Controller: 'selectHdd' should set 'data' field and mark 'form.invalid' flag as 'false'" time="0.004" classname="Music File Form Controller:"/>
+  <testcase name="Music File Form Controller: 'selectHdd' should not set 'data' field and mark 'form.invalid' flag as 'true'" time="0.004" classname="Music File Form Controller:"/>
+  <testcase name="Music File Form Controller: 'selectHdd' should set not 'data' field and mark 'form.invalid' flag as 'true'" time="0.003" classname="Music File Form Controller:"/>
+  <testcase name="Music File Form Controller: 'submit' function shouldn't call 'onNext'" time="0.002" classname="Music File Form Controller:"/>
+  <testcase name="Music File Form Controller: 'submit' function should call 'onNext'" time="0.002" classname="Music File Form Controller:"/>
+  <testcase name="Music File Form Controller: 'reset' function should call 'onPrevious'" time="0.002" classname="Music File Form Controller:"/>
+  <testcase name="Music File Form Controller: 'reset' function should call 'onPrevious'" time="0.002" classname="Music File Form Controller:"/>
+  <testcase name="Music File Uploader Controller: 'musicForms' should be injected" time="0.003" classname="Music File Uploader Controller:"/>
+  <testcase name="Music File Uploader Controller: 'musicData' should be injected" time="0.003" classname="Music File Uploader Controller:"/>
+  <testcase name="Music File Uploader Controller: 'musicUploadService' should be injected" time="0.009" classname="Music File Uploader Controller:"/>
+  <testcase name="Music File Uploader Controller: 'prepare' should reduce 'fileInformation' object to 2 properties 'file' and 'isDirect'" time="0.001" classname="Music File Uploader Controller:"/>
+  <testcase name="Music File Uploader Controller: 'prepare' should reduce 'fileInformation' object to 2 properties 'file' and 'isDirect'" time="0.002" classname="Music File Uploader Controller:"/>
+  <testcase name="Music File Uploader Controller: 'next' call should set the 2nd form as active" time="0.002" classname="Music File Uploader Controller:"/>
+  <testcase name="Music File Uploader Controller: 2nd call to 'next' function should set the 3rd form as active" time="0.003" classname="Music File Uploader Controller:"/>
+  <testcase name="Music File Uploader Controller: 'previous' call should set the 2nd form as active" time="0.003" classname="Music File Uploader Controller:"/>
+  <testcase name="Music File Uploader Controller: 'again' call should set the 1st form as active" time="0.002" classname="Music File Uploader Controller:"/>
+  <testcase name="Music File Uploader Controller: 'again' call should clear file information" time="0.002" classname="Music File Uploader Controller:"/>
+  <testcase name="Music File Uploader Controller: 'again' call should clear general information" time="0.006" classname="Music File Uploader Controller:"/>
+  <testcase name="Music File Uploader Controller: 'submit' function should trigger 'submitCloud' on 'uploadService'" time="0.004" classname="Music File Uploader Controller:"/>
+  <testcase name="Music File Uploader Controller: 'submit' function should trigger 'submitDirect' on 'uploadService'" time="0.003" classname="Music File Uploader Controller:"/>
+  <testcase name="Music General Information form Controller: 'data' should be defined" time="0.002" classname="Music General Information form Controller:"/>
+  <testcase name="Music General Information form Controller: 'onNext' should be defined" time="0.003" classname="Music General Information form Controller:"/>
+  <testcase name="Music General Information form Controller: 'onPrevious' should be defined" time="0.001" classname="Music General Information form Controller:"/>
+  <testcase name="Music General Information form Controller: 'addArtist' should add an extra object to 'artists' array" time="0.002" classname="Music General Information form Controller:"/>
+  <testcase name="Music General Information form Controller: 'addArtist' should add an extra object to 'artists' array with 'name' property" time="0.002" classname="Music General Information form Controller:"/>
+  <testcase name="Music General Information form Controller: 'removeArtist' should remove a specific 'artist' object" time="0.003" classname="Music General Information form Controller:"/>
+  <testcase name="Music General Information form Controller: 'removeArtist' should remove a specific 'artist' object" time="0.002" classname="Music General Information form Controller:"/>
+  <testcase name="Music General Information form Controller: 'removeArtist' shouldn't remove an 'artist' if the index if out of range" time="0.002" classname="Music General Information form Controller:"/>
+  <testcase name="Music General Information form Controller: 'selectGenre' function should not change 'secondaryGenre' parameter" time="0.008" classname="Music General Information form Controller:"/>
+  <testcase name="Music General Information form Controller: 'selectGenre' function should reset 'secondaryGenre' parameter" time="0.002" classname="Music General Information form Controller:"/>
+  <testcase name="Music General Information form Controller: 'submit' function shouldn't call 'onNext'" time="0.001" classname="Music General Information form Controller:"/>
+  <testcase name="Music General Information form Controller: 'submit' function shouldn't call 'onNext'" time="0.002" classname="Music General Information form Controller:"/>
+  <testcase name="Music General Information form Controller: 'reset' function should call 'onPrevious'" time="0.002" classname="Music General Information form Controller:"/>
+  <testcase name="Music Ownership Information form Controller: 'data' should be defined" time="0.002" classname="Music Ownership Information form Controller:"/>
+  <testcase name="Music Ownership Information form Controller: 'onNext' should be defined" time="0.001" classname="Music Ownership Information form Controller:"/>
+  <testcase name="Music Ownership Information form Controller: 'onPrevious' should be defined" time="0.006" classname="Music Ownership Information form Controller:"/>
+  <testcase name="Music Ownership Information form Controller: 'addWriter' should add an extra object to 'songwriters' array" time="0.003" classname="Music Ownership Information form Controller:"/>
+  <testcase name="Music Ownership Information form Controller: 'addWriter' should add an extra object to 'artists' array with 'name' and other properties" time="0.003" classname="Music Ownership Information form Controller:"/>
+  <testcase name="Music Ownership Information form Controller: 'removeWriter' should remove a specific 'songwriter' object" time="0.002" classname="Music Ownership Information form Controller:"/>
+  <testcase name="Music Ownership Information form Controller: 'removeWriter' should remove a specific 'songwriter' object" time="0.003" classname="Music Ownership Information form Controller:"/>
+  <testcase name="Music Ownership Information form Controller: 'removeWriter' shouldn't remove a 'songwriter' if the index if out of range" time="0.002" classname="Music Ownership Information form Controller:"/>
+  <testcase name="Music Ownership Information form Controller: 'submit' function shouldn't call 'onNext'" time="0.002" classname="Music Ownership Information form Controller:"/>
+  <testcase name="Music Ownership Information form Controller: 'submit' function should call 'onNext'" time="0.003" classname="Music Ownership Information form Controller:"/>
+  <testcase name="Music Ownership Information form Controller: 'reset' function should call 'onPrevious'" time="0.012" classname="Music Ownership Information form Controller:"/>
+  <testcase name="Music Sound Information Form Controller: 'data' should be defined" time="0.003" classname="Music Sound Information Form Controller:"/>
+  <testcase name="Music Sound Information Form Controller: 'onNext' should be defined" time="0.003" classname="Music Sound Information Form Controller:"/>
+  <testcase name="Music Sound Information Form Controller: 'onPrevious' should be defined" time="0.001" classname="Music Sound Information Form Controller:"/>
+  <testcase name="Music Sound Information Form Controller: 'addOwner' should add an extra object to 'soundOwners' array" time="0.003" classname="Music Sound Information Form Controller:"/>
+  <testcase name="Music Sound Information Form Controller: 'addOwner' should add an extra object to 'soundOwners' array with 'name' and other properties" time="0.009" classname="Music Sound Information Form Controller:"/>
+  <testcase name="Music Sound Information Form Controller: 'removeOwner' should remove a specific 'soundOwner' object" time="0.002" classname="Music Sound Information Form Controller:"/>
+  <testcase name="Music Sound Information Form Controller: 'removeWriter' should remove a specific 'soundOwner' object" time="0.001" classname="Music Sound Information Form Controller:"/>
+  <testcase name="Music Sound Information Form Controller: 'removeWriter' shouldn't remove a 'songwriter' if the index if out of range" time="0.002" classname="Music Sound Information Form Controller:"/>
+  <testcase name="Music Sound Information Form Controller: 'submit' function shouldn't call 'onNext'" time="0.002" classname="Music Sound Information Form Controller:"/>
+  <testcase name="Music Sound Information Form Controller: 'submit' function should call 'onNext'" time="0.002" classname="Music Sound Information Form Controller:"/>
+  <testcase name="Music Sound Information Form Controller: 'reset' function should call 'onPrevious'" time="0.006" classname="Music Sound Information Form Controller:"/>
+  <testcase name="Music Summary Form Controller: 'data' should be defined" time="0.005" classname="Music Summary Form Controller:"/>
+  <testcase name="Music Summary Form Controller: 'onAgain' should be defined" time="0.004" classname="Music Summary Form Controller:"/>
+  <testcase name="Music Summary Form Controller: 'quit' function should call 'go' on $state" time="0.006" classname="Music Summary Form Controller:"/>
+  <testcase name="Music Upload Service: 'submitDirect' should fire POST request" time="0.006" classname="Music Upload Service:"/>
+  <testcase name="Music Upload Service: 'submitCloud' should fire POST request" time="0.002" classname="Music Upload Service:"/>
+  <testcase name="Music Upload Service: 'submitCloud' should fire POST request with passed data" time="0.003" classname="Music Upload Service:"/>
+  <testcase name="Music Upload Service: 'submitDirect' should fire POST request with appropriate headers" time="0.003" classname="Music Upload Service:"/>
+  <system-out>
+    <![CDATA[
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>

@@ -1,0 +1,113 @@
+<form name="ctrl.soundForm" class="form-horizontal form-tab" novalidate>
+    <legend>Sound Recording Ownership Information</legend>
+    <div ng-repeat="soundOwner in ctrl.data.soundOwners">
+        <ng-form name="masterForm">
+            <legend class="inner-legend">Master Owner<small ng-show="$index">&nbsp;#{{$index + 1}}</small></legend>
+            <div class="form-group has-feedback"
+                 ng-class="{ 'has-success': masterForm.name.$valid && ctrl.soundForm.$submitted,
+                             'has-error': masterForm.name.$invalid && ctrl.soundForm.$submitted }">
+                <label class="col-xs-3 asterisk-label">Name</label>
+                <div class="col-xs-7">
+                    <input type="text" name="name" class="form-control" ng-model="soundOwner.name" required />
+                    <div class="alert alert-danger" role="alert"
+                         ng-show="soundForm.name.$invalid && ctrl.soundForm.$submitted">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span ng-show="soundForm.name.$error.required">
+                            Please, provide an master owner name!
+                        </span>
+                    </div>
+                </div>
+                <div class="col-xs-2 text-right">
+                    <a class="btn btn-danger" ng-show="$index" ng-click="ctrl.removeOwner($index)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </a>
+                    <a class="btn btn-success" ng-click="ctrl.addOwner()">
+                        <span class="glyphicon glyphicon-plus-sign"></span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="form-group has-feedback"
+                 ng-class="{ 'has-success': masterForm.primaryPhone.$valid && ctrl.soundForm.$submitted,
+                             'has-error': masterForm.primaryPhone.$invalid && ctrl.soundForm.$submitted }">
+                <label class="col-xs-3 asterisk-label">Primary Phone</label>
+                <div class="col-xs-7">
+                    <input type="text" name="primaryPhone" class="form-control" ng-model="soundOwner.primaryPhone"
+                           ng-pattern="/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/" placeholder="123-123-1234" required />
+                    <div class="alert alert-danger" role="alert"
+                         ng-show="masterForm.primaryPhone.$invalid && ctrl.soundForm.$submitted">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span ng-show="masterForm.primaryPhone.$error.required">
+                            Please, provide a phone number!
+                        </span>
+                        <span ng-show="masterForm.primaryPhone.$error.pattern">
+                            Please, provide an valid phone number in a following format: xxx-xxx-xxxx!
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group has-feedback"
+                 ng-class="{ 'has-success': masterForm.secondaryPhone.$valid && ctrl.soundForm.$submitted,
+                             'has-error': masterForm.secondaryPhone.$invalid && ctrl.soundForm.$submitted }">
+                <label class="col-xs-3">Secondary Phone</label>
+                <div class="col-xs-7">
+                    <input type="text" name="secondaryPhone" class="form-control" ng-model="soundOwner.secondaryPhone"
+                           ng-pattern="/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/" placeholder="123-123-1234"/>
+                    <div class="alert alert-danger" role="alert"
+                         ng-show="masterForm.secondaryPhone.$invalid && ctrl.soundForm.$submitted">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span ng-show="masterForm.secondaryPhone.$error.pattern">
+                            Please, provide an valid phone number in a following format: xxx-xxx-xxxx!
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group has-feedback"
+                 ng-class="{ 'has-success': masterForm.primaryEmail.$valid && ctrl.soundForm.$submitted,
+                             'has-error': masterForm.primaryEmail.$invalid && ctrl.soundForm.$submitted }">
+                <label class="col-xs-3 asterisk-label">Primary E-mail</label>
+                <div class="col-xs-7">
+                    <input type="email" name="primaryEmail" class="form-control"
+                           ng-model="soundOwner.primaryEmail" required />
+                    <div class="alert alert-danger" role="alert"
+                         ng-show="masterForm.primaryEmail.$invalid && ctrl.soundForm.$submitted">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span ng-show="masterForm.primaryEmail.$error.required">
+                            Please, provide a e-mail address!
+                        </span>
+                        <span ng-show="masterForm.primaryEmail.$error.email">
+                            Please, provide a valid e-mail address!
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group"
+                 ng-class="{ 'has-success': masterForm.secondaryEmail.$valid && ctrl.soundForm.$submitted,
+                             'has-error': masterForm.secondaryEmail.$invalid && ctrl.soundForm.$submitted }">
+                <label class="col-xs-3">Secondary E-mail</label>
+                <div class="col-xs-7">
+                    <input type="email" name="secondaryEmail" class="form-control" ng-model="soundOwner.secondaryEmail"/>
+                    <div class="alert alert-danger" role="alert"
+                         ng-show="masterForm.secondaryEmail.$invalid && ctrl.soundForm.$submitted">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span ng-show="masterForm.secondaryEmail.$error.email">
+                            Please, provide a valid e-mail address!
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </ng-form>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-3 col-lg-offset-6">
+            <button class="btn btn-block btn-default" ng-click="ctrl.reset()">Previous</button>
+        </div>
+        <div class="col-xs-3">
+            <button class="btn btn-block btn-primary" ng-click="ctrl.submit()">Submit</button>
+        </div>
+    </div>
+</form>

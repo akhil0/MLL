@@ -1,0 +1,34 @@
+<div>
+    <uib-tabset active="ctrl.forms.currentId" justified="true" type="pills">
+        <uib-tab index="0" heading="{{ctrl.forms.data[0].title}}" disable="true">
+            <mll-music-agreement-form on-next="ctrl.next()"></mll-music-agreement-form>
+        </uib-tab>
+        <uib-tab index="1" heading="{{ctrl.forms.data[1].title}}" disable="true">
+            <mll-file-form on-next="ctrl.next()" on-previous="ctrl.previous()"
+                           data="ctrl.data.fileInformation"></mll-file-form>
+        </uib-tab>
+        <uib-tab index="2" heading="{{ctrl.forms.data[2].title}}" disable="true">
+            <mll-music-general-information-form data="ctrl.data.generalInformation"
+                                                on-next="ctrl.next()"
+                                                on-previous="ctrl.previous()">
+            </mll-music-general-information-form>
+        </uib-tab>
+        <uib-tab index="3" heading="{{ctrl.forms.data[3].title}}" disable="true">
+            <mll-music-owner-information-form data="ctrl.data.ownershipInformation"
+                                              on-next="ctrl.next()"
+                                              on-previous="ctrl.previous()">
+            </mll-music-owner-information-form>
+        </uib-tab>
+        <uib-tab index="4" heading="{{ctrl.forms.data[4].title}}" disable="true">
+            <mll-music-sound-information-form data="ctrl.data.soundInformation"
+                                              on-next="ctrl.submit()"
+                                              on-previous="ctrl.previous()" >
+            </mll-music-sound-information-form>
+        </uib-tab>
+        <uib-tab index="5" heading="{{ctrl.forms.data[5].title}}" disable="true">
+            <mll-music-summary-form data="ctrl.data.serverInformation"
+                                    on-again="ctrl.again()" >
+            </mll-music-summary-form>
+        </uib-tab>
+    </uib-tabset>
+</div>

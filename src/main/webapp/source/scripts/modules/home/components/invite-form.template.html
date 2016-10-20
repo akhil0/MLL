@@ -1,0 +1,72 @@
+<div>
+    <div class="row">
+        <div class="coll-xs-10 col-xs-offset-1 well">
+            <h3 class="text-center no-margin">Invite</h3>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="coll-xs-10 col-xs-offset-1 well">
+            <form name="ctrl.form" class="form-horizontal" novalidate>
+                <div class="form-group has-feedback"
+                     ng-class="{ 'has-success': ctrl.form.type.$valid && ctrl.form.$submitted,
+                                 'has-error': ctrl.form.type.$invalid && ctrl.form.$submitted }">
+                    <div class="col-xs-12">
+                        <select name="type" class="form-control" ng-model="ctrl.data.inviteType"
+                                ng-options="type.value as type.label for type in ctrl.types" required>
+                            <option value="">Select a Category...</option>
+                        </select>
+                        <div class="alert alert-danger" role="alert"
+                             ng-show="ctrl.form.type.$invalid && ctrl.form.$submitted">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            <span ng-show="ctrl.form.type.$error.required">
+                                Please, select a user categry to invite!
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group has-feedback"
+                           ng-class="{ 'has-success': ctrl.form.email.$valid && ctrl.form.$submitted,
+                                 'has-error': ctrl.form.email.$invalid && ctrl.form.$submitted }">
+                    <div class="col-xs-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                            <input type="email" name="email" ng-model="ctrl.data.email" class="form-control"
+                                   placeholder="Email Address" required></div>
+
+                        <div class="alert alert-danger" role="alert"
+                             ng-show="ctrl.form.email.$invalid && ctrl.form.$submitted">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                <span ng-show="ctrl.form.email.$error.required">
+                                    Please, provide an email address!
+                                </span>
+                                <span ng-show="ctrl.form.email.$error.email">
+                                    Please, provide a valid email address!
+                                </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <textarea class="form-control" rows="3" ng-model="ctrl.data.messageBody" placeholder="Message">
+                        </textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <button class="btn btn-block btn-primary" ng-click="ctrl.invite()"
+                                uib-tooltip="{{ctrl.message}}" tooltip-is-open="ctrl.isOpen"
+                                tooltip-placement="bottom" tooltip-trigger="none"
+                                tooltip-class="{{ctrl.isGenerated ? 'tooltip-alert-success' : 'tooltip-alert-error'}}">
+                            Invite
+                        </button>
+                    </div>
+                </div>
+        </form>
+        </div>
+    </div>
+</div>
