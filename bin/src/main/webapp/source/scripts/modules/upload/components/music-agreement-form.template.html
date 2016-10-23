@@ -1,0 +1,27 @@
+<form class="form-horizontal form-tab" novalidate>
+    <legend></legend>
+    <mll-scrollable-agreement on-agree="ctrl.validate(isChecked)">
+        <h3>Agreement</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris bibendum quis mi eu luctus. Phasellus posuere ultricies arcu a elementum. Duis et sodales neque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec at eleifend leo. Praesent elementum a ex nec bibendum. Etiam porta nec nisl ac interdum. Quisque sed dolor non metus blandit mollis. Nunc scelerisque urna vitae quam egestas dictum. Integer malesuada ante eget diam scelerisque blandit. Ut sed purus efficitur, viverra eros eget, efficitur justo. Suspendisse id libero sagittis, rhoncus leo fringilla, vulputate felis.
+        </p>
+        <p>Proin eget tortor non ante tempor mattis. Curabitur porttitor sodales neque, eget cursus nulla porta ultricies. Mauris diam sapien, dictum sit amet dapibus in, semper nec tellus. Morbi a placerat elit. Ut lorem risus, elementum quis massa id, ullamcorper faucibus lorem. Sed libero justo, mattis quis massa id, mattis euismod diam. Vivamus sem diam, dignissim congue arcu ornare, tempor pharetra ligula. Aenean lobortis, tellus ut ornare rhoncus, turpis ante porta ex, at hendrerit dolor arcu ac ex. Morbi iaculis non augue vel vehicula. Phasellus ut risus euismod, varius tellus tempor, pellentesque nunc. Nullam eget sapien sagittis, dignissim nibh ut, sodales lorem.
+        </p>
+        <p>Vivamus et dolor vel nisl egestas sagittis eget sit amet enim. Praesent arcu quam, pharetra nec arcu vel, vestibulum ornare risus. Donec sagittis lacus velit, et cursus elit interdum et. Donec pretium in nulla in viverra. Suspendisse sit amet ipsum ut mauris tincidunt ultricies sit amet et massa. Etiam eget arcu tempus, semper turpis in, condimentum risus. Sed augue turpis, rutrum a mauris eu, sodales scelerisque massa.
+        </p>
+        <p>Nunc molestie sit amet ex id sodales. In aliquet risus tortor, in vehicula nunc sodales id. Integer a elit vel urna vestibulum tristique id eget lorem. In et tincidunt nisi. Duis viverra a nisl quis mattis. Donec vitae est sem. Nunc sagittis euismod diam congue efficitur. Nam vel quam erat.
+        </p>
+        <p>Nulla eu lectus quis nibh dignissim maximus. Sed bibendum ex ut dolor laoreet elementum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse ultricies libero at leo rutrum interdum. Praesent nec nisl suscipit, viverra justo sit amet, condimentum libero. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas rhoncus euismod augue. Nam ultricies mi eget urna ultrices varius. Cras a laoreet sem. Nullam imperdiet, mauris et fermentum porttitor, ipsum augue tincidunt massa, laoreet bibendum nunc ipsum quis arcu. Donec vitae dolor enim.
+        </p>
+    </mll-scrollable-agreement>
+
+    <div class="alert alert-danger" role="alert" ng-show="ctrl.form.invalid && ctrl.form.submitted">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span>Please, agree with terms & conditions!</span>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-3 col-xs-offset-9">
+            <button class="btn btn-block btn-primary" ng-click="ctrl.submit()">Next</button>
+        </div>
+    </div>
+</form>

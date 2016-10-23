@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	
+	<class name="mll.beans.Token" table="Token">
+
+		<id name="id" column="ID">
+			<generator class="native" />
+		</id>
+
+		<property name="token">
+			<column name="token" length="20" not-null="true" />
+		</property>
+		
+		<property name="emailId">
+			<column name="email_id" length="100" not-null="true" />
+		</property>
+		
+		<property name="inviteType">
+			<column name="inviteType" length="50" not-null="true" />
+		</property>
+
+		<property name="userId">
+			<column name="user_id" not-null="true" />
+		</property>
+		      	
+		<property name="issueDate">
+			<column name="issue_date" not-null="true" />
+		</property>	
+		      	
+		<property name="isUsed">
+			<column name="is_used" not-null="true" />
+		</property>
+			      	
+	</class>
+	
+</hibernate-mapping>

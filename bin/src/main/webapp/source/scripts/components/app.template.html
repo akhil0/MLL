@@ -1,0 +1,29 @@
+<div class="app">
+    <mll-header></mll-header>
+
+    <main class="app__main">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div ui-view="left"></div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div ui-view="center"></div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div ui-view="right"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="app__footer">
+        <div class="container">
+            <div class="text-center">
+                <h3>Northeastern University, 2016</h3>
+            </div>
+        </div>
+    </footer>
+</div>

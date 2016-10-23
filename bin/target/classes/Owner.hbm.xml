@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="mll.beans.Owner" table="Owner">
+
+		<id name="id" column="ID">
+			<generator class="native" />
+		</id>
+		
+		<property name="songId">
+			<column name="song_id" not-null="true" />
+		</property>
+
+		<property name="name">
+			<column name="name" length="200" not-null="true" />
+		</property>
+
+		<property name="divisonOfOwnership">
+			<column name="divison_of_ownership" length="16" not-null="true" />
+		</property>
+		
+		<property name="ownerType">
+			<column name="owner_type" length="10" not-null="true" />
+		</property>
+
+		<property name="primaryPhone">
+			<column name="primary_phone_no" length="15" not-null="true" />
+		</property>
+		
+		<property name="secondaryPhone">
+			<column name="secondary_phone_no" length="15" not-null="false" />
+		</property>
+		
+		<property name="primaryEmail">
+			<column name="primary_email_id" length="50" not-null="true" />
+		</property>
+		
+		<property name="secondaryEmail">
+			<column name="secondary_email_id" length="50" not-null="false" />
+		</property>
+
+	</class>
+	
+</hibernate-mapping>

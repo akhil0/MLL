@@ -1,0 +1,26 @@
+<div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <hr>
+            <div class="alert" ng-class="{ 'alert-success' : ctrl.data.isUploaded, 'alert-danger' : !ctrl.data.isUploaded }"
+                 role="alert">
+                <span ng-show="ctrl.data.isUploaded">
+                    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                </span>
+                <span ng-show="!ctrl.data.isUploaded">
+                    <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+                </span>
+                <span ng-bind="ctrl.data.message"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3 col-lg-offset-6">
+            <button class="btn btn-block btn-default" ng-click="ctrl.quit()">I'm Done</button>
+        </div>
+        <div class="col-xs-3">
+            <button class="btn btn-block btn-primary" ng-click="ctrl.onAgain()">Once Again</button>
+        </div>
+    </div>
+</div>

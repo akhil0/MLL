@@ -1,0 +1,14 @@
+<div class="agreement">
+    <div class="agreement__document" ng-transclude></div>
+    <div class="text-center">
+        <label>
+            <div class="agreement__checkbox-wrapper"uib-tooltip="Please, read the agreement till the end!"
+                 tooltip-placement="top"
+                 tooltip-enable="!ctrl.isScrolled">
+                <input type="checkbox" ng-disabled="!ctrl.isScrolled" ng-model="ctrl.isChecked"
+                       ng-change="ctrl.agree()">
+            </div>
+            <span>I agree to the Terms & Conditions</span>
+        </label>
+    </div>
+</div>

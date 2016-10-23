@@ -1,0 +1,67 @@
+<header class="app__header">
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed"
+                        data-toggle="collapse" data-target="#search-bar" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" ng-click="ctrl.home()" title="{{ctrl.homeLink.text}}"
+                   ng-show="ctrl.authService.details.isAuth">
+                    <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="search-bar">
+                <ul class="nav navbar-nav"
+                    ng-show="ctrl.authService.details.isAuth && ctrl.authService.details.data.permissions.browse">
+                    <li ng-repeat="link in ctrl.navLinks">
+                        <a ui-sref="{{link.href}}">
+                            <span ng-bind="link.text"></span>
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav"
+                    ng-show="ctrl.authService.details.isAuth && ctrl.authService.details.data.permissions.upload">
+                    <li>
+                        <a ui-sref="{{ctrl.uploadLink.href}}">
+                            <span ng-bind="ctrl.uploadLink.text"></span>
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-show="!ctrl.authService.details.isAuth">
+                        <a ui-sref="{{ctrl.loginLink.href}}">
+                            <span ng-bind="ctrl.loginLink.text"></span>
+                        </a>
+                    </li>
+
+                    <li ng-show="ctrl.authService.details.isAuth">
+                        <a href ng-click="ctrl.logout()">
+                            <span ng-bind="ctrl.logoutLink.text"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 col-sm-offset-1">
+                <img src="dist/fonts/gll-logo.jpg" class="img-responsive center-block" />
+            </div>
+            <div class="col-xs-12 col-sm-7">
+                <h2>
+                    <span>Green Line Licensing</span>
+                    <br>
+                    <small>Something that should amaze and attract musicians and underline this unique project</small>
+                </h2>
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,35 @@
+<form class="form-horizontal form-tab" novalidate>
+    <legend>Song Selection</legend>
+    <div class="col-xs-12">
+        <div>
+            <mll-file-selector formats="ctrl.formats" on-select-hdd="ctrl.selectHdd(fileInformation)"
+                               on-select-dropbox="ctrl.selectDropbox(fileInformation)"></mll-file-selector>
+
+            <div class="form-group">
+                <input typ="text" class="form-control" ng-model="ctrl.data.file.name" placeholder="Selected File" disabled>
+            </div>
+
+            <div class=" form-group alert alert-danger" role="alert" ng-show="ctrl.form.invalid && ctrl.form.submitted">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span ng-show="ctrl.form.errors.required">
+                    Please, select a file!
+                </span>
+                <span ng-show="ctrl.form.errors.size">
+                    Please, select a file which is less than 10MB, if you decided to chose it from Hard Drive!
+                </span>
+                <span ng-show="ctrl.form.errors.format">
+                    Please, select a file which has appropriate format, if you decided to chose it from Hard Drive!
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-3 col-xs-offset-6">
+            <button class="btn btn-block btn-default" ng-click="ctrl.reset()">Previous</button>
+        </div>
+        <div class="col-xs-3">
+            <button class="btn btn-block btn-primary" ng-click="ctrl.submit()">Next</button>
+        </div>
+    </div>
+</form>
