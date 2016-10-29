@@ -18,6 +18,7 @@ public class Song implements Serializable
 	private String sourceOfContent;
 	private String contentURL;
 	private Integer userId;
+	private String fileName;
 	
 	public Integer getId() {
 		return id;
@@ -85,5 +86,11 @@ public class Song implements Serializable
 	}
 	public void setUserId(Integer userId) {
 		this.userId = userId;
+	}
+	public String getFileName(){
+		return fileName;
+	}
+	public void setFileName(String fileName){
+		this.fileName = fileName;
 	}
 }
