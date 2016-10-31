@@ -15,7 +15,7 @@ public class SubmissionServiceTest
 	public void testPopulateSong1() throws Exception
 	{
 		SubmissionService service = new SubmissionService();
-		assertEquals(true, service.populateSong(null, null, null, null, null) == null);
+		assertEquals(true, service.populateSong(null, null, null, null, null, null) == null);
 	}
 	
 	@Test
@@ -23,7 +23,7 @@ public class SubmissionServiceTest
 	{
 		SubmissionService service = new SubmissionService();
 		Metadata metadata = new Metadata();
-		assertEquals(true, service.populateSong(metadata, getGeneralInfoJsonObject(), null, null, null) == metadata);
+		assertEquals(true, service.populateSong(metadata, getGeneralInfoJsonObject(), null, null, null, null) == metadata);
 	}
 	
 	@Test
@@ -31,7 +31,7 @@ public class SubmissionServiceTest
 	{
 		SubmissionService service = new SubmissionService();
 		Metadata metadata = new Metadata();
-		assertEquals(true, service.populateSong(metadata, null, getOwnerInfoJsonObject(), null, null) == metadata);
+		assertEquals(true, service.populateSong(metadata, null, getOwnerInfoJsonObject(), null, null, null) == metadata);
 	}
 	
 	@Test
@@ -39,7 +39,7 @@ public class SubmissionServiceTest
 	{
 		SubmissionService service = new SubmissionService();
 		Metadata metadata = new Metadata();
-		assertEquals(true, service.populateSong(metadata, getGeneralInfoJsonObject(), getOwnerInfoJsonObject(), "dropboxURL", null).getSong().getTitle().equals("My heart will go on"));
+		assertEquals(true, service.populateSong(metadata, getGeneralInfoJsonObject(), getOwnerInfoJsonObject(), "dropboxURL", null, null).getSong().getTitle().equals("My heart will go on"));
 	}
 	
 	@Test
@@ -47,7 +47,7 @@ public class SubmissionServiceTest
 	{
 		SubmissionService service = new SubmissionService();
 		Metadata metadata = new Metadata();
-		assertEquals(true, service.populateSong(metadata, getGeneralInfoJsonObject(), getOwnerInfoJsonObject(), "dropboxURL", null).getSong().getCopyrightNo().equals("copyright"));
+		assertEquals(true, service.populateSong(metadata, getGeneralInfoJsonObject(), getOwnerInfoJsonObject(), "dropboxURL", null, null).getSong().getCopyrightNo().equals("copyright"));
 	}
 	
 	@Test
@@ -55,7 +55,7 @@ public class SubmissionServiceTest
 	{
 		SubmissionService service = new SubmissionService();
 		Metadata metadata = new Metadata();
-		assertEquals(true, service.populateSong(metadata, getGeneralInfoJsonObject(), getOwnerInfoJsonObject(), "dropboxURL", null).getSong().getSourceOfContent().equals("DROPBOX"));
+		assertEquals(true, service.populateSong(metadata, getGeneralInfoJsonObject(), getOwnerInfoJsonObject(), "dropboxURL", null, null).getSong().getSourceOfContent().equals("DROPBOX"));
 	}
 	
 	@Test
@@ -63,7 +63,7 @@ public class SubmissionServiceTest
 	{
 		SubmissionService service = new SubmissionService();
 		Metadata metadata = new Metadata();
-		assertEquals(true, service.populateSong(metadata, getGeneralInfoJsonObject(), getOwnerInfoJsonObject(), null, new byte[1024]).getSong().getSourceOfContent().equals("HARDDRIVE"));
+		assertEquals(true, service.populateSong(metadata, getGeneralInfoJsonObject(), getOwnerInfoJsonObject(), null, new byte[1024], null).getSong().getSourceOfContent().equals("HARDDRIVE"));
 	}
 	
 	@Test
