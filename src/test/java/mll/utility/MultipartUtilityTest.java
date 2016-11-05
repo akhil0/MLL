@@ -18,9 +18,9 @@ public class MultipartUtilityTest
 	public void testfinish1() throws Exception
 	{
 		//positive path
-		MultipartUtility multipart = new MultipartUtility(config.NUXEO_URL, charset);
+		MultipartUtility multipart = new MultipartUtility(config.RAZUNA_URL, charset);
 		multipart.addFormField("fa", "c.apiupload");
-		multipart.addFormField("api_key", config.NUXEO_KEY);
+		multipart.addFormField("api_key", config.RAZUNA_KEY);
 		multipart.addFormField("destfolderid", "CC5DFF287F274153963FF173C505A956");
 		
 		multipart.addFilePart(fileName, content);
@@ -33,9 +33,9 @@ public class MultipartUtilityTest
 	public void testfinish2() throws Exception
 	{
 		//without c.apiupload
-		MultipartUtility multipart = new MultipartUtility(config.NUXEO_URL, charset);
+		MultipartUtility multipart = new MultipartUtility(config.RAZUNA_URL, charset);
 	
-		multipart.addFormField("api_key", config.NUXEO_KEY);
+		multipart.addFormField("api_key", config.RAZUNA_KEY);
 		multipart.addFormField("destfolderid", "CC5DFF287F274153963FF173C505A956");
 		
 		multipart.addFilePart(fileName, content);
@@ -49,7 +49,7 @@ public class MultipartUtilityTest
 	public void testfinish3() throws Exception
 	{
 		// without api key
-		MultipartUtility multipart = new MultipartUtility(config.NUXEO_URL, charset);
+		MultipartUtility multipart = new MultipartUtility(config.RAZUNA_URL, charset);
 		multipart.addFormField("fa", "c.apiupload");
 		
 		multipart.addFormField("destfolderid", "CC5DFF287F274153963FF173C505A956");
@@ -64,9 +64,9 @@ public class MultipartUtilityTest
 	public void testfinish4() throws Exception
 	{
 		// without destination folder
-		MultipartUtility multipart = new MultipartUtility(config.NUXEO_URL, charset);
+		MultipartUtility multipart = new MultipartUtility(config.RAZUNA_URL, charset);
 		multipart.addFormField("fa", "c.apiupload");
-		multipart.addFormField("api_key", config.NUXEO_KEY);
+		multipart.addFormField("api_key", config.RAZUNA_KEY);
 		
 		multipart.addFilePart(fileName, content);
 		List<String> response = multipart.finish();
@@ -78,9 +78,9 @@ public class MultipartUtilityTest
 	public void testfinish5() throws Exception
 	{
 		// without filepart
-		MultipartUtility multipart = new MultipartUtility(config.NUXEO_URL, charset);
+		MultipartUtility multipart = new MultipartUtility(config.RAZUNA_URL, charset);
 		multipart.addFormField("fa", "c.apiupload");
-		multipart.addFormField("api_key", config.NUXEO_KEY);
+		multipart.addFormField("api_key", config.RAZUNA_KEY);
 		multipart.addFormField("destfolderid", "CC5DFF287F274153963FF173C505A956");
 		
 		List<String> response = multipart.finish();
