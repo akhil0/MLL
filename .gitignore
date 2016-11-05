@@ -13,3 +13,11 @@ hs_err_pid*
 
 #credentials
 *.csv
+/target/
+
+#Ignore classpath files
+*.classpath
+
+#Ignore Mac stuff
+.DS_Store
+*.settings
