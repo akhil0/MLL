@@ -1,6 +1,7 @@
 package mll.service;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,12 +42,16 @@ public class SubmissionService
 	* @author  Dhaval Patel
 	* @version 1.0
 	* @since   2016-03-24 
+	* 
+	* @author  Shivani Gowrishankar
+	* @version 1.1
+	* @since   2016-10-28 
 	*/
 	@SuppressWarnings("unchecked")
 	public JSONObject uploadMedia(HttpServletRequest request, HttpServletResponse response)
 	{
 		JSONObject responseObject = new JSONObject();
-		
+		Boolean serviceResponse = null;
 		try
 		{
 			// Validate the request and populate the metadata beans for all songs if request is valid
@@ -59,18 +64,15 @@ public class SubmissionService
 			{
 				metadatas = populateMetadataBeansFromRequest(request);
 			}
-			
+			System.out.println(metadatas);
 			if(null != metadatas && !metadatas.isEmpty())
 			{
 				// Save all media files with metadata
 				metadatas = dao.saveMetadata(metadatas);
-				
-				//
-				if(conf.IS_NUXEO_ENABLED)
-				{
-					NuxeoService nuxeoService = new NuxeoService();
-					nuxeoService.uploadMedia(metadatas);
-				}
+				System.out.println("METADATA" + metadatas);
+				RazunaService razunaService = new RazunaService();
+				//TO DO: Check if serviceResponse is true/false and echo it in UI
+				serviceResponse = razunaService.uploadMedia(metadatas);
 				
 				responseObject.put("isUploaded", true);
 				responseObject.put("message", "Media files uploaded successfully.");
@@ -120,7 +122,7 @@ public class SubmissionService
 	    JSONObject soundInformation =  (JSONObject) mainObject.get("soundInformation");
 	    
 	    // Populate Song Information	    
-	    populateSong(metadata, generalInformation, ownershipInformation, (String) mainObject.get("file"), null);
+	    populateSong(metadata, generalInformation, ownershipInformation, (String) mainObject.get("file"), null, null);
 	    
 	    // Populate Song Artists Information	 
 	    populateSongArtists(metadata, generalInformation);
@@ -161,18 +163,23 @@ public class SubmissionService
 	    JSONObject ownershipInformation =  null;
 	    JSONObject soundInformation =  null;
 	    
+	    
 	    byte[] hardDriveContent = null;
+	    String fileName = null;
 	    
 		List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
+		
 		for (FileItem item : multiparts) 
 		{
 			if (!item.isFormField()) 
 	        {
+				
 				InputStream filecontent = item.getInputStream();
 				int available = filecontent.available();
 				hardDriveContent = new byte[available];
+				fileName = item.getName();
 				int readBytes = filecontent.read(hardDriveContent,0,available);
-	     	
+				
 				if(readBytes != available) 
 	     	   	{
 					return null;
@@ -197,7 +204,7 @@ public class SubmissionService
 	    }
 		
 	    // Populate Song Information	    
-	    populateSong(metadata, generalInformation, ownershipInformation, null, hardDriveContent);
+	    populateSong(metadata, generalInformation, ownershipInformation, null, hardDriveContent, fileName);
 	    
 	    // Populate Song Artists Information	 
 	    populateSongArtists(metadata, generalInformation);
@@ -231,7 +238,7 @@ public class SubmissionService
 	* @version 1.0
 	* @since   2016-03-25 
 	*/
-	public Metadata populateSong(Metadata metadata,  JSONObject generalInformation, JSONObject ownershipInformation, String dropboxURL, byte[] hardDriveContent) throws Exception
+	public Metadata populateSong(Metadata metadata,  JSONObject generalInformation, JSONObject ownershipInformation, String dropboxURL, byte[] hardDriveContent, String fileName) throws Exception
 	{
 		if(null == metadata)
 		{
@@ -249,6 +256,7 @@ public class SubmissionService
 	    song.setCopyrightNo((String) ownershipInformation.get("copyright"));    
 	    song.setPublishingCompany((String) ownershipInformation.get("pubCompany")); 
 	    song.setPro((String) ownershipInformation.get("pbo"));
+	    song.setFileName(fileName);
 	    
 	    if(null != generalInformation.get("userId"))
 	    {
