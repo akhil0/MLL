@@ -3,7 +3,7 @@ package mll.utility;
 import static org.junit.Assert.assertEquals;
 import java.util.List;
 import org.junit.Test;
-import mll.service.MultipartUtility;
+import mll.utility.MultipartUtility;
 
 
 public class MultipartUtilityTest 
