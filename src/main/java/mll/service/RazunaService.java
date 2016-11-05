@@ -2,6 +2,7 @@ package mll.service;
 
 import java.util.List;
 import mll.beans.Metadata;
+import mll.utility.Configuration;
 
 public class RazunaService
 {
@@ -12,14 +13,13 @@ public class RazunaService
 		try
 		{
 			String charset = "UTF-8";
-			String requestURL = "http://localhost:8080/razuna/raz1/dam/index.cfm";
-			
+			Configuration config = new Configuration();
 			byte[] content = null;
 			String fileName = null;
 			for(Metadata md : metadata){
 				content = md.getSong().getContent();
 				fileName = md.getSong().getFileName();
-				MultipartUtility multipart = new MultipartUtility(requestURL, charset);
+				MultipartUtility multipart = new MultipartUtility(config.NUXEO_URL, charset);
 
 				multipart.addHeaderField("User-Agent", "Shivani");
 				multipart.addHeaderField("Test-Header", "Header-Value");
@@ -29,7 +29,6 @@ public class RazunaService
 				multipart.addFormField("destfolderid", "CC5DFF287F274153963FF173C505A956");
 				
 				multipart.addFilePart(fileName, content);
-				multipart.finish();
 				List<String> response = multipart.finish();
 				if(response.contains("SUCCESS")){
 					serviceResponse = true;
