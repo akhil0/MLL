@@ -12,6 +12,7 @@ public class Configuration
 	public final String NUXEO_USER_NAME = "Administrator";
 	public final String NUXEO_PASSWORD = "Administrator";
 	public final String NUXEO_URL = "http://localhost:8080/nuxeo/site/automation";
+	public final String NUXEO_KEY = "A3FC2ED65F504232AC8489538406F842";
 	
 	public final Boolean IS_NUXEO_ENABLED = false;
 }
