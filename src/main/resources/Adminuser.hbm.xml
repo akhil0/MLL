@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	
+	<class name="mll.beans.AdminUser" table="AdminUser">
+
+		<id name="id" column="ID">
+		</id>
+
+		<property name="firstName">
+			<column name="first_name" length="200" not-null="true" />
+		</property>
+		
+		<property name="lastName">
+			<column name="last_name" length="200"  not-null="true" />
+		</property>
+
+		<property name="college">
+			<column name="college" length="200"  not-null="false" />
+		</property>
+		
+		<property name="level">
+			<column name="level" length="200"  not-null="false" />
+		</property>
+		
+		<property name="gender">
+			<column name="gender" length="200"  not-null="false" />
+		</property>
+		
+		<property name="preference">
+			<column name="preference" length="200"  not-null="false" />
+		</property>
+		
+		<property name="age">
+			<column name="age"  not-null="false" />
+		</property>
+		
+		<property name="major">
+			<column name="major" length="200" />
+		</property>
+		
+		<property name="minor">
+			<column name="minor" length="200"/>
+		</property>
+		      	
+	</class>
+	
+</hibernate-mapping>

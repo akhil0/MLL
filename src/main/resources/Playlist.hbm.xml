@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 7, 2016 2:03:42 AM by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="mll.beans.Playlist">
+        <id name="playlist_id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+       <property name="song_id" type="java.lang.Integer">
+            <column name="song_id" length="200" />
+        </property>
+        <property name="userId" type="java.lang.Integer">
+            <column name="user_id" />
+        </property>
+    </class>
+</hibernate-mapping>
