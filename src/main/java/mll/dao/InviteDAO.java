@@ -25,7 +25,6 @@ public class InviteDAO
 	public boolean checkEmailId(String email) {
         
         boolean flag = false;
-        
         return flag;
     }
 	

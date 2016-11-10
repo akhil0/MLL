@@ -97,8 +97,7 @@ public class InviteDAOTest
             assertEquals(true, dao.checkEmailId("xyz@gmail.com") == true);
         }
         catch(Exception e)
-        {
-            
+        {            
         }
     }
 
