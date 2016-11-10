@@ -9,17 +9,17 @@ import org.json.simple.JSONObject;
 public class Metadata implements Serializable
 {
 	private static final long serialVersionUID = 4923954637381909334L;
-	private Song song;
+	private SongMetadata songMeta;
 	private List<Artist> artists = new ArrayList<Artist>();
 	private List<Owner> owners = new ArrayList<Owner>();
 	private List<Genre> genres = new ArrayList<Genre>();
 	private JSONObject metadataJson = new JSONObject();
 	
-	public Song getSong() {
-		return song;
+	public SongMetadata getSongMetadata() {
+		return songMeta;
 	}
-	public void setSong(Song song) {
-		this.song = song;
+	public void setSong(SongMetadata songMeta) {
+		this.songMeta = songMeta;
 	}
 	public List<Artist> getArtists() {
 		return artists;

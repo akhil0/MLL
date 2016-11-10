@@ -7,9 +7,11 @@ public class Login implements Serializable {
 	private static final long serialVersionUID = 4923954637381909334L;
 	public static final String musicianType = "musician";
 	public static final String adminUserType = "user";
+	public static final String arUserType = "arUser";
 	
 	private User user = new User();
 	private AdminUser admin = new AdminUser();
+	private ARuser aruser=new ARuser();
 	private Musician musician = new Musician();
 	private boolean isValidUser;
 	private String errMsg;
@@ -64,6 +66,12 @@ public class Login implements Serializable {
 	}
 	public void setCanUpload(boolean canUpload) {
 		this.canUpload = canUpload;
+	}
+	public ARuser getAruser() {
+		return aruser;
+	}
+	public void setAruser(ARuser aruser) {
+		this.aruser = aruser;
 	}
 	
 }

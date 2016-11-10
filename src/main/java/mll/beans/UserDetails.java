@@ -7,7 +7,8 @@ public class UserDetails implements Serializable {
 	private User users;
 	private AdminUser adminUser;
 	private Musician musician;
-	private Token token;
+	private ARuser aruser;
+	Token token;
 	private Boolean isRegistered;
 	private String errorMessage;
 	private String type;
@@ -16,6 +17,7 @@ public class UserDetails implements Serializable {
 		return users;
 	}
 
+	
 	public void setUsers(User users) {
 		this.users = users;
 	}
@@ -24,6 +26,13 @@ public class UserDetails implements Serializable {
 		return adminUser;
 	}
 
+	public ARuser getAruser() {
+		return aruser;
+	}
+
+	public void setAruser(ARuser aruser) {
+		this.aruser = aruser;
+	}
 	public void setAdminUser(AdminUser adminUser) {
 		this.adminUser = adminUser;
 	}
