@@ -12,6 +12,22 @@ import mll.utility.SessionFactoryUtil;
 
 public class InviteDAO 
 {
+	
+	
+	/**
+	 * This method takes email as an input and checks if
+     * the email id already exists to which the user 
+     * is sending the invite too.
+     * @author  Music Team 1
+     * @version 2.0
+     * @since   2016-09-11*/
+	
+	public boolean checkEmailId(String email) {
+        
+        boolean flag = false;
+        return flag;
+    }
+	
 	/**
 	* This method takes Invite as an input and generates 
 	* the new unique token and encode it with in URL. It
