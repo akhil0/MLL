@@ -10,6 +10,7 @@ public class User implements Serializable
 	private String userName;
 	private String password;
 	private String emailId;
+	private String userType;
 	
 	public Integer getId() {
 		return id;
@@ -34,5 +35,11 @@ public class User implements Serializable
 	}
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
+	}
+	public String getUserType() {
+		return userType;
+	}
+	public void setUserType(String userType) {
+		this.userType = userType;
 	}
 }

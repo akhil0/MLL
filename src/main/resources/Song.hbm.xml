@@ -5,41 +5,14 @@
 
 	<class name="mll.beans.Song" table="Song">
 
-		<id name="id" type="int" column="ID">
-			<generator class="native" />
-		</id>
-
-		<property name="title">
-			<column name="title" length="200"  not-null="true" />
+	<id name="asset_id" column="asset_id">
+              
+        </id>
+       
+		<property name="musician_id">
+			<column name="musician_id" not-null="true" />
 		</property>
 		
-		<property name="beatsPerMin">
-			<column name="beats_per_minute" not-null="true" />
-		</property>
-		
-		<property name="copyrightNo">
-			<column name="copyright_number"  length="50"  not-null="false" />
-		</property>
-		
-		<property name="copyRightDate">
-			<column name="copyright_date"  not-null="false" />
-		</property>
-		
-		<property name="publishingCompany">
-			<column name="publishing_company"  length="200"  not-null="false" />
-		</property>
-		
-		<property name="pro">
-			<column name="pro"  length="200"  not-null="false" />
-		</property>
-		
-		<property name="content">
-			<column name="content"  length="200" not-null="true" />
-		</property>
-		
-		<property name="userId">
-			<column name="user_id" not-null="true" />
-		</property>
 		
 	</class>
 	

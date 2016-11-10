@@ -7,7 +7,7 @@ public class Owner implements Serializable
 	private static final long serialVersionUID = -8241862681652667500L;
 
 	private Integer id;
-	private Integer songId;
+	private String songId;
 	private String name;
 	private String divisonOfOwnership;	 
 	private String ownerType;
@@ -22,10 +22,10 @@ public class Owner implements Serializable
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getSongId() {
+	public String getSongId() {
 		return songId;
 	}
-	public void setSongId(Integer songId) {
+	public void setSongId(String songId) {
 		this.songId = songId;
 	}
 	public String getName() {

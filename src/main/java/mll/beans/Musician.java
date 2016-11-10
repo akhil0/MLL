@@ -8,6 +8,10 @@ public class Musician  implements Serializable
 
 	private Integer id;
 	private String name;
+	private int age;
+	private int added_by;
+	private String folderId;
+	private String gender;
 	
 	public Integer getId() {
 		return id;
@@ -20,6 +24,30 @@ public class Musician  implements Serializable
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public int getAdded_by() {
+		return added_by;
+	}
+	public void setAdded_by(int added_by) {
+		this.added_by = added_by;
+	}
+	public String getFolderId() {
+		return folderId;
+	}
+	public void setFolderId(String folder_id) {
+		this.folderId = folder_id;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 	
 	

@@ -7,90 +7,20 @@ public class Song implements Serializable
 {
 	private static final long serialVersionUID = -6457237205216286747L;
 	
-	private Integer id;
-	private String title;
-	private Long beatsPerMin;
-	private String copyrightNo;
-	private Date copyRightDate;
-	private String publishingCompany;
-	private String pro;
-	private byte[] content;
-	private String sourceOfContent;
-	private String contentURL;
-	private Integer userId;
-	private String fileName;
+	private String asset_id;
+	private long musician_id;
 	
-	public Integer getId() {
-		return id;
+	public String getAsset_id() {
+		return asset_id;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setAsset_id(String asset_id) {
+		this.asset_id = asset_id;
 	}
-	public String getTitle() {
-		return title;
+	public long getMusician_id() {
+		return musician_id;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setMusician_id(long userId) {
+		this.musician_id = userId;
 	}
 	
-	public Long getBeatsPerMin() {
-		return beatsPerMin;
-	}
-	public void setBeatsPerMin(Long beatsPerMin) {
-		this.beatsPerMin = beatsPerMin;
-	}
-	public String getCopyrightNo() {
-		return copyrightNo;
-	}
-	public void setCopyrightNo(String copyrightNo) {
-		this.copyrightNo = copyrightNo;
-	}
-	public Date getCopyRightDate() {
-		return copyRightDate;
-	}
-	public void setCopyRightDate(Date copyRightDate) {
-		this.copyRightDate = copyRightDate;
-	}
-	public String getPublishingCompany() {
-		return publishingCompany;
-	}
-	public void setPublishingCompany(String publishingCompany) {
-		this.publishingCompany = publishingCompany;
-	}
-	public String getPro() {
-		return pro;
-	}
-	public void setPro(String pro) {
-		this.pro = pro;
-	}
-	public byte[] getContent() {
-		return content;
-	}
-	public void setContent(byte[] content) {
-		this.content = content;
-	}
-	public String getSourceOfContent() {
-		return sourceOfContent;
-	}
-	public void setSourceOfContent(String sourceOfContent) {
-		this.sourceOfContent = sourceOfContent;
-	}
-	public String getContentURL() {
-		return contentURL;
-	}
-	public void setContentURL(String contentURL) {
-		this.contentURL = contentURL;
-	}
-	public Integer getUserId() {
-		return userId;
-	}
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
-	public String getFileName(){
-		return fileName;
-	}
-	public void setFileName(String fileName){
-		this.fileName = fileName;
-	}
 }

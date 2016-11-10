@@ -21,6 +21,10 @@
 			<column name="email_id" length="100"  not-null="true" />
 		</property>
 		
+		<property name="userType">
+			<column name="usertype" length="20"  not-null="true" />
+		</property>
+		
 	</class>
 	
 </hibernate-mapping>
