@@ -114,13 +114,13 @@ public class MultipartUtility {
 	     
 	    /**
 	     * Completes the request and receives response from the server.
-	     * @return a list of Strings as response in case the server returned
+	     * @return a String as response in case the server returned
 	     * status OK, otherwise an exception is thrown.
 	     * @throws IOException
 	     */
-	    public List<String> finish() throws IOException {
-	        List<String> response = new ArrayList<String>();
-	 
+	    public String finish() throws IOException {
+	        StringBuffer response = new StringBuffer();
+	        String line=new String();
 	        writer.append(LINE_FEED).flush();
 	        writer.append("--" + boundary + "--").append(LINE_FEED);
 	        writer.close();
@@ -130,16 +130,17 @@ public class MultipartUtility {
 	        if (status == HttpURLConnection.HTTP_OK) {
 	            BufferedReader reader = new BufferedReader(new InputStreamReader(
 	                    httpConn.getInputStream()));
-	            String line = null;
+	           
 	            while ((line = reader.readLine()) != null) {
-	                response.add(line);
+	               response.append(line);
 	            }
+	            //System.out.println(response);
 	            reader.close();
 	            httpConn.disconnect();
 	        } else {
 	            throw new IOException("Server returned non-OK status: " + status);
 	        }
 	 
-	        return response;
+	        return response.toString();
 	    }
 }

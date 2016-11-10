@@ -24,7 +24,7 @@ public class MultipartUtilityTest
 		multipart.addFormField("destfolderid", "CC5DFF287F274153963FF173C505A956");
 		
 		multipart.addFilePart(fileName, content);
-		List<String> response = multipart.finish();
+		String response = multipart.finish();
 		assertEquals(true, response.contains("<message>success</message>") == true );
 		
 	}
@@ -39,7 +39,7 @@ public class MultipartUtilityTest
 		multipart.addFormField("destfolderid", "CC5DFF287F274153963FF173C505A956");
 		
 		multipart.addFilePart(fileName, content);
-		List<String> response = multipart.finish();
+		String response = multipart.finish();
 		System.out.println(response);
 		assertEquals(true, response.contains("<message>success</message>") == false );
 		
@@ -55,7 +55,7 @@ public class MultipartUtilityTest
 		multipart.addFormField("destfolderid", "CC5DFF287F274153963FF173C505A956");
 		
 		multipart.addFilePart(fileName, content);
-		List<String> response = multipart.finish();
+		String response = multipart.finish();
 		assertEquals(true, response.contains("<message>success</message>") == false );
 		
 	}
@@ -69,7 +69,7 @@ public class MultipartUtilityTest
 		multipart.addFormField("api_key", config.RAZUNA_KEY);
 		
 		multipart.addFilePart(fileName, content);
-		List<String> response = multipart.finish();
+		String response = multipart.finish();
 		assertEquals(true, response.contains("<message>success</message>") == false );
 		
 	}
@@ -83,7 +83,7 @@ public class MultipartUtilityTest
 		multipart.addFormField("api_key", config.RAZUNA_KEY);
 		multipart.addFormField("destfolderid", "CC5DFF287F274153963FF173C505A956");
 		
-		List<String> response = multipart.finish();
+		String response = multipart.finish();
 		assertEquals(true, response.contains("SUCCESS") == false );
 		
 	}
