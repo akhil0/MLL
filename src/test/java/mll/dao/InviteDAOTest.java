@@ -114,6 +114,34 @@ public class InviteDAOTest
             
         }
     }
+
+    	@Test
+    public void testCheckEmail3() {
+        
+        try 
+        {
+            InviteDAO dao = new InviteDAO();
+            assertEquals(true, dao.checkEmailId("")==false);
+        }
+        catch(Exception e)
+        {
+            
+        }
+    }	
+	
+    	
+	@Test
+    public void testCheckEmail4() {       
+        try 
+        {
+            InviteDAO dao = new InviteDAO();
+            assertEquals(true, dao.checkEmailId("dishant.nmims@gmail.com")==false);
+        }
+        catch(Exception e)
+        {
+            
+        }
+    }
 	
 
 	
