@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 
@@ -28,6 +29,7 @@ public class LoginServlet extends HttpServlet
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  
 	{
 		Login login = subService.validateLogin(request, response);
+		HttpSession session=request.getSession();
 		
 		//Create a new JSON resonse object 
 		JSONObject responseObject = new JSONObject();
@@ -50,6 +52,7 @@ public class LoginServlet extends HttpServlet
 			if (login.getType() == Login.musicianType) 
 			{
 				responseObject.put("name", login.getMusician().getName());
+				session.setAttribute("folder_id",login.getMusician().getFolderId());
 			} 
 			else 
 			{
