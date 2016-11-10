@@ -20,7 +20,7 @@ public class SubmissionDAOTest
 		try 
 		{
 			SubmissionDAO dao = new SubmissionDAO();
-			assertEquals(true, dao.saveMetadata(null) == null);
+			assertEquals(true, dao.saveMetadata(null,null,null) == null);
 		} 
 		catch (Exception e) 
 		{
@@ -35,7 +35,9 @@ public class SubmissionDAOTest
 		{
 			SubmissionDAO dao = new SubmissionDAO();
 			List<Metadata> metadatas = new ArrayList<Metadata>();
-			assertEquals(true, dao.saveMetadata(metadatas) == metadatas);
+			ArrayList<String> AssetIds = new ArrayList<String>();
+			String folder_id= null;
+			assertEquals(true, dao.saveMetadata(metadatas, AssetIds,folder_id) == metadatas);
 		} 
 		catch (Exception e) 
 		{
