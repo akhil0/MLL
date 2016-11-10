@@ -241,6 +241,7 @@ public class SubmissionServiceTest
 		jo.put("beatRate", 3L);
 		jo.put("title", "My heart will go on");
 		jo.put("artists", artists);
+		jo.put("userId", 1L);
 		return jo;
 	}
 	
