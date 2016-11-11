@@ -25,6 +25,26 @@ public class InviteDAO
 	public boolean checkEmailId(String email) {
         
         boolean flag = false;
+        if(email.isEmpty() || email == null)
+            return flag;
+        
+        Session session = null;
+        Transaction tx = null;
+        
+        try {
+            session = SessionFactoryUtil.getSessionFactory().getCurrentSession();
+            tx = session.beginTransaction();
+            if(email != null || !email.isEmpty()) {
+                Query query = session.createQuery("FROM mll.beans.Token tc where tc.emailId=:email");
+                query.setParameter("email", email);
+                List<Token> existingUsers = query.list();
+                if(existingUsers.size()==0)
+                    flag = true;
+            }
+        }
+        catch(Exception e) {
+            e.printStackTrace();    
+        }
         return flag;
     }
 	
