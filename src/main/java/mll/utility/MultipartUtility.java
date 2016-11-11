@@ -114,13 +114,39 @@ public class MultipartUtility {
 	     
 	    /**
 	     * Completes the request and receives response from the server.
-	     * @return a String as response in case the server returned
+	     * @return a list of Strings as response in case the server returned
 	     * status OK, otherwise an exception is thrown.
 	     * @throws IOException
 	     */
+	  /*  public List<String> finish() throws IOException {
+	        List<String> response = new ArrayList<String>();
+	 
+	        writer.append(LINE_FEED).flush();
+	        writer.append("--" + boundary + "--").append(LINE_FEED);
+	        writer.close();
+	 
+	        // checks server's status code first
+	        int status = httpConn.getResponseCode();
+	        if (status == HttpURLConnection.HTTP_OK) {
+	            BufferedReader reader = new BufferedReader(new InputStreamReader(
+	                    httpConn.getInputStream()));
+	            String line = null;
+	            while ((line = reader.readLine()) != null) {
+	                response.add(line);
+	            }
+	            reader.close();
+	            httpConn.disconnect();
+	        } else {
+	            throw new IOException("Server returned non-OK status: " + status);
+	        }
+	 
+	        return response;
+	    }*/
+	    
 	    public String finish() throws IOException {
-	        StringBuffer response = new StringBuffer();
-	        String line=new String();
+	        List<String> response = new ArrayList<String>();
+	        StringBuffer line = new StringBuffer();
+	        String temp=new String();
 	        writer.append(LINE_FEED).flush();
 	        writer.append("--" + boundary + "--").append(LINE_FEED);
 	        writer.close();
@@ -131,16 +157,16 @@ public class MultipartUtility {
 	            BufferedReader reader = new BufferedReader(new InputStreamReader(
 	                    httpConn.getInputStream()));
 	           
-	            while ((line = reader.readLine()) != null) {
-	               response.append(line);
+	            while ((temp = reader.readLine()) != null) {
+	               line.append(temp);
 	            }
-	            //System.out.println(response);
+	            System.out.println(line);
 	            reader.close();
 	            httpConn.disconnect();
 	        } else {
 	            throw new IOException("Server returned non-OK status: " + status);
 	        }
 	 
-	        return response.toString();
+	        return line.toString();
 	    }
 }

@@ -51,10 +51,12 @@ public class RegistrationDAO
 							session.save(userdetails.getAdminUser());
 					        responseObject.put("browse", true);
 							responseObject.put("upload", false);
+							
 						}
 						else if(userdetails.getType().equalsIgnoreCase("musician"))
 						{
 							userdetails.getMusician().setId(userId);
+							userdetails.getMusician().setAdded_by(invite.getToken().getUserId());
 							session.save(userdetails.getMusician());
 					        responseObject.put("browse", false);
 							responseObject.put("upload", true);
