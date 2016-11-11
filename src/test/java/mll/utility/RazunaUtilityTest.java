@@ -62,9 +62,7 @@ public class RazunaUtilityTest {
 	    song.setContentURL(null);
 		song.setSourceOfContent("HARDDRIVE");
 		song.setContent("path/song".getBytes());
-		DateFormat formatter = new SimpleDateFormat("MM/dd/yy");
-		Date date = formatter.parse("10/10/16");
-		song.setCopyright_date(date);
+		song.setCopyright_date("10/10/16");
 		song.setLyrics("lyrics");
 		song.setArtists("Artists");
 		return song;

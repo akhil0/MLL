@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 
 import mll.beans.Invite;
 import mll.beans.Token;
+import mll.utility.Configuration;
 import mll.utility.SessionFactoryUtil;
 
 public class InviteDAO 
@@ -60,6 +61,7 @@ public class InviteDAO
 	{
 		Session session = null;
 		Transaction tx = null;
+		Configuration conf=new Configuration();
 		
 		try
 		{
@@ -77,7 +79,7 @@ public class InviteDAO
 					session.update(invite.getToken());
 					invite.setIsGenerated(true);
 					invite.setMessage("Invite has been sent successfully.");
-					invite.setUrl("http://localhost:8080/MLL/index.html#/"+ invite.getToken().getInviteType() + "/registration/token/" + invite.getToken().getToken());
+					invite.setUrl(conf.INVITE_URL+ invite.getToken().getInviteType() + "/registration/token/" + invite.getToken().getToken());
 				}
 				else
 				{

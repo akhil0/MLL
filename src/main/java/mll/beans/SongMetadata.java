@@ -7,7 +7,7 @@ public class SongMetadata {
 	private String title;
 	private long beats_per_rate;
 	private String copyright_number;
-	private Date copyright_date;
+	private String copyright_date;
 	private String publishing_company;
 	private String pro;
 	private String lyrics;
@@ -38,11 +38,11 @@ public class SongMetadata {
 	public void setCopyright_number(String copyright_number) {
 		this.copyright_number = copyright_number;
 	}
-	public Date getCopyright_date() {
+	public String getCopyright_date() {
 		return copyright_date;
 	}
-	public void setCopyright_date(Date copyright_date) {
-		this.copyright_date = copyright_date;
+	public void setCopyright_date(String date) {
+		this.copyright_date = date;
 	}
 	public String getPublishing_company() {
 		return publishing_company;

@@ -78,10 +78,12 @@ public class RegistrationService {
 		
 		if (userdetails.getType().equalsIgnoreCase("user")) 
 		{
+			userdetails.getUsers().setUserType("admin");
 			userdetails.setAdminUser(populateAdminUser(mainObject));
 
 		} else
 		{
+			userdetails.getUsers().setUserType("musician");
 			userdetails.setMusician(populateMusician(mainObject));
 		}
 
@@ -139,11 +141,14 @@ public class RegistrationService {
 
 	public Musician populateMusician(JSONObject jo) 
 	{
+		RazunaService rs=new RazunaService();
 		Musician m = null;
 		if (null != jo) 
 		{
 			m = new Musician();
-			m.setName(" ");
+			m.setName(jo.get("userName").toString());
+			m.setFolderId(rs.createFolderForUser(m.getName()));
+			
 		}
 		return m;
 	}
