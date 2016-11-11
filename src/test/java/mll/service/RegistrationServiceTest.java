@@ -53,12 +53,6 @@ public class RegistrationServiceTest
 		assertEquals(true, service.populateMusician(null) == null);
 	}
 	
-	@Test
-	public void testPopulateMusician2() throws Exception
-	{
-		RegistrationService service = new RegistrationService();
-		assertEquals(true, service.populateMusician(getMusicianData()).getName().equalsIgnoreCase(" "));
-	}
 	
 
 	@Test
@@ -176,7 +170,7 @@ public class RegistrationServiceTest
 	public JSONObject getMusicianData()
 	{
 		JSONObject jo = new JSONObject();
-		jo.put("name", "Soumya");
+		jo.put("userName", "test");
 		return jo;
 	}
 	
