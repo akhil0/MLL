@@ -219,7 +219,7 @@
 	<artifactId>tomcat7-maven-plugin</artifactId>
 	<version>2.2</version>
 	<configuration>
-		<url>http://ec2-35-162-194-28.us-west-2.compute.amazonaws.com:8080/manager/text/list</url>
+		<url>http://ec2-35-162-194-28.us-west-2.compute.amazonaws.com:8080/manager/text</url>
 		<server>TomcatServer</server>
 		<path>/Music2</path>
 	</configuration>
