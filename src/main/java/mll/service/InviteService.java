@@ -41,7 +41,7 @@ public class InviteService
 	        
 		 boolean isValid = dao.checkEmailId(email);
 		 
-		if(null != invite.getActiontype() && isValid)
+		if(null != invite.getActiontype())
 		{
 			if(invite.getActiontype().equalsIgnoreCase("generate"))
 			{
