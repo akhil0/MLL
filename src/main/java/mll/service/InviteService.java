@@ -39,7 +39,7 @@ public class InviteService
 		
 		 String email = invite.getToken().getEmailId();
 	        
-		 boolean isValid = dao.checkEmailId(email);
+//		 boolean isValid = dao.checkEmailId(email);
 		 
 		if(null != invite.getActiontype())
 		{
