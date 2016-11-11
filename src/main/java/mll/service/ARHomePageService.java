@@ -23,9 +23,9 @@ public class ARHomePageService {
 	}
 	
 	
-	public static List<Musician> getMusicians(int id){
+	public  List<Musician> getMusicians(int id){
 		
-		 return null;		
+		 return new ARHomePageService().getMusicians(id);		
 	}
 	
 
