@@ -134,7 +134,7 @@ public class InviteDAOTest
         try 
         {
             InviteDAO dao = new InviteDAO();
-            assertEquals(true, dao.checkEmailId("dishant.nmims@gmail.com")==false);
+            assertEquals(true, dao.checkEmailId("dishant.nmims@gmail.com")==true);
         }
         catch(Exception e)
         {
