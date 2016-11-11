@@ -37,7 +37,11 @@ public class InviteService
 		
 		Invite invite = populateInviteBeansFromRequest(request);
 		
-		if(null != invite.getActiontype())
+		 String email = invite.getToken().getEmailId();
+	        
+		 boolean isValid = dao.checkEmailId(email);
+		 
+		if(null != invite.getActiontype() && isValid)
 		{
 			if(invite.getActiontype().equalsIgnoreCase("generate"))
 			{
