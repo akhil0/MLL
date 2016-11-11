@@ -33,6 +33,6 @@ public class Configuration
 	public final String RAZUNA_CUSTOM_FIELD_METHOD="customfield.cfc";
 	
 	//Invite mail url
-	public final String INVITE_URL= "http://localhost:9000/MLL/index.html#/";
+	public final String INVITE_URL= "http://ec2-35-162-194-28.us-west-2.compute.amazonaws.com:8080/MLL/index.html#/";
 	
 }
