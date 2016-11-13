@@ -129,17 +129,4 @@ public class InviteDAOTest
         }
     }   
         
-    @Test
-    public void testCheckEmail4() {       
-        try 
-        {
-            InviteDAO dao = new InviteDAO();
-            assertEquals(true, dao.checkEmailId("dishant.nmims@gmail.com")==true);
-        }
-        catch(Exception e)
-        {
-            
-        }
-    }
-
 }
