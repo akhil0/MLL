@@ -40,11 +40,9 @@ public class InviteService
 		
 		Invite invite = populateInviteBeansFromRequest(request);
 		
-		 String email = invite.getToken().getEmailId();
-	        
-//		 boolean isValid = dao.checkEmailId(email);
+		boolean isValid = isEmailDuplicate(invite);
 		 
-		if(null != invite.getActiontype())
+		if(null != invite.getActiontype() && isValid)
 		{
 			if(invite.getActiontype().equalsIgnoreCase("generate"))
 			{
@@ -59,7 +57,10 @@ public class InviteService
 		{
 			responseObject.put("isGenerated", false);
 			responseObject.put("isValid", false);
-			responseObject.put("errorMessage", "Error while processing this invite request. Please try again with valid invite details.");
+			if(!isValid)
+				responseObject.put("errorMessage", "Duplicate invite being sent to the same Musician");
+			else
+				responseObject.put("errorMessage", "Error while processing this invite request. Please try again with valid invite details.");
 		}
 		
 		return responseObject;
@@ -200,6 +201,10 @@ public class InviteService
 	
 	
 	public boolean isEmailDuplicate(Invite invite) {
-		return true;
+		boolean isValid = true;
+		if(invite.getActiontype().equals("generate")){
+			 isValid = dao.checkEmailId(invite.getToken().getEmailId());			
+		}
+		return isValid;
 	}
 }
