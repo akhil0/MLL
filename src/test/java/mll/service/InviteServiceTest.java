@@ -6,6 +6,7 @@ import org.json.simple.JSONObject;
 import org.junit.Test;
 
 import mll.beans.Invite;
+import mll.beans.Token;
 
 
 public class InviteServiceTest 
@@ -102,6 +103,33 @@ public class InviteServiceTest
 		InviteService service = new InviteService();
 		assertEquals(true, service.populateInviteBeansFromRequest(new Invite(), getInviteValidateJsonObject()).getToken().getInviteType().equals("user"));
 	}
+	
+	
+	@Test 
+	public void testIsEmailDuplicate1() throws Exception 
+	{
+		InviteService service = new InviteService();
+		Invite invite = new Invite();
+		Token token = new Token();
+		token.setEmailId(null);
+		invite.setToken(token);
+		invite.setActiontype("generate");
+		assertEquals(true, service.isEmailDuplicate(invite) == true);
+	}
+	
+	@Test
+	public void testIsEmailDuplicate2() throws Exception {
+		InviteService service = new InviteService();
+		Invite invite = new Invite();
+		Token token = new Token();
+		token.setEmailId("");
+		invite.setToken(token);
+		invite.setActiontype("generate");
+		assertEquals(true, service.isEmailDuplicate(invite) == true);
+
+	}
+	
+	
 	
 	@SuppressWarnings("unchecked")
 	public JSONObject getInviteGenerateJsonObject()

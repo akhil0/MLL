@@ -33,6 +33,9 @@ public class InviteService
 	@SuppressWarnings("unchecked")
 	public JSONObject handleInviteRequest(HttpServletRequest request, HttpServletResponse response)
 	{
+		
+		System.out.println(request);
+		System.out.println(response);
 		JSONObject responseObject = new JSONObject();
 		
 		Invite invite = populateInviteBeansFromRequest(request);
@@ -193,5 +196,10 @@ public class InviteService
 		}
 		
 		return invite;
+	}
+	
+	
+	public boolean isEmailDuplicate(Invite invite) {
+		return true;
 	}
 }
