@@ -7,103 +7,79 @@ import org.junit.Test;
 public class ARDAOTest {
 
 	@Test
-	public void testGetMusician1(){ 
-	{
-		try 
+	public void testGetRegisteredMusician1() {
 		{
-			assertEquals(true, new ARHomePageDAO().getMusicians(-1) == null);
-		} 
-		catch (Exception e) 
-		{
-		}
-	}
-}
-	
-	@Test
-	public void testGetMusician2(){ 
-	{
-		try 
-		{
-			assertEquals(true, new ARHomePageDAO().getMusicians(1).size() != 0);
-		} 
-		catch (Exception e) 
-		{
-		}
-	}
-}
-	
-	@Test
-	public void testGetMusicians3(){ 
-	{
-		try 
-		{
-			assertEquals(true, new ARHomePageDAO().getMusicians(2).size() == 0);
-		} 
-		catch (Exception e) 
-		{
-			
-		}
-	}	
-}
+			try {
 
-	
-	@Test
-	public void testGetMusicians4(){ 
-	{
-		try 
-		{
-			assertEquals(true, new ARHomePageDAO().getMusicians(100).size() == 0);
-		} 
-		catch (Exception e) 
-		{
-			
-		}
+				assertEquals(true, new ARHomePageDAO().getRegisteredMusicians(-11).size() == 0);
+			} catch (Exception e) {
+			}
 		}
 	}
-	
 
 	@Test
-	public void testGetUnRegisteredMusician1(){ 
+	public void testGetRegisteredMusician2() {
 		{
-			try 
-			{
+			try {
+				assertEquals(true, new ARHomePageDAO().getRegisteredMusicians(100) != null);
+			} catch (Exception e) {
+			}
+		}
+	}
+
+	@Test
+	public void testGetRegisteredMusician3() {
+		{
+			try {
+				assertEquals(true, new ARHomePageDAO().getRegisteredMusicians(1) != null);
+			} catch (Exception e) {
+
+			}
+		}
+	}
+
+	@Test
+	public void testGetRegisteredMusician4() {
+		{
+			try {
+				assertEquals(true, new ARHomePageDAO().getRegisteredMusicians(4) != null);
+			} catch (Exception e) {
+
+			}
+		}
+
+	}
+
+	@Test
+	public void testGetUnRegisteredMusician1() {
+		{
+			try {
 				assertEquals(true, new ARHomePageDAO().getUnRegisteredMusicians(-2).size() == 0);
-			} 
-			catch (Exception e) 
-			{
-				
+			} catch (Exception e) {
+
 			}
 		}
 	}
 
 	@Test
-	public void testGetUnRegisteredMusician2(){ 
+	public void testGetUnRegisteredMusician2() {
 		{
-			try 
-			{
+			try {
 				assertEquals(true, new ARHomePageDAO().getUnRegisteredMusicians(100) != null);
-			} 
-			catch (Exception e) 
-			{
-				
+			} catch (Exception e) {
+
 			}
 		}
 	}
-	
+
 	@Test
-	public void testGetUnRegisteredMusician3(){ 
+	public void testGetUnRegisteredMusician3() {
 		{
-			try 
-			{
+			try {
 				assertEquals(true, new ARHomePageDAO().getUnRegisteredMusicians(1) != null);
-			} 
-			catch (Exception e) 
-			{
-				
+			} catch (Exception e) {
+
 			}
 		}
-	}	
+	}
 }
-
-	
-
