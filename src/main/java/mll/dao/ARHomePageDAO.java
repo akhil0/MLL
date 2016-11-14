@@ -1,11 +1,14 @@
 package mll.dao;
 
+import java.util.ArrayList;
 import java.util.List;
-import mll.beans.Musician;
-import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.Query;
+
+import mll.beans.Musician;
+import mll.beans.Token;
 import mll.utility.SessionFactoryUtil;
 
 public class ARHomePageDAO {
@@ -37,5 +40,12 @@ public class ARHomePageDAO {
 		}
 		return musicians;
 	}
+	
+	public List<Token> getUnRegisteredMusicians(int id){	
+			List<Token> listOfMusicians = new ArrayList<Token>();
+			return listOfMusicians;
+		}
+	
+	
 
 }
