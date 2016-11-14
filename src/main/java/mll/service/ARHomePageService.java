@@ -1,8 +1,11 @@
 package mll.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import mll.beans.ARuser;
 import mll.beans.Musician;
+import mll.beans.Token;
 
 public class ARHomePageService {
 	
@@ -23,9 +26,16 @@ public class ARHomePageService {
 	}
 	
 	
-	public  List<Musician> getMusicians(int id){
+	public List<Musician> getRegisteredMusicians(ARuser arUser){	
 		
-		 return new ARHomePageService().getMusicians(id);		
+		return new ArrayList<Musician>();
+	}
+
+
+	public static List<Token> getUnRegisteredMusicians(ARuser arUser){	
+	
+		return new ArrayList<Token>();
+		
 	}
 	
 

@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import mll.beans.ARuser;
+
 public class ARHomePageTest {
 	
 
@@ -65,6 +67,67 @@ public class ARHomePageTest {
 		ARHomePageService ds = new ARHomePageService();
 		assertEquals(false, ds.getUserWhoUploaded("StringWithAudioFileAndMetaData") == "null");
 	}*/
+	
+	
+	@Test
+	public void testGetRegisteredMusician1(){ 
+		{
+			try 
+			{
+				ARuser arUser = new ARuser();
+				arUser.setId(-3);
+				assertEquals(true, new ARHomePageService().getRegisteredMusicians(arUser) != null);
+			} 
+			catch (Exception e) 
+			{
+			}
+		}
+	}
+	
+	@Test
+	public void testGetRegisteredMusician2(){ 
+		{
+			try 
+			{
+				ARuser arUser = new ARuser();
+				arUser.setId(1);
+				assertEquals(true, new ARHomePageService().getRegisteredMusicians(arUser) != null);
+			} 
+			catch (Exception e) 
+			{
+			}
+		}
+	}
+	
+	@Test
+	public void testGetUnRegisteredMusician1(){ 
+		{
+			try 
+			{
+				ARuser arUser = new ARuser();
+				arUser.setId(1);
+				assertEquals(true, new ARHomePageService().getRegisteredMusicians(arUser) != null);
+			} 
+			catch (Exception e) 
+			{
+			}
+		}
+	}
+	
+	@Test
+	public void testGetUnRegisteredMusician2(){ 
+		{
+			try 
+			{
+				ARuser arUser = new ARuser();
+				arUser.setId(-1);
+				assertEquals(true, new ARHomePageService().getRegisteredMusicians(arUser) != null);
+			} 
+			catch (Exception e) 
+			{
+			}
+		}
+	}
 
 	
 }
