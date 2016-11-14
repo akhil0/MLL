@@ -13,39 +13,30 @@ import mll.utility.SessionFactoryUtil;
 
 public class ARHomePageDAO {
 
-	
-	public List<Musician> getMusicians(int id){
-		
+	public List<Musician> getRegisteredMusicians(int id) {
 		Session session = null;
-		
+
 		Transaction tx = null;
-		
+
 		List<Musician> musicians = null;
-		try{
+		try {
 			session = SessionFactoryUtil.getSessionFactory().getCurrentSession();
 			tx = session.beginTransaction();
-			if(id == -1){
-				return null;
-			}
-			
+
 			Query q = session.createQuery("FROM mll.beans.Musician m where m.added_by=:id");
 			q.setParameter("id", id);
 			musicians = q.list();
-			
-			return musicians;
-			
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(0);
 		}
-		return musicians;
-	}
-	
-	public List<Token> getUnRegisteredMusicians(int id){	
-			List<Token> listOfMusicians = new ArrayList<Token>();
-			return listOfMusicians;
-		}
-	
-	
 
+		return musicians;
+
+	}
+
+	public List<Token> getUnRegisteredMusicians(int id) {
+		List<Token> listOfMusicians = new ArrayList<Token>();
+		return listOfMusicians;
+	}
 }
