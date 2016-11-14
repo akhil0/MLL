@@ -12,8 +12,13 @@
             .state('home', {
                 url: '/',
                 views: {
-                    left: { template: '' },
-                    center: { template: '' },
+                    left: {
+                        controller: 'SidebarController as ctrl',
+                        templateProvider: function ($templateCache) {
+                            return $templateCache.get('sidebar.template.html');
+                        }
+                    },
+                    center: { template: '<h1>A&R Home Page</h1>' },
                     right: { template: '' }
                 }
             })
@@ -37,7 +42,7 @@
                             .validateToken({ inviteType: registrationTypes.user, token: $stateParams.token })
                             .then((response) => {
                                 if (response.data.isValid) deferred.resolve($stateParams.token);
-
+                                
                                 else {
                                     $state.go('home');
                                     deferred.reject();
@@ -82,13 +87,60 @@
             .state('user', {
                 url: '/user/profile/id/:id',
                 views: {
-                    left: { template: '' },
+                    left: {
+                        controller: 'SidebarController as ctrl',
+                        templateProvider: function ($templateCache) {
+                            return $templateCache.get('sidebar.template.html');
+                        }
+                    },
                     center: { template: '' },
                     right: {
                         controller: 'UserFeaturesController as ctrl',
                         templateProvider: function ($templateCache) {
                             return $templateCache.get('user-profile-right.view.html');
                         }
+                    }
+                },
+                resolve: {
+                    userId: function($state, $stateParams, $q, $timeout, authenticationService) {
+                        let deferred = $q.defer();
+
+                        $timeout(() => {
+                            if (!authenticationService.details.isAuth) {
+                                $state.go('login');
+                                deferred.reject();
+                            }
+
+                            else if (!authenticationService.details.data.permissions.browse) {
+                                $state.go(authenticationService.details.data.type,
+                                    { id: authenticationService.details.data.id });
+                                deferred.reject();
+                            }
+
+                            else deferred.resolve(+$stateParams.id);
+                        }, 0);
+
+                        return deferred.promise;
+                    }
+                }
+            })
+            .state('arUser', {
+                url: '/arUser/profile/id/:id',
+                views: {
+                    left: {
+                        controller: 'SidebarController as ctrl',
+                        templateProvider: function ($templateCache) {
+                            return $templateCache.get('sidebar.template.html');
+                        }
+                    },
+                    center: {                         
+                    	controller: 'ARFeaturesController as model',
+                        templateProvider: function ($templateCache) {
+                            return $templateCache.get('ar-profile-center.view.html');
+                        }
+                    },
+                    right: {
+                    	template: ''
                     }
                 },
                 resolve: {
@@ -179,6 +231,88 @@
                             }
 
                             else deferred.resolve(+authenticationService.details.data.id);
+                        }, 0);
+
+                        return deferred.promise;
+                    }
+                }
+            })
+            .state('invite', {
+                url: '/invite/id/:id',
+                views: {
+                    left: {
+                        controller: 'SidebarController as ctrl',
+                        templateProvider: function ($templateCache) {
+                            return $templateCache.get('sidebar.template.html');
+                        }
+                    },
+                    center: { template: '' },
+                    right: {
+                        controller: 'UserFeaturesController as ctrl',
+                        templateProvider: function ($templateCache) {
+                            return $templateCache.get('user-profile-right.view.html');
+                        }
+                    }
+                },
+                resolve: {
+                    userId: function($state, $stateParams, $q, $timeout, authenticationService) {
+                        let deferred = $q.defer();
+
+                        $timeout(() => {
+                            if (!authenticationService.details.isAuth) {
+                                $state.go('login');
+                                deferred.reject();
+                            }
+
+                            else if (!authenticationService.details.data.permissions.browse) {
+                                $state.go(authenticationService.details.data.type,
+                                    { id: authenticationService.details.data.id });
+                                deferred.reject();
+                            }
+
+                            else deferred.resolve(+$stateParams.id);
+                        }, 0);
+
+                        return deferred.promise;
+                    }
+                }
+            })
+			.state('track', {
+                url: '/track/profile/id/:id',
+                views: {
+                   left: {
+                        controller: 'SidebarController as ctrl',
+                        templateProvider: function ($templateCache) {
+                            return $templateCache.get('sidebar.template.html');
+                        }
+                    },
+                    center: { template:
+                        `<div class="well well-lg">
+						    <H2> TRACK PAGE</h2>
+                            <h4>
+                                Track page has not been implemented yet
+                            </h4>
+                        </div>`
+                    },
+                    right: { template:''}
+                },
+                resolve: {
+                    data: function($state, $q, $timeout, authenticationService) {
+                        let deferred = $q.defer();
+
+                        $timeout(() => {
+                            if (!authenticationService.details.isAuth) {
+                                $state.go('login');
+                                deferred.reject();
+                            }
+
+                            else if (!authenticationService.details.data.permissions.browse) {
+                                $state.go(authenticationService.details.data.type,
+                                    { id: authenticationService.details.data.id });
+                                deferred.reject();
+                            }
+
+                            else deferred.resolve();
                         }, 0);
 
                         return deferred.promise;

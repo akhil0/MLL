@@ -49,4 +49,18 @@ describe('Invite Token Service:', function () {
 
         httpBackend.flush();
     });
+
+        it("'generateToken' should fire POST request when same musican is invited again", function () {
+        httpBackend.expectPOST(url, {
+            userId: 1,
+            email: 'dishant.nmims@gmail.com',
+            messageBody: '',
+            inviteType: 'user',
+            actionType: 'generate'
+        }).respond({});
+
+        service.generateToken({ userId: 1, email: 'dishant.nmims@gmail.com', messageBody: '', inviteType: 'user' });
+
+        httpBackend.flush();
+    });
 });
