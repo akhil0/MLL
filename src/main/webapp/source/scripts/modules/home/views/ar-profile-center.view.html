@@ -1,0 +1,24 @@
+<h1>THIS IS IT<h1>
+
+{{model.userId}}
+
+<button ng-click="model.getRegisteredMusician()">CALL METHOD</button>
+
+<!-- <div ng-show = "model.flag">
+	<table style="width:100%">
+		<thead>
+		  <tr>
+		    <th>Name</th>
+		  </tr>
+		</thead>
+		<tbody>
+		<tr ng-repeat="musician in model.musicians">
+		    <td>{{musician.name}}</td>
+		</tr>
+		</tbody>
+	</table> 
+</div> -->
+
+<div ng-repeat="musician in model.musicians">
+	{{musician.name}}
+</div>
