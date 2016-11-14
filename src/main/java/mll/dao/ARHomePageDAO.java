@@ -28,7 +28,6 @@ public class ARHomePageDAO {
 			musicians = q.list();
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.exit(0);
 		}
 
 		return musicians;
