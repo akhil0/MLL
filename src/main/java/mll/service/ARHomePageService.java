@@ -6,6 +6,7 @@ import java.util.List;
 import mll.beans.ARuser;
 import mll.beans.Musician;
 import mll.beans.Token;
+import mll.dao.ARHomePageDAO;
 
 public class ARHomePageService {
 	
@@ -26,17 +27,16 @@ public class ARHomePageService {
 	}
 	
 	
-	public List<Musician> getRegisteredMusicians(ARuser arUser){	
+	public static List<Musician> getRegisteredMusicians(ARuser arUser){	
 		
-		return new ArrayList<Musician>();
+		return new ARHomePageDAO().getRegisteredMusicians(arUser.getId());
 	}
 
 
 	public static List<Token> getUnRegisteredMusicians(ARuser arUser){	
 	
-		return new ArrayList<Token>();
+		return new ARHomePageDAO().getUnRegisteredMusicians(arUser.getId());
 		
 	}
 	
-
 }

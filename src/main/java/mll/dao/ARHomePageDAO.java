@@ -36,6 +36,23 @@ public class ARHomePageDAO {
 
 	public List<Token> getUnRegisteredMusicians(int id) {
 		List<Token> listOfMusicians = new ArrayList<Token>();
+		
+		Session session = null;
+
+		Transaction tx = null;
+
+		try{
+			session = SessionFactoryUtil.getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();
+			
+			Query q = session.createQuery("FROM mll.beans.Token t where t.userId=:id AND isUsed=:isRegistered");
+			q.setParameter("id", id);
+			q.setParameter("isRegistered", false);
+			listOfMusicians = q.list();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+
 		return listOfMusicians;
 	}
 }
