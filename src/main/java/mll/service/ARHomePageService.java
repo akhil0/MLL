@@ -39,13 +39,4 @@ public class ARHomePageService {
 		
 	}
 	
-	public static void main(String[] args) {
-		
-		ARuser user = new ARuser();
-		user.setId(1);
-		System.out.println(getRegisteredMusicians(user).size());
-		System.out.println(getUnRegisteredMusicians(user).size());		
-			
-	}
-
 }
