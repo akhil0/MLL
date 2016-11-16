@@ -181,15 +181,49 @@
 							</goals>
 						</execution>
 					</executions>
-					<configuration>
-						<executable>bower</executable>
-						<arguments>
-							<argument>install</argument>
-						</arguments>
-					</configuration>
 				</plugin>
-
 				<plugin>
+				<groupId>com.github.eirslett</groupId>
+             	<artifactId>frontend-maven-plugin</artifactId>
+             	<version>0.0.20</version>
+             	<executions>
+                 	<execution>
+                     	<id>install node and npm</id>
+                     	<goals>
+                         	<goal>install-node-and-npm</goal>
+                     	</goals>
+                     	<phase>generate-resources</phase>
+                     	<configuration>
+                         	<nodeVersion>v0.10.26</nodeVersion>
+                         	<npmVersion>1.4.3</npmVersion>
+                    	</configuration>
+                	</execution>
+                <execution>
+                	<id>npm install</id>
+                    <goals>
+                    	<goal>npm</goal>
+                   	</goals>
+                    <phase>generate-resources</phase>
+                </execution>
+                <execution>
+                	<id>bower install</id>
+                    <goals>
+                    	<goal>bower</goal>
+                    </goals>
+                    <configuration>
+                    	<arguments>install</arguments>
+                    </configuration>
+                </execution>
+                <execution>
+                    <id>gulp build</id>
+                    <goals>
+                    	<goal>gulp</goal>
+                    </goals>
+                    <phase>generate-resources</phase>
+                </execution>
+            </executions>
+         </plugin>
+		 <plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.1</version>
@@ -219,7 +253,7 @@
 	<artifactId>tomcat7-maven-plugin</artifactId>
 	<version>2.2</version>
 	<configuration>
-		<url>http://ec2-35-162-194-28.us-west-2.compute.amazonaws.com:8080/manager/text</url>
+		<url>http://http://ec2-35-160-24-54.us-west-2.compute.amazonaws.com:8080/manager/text</url>
 		<server>TomcatServer</server>
 		<path>/Music2</path>
 	</configuration>
