@@ -21,7 +21,7 @@ public class MultipartUtilityTest
 		MultipartUtility multipart = new MultipartUtility(config.RAZUNA_URL, charset);
 		multipart.addFormField("fa", "c.apiupload");
 		multipart.addFormField("api_key", config.RAZUNA_KEY);
-		multipart.addFormField("destfolderid", "8181F7DD7FFF432C9DE8F13F662ED754");
+		multipart.addFormField("destfolderid", "60B5709518AE40359B63EF998C4751F0");
 		
 		multipart.addFilePart(fileName, content);
 		String response = multipart.finish();
