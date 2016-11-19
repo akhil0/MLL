@@ -11,8 +11,8 @@ public class Configuration
 	
 	
 	//RAZUNA Configuration Details
-	public final String RAZUNA_URL = "35.163.151.34:8081/razuna/raz1/dam/index.cfm";
-	public final String Razuna_API_URL="35.163.151.34:8081/razuna/global/api2/";
+	public final String RAZUNA_URL = "http://35.163.135.77:8081/razuna/raz1/dam/index.cfm";
+	public final String Razuna_API_URL="http://35.163.135.77:8081/razuna/global/api2/";
 	public final String RAZUNA_KEY = "A3FC2ED65F504232AC8489538406F842";
 	
     //Custom Fields Asset IDs
@@ -33,6 +33,6 @@ public class Configuration
 	public final String RAZUNA_CUSTOM_FIELD_METHOD="customfield.cfc";
 	
 	//Invite mail url
-	public final String INVITE_URL= "35.163.151.34:8080/MLL/index.html#/";
+	public final String INVITE_URL= "http://35.163.135.77:8080/MLL/index.html#/";
 	
 }

@@ -183,48 +183,48 @@
 					</executions>
 				</plugin>
 				<plugin>
-				<groupId>com.github.eirslett</groupId>
-             	<artifactId>frontend-maven-plugin</artifactId>
-             	<version>0.0.20</version>
-             	<executions>
-                 	<execution>
-                     	<id>install node and npm</id>
-                     	<goals>
-                         	<goal>install-node-and-npm</goal>
-                     	</goals>
-                     	<configuration>
-                         	<nodeVersion>v0.12.2</nodeVersion>
-                         	<npmVersion>2.7.6</npmVersion>
-                    	</configuration>
-                	</execution>
-                <execution>
-                	<id>npm install</id>
-                    <goals>
-                    	<goal>npm</goal>
-                   	</goals>
-                   	<configuration>
-                    	<arguments>install</arguments>
-                    </configuration>
-                </execution>
-                <execution>
-                	<id>bower install</id>
-                    <goals>
-                    	<goal>bower</goal>
-                    </goals>
-                    <configuration>
-                    	<arguments>install</arguments>
-                    </configuration>
-                </execution>
-                <execution>
-                    <id>gulp build</id>
-                    <goals>
-                    	<goal>gulp</goal>
-                    </goals>
-                </execution>
-            </executions>
-         </plugin>
-		 <plugin>
-					<groupId>org.apache.maven.plugins</groupId>
+					<groupId>com.github.eirslett</groupId>
+             		<artifactId>frontend-maven-plugin</artifactId>
+             		<version>0.0.20</version>
+             		<executions>
+	                 	<execution>
+	                     	<id>install node and npm</id>
+	                     	<goals>
+	                         	<goal>install-node-and-npm</goal>
+	                     	</goals>
+	                     	<configuration>
+	                         	<nodeVersion>v0.12.2</nodeVersion>
+	                         	<npmVersion>2.7.6</npmVersion>
+	                    	</configuration>
+	                	</execution>
+	                	<execution>
+	                		<id>npm install</id>
+	                    	<goals>
+	                    		<goal>npm</goal>
+	                   		</goals>
+	                   		<configuration>
+	                    		<arguments>install</arguments>
+	                    	</configuration>
+	                	</execution>
+	                	<execution>
+	                		<id>bower install</id>
+	                    	<goals>
+	                    		<goal>bower</goal>
+	                    	</goals>
+	                    	<configuration>
+	                    		<arguments>install</arguments>
+	                    	</configuration>
+	                	</execution>
+	                	<execution>
+	                    	<id>gulp build</id>
+	                    	<goals>
+	                    		<goal>gulp default</goal>
+	                    	</goals>
+	                	</execution>
+            		</executions>
+         		</plugin>
+		 		<plugin>
+		 			<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.1</version>
 					<configuration>
@@ -232,46 +232,36 @@
 						<target>1.8</target>
 					</configuration>
 				</plugin>
-			</plugins>
+				<plugin>
+        			<groupId>org.codehaus.mojo</groupId>
+            		<artifactId>cobertura-maven-plugin</artifactId>
+            		<version>2.5.1</version>
+            		<configuration>	
+            			<argLine>-XX:-UseSplitVerifier</argLine>
+                		<formats>
+                			<format>xml</format>
+                		</formats>
+            		</configuration>
+            		<executions>
+            			<execution>
+                			<phase>test</phase>
+                    		<goals>
+                     			<goal>cobertura</goal>
+                    		</goals>
+                		</execution>
+            		</executions>
+        		</plugin> 
+        		<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>2.2</version>
+					<configuration>
+						<url>http://ec2-35-160-24-54.us-west-2.compute.amazonaws.com:8080/manager/text</url>
+						<server>TomcatServer</server>
+						<path>/Music2</path>
+					</configuration>
+				</plugin>
+    		</plugins>
 		</pluginManagement>
-
-    <plugins>
-         <plugin>
-              <groupId>org.codehaus.mojo</groupId>
-                <artifactId>cobertura-maven-plugin</artifactId>
-                <version>2.5.1</version>
-                <configuration>	
-                	<argLine>-XX:-UseSplitVerifier</argLine>
-                    <formats>
-                        <format>xml</format>
-                    </formats>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>cobertura</goal>
-                        </goals>
-                    </execution>
-                </executions>
-        	</plugin> 
-        <plugin>
-        
-	<groupId>org.apache.tomcat.maven</groupId>
-	<artifactId>tomcat7-maven-plugin</artifactId>
-	<version>2.2</version>
-	<configuration>
-		<url>http://ec2-35-160-24-54.us-west-2.compute.amazonaws.com:8080/manager/text</url>
-		<server>TomcatServer</server>
-		<path>/Music2</path>
-	</configuration>
-</plugin>
-<plugin>
-  <groupId>org.jacoco</groupId>
-  <artifactId>jacoco-maven-plugin</artifactId>
-  <version>0.7.8-SNAPSHOT</version>
-</plugin>
-    </plugins>
-
-</build>
+	</build>
 </project>
