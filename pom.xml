@@ -186,6 +186,10 @@
 					<groupId>com.github.eirslett</groupId>
              		<artifactId>frontend-maven-plugin</artifactId>
              		<version>0.0.20</version>
+             		<configuration>
+             			<workingDirectory>${basedir}</workingDirectory>
+             			<srcdir>${basedir}/src/main/webapp/source/scripts/</srcdir>
+             		</configuration>
              		<executions>
 	                 	<execution>
 	                     	<id>install node and npm</id>
@@ -244,7 +248,7 @@
             		</configuration>
             		<executions>
             			<execution>
-                			<phase>test</phase>
+                			<phase>package</phase>
                     		<goals>
                      			<goal>cobertura</goal>
                     		</goals>
