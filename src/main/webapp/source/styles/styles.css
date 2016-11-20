@@ -2,6 +2,22 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
+    background-color: transparent;
+} 
+
+
+html {
+	background:url(../fonts/background6.jpg) center center no-repeat fixed;
+	-webkit-background-size:cover;
+	moz-background-size:cover;
+	-o-background-size:cover;
+	background-size:cover;
+	color:#fff;
+	background-color: transparent;
+}
+
+.alert,.form-tab{
+	margin-top:10px
 }
 
 .app {
@@ -95,6 +111,7 @@ html, body {
     color:red;
 }
 
+
 /* Sidebar navigation */
 .sidebar {
 	width:15%;
@@ -128,3 +145,17 @@ html, body {
   color: #fff;
   background-color: #428bca;
 }
+
+.italic-font{font-style:italic;font-family:cursive}
+.card-container .card{padding:40px}
+.no-padding{padding:0}
+.card{background-color:#F7F7F7;padding:20px 25px 30px;-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;-moz-box-shadow:0 2px 2px rgba(0,0,0,.3);-webkit-box-shadow:0 2px 2px rgba(0,0,0,.3);box-shadow:0 2px 2px rgba(0,0,0,.3)}
+img{vertical-align:middle}
+a{color:#5f9ea0}
+.nav>li>a:focus,.nav>li>a:hover{color:#fff}
+.profile-img-card{width:96px;height:96px;margin:0 auto 10px;display:block;-moz-border-radius:50%;-webkit-border-radius:50%;border-radius:50%}
+.navbar-inverse{background-color:inherit}
+.circular-image{border-radius:50%;-moz-border-radius:50%;-webkit-border-radius:50%}
+.navbar-fixed-top{position:inherit}
+.black-bg{background-color:#000}
+
