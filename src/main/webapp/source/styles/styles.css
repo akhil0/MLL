@@ -20,6 +20,10 @@ html {
 	margin-top:10px
 }
 
+body { 
+    padding-top: 65px; 
+     padding-left: 30px; 
+}
 .app {
     min-height: 100%;
     display: flex;
