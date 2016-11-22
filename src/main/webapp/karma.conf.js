@@ -25,26 +25,33 @@ module.exports = function(config) {
 
         plugins : [
             'karma-jasmine',
-            'karma-chrome-launcher',
-            'karma-junit-reporter'
+            'karma-coverage',
+            'karma-junit-reporter',
+            'karma-jenkins-reporter'
         ],
 
-        reporters: ['dots', 'junit'],
+        reporters: ['dots', 'junit', 'progress', 'coverage'],
 
         colors: true,
 
         logLevel: config.LOG_INFO,
 
         autoWatch: false,
-
-        browsers: ['Chrome'],
+        // only runs on headless browser
+        browsers: ['PhantomJS'],
 
         singleRun: true,
 
         concurrency: Infinity,
-
+        
+        coverageReporter : {
+            type : 'cobertura',
+            dir  : 'target/coverage-reports/'
+        },
+        // saves report at `target/surefire-reports/TEST-*.xml` because Jenkins
+        // looks for this location and file prefix by default.
         junitReporter: {
-            outputDir: 'dist/',
+            outputDir: 'target/surefire-reports/',
             outputFile: 'test-results.xml',
             useBrowserName: false
         }

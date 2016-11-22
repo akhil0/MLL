@@ -1,3 +1,4 @@
+/*
 'use strict';
 
 describe('Sidebar Service:', function () {
@@ -46,3 +47,4 @@ describe('Sidebar Service:', function () {
        expect(state.go).toHaveBeenCalledWith('userDetails', { id: userId });
    });
 });
+*/
