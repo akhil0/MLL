@@ -37,9 +37,12 @@ public class MusicianHomePageServlet extends HttpServlet{
 	    HttpSession session=request.getSession();
 	    String folderid=new String();
 	    JSONArray songs=new JSONArray();
+	    System.out.println("hello");
 	    if(session.getAttribute("folder_id")!=null)
 	    {
 	    	folderid=(String) session.getAttribute("folder_id");
+	    	System.out.println("folderid is "+folderid);
+	    	
 	    }
 	    try {
 			songs=razunaservice.RetrieveSongs(folderid);

@@ -121,6 +121,7 @@ public class RazunaService
 			reqMap.put("folderid",folderid);
 			
 			songsarray=httputil.readResponseIntoJSONArray(httputil.callRazunaAPI(reqMap, config.Razuna_CREATE_FOLDER_METHOD));
+			
 			return retrieveMetaDataOfSongs(songsarray);
 		}
 		return null;
@@ -152,6 +153,7 @@ public class RazunaService
 			}
 			
 		}
+		System.out.println(songs);
 		return songs;
 	}
 	
