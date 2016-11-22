@@ -13,11 +13,11 @@
        console.log("ID  " + this.authService.details.data.id);
        var userId = this.authService.details.data.id;
         this.home = function(){
-            $state.go("home", { id: userId });        	
+             $state.go(this.authService.details.data.type, { id: this.authService.details.data.id });    	
         };
         
 		this.invite = function(){
-            $state.go("user", { id: userId});        	
+            $state.go("invite", { id: userId});        	
 		};
 		
 		this.track = function(){
