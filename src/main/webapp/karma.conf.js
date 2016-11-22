@@ -31,7 +31,7 @@ module.exports = function(config) {
             'karma-phantomjs-launcher'
         ],
 
-        reporters: ['dots', 'junit', 'progress', 'coverage'],
+        reporters: ['dots', 'junit', 'progress', 'coverage', 'jenkins'],
 
         colors: true,
 
