@@ -626,9 +626,9 @@ The MLL provides students with real-world music licensing experience, exposes mu
         .module("mllApp.sidebar")
         .controller("SidebarController", SidebarController);
     
-	    SidebarController.$inject = ['$scope', '$state', '$location', 'authenticationService' ];
+	    SidebarController.$inject = [ '$state', '$location', 'authenticationService' ];
 
-	function SidebarController($scope, $state, $location, authenticationService ) {
+	function SidebarController( $state, $location, authenticationService ) {
 
        this.authService = authenticationService;
        console.log("ID  " + this.authService.details.data.id);
@@ -1059,7 +1059,7 @@ The MLL provides students with real-world music licensing experience, exposes mu
                     .then((response) => {
                         if(response.data.isGenerated === false){
                             this.message = response.data.errorMessage;
-                            console.log("FALSE  " + this.message)
+                            console.log("FALSE  " + this.message);
                         }else{
                             this.message = response.data.message;                           
                         }
@@ -1122,7 +1122,7 @@ The MLL provides students with real-world music licensing experience, exposes mu
         model.flag = false;
         
         function getRegisteredMusician(){
-        	console.log("USER ID   " + userId)
+        	console.log("USER ID   " + userId);
         	arHomePageService.getRegisteredMusician(userId)
         		.success(function(object){
         			var registeredMusiciansObject = [];
