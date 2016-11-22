@@ -5,6 +5,10 @@ html, body {
     background-color: transparent;
 } 
 
+body { 
+    padding-top: 65px; 
+     padding-left: 30px; 
+}
 
 html {
 	background:url(../fonts/background6.jpg) center center no-repeat fixed;
@@ -156,6 +160,6 @@ a{color:#5f9ea0}
 .profile-img-card{width:96px;height:96px;margin:0 auto 10px;display:block;-moz-border-radius:50%;-webkit-border-radius:50%;border-radius:50%}
 .navbar-inverse{background-color:inherit}
 .circular-image{border-radius:50%;-moz-border-radius:50%;-webkit-border-radius:50%}
-.navbar-fixed-top{position:inherit}
+.navbar-fixed-top{position:fixed}
 .black-bg{background-color:#000}
 
