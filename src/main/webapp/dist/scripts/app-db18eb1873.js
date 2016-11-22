@@ -341,6 +341,51 @@
                     }
                 }
             })
+			.state('about', {
+                url: '/about',
+                views: {
+                    left: {
+                        controller: 'SidebarController as ctrl',
+                        templateProvider: function ($templateCache) {
+                            return $templateCache.get('sidebar.template.html');
+                        }
+                    },
+                   center: { template:
+                        `<div class="well well-lg">
+						    <h2> About Media Licensing Lab</h2>
+                            <p>
+                               The Media Licensing Lab (MLL) is a Northeastern University initiative to establish the first student-run music licensing program in the United States. The MLL links musicians, student A&R representatives, the Northeastern community, and the music industry.
+Selected musicians are invited by A&R student representatives to upload their music into the MLL platform. Students evaluate the music and license the best songs into tv shows, film, video games, and other media.
+The MLL provides students with real-world music licensing experience, exposes musicians to a wider audience, and enables music licensees to discover the perfect piece of music for their project, at a fraction of the cost of typical content libraries.
+                            </p>
+                        </div>`
+                    },
+                     right: { template:''}
+                    
+                },
+                resolve: {
+                    userId: function($state, $stateParams, $q, $timeout, authenticationService) {
+                        let deferred = $q.defer();
+
+                        $timeout(() => {
+                            if (!authenticationService.details.isAuth) {
+                                $state.go('login');
+                                deferred.reject();
+                            }
+
+                            else if (!authenticationService.details.data.permissions.browse) {
+                                $state.go(authenticationService.details.data.type,
+                                    { id: authenticationService.details.data.id });
+                                deferred.reject();
+                            }
+
+                            else deferred.resolve(+$stateParams.id);
+                        }, 0);
+
+                        return deferred.promise;
+                    }
+                }
+            })
             .state('login', {
                 url: '/login',
                 views: {
@@ -610,6 +655,10 @@
 			console.log("track CALLED");
             $state.go("track", { id: userId});        	
 		};		
+				this.about = function(){
+            $state.go("about");        	
+        };
+        
     }
 })(window.angular);
 (function (angular){

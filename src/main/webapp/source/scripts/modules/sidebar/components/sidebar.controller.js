@@ -24,5 +24,9 @@
 			console.log("track CALLED");
             $state.go("track", { id: userId});        	
 		};		
+				this.about = function(){
+            $state.go("about");        	
+        };
+        
     }
 })(window.angular);
