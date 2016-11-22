@@ -26,7 +26,7 @@
                     .then((response) => {
                         if(response.data.isGenerated === false){
                             this.message = response.data.errorMessage;
-                            console.log("FALSE  " + this.message)
+                            console.log("FALSE  " + this.message);
                         }else{
                             this.message = response.data.message;                           
                         }

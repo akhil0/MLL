@@ -34,13 +34,8 @@
             .state('home', {
                 url: '/',
                 views: {
-                    left: {
-                        controller: 'SidebarController as ctrl',
-                        templateProvider: function ($templateCache) {
-                            return $templateCache.get('sidebar.template.html');
-                        }
-                    },
-                    center: { template: '<h1>A&R Home Page</h1>' },
+                    left: { template: '' },
+                    center: { template: '' },
                     right: { template: '' }
                 }
             })
@@ -116,12 +111,7 @@
                         }
                     },
                     center: { template: '' },
-                    right: {
-                        controller: 'UserFeaturesController as ctrl',
-                        templateProvider: function ($templateCache) {
-                            return $templateCache.get('user-profile-right.view.html');
-                        }
-                    }
+                    right: { template: '' }
                 },
                 resolve: {
                     userId: function($state, $stateParams, $q, $timeout, authenticationService) {
@@ -636,19 +626,19 @@ The MLL provides students with real-world music licensing experience, exposes mu
         .module("mllApp.sidebar")
         .controller("SidebarController", SidebarController);
     
-	    SidebarController.$inject = ['$scope', '$state', '$location', 'authenticationService' ];
+	    SidebarController.$inject = [ '$state', '$location', 'authenticationService' ];
 
-	function SidebarController($scope, $state, $location, authenticationService ) {
+	function SidebarController( $state, $location, authenticationService ) {
 
        this.authService = authenticationService;
        console.log("ID  " + this.authService.details.data.id);
        var userId = this.authService.details.data.id;
         this.home = function(){
-            $state.go("home", { id: userId });        	
+             $state.go(this.authService.details.data.type, { id: this.authService.details.data.id });    	
         };
         
 		this.invite = function(){
-            $state.go("user", { id: userId});        	
+            $state.go("invite", { id: userId});        	
 		};
 		
 		this.track = function(){
@@ -1069,7 +1059,7 @@ The MLL provides students with real-world music licensing experience, exposes mu
                     .then((response) => {
                         if(response.data.isGenerated === false){
                             this.message = response.data.errorMessage;
-                            console.log("FALSE  " + this.message)
+                            console.log("FALSE  " + this.message);
                         }else{
                             this.message = response.data.message;                           
                         }
@@ -1132,7 +1122,7 @@ The MLL provides students with real-world music licensing experience, exposes mu
         model.flag = false;
         
         function getRegisteredMusician(){
-        	console.log("USER ID   " + userId)
+        	console.log("USER ID   " + userId);
         	arHomePageService.getRegisteredMusician(userId)
         		.success(function(object){
         			var registeredMusiciansObject = [];
