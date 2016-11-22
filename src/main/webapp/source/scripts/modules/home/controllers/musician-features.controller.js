@@ -1,13 +1,13 @@
-(function(angular) {
-	'use strict';
+(function (angular) {
+    'use strict';
 
-	angular.module('mllApp.home')
-	.controller('MusicianFeaturesController', MusicianFeaturesController);
+    angular
+        .module('mllApp.home')
+        .controller('MusicianFeaturesController', MusicianFeaturesController);
 
-	MusicianFeaturesController.$inject = [ 'userId', '$scope', 'musicianUrl', '$http' ];
+    MusicianFeaturesController.$inject = ['userId'];
 
-	function MusicianFeaturesController(userId, $scope) {
-		this.userId = userId;
-		this.songs = [];
-	}
+    function MusicianFeaturesController(userId) {
+        this.userId = userId;
+    }
 })(window.angular);

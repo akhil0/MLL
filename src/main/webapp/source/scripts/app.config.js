@@ -5,11 +5,7 @@
         .module('mllApp')
         .config(config);
 
-    function config($stateProvider, $urlRouterProvider, $sceDelegateProvider) {
-    	$sceDelegateProvider.resourceUrlWhitelist([
-            'self',   // trust all resources from the same origin
-            '*://35.163.135.77:8081//**'   // trust all resources from `www.youtube.com`
-        ]);
+    function config($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
 
         $stateProvider
@@ -163,12 +159,7 @@
             .state('musician', {
                 url: '/musician/profile/id/:id',
                 views: {
-                    left: { 
-                    	controller: 'SidebarController as ctrl',
-                    	templateProvider: function ($templateCache) {
-                            return $templateCache.get('sidebar.template.html'); 
-                    	}
-                    },
+                    left: { template: '' },
                     center: {
                         controller: 'MusicianFeaturesController as ctrl',
                         templateProvider: function ($templateCache) {
