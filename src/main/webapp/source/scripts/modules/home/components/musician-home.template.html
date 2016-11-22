@@ -1,0 +1,59 @@
+<div>
+	<div class="row">
+        <div class="col-xs-10 col-xs-offset-1 well">
+            <h3 class="text-center no-margin">Welcome!</h3>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <table class="table table-responsive table-striped table-hover ng-scope">
+            <thead>
+            <tr>
+                <th ng-click="ctrl.sortType='track'; ctrl.sortReverse = !ctrl.sortReverse">
+                    <span ng-show="ctrl.sortType == 'track'">
+					<span ng-show="!ctrl.sortReverse" class="glyphicon glyphicon-triangle-top"
+                          aria-hidden="true"></span>
+                    <span ng-show="ctrl.sortReverse" class="glyphicon glyphicon-triangle-bottom"></span></span>
+                    Track</th>
+                <th ng-click="ctrl.sortType='playCount'; ctrl.sortReverse = !ctrl.sortReverse">
+                    <span ng-show="ctrl.sortType == 'playCount'">
+					<span ng-show="!ctrl.sortReverse" class="glyphicon glyphicon-triangle-top"
+                          aria-hidden="true"></span>
+                    <span ng-show="ctrl.sortReverse" class="glyphicon glyphicon-triangle-bottom"></span></span>
+                    Play Count</th>
+                <th ng-click="ctrl.sortType='genre'; ctrl.sortReverse = !ctrl.sortReverse">
+                    <span ng-show="ctrl.sortType == 'genre'">
+					<span ng-show="!ctrl.sortReverse" class="glyphicon glyphicon-triangle-top"
+                          aria-hidden="true"></span>
+                    <span ng-show="ctrl.sortReverse" class="glyphicon glyphicon-triangle-bottom"></span></span>
+                    Genre</th>
+                <th ng-click="ctrl.sortType='dateAdded'; ctrl.sortReverse = !ctrl.sortReverse">
+                    <span ng-show="ctrl.sortType == 'dateAdded'">
+					<span ng-show="!ctrl.sortReverse" class="glyphicon glyphicon-triangle-top"
+                          aria-hidden="true"></span>
+                    <span ng-show="ctrl.sortReverse" class="glyphicon glyphicon-triangle-bottom"></span></span>
+                    Date Added</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="track in ctrl.data.tracks | orderBy:ctrl.sortType:ctrl.sortReverse" class="ng-scope">
+                <td>
+                    <span class="glyphicon glyphicon-play-circle"></span> {{track.fileName}}
+                    <audio src={{track.source}} controls>
+					</audio>
+                </td>
+                <td>
+                    0
+                </td>
+                <td>
+                    {{track.primary_genre}}
+                </td>
+                <td>
+                    {{track.dateAdded}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
