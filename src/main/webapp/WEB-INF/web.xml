@@ -52,4 +52,14 @@
     <servlet-name>RegistrationServlet</servlet-name>
     <url-pattern>/RegistrationServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MusicianHomePageServlet</display-name>
+    <servlet-name>MusicianHomePageServlet</servlet-name>
+    <servlet-class>mll.servlets.MusicianHomePageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MusicianHomePageServlet</servlet-name>
+    <url-pattern>/MusicianHomePageServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

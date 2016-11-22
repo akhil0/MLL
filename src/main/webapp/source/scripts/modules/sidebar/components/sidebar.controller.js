@@ -10,8 +10,12 @@
 	function SidebarController($state, $location, authenticationService ) {
 
        this.authService = authenticationService;
-       console.log("ID  " + this.authService.details.data.id);
+       console.log("ID  ");
+       console.log(this.authService.details.data);
+       
        var userId = this.authService.details.data.id;
+       var userType = this.authService.details.data.type;
+       
         this.home = function(){
             $state.go(this.authService.details.data.type, { id: this.authService.details.data.id });
         };
