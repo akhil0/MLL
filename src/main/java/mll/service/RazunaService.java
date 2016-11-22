@@ -152,7 +152,6 @@ public class RazunaService
 			}
 			
 		}
-		System.out.println(songs);
 		return songs;
 	}
 	
@@ -167,7 +166,6 @@ public class RazunaService
 		
 		try {
 			array=httputil.readResponseIntoJSONArray(httputil.callRazunaAPI(reqMap, config.Razuna_CREATE_FOLDER_METHOD));
-			System.out.println("mahanth" +array);
 		} catch (ParseException | JSONException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -176,7 +174,6 @@ public class RazunaService
 		for(int i=0;i<array.length();i++)
 		{
 			JSONObject obj=array.getJSONObject(i);
-			System.out.println(obj);
 			if(!obj.getString("FOLDER_ID").equalsIgnoreCase("60B5709518AE40359B63EF998C4751F0"))
 			{
 				HashMap<String,String> map=new HashMap<String,String>();
@@ -219,7 +216,7 @@ public class RazunaService
 		
 	}
 	
- public static void main(String[] args)
+/* public static void main(String[] args)
  {
 	 RazunaService service=new RazunaService();
 	 try {
@@ -229,7 +226,7 @@ public class RazunaService
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
- }
+ }*/
 	
 }
 
