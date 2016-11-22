@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.http.ParseException;
 import org.json.JSONException;
 import org.json.simple.JSONObject;
 import org.junit.Test;
@@ -59,7 +60,14 @@ public class RazunaServiceTest
 	@Test
 	public void createFolderForUserTestSuccess(){
 		RazunaService razunaService = new RazunaService();
-		assertEquals(razunaService.createFolderForUser("Uploads").length(), 32);
+		String folderId=razunaService.createFolderForUser("Uploads");
+		try {
+			razunaService.deleteFolder(folderId);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		assertEquals(folderId.length(), 32);
 	}
 	
 	@Test
@@ -122,5 +130,41 @@ public class RazunaServiceTest
 		metadata.setSong(songmeta);
 		metadatas.add(metadata);
 		return metadatas;
+	}
+	
+	@Test
+	public void testRetrieveSongs()
+	{
+		RazunaService service=new RazunaService();
+		try {
+			assertEquals(true,service.RetrieveSongs(null)==null);
+		} catch (ParseException | JSONException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testRetrieveSongs1()
+	{
+		RazunaService service=new RazunaService();
+		try {
+			assertEquals(true,service.RetrieveSongs("60B5709518AE40359B63EF998C4751F0").length()>0);
+		} catch (ParseException | JSONException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testRetrieveSongs2()
+	{
+		RazunaService service=new RazunaService();
+		try {
+			assertEquals(true,service.RetrieveSongs("123445").length()==0);
+		} catch (ParseException | JSONException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
