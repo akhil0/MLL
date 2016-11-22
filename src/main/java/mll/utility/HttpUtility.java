@@ -1,12 +1,17 @@
 package mll.utility;
 
+import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,7 +26,7 @@ import org.apache.http.ParseException;
 public class HttpUtility {
 	
 
-	public String callRazunaAPI(HashMap<String,String> reqParams,String methodName) 
+	public HttpResponse callRazunaAPI(HashMap<String,String> reqParams,String methodName) 
 	{
 		HttpPost httpost = null;
 		Configuration conf=new Configuration();
@@ -31,25 +36,17 @@ public class HttpUtility {
 
 			DefaultHttpClient httpClient = new DefaultHttpClient();
 			httpost = new HttpPost(conf.Razuna_API_URL + methodName);
-			httpost.setHeader("Accept",
-		             "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+			
 			
 				   
 			List<NameValuePair> params = createParams(reqParams);
 			
 			httpost.setEntity(new UrlEncodedFormEntity(params));
-			httpost.setHeader("Content-Type", "application/x-www-form-urlencoded");
+			//httpost.setHeader("Content-Type", "application/x-www-form-urlencoded");
 			HttpResponse response = httpClient.execute(httpost);
 			
-
-			if (response.getStatusLine().getStatusCode() != 200) {
-				throw new RuntimeException("Failed : HTTP error code : "
-				   + response.getStatusLine().getStatusCode());
-			}
-			else if(response.getStatusLine().getStatusCode()==200)
-			{
-				return readResponse(response);
-			}
+				return response;
+			
 		}
 		catch(Exception e)
 		{
@@ -58,16 +55,86 @@ public class HttpUtility {
 		return null;
 	}
 	
-	private String readResponse(HttpResponse response) throws ParseException, JSONException, IOException {
-		
+	public String readResponseForFolderCreation(HttpResponse response) throws ParseException, JSONException, IOException {
+	
+		if(response!=null && response.getStatusLine().getStatusCode()==200)
+		{
 		JSONObject json = new JSONObject(EntityUtils.toString(response.getEntity()));
 
 		if(json.has("folder_id"))
 		return json.getString("folder_id");
 		else
 			return "failure";
+		}
+		else
+			return "failure";
 	}
 
+	public JSONArray readResponseIntoJSONArray(HttpResponse response) throws ParseException, JSONException, IOException
+	{
+				
+		
+		JSONArray responseArray=new JSONArray();
+		JSONArray columnarray=new JSONArray();
+		if(response!=null)
+		{
+			
+			JSONObject json = new JSONObject(EntityUtils.toString(response.getEntity()));
+			if(json.has("COLUMNS"))
+			{
+				
+				 columnarray=json.getJSONArray("COLUMNS");
+			}
+			if(json.has("DATA"))
+			{
+				JSONArray datarry=json.getJSONArray("DATA");
+				for(int i=0;i<datarry.length();i++)
+				{
+					JSONObject songobj=new JSONObject();
+					JSONArray songarry=datarry.getJSONArray(i);
+					for(int j=0;j<songarry.length();j++)
+					{
+						songobj.put(columnarray.getString(j), songarry.get(j));
+					}
+					responseArray.put(songobj);
+				}
+			}
+	
+			return responseArray;
+			
+		}
+		
+		return null;
+	}
+	
+	public JSONObject readResponseForCustomFields(HttpResponse response) throws ParseException, JSONException, IOException
+	{
+				
+		JSONObject metadata=new JSONObject();
+		if(response!=null)
+		{
+			
+			JSONObject json = new JSONObject(EntityUtils.toString(response.getEntity()));
+			if(json.has("DATA"))
+			{
+				JSONArray datarry=json.getJSONArray("DATA");
+				for(int i=0;i<datarry.length();i++)
+				{
+					
+					JSONArray metaarray=datarry.getJSONArray(i);
+					metadata.put(metaarray.getString(1).trim(), metaarray.getString(2));
+				}
+			}
+			
+			return metadata;
+			
+		}
+		
+		return null;
+	}
+	
+	
+	
 	public List<NameValuePair> createParams(HashMap<String,String> reqParams)
 	{
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
