@@ -20,6 +20,10 @@ html {
 	margin-top:10px
 }
 
+body { 
+    padding-top: 65px; 
+     padding-left: 30px; 
+}
 .app {
     min-height: 100%;
     display: flex;
@@ -138,6 +142,7 @@ html {
 .nav-sidebar > li > a {
   padding-right: 20px;
   padding-left: 20px;
+  color: #777;
 }
 .nav-sidebar > .active > a,
 .nav-sidebar > .active > a:hover,
