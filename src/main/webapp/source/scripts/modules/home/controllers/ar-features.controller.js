@@ -19,7 +19,6 @@
         model.flag = false;
         
         function getRegisteredMusician(){
-        	console.log("USER ID   " + userId)
         	arHomePageService.getRegisteredMusician(userId)
         		.success(function(object){
         			var registeredMusiciansObject = [];
