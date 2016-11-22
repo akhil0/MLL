@@ -25,11 +25,13 @@ module.exports = function(config) {
 
         plugins : [
             'karma-jasmine',
+            'karma-coverage',
             'karma-junit-reporter',
+            'karma-jenkins-reporter',
             'karma-phantomjs-launcher'
         ],
 
-        reporters: ['dots', 'junit', 'progress'],
+        reporters: ['dots', 'junit', 'progress', 'coverage', 'jenkins'],
 
         colors: true,
 
