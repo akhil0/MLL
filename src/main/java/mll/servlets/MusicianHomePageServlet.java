@@ -19,12 +19,11 @@ import mll.service.RazunaService;
 import mll.service.SongRetrievalService;
 
 public class MusicianHomePageServlet extends HttpServlet{
-	SongRetrievalService retrievalservice;
 	RazunaService razunaservice;
 	
 	public void init(ServletConfig config) throws ServletException 
 	{
-		retrievalservice=new SongRetrievalService();
+		
 		razunaservice=new RazunaService();
 	}
 	

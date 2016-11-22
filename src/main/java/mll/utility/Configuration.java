@@ -55,7 +55,7 @@ public class Configuration
 	public final String RAZUNA_ASSET_METHOD="asset.cfc";
 	
 	//Invite mail url
-public final String INVITE_URL= "http://35.163.135.77:8081/MLL/index.html#/";
+public final String INVITE_URL= "http://35.163.135.77:8080/MLL/index.html#/";
 	
 	//Invite mail url local
 	//public final String INVITE_URL= "http://localhost:9000/MLL/index.html#/";
