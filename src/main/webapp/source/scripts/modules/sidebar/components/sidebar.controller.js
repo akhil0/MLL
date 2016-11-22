@@ -17,7 +17,7 @@
         };
         
 		this.invite = function(){
-            $state.go("user", { id: userId});        	
+            $state.go("invite", { id: userId});        	
 		};
 		
 		this.track = function(){

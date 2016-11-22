@@ -12,13 +12,8 @@
             .state('home', {
                 url: '/',
                 views: {
-                    left: {
-                        controller: 'SidebarController as ctrl',
-                        templateProvider: function ($templateCache) {
-                            return $templateCache.get('sidebar.template.html');
-                        }
-                    },
-                    center: { template: '<h1>A&R Home Page</h1>' },
+                    left: { template: '' },
+                    center: { template: ''},
                     right: { template: '' }
                 }
             })
@@ -94,12 +89,7 @@
                         }
                     },
                     center: { template: '' },
-                    right: {
-                        controller: 'UserFeaturesController as ctrl',
-                        templateProvider: function ($templateCache) {
-                            return $templateCache.get('user-profile-right.view.html');
-                        }
-                    }
+                      right: { template: '' }
                 },
                 resolve: {
                     userId: function($state, $stateParams, $q, $timeout, authenticationService) {
