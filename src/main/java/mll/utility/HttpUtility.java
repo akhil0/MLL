@@ -123,9 +123,11 @@ public class HttpUtility {
 				{
 					
 					JSONArray metaarray=datarry.getJSONArray(i);
-					System.out.println("Metarray" + metaarray);
-					metadata.put(metaarray.getString(1).trim(), metaarray.getString(2));
-					System.out.println("Metadata" + metadata);
+					if(metaarray.get(2) != null){
+						System.out.println("Metarray" + metaarray);
+						metadata.put(metaarray.getString(1).trim(), metaarray.getString(2));
+						System.out.println("Metadata" + metadata);
+					}
 				}
 			}
 			
