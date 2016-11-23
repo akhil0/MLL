@@ -118,11 +118,14 @@ public class HttpUtility {
 			if(json.has("DATA"))
 			{
 				JSONArray datarry=json.getJSONArray("DATA");
+				System.out.println("DATA" + datarry);
 				for(int i=0;i<datarry.length();i++)
 				{
 					
 					JSONArray metaarray=datarry.getJSONArray(i);
+					System.out.println("Metarray" + metaarray);
 					metadata.put(metaarray.getString(1).trim(), metaarray.getString(2));
+					System.out.println("Metadata" + metadata);
 				}
 			}
 			
