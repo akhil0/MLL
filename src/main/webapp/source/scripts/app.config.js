@@ -277,26 +277,24 @@
                 }
             })
 			.state('track', {
-                url: '/track/profile/id/:id',
+                url: '/arUser/profile/id/:id',
                 views: {
-                   left: {
-                        controller: 'SidebarController as ctrl',
+                    left: { 
+                    	controller: 'SidebarController as ctrl',
+                    	templateProvider: function ($templateCache) {
+                            return $templateCache.get('sidebar.template.html'); 
+                    	}
+                    },
+                    center: {
+                        controller: 'ARFeaturesController as ctrl',
                         templateProvider: function ($templateCache) {
-                            return $templateCache.get('sidebar.template.html');
+                            return $templateCache.get('ar-profile-center.view.html');
                         }
                     },
-                    center: { template:
-                        `<div class="well well-lg">
-						    <H2> TRACK PAGE</h2>
-                            <h4>
-                                Track page has not been implemented yet
-                            </h4>
-                        </div>`
-                    },
-                    right: { template:''}
+                    right: { template: '' }
                 },
                 resolve: {
-                    data: function($state, $q, $timeout, authenticationService) {
+                    userId: function($state, $stateParams, $q, $timeout, authenticationService) {
                         let deferred = $q.defer();
 
                         $timeout(() => {
@@ -305,13 +303,14 @@
                                 deferred.reject();
                             }
 
-                            else if (!authenticationService.details.data.permissions.browse) {
+                            else if (authenticationService.details.data.id !== +$stateParams.id &&
+                                     authenticationService.details.data.permissions.upload) {
                                 $state.go(authenticationService.details.data.type,
                                     { id: authenticationService.details.data.id });
                                 deferred.reject();
                             }
 
-                            else deferred.resolve();
+                            else deferred.resolve(+$stateParams.id);
                         }, 0);
 
                         return deferred.promise;
