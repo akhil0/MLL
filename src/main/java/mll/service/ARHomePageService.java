@@ -1,7 +1,12 @@
 package mll.service;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import mll.beans.ARuser;
 import mll.beans.Musician;
@@ -26,7 +31,18 @@ public class ARHomePageService {
 		return null;		
 	}
 	
-	
+	public JSONObject getMusiciansForARUser(HttpServletRequest request, HttpServletResponse response) {
+		String userId = request.getParameter("userId");
+		return getMusiciansWithId(userId);
+		
+	}
+		
+	public JSONObject getMusiciansWithId(String userId){
+		JSONObject responseObject = new JSONObject();		
+		
+		return responseObject;
+		
+	}
 	public static List<Musician> getRegisteredMusicians(ARuser arUser){	
 		
 		return new ARHomePageDAO().getRegisteredMusicians(arUser.getId());
