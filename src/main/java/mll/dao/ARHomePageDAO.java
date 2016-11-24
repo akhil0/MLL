@@ -13,6 +13,14 @@ import mll.utility.SessionFactoryUtil;
 
 public class ARHomePageDAO {
 
+	
+	/**
+	* This method takes user id as input and makes call to  
+	* database to get the details about registered   
+	* @author  Dishant Shah
+	* @version 1.0
+	* @since   2016-11-23 
+	*/
 	public List<Musician> getRegisteredMusicians(int id) {
 		Session session = null;
 
@@ -34,6 +42,13 @@ public class ARHomePageDAO {
 
 	}
 
+	/**
+	* This method takes user id as input and makes call to  
+	* database to get the details about unRegistered musicians    
+	* @author  Vishal kotak
+	* @version 1.0
+	* @since   2016-11-23 
+	*/
 	public List<Token> getUnRegisteredMusicians(int id) {
 		List<Token> listOfMusicians = new ArrayList<Token>();
 		

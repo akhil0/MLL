@@ -31,12 +31,29 @@ public class ARHomePageService {
 		return null;		
 	}
 	
+	
+	/**
+	* This method takes Http request input  
+	* gets the user id from the request and calls the getMusiciansWithId
+	* to get the details about registered and unregistered musician 
+	* @author  Dishant Shah
+	* @version 1.0
+	* @since   2016-11-23 
+	*/
 	public JSONObject getMusiciansForARUser(HttpServletRequest request, HttpServletResponse response) {
 		String userId = request.getParameter("userId");
 		return getMusiciansWithId(userId);
 		
 	}
 		
+	/**
+	* This method takes userId input and call getRegisteredMusicians
+	* and getUnRegisteredMusicians method and returns the Json Object
+	* from data received from the DAO 
+	* @author  Dishant Shah
+	* @version 1.0
+	* @since   2016-11-23 
+	*/
 	public JSONObject getMusiciansWithId(String userId){
 		JSONObject responseObject = new JSONObject();		
 		ARuser aRuser = new ARuser();
@@ -73,11 +90,29 @@ public class ARHomePageService {
 		return responseObject;
 		
 	}
+	
+	/**
+	* This method takes Aruser object as input and call getRegisteredMusicians
+	*  method in ARHomePageDao to get the details about 
+	*  registered musician 
+	* @author  Dishant Shah
+	* @version 1.0
+	* @since   2016-11-23 
+	*/
+	
 	public static List<Musician> getRegisteredMusicians(ARuser arUser){	
 		
 		return new ARHomePageDAO().getRegisteredMusicians(arUser.getId());
 	}
 
+	/**
+	* This method takes Aruser object as input and call 
+	* and getUnRegisteredMusicians method in ARHomePageDao 
+	* to get the details about unregistered musician 
+	* @author  Vishal kotak
+	* @version 1.0
+	* @since   2016-11-23 
+	*/
 
 	public static List<Token> getUnRegisteredMusicians(ARuser arUser){	
 	
