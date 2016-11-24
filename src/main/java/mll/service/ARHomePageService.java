@@ -39,7 +39,37 @@ public class ARHomePageService {
 		
 	public JSONObject getMusiciansWithId(String userId){
 		JSONObject responseObject = new JSONObject();		
+		ARuser aRuser = new ARuser();
+		aRuser.setId(Integer.parseInt(userId));
+		List<Musician> registeredMusicians = getRegisteredMusicians(aRuser);
+		List<Token> unregisteredMusicians = getUnRegisteredMusicians(aRuser);
+
+
+		JSONArray jsonArrayRegisteredMusicians = new JSONArray();
+		JSONArray jsonArrayUnregisteredMusicians = new JSONArray();
+
+		for (int index = 0; index < registeredMusicians.size(); index++) {
+			JSONObject registeredMusicianObject = new JSONObject();
+			registeredMusicianObject.put("musicianId", registeredMusicians.get(index).getId());
+			registeredMusicianObject.put("name", registeredMusicians.get(index).getName());
+			registeredMusicianObject.put("folderId", registeredMusicians.get(index).getFolderId());
+			registeredMusicianObject.put("age", registeredMusicians.get(index).getAge());
+			registeredMusicianObject.put("gender", registeredMusicians.get(index).getGender());
+			jsonArrayRegisteredMusicians.add(registeredMusicianObject);
+		}
+
+
+		for (int index = 0; index < unregisteredMusicians.size(); index++) {
+			JSONObject unregisteredMusicianObject = new JSONObject();
+			unregisteredMusicianObject.put("tokenId", unregisteredMusicians.get(index).getId());
+			unregisteredMusicianObject.put("emailId", unregisteredMusicians.get(index).getEmailId());
+			// unregisteredMusicianObject.put("issuedDate",
+			// unregisteredMusicians.get(index).getIssueDate());
+			jsonArrayUnregisteredMusicians.add(unregisteredMusicianObject);
+		}
 		
+		responseObject.put("registeredMusicians", jsonArrayRegisteredMusicians);
+		responseObject.put("unregisteredMusicians", jsonArrayUnregisteredMusicians);
 		return responseObject;
 		
 	}
