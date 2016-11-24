@@ -13,10 +13,7 @@
         };
 
         function getRegisteredMusician(userId) {
-        	
-        	console.log("AYA");
-        	console.log('/MLL/ARHomePageServlet/' + userId);
-        	var arUrl = '/MLL/ARHomePageServlet/?userId=' + userId;
+        	var arUrl = '/MLL/ARTrackingServlet/?userId=' + userId;
             return $http.get(arUrl);
         }
     }
