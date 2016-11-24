@@ -31,12 +31,12 @@
         			
         			model.musicians = registeredMusiciansObject;
         			model.unregisteredMusicians = unregisteredMusiciansObject;
-        			console.log(registeredMusiciansObject)
         			model.registered = {
         					data : registeredMusiciansObject,
+//        					{{row.entity.musicianId}}
         					columnDefs: 
         					[
-        					  { field: 'name', displayName: 'First Name', width: "40%" , cellTemplate:'<a href="{{row.entity.musicianId}}">{{row.entity.name}}</a>'},
+        					  { field: 'name', displayName: 'First Name', width: "40%" , cellTemplate:'<a href="#">{{row.entity.name}}</a>'},
                               { field: 'gender', displayName: 'Gender', width: "30%" },
                               { field: 'age', width: "30%"}
                             ]

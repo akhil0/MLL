@@ -13,7 +13,6 @@
         };
 
         function getRegisteredMusician(userId) {
-        	console.log('/MLL/ARTrackingServlet/' + userId);
         	var arUrl = '/MLL/ARTrackingServlet/?userId=' + userId;
             return $http.get(arUrl);
         }
