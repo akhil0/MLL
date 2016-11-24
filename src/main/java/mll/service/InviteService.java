@@ -184,7 +184,13 @@ public class InviteService
 				invite.getToken().setEmailId((String) tokenJsonObject.get("email"));
 		    	invite.getToken().setToken("");
 		    	invite.getToken().setInviteType((String) tokenJsonObject.get("inviteType"));
-		    	invite.getToken().setMessageBody((String) tokenJsonObject.get("messageBody"));
+		    	
+		    	String message = ""; 
+		    	if (tokenJsonObject.get("messageBody") == null || tokenJsonObject.get("messageBody").equals(""))
+		    		message = "Hi,\n You are  cordially invited to join Media Licensing Lab. MLL is a student-run music licensing program that will let you license your best songs and also connect with other Musicians, A&R representatives and the Northeastern Community";
+		    	else 
+		    		message = (String) tokenJsonObject.get("messageBody");
+		    	invite.getToken().setMessageBody(message);
 		    	invite.getToken().setIssueDate(new Date());
 		    	invite.getToken().setIsUsed(false);
 		    	invite.getToken().setUserId(((Long) tokenJsonObject.get("userId")).intValue());
