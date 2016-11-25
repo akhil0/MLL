@@ -63,4 +63,14 @@
     <servlet-name>MusicianHomePageServlet</servlet-name>
     <url-pattern>/MusicianHomePageServlet</url-pattern>
   </servlet-mapping>
+        <servlet>
+    <description></description>
+    <display-name>ARTrackingServlet</display-name>
+    <servlet-name>ARTrackingServlet</servlet-name>
+    <servlet-class>mll.servlets.ARTrackingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ARTrackingServlet</servlet-name>
+    <url-pattern>/ARTrackingServlet/*</url-pattern>
+  </servlet-mapping>
 </web-app>
