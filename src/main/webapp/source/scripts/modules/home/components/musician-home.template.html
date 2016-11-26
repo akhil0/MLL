@@ -22,12 +22,6 @@
                           aria-hidden="true"></span>
                     <span ng-show="ctrl.sortReverse" class="glyphicon glyphicon-triangle-bottom"></span></span>
                     Play Count</th>
-                <th ng-click="ctrl.sortType='genre'; ctrl.sortReverse = !ctrl.sortReverse">
-                    <span ng-show="ctrl.sortType == 'genre'">
-					<span ng-show="!ctrl.sortReverse" class="glyphicon glyphicon-triangle-top"
-                          aria-hidden="true"></span>
-                    <span ng-show="ctrl.sortReverse" class="glyphicon glyphicon-triangle-bottom"></span></span>
-                    Genre</th>
                 <th ng-click="ctrl.sortType='dateAdded'; ctrl.sortReverse = !ctrl.sortReverse">
                     <span ng-show="ctrl.sortType == 'dateAdded'">
 					<span ng-show="!ctrl.sortReverse" class="glyphicon glyphicon-triangle-top"
@@ -39,9 +33,60 @@
             <tbody>
             <tr ng-repeat="track in ctrl.data.tracks | orderBy:ctrl.sortType:ctrl.sortReverse" class="ng-scope">
                 <td>
-                    <span class="glyphicon glyphicon-play-circle"></span> {{track.fileName}}
+                    <a ng-click="isCollapsed = !isCollapsed">
+                        {{track.Title}} <br/>
+                    </a>
                     <audio src={{track.source}} controls>
-					</audio>
+					</audio> 
+                    <br/>
+                    <div class="table" ng-show="isCollapsed">
+                    <table class="table-responsive table-striped metadata-table ng-scope">
+                        <tbody>
+                            <tr>
+                                <td class="metadata"><b> Title: </b>
+                                </td>
+                                <td> {{track.Title}} 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="metadata"><b> Artists: </b>
+                                </td>
+                                <td> {{track.Artists}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="metadata"><b> Copyright Number: </b>
+                                </td>
+                                <td> {{track.copyright_number}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="metadata"><b> Primary Genre: </b>
+                                </td>
+                                <td> {{track.primary_genre}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="metadata"><b> Secondary Genre: </b>
+                                </td>
+                                <td> {{track.secondary_genre}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="metadata"><b> Beats Per Minute: </b>
+                                </td>
+                                <td> {{track.bits_per_minute}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="metadata"><b> Publishing Company: </b>
+                                </td>
+                                <td> {{track.publishing_company}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 </td>
                 <td>
                     0
