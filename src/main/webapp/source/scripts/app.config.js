@@ -92,7 +92,12 @@
                             return $templateCache.get('sidebar.template.html');
                         }
                     },
-                    center: { template: '' },
+                    center: {
+	                        controller: 'ArhomeController as ctrl',
+	                        templateProvider: function($templateCache) {
+	                            return $templateCache.get('arhome.template.html');
+	                             }
+                    		},
                       right: { template: '' }
                 },
                 resolve: {
