@@ -114,6 +114,7 @@ public class RazunaService
 	public JSONArray RetrieveSongs(String folderid) throws ParseException, JSONException, IOException
 	{
 		HashMap<String,JSONObject> songsdata=new HashMap<String,JSONObject>();
+		JSONArray songs=new JSONArray();
 		if(folderid!=null)
 		{
 			
@@ -124,9 +125,9 @@ public class RazunaService
 			
 			songsdata=httputil.readResponseOfSongsRetrieval(httputil.callRazunaAPI(reqMap, config.Razuna_CREATE_FOLDER_METHOD));
 			System.out.println("RetrieveSongs "+songsdata);
-			return retrieveMetaDataOfSongs(songsdata);
+			songs= retrieveMetaDataOfSongs(songsdata);
 		}
-		return null;
+		return songs;
 	}
 	
 	
@@ -292,8 +293,8 @@ public static void main(String[] args)
  {
 	 RazunaService service=new RazunaService();
 	 try {
-		 //JSONArray songs=service.RetrieveSongs("60B5709518AE40359B63EF998C4751F0");
-		 //System.out.println(songs.length());
+		 JSONArray songs=service.RetrieveSongs("1234");
+		 System.out.println(songs.length());
 		
 		service.deleteFolders();
 	} catch ( Exception  e) {

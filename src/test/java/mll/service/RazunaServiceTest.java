@@ -137,7 +137,7 @@ public class RazunaServiceTest
 	{
 		RazunaService service=new RazunaService();
 		try {
-			assertEquals(true,service.RetrieveSongs(null)==null);
+			assertEquals(true,service.RetrieveSongs(null).length()==0);
 		} catch (ParseException | JSONException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -161,7 +161,19 @@ public class RazunaServiceTest
 	{
 		RazunaService service=new RazunaService();
 		try {
-			assertEquals(true,service.RetrieveSongs("123445").length()==0);
+			assertEquals(true,service.RetrieveSongs("123445").getJSONObject(0).getInt("fileName")==0);
+		} catch (ParseException | JSONException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testRetrieveSongs3()
+	{
+		RazunaService service=new RazunaService();
+		try {
+			assertEquals(true,service.RetrieveSongs("").getJSONObject(0).getInt("fileName")==0);
 		} catch (ParseException | JSONException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
