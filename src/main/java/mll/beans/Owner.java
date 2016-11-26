@@ -16,6 +16,7 @@ public class Owner implements Serializable
 	private String primaryEmail;
 	private String secondaryEmail;
 	
+	
 	public Integer getId() {
 		return id;
 	}
