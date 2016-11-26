@@ -107,31 +107,100 @@ public class HttpUtility {
 		return null;
 	}
 	
-	public JSONObject readResponseForCustomFields(HttpResponse response) throws ParseException, JSONException, IOException
+	
+	public HashMap readResponseOfSongsRetrieval(HttpResponse response) throws ParseException, JSONException, IOException
 	{
 				
-		JSONObject metadata=new JSONObject();
+		
+		JSONArray responseArray=new JSONArray();
+		JSONArray columnarray=new JSONArray();
+		HashMap<String,JSONObject> songsdata=new HashMap<String,JSONObject>();
+		String ids=new String();
 		if(response!=null)
 		{
 			
 			JSONObject json = new JSONObject(EntityUtils.toString(response.getEntity()));
+			
 			if(json.has("DATA"))
 			{
 				JSONArray datarry=json.getJSONArray("DATA");
-				System.out.println("DATA" + datarry);
+				for(int i=0;i<datarry.length();i++)
+				{
+					JSONObject songobj=new JSONObject();
+					JSONArray songarry=datarry.getJSONArray(i);
+					String id=new String();
+					for(int j=0;j<songarry.length();j++)
+					{
+						if(j==0 && songarry.get(j)!=null)
+						{
+							id=songarry.getString(j);
+						}
+						if(j==1)
+							songobj.put("fileName", songarry.get(j));
+						if(j==19)
+							songobj.put("source", songarry.get(j));
+						if(j==16)
+							songobj.put("dateAdded", songarry.get(j));
+					}
+					songsdata.put(id, songobj);
+					
+				}
+			}
+			
+	
+			return songsdata;
+			
+		}
+		
+		return null;
+	}
+	public JSONArray readResponseForCustomFields(HttpResponse response,HashMap<String,JSONObject> songsdata) throws ParseException, JSONException, IOException
+	{
+				
+		JSONObject metadata=new JSONObject();
+		JSONArray columnarray=new JSONArray();
+		JSONArray songsarray=new JSONArray();
+		System.out.println(songsdata.size());
+		if(response!=null)
+		{
+			
+			JSONObject json = new JSONObject(EntityUtils.toString(response.getEntity()));
+			System.out.println(json);
+			if(json.has("COLUMNS"))
+			{
+				
+				 columnarray=json.getJSONArray("COLUMNS");
+			}
+			if(json.has("DATA"))
+			{
+				JSONArray datarry=json.getJSONArray("DATA");
+				
 				for(int i=0;i<datarry.length();i++)
 				{
 					
 					JSONArray metaarray=datarry.getJSONArray(i);
+					String id=metaarray.getString(4);
+					JSONObject song=songsdata.get(id);
 					if(metaarray.get(2) != null){
-						System.out.println("Metarray" + metaarray.get(2));
-						metadata.put(metaarray.getString(1).trim(), metaarray.get(2));
-						System.out.println("Metadata" + metadata);
+						
+						song.put(metaarray.getString(1).trim(), metaarray.get(2));
+						
 					}
+					
+					songsdata.put(id, song);
 				}
 			}
 			
-			return metadata;
+			Iterator keys=songsdata.keySet().iterator();
+			while(keys.hasNext())
+			{
+				String key=keys.next().toString();
+				songsarray.put(songsdata.get(key));
+			}
+			
+			
+			System.out.println(songsarray);
+			return songsarray;
 			
 		}
 		

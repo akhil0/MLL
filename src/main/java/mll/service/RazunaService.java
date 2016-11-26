@@ -2,11 +2,13 @@ package mll.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.regex.Matcher;
+
 
 import mll.beans.Metadata;
+import mll.beans.Owner;
 import mll.dao.SongRetrievalDAO;
 import mll.utility.Configuration;
 import mll.utility.HttpUtility;
@@ -111,7 +113,7 @@ public class RazunaService
 	
 	public JSONArray RetrieveSongs(String folderid) throws ParseException, JSONException, IOException
 	{
-		JSONArray songsarray=new JSONArray();
+		HashMap<String,JSONObject> songsdata=new HashMap<String,JSONObject>();
 		if(folderid!=null)
 		{
 			
@@ -120,42 +122,109 @@ public class RazunaService
 			reqMap.put("api_key", new Configuration().RAZUNA_KEY);
 			reqMap.put("folderid",folderid);
 			
-			songsarray=httputil.readResponseIntoJSONArray(httputil.callRazunaAPI(reqMap, config.Razuna_CREATE_FOLDER_METHOD));
-			
-			return retrieveMetaDataOfSongs(songsarray);
+			songsdata=httputil.readResponseOfSongsRetrieval(httputil.callRazunaAPI(reqMap, config.Razuna_CREATE_FOLDER_METHOD));
+			System.out.println("RetrieveSongs "+songsdata);
+			return retrieveMetaDataOfSongs(songsdata);
 		}
 		return null;
 	}
 	
 	
-	public JSONArray retrieveMetaDataOfSongs(JSONArray songsArray) throws JSONException, ParseException, IOException
+//	public JSONArray retrieveMetaDataOfSongs(JSONArray songsArray) throws JSONException, ParseException, IOException
+//	{
+//		JSONArray songs=new JSONArray(); 
+//		for(int i=0;i<songsArray.length();i++)
+//		{
+//			JSONObject song=songsArray.getJSONObject(i);
+//			JSONObject metaData=new JSONObject();
+//			if(song.has("ID"))
+//			{
+//				String songId=(String) song.get("ID");
+//				HashMap<String,String> reqMap=new HashMap<String,String>();
+//				reqMap.put("method", "getfieldsofasset");
+//				reqMap.put("api_key", new Configuration().RAZUNA_KEY);
+//				reqMap.put("asset_id",songId);
+//				metaData=httputil.readResponseForCustomFields(httputil.callRazunaAPI(reqMap, config.RAZUNA_CUSTOM_FIELD_METHOD));
+//				SongRetrievalDAO songretrieval=new SongRetrievalDAO();
+//				metaData.put("OwnerShipInfo", songretrieval.retrieveOwnerInfo(songId));
+//				metaData.put("source", song.getString("LOCAL_URL_ORG"));
+//				metaData.put("fileName",  song.getString("FILENAME"));
+//				metaData.put("dateAdded",song.getString("DATEADD"));
+//				metaData.put("songid", songId);
+//				songs.put(metaData);
+//			}
+//			
+//		}
+//		System.out.println(songs);
+//		return songs;
+//	}
+	
+
+	public JSONArray retrieveMetaDataOfSongs(HashMap<String,JSONObject> songsdata) throws JSONException, ParseException, IOException
 	{
-		JSONArray songs=new JSONArray(); 
-		for(int i=0;i<songsArray.length();i++)
+		JSONArray songsArray=new JSONArray();
+		System.out.println(songsdata.size() + " in retrievemetadata");
+		if(songsdata!=null)
 		{
-			JSONObject song=songsArray.getJSONObject(i);
-			JSONObject metaData=new JSONObject();
-			if(song.has("ID"))
+			SongRetrievalDAO songretrieval=new SongRetrievalDAO();
+			String keys[]=songsdata.keySet().toArray(new String[songsdata.size()]);
+			List<Owner> ownerInfo=songretrieval.retrieveOwnerInfo(songsdata.keySet());
+			songsdata=traverseOwnerInfo(ownerInfo,songsdata);
+			
+			String ids=Arrays.toString(keys);
+			ids=ids.replaceAll("\\[", "").replaceAll("\\]", "");
+			ids=ids.replaceAll(" ","");
+			songsArray= readCustomFieldsofSongs(ids,songsdata);
+			
+		}
+		return songsArray;
+			
+	}
+	
+	public HashMap<String,JSONObject> traverseOwnerInfo(List<Owner> owners, HashMap<String,JSONObject> songsdata) throws JSONException
+	{
+
+		System.out.println(songsdata.size() +" before");
+		if(owners!=null && owners.size()>0)
+		{
+			for(Owner owner:owners)
 			{
-				String songId=(String) song.get("ID");
-				HashMap<String,String> reqMap=new HashMap<String,String>();
-				reqMap.put("method", "getfieldsofasset");
-				reqMap.put("api_key", new Configuration().RAZUNA_KEY);
-				reqMap.put("asset_id",songId);
-				metaData=httputil.readResponseForCustomFields(httputil.callRazunaAPI(reqMap, config.RAZUNA_CUSTOM_FIELD_METHOD));
-				SongRetrievalDAO songretrieval=new SongRetrievalDAO();
-				metaData.put("OwnerShipInfo", songretrieval.retrieveOwnerInfo(songId));
-				metaData.put("source", song.getString("LOCAL_URL_ORG"));
-				metaData.put("fileName",  song.getString("FILENAME"));
-				metaData.put("dateAdded",song.getString("DATEADD"));
-				metaData.put("songid", songId);
-				songs.put(metaData);
+				JSONObject OwnerShipInfo=new JSONObject();
+			
+				String songid=owner.getSongId();
+				JSONObject song=songsdata.get(songid);
+				if(song.has("OwnerShipInfo"))
+				{
+				  OwnerShipInfo=song.getJSONObject("OwnerShipInfo");
+				}
+				JSONObject obj=new JSONObject();
+				obj.put("Name", owner.getName());
+				obj.put("divisionOfOwnership", owner.getDivisonOfOwnership());
+				obj.put("primayPhone", owner.getPrimaryPhone());
+				obj.put("secondaryPhone", owner.getSecondaryPhone());
+				obj.put("primayEmail", owner.getPrimaryEmail());
+				obj.put("secondaryEmail", owner.getSecondaryEmail());
+				OwnerShipInfo.put(owner.getOwnerType(), obj);
+				song.put("OwnerShipInfo", OwnerShipInfo);
+				songsdata.put(songid, song);
 			}
 			
 		}
-		System.out.println(songs);
-		return songs;
+		System.out.println(songsdata.size() +" after");
+		return songsdata;
 	}
+	
+	
+	public JSONArray readCustomFieldsofSongs(String ids,HashMap<String,JSONObject> songsdata) throws ParseException, JSONException, IOException
+	{
+		HashMap<String,String> reqMap=new HashMap<String,String>();
+		reqMap.put("method", "getfieldsofasset");
+		reqMap.put("api_key", new Configuration().RAZUNA_KEY);
+		reqMap.put("asset_id",ids);
+		return httputil.readResponseForCustomFields(httputil.callRazunaAPI(reqMap, config.RAZUNA_CUSTOM_FIELD_METHOD),songsdata);
+	}
+	
+	
 	
 	
 	public void deleteFolders() throws JSONException
@@ -176,7 +245,8 @@ public class RazunaService
 		for(int i=0;i<array.length();i++)
 		{
 			JSONObject obj=array.getJSONObject(i);
-			if(!obj.getString("FOLDER_ID").equalsIgnoreCase("60B5709518AE40359B63EF998C4751F0"))
+			if(!obj.getString("FOLDER_ID").equalsIgnoreCase("60B5709518AE40359B63EF998C4751F0") ||obj.getString("FOLDER_ID").equalsIgnoreCase("FAD17A81A1D64AFEB7C4540835B3D576") ||obj.getString("FOLDER_ID").equalsIgnoreCase("1E6DD69A48F34224BDFE56AB68F5B920")
+					 ||obj.getString("FOLDER_ID").equalsIgnoreCase("B8F174CADC834B8DB9A15D61C6AF87FE"))
 			{
 				HashMap<String,String> map=new HashMap<String,String>();
 				reqMap.put("method", "removefolder");
@@ -218,17 +288,19 @@ public class RazunaService
 		
 	}
 	
-/* public static void main(String[] args)
+public static void main(String[] args)
  {
 	 RazunaService service=new RazunaService();
 	 try {
-		//service.RetrieveSongs("60B5709518AE40359B63EF998C4751F0");
+		 //JSONArray songs=service.RetrieveSongs("60B5709518AE40359B63EF998C4751F0");
+		 //System.out.println(songs.length());
+		
 		service.deleteFolders();
 	} catch ( Exception  e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
- }*/
+ }
 	
 }
 

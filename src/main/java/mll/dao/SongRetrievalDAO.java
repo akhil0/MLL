@@ -1,6 +1,9 @@
 package mll.dao;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -10,20 +13,20 @@ import mll.utility.SessionFactoryUtil;
 
 public class SongRetrievalDAO {
 
-	public JSONObject retrieveOwnerInfo(String songId)
+	/*public JSONObject retrieveOwnerInfo(Set songIds)
 	{
 		JSONObject ownerInfo=null;
 		Session session = null;
 		Transaction tx = null;
-		if(songId!=null)
+		if(songIds!=null)
 		{
 			ownerInfo=new JSONObject();
 			try
 			{
 				session=SessionFactoryUtil.getSessionFactory().getCurrentSession();
 				tx = session.beginTransaction();
-				Query query = session.createQuery("from Owner o where o.songId=:songId");
-				query.setString("songId",songId);
+				Query query = session.createQuery("from Owner o where o.songId in :songIds");
+				query.setParameterList("songIds",songIds);
 				List<Owner> owners=query.list();
 				if(owners!=null && owners.size()>0)
 				{
@@ -49,5 +52,32 @@ public class SongRetrievalDAO {
 			}
 		}
 		return ownerInfo;
+	}*/
+	
+	public List<Owner> retrieveOwnerInfo(Set<String> set)
+	{
+		JSONObject ownerInfo=null;
+		Session session = null;
+		Transaction tx = null;
+		if(set!=null)
+		{
+			ownerInfo=new JSONObject();
+			try
+			{
+				session=SessionFactoryUtil.getSessionFactory().getCurrentSession();
+				tx = session.beginTransaction();
+				Query query = session.createQuery("from Owner o where o.songId in (:songIds)");
+				query.setParameterList("songIds",set);
+				List<Owner> owners=query.list();
+				
+				session.close();
+				return owners;
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return null;
 	}
 }
