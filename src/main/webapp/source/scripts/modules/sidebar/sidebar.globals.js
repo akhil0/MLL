@@ -10,6 +10,8 @@
     let faqslink = { text: 'FAQs'};
 
 	let about = { text: 'About'};
+	
+	let uploadLink = { text: 'Upload', href: 'musicianUpload' };
     
 
     angular
@@ -17,6 +19,7 @@
         .constant('homeLink', homeLink)
         .constant('inviteLink', inviteLink)
         .constant('trackLink', trackLink)
+        .constant('uploadLink', uploadLink)
         .constant('faqslink', faqslink)
         .constant('about', about);
 })(window.angular);
