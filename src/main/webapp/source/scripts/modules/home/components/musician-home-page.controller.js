@@ -18,7 +18,7 @@
        
        this.sortType = 'track';
        this.sortReverse = false;
-       
+       $scope.isCollapsed = false;
        musicianHomePageSerivce.getSongs(this.userId)
        .then((response) => {
     	   var songs = response;
