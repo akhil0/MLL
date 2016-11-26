@@ -12,6 +12,7 @@
        this.authService = authenticationService;
        var userId = this.authService.details.data.id;
         this.home = function(){
+        	console.log(this.authService.details.data.type);
             $state.go(this.authService.details.data.type, { id: this.authService.details.data.id });
         };
         
