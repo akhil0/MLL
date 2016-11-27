@@ -219,7 +219,7 @@ a {
 }
 
 .textSearch {
-	width: 130px;
+	width: 100%;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
@@ -233,9 +233,14 @@ a {
     transition: width 0.4s ease-in-out;
 }
 
-textSearch:focus {
+.textSearch:focus {
 	width: 100%;
-}]
+}
+
 .btn-search {
 	float: right;
+}
+
+.search-group {
+	display:inline;
 }
