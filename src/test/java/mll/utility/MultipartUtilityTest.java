@@ -3,6 +3,8 @@ package mll.utility;
 import static org.junit.Assert.assertEquals;
 import java.util.List;
 import org.junit.Test;
+
+import mll.service.RazunaService;
 import mll.utility.MultipartUtility;
 
 
@@ -12,6 +14,7 @@ public class MultipartUtilityTest
 	String fileName = "test";
 	String contentString = "test";
 	byte[] content = contentString.getBytes();
+	RazunaService service=new RazunaService();
 	Configuration config = new Configuration();
 	
 	@Test
@@ -25,6 +28,8 @@ public class MultipartUtilityTest
 		
 		multipart.addFilePart(fileName, content);
 		String response = multipart.finish();
+		String assetid=RazunaUtility.parseRazunaResponse(response);
+		service.deleteAsset(assetid);
 		assertEquals(true, response.contains("<message>success</message>") == true );
 		
 	}
