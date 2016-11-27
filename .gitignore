@@ -21,3 +21,9 @@ hs_err_pid*
 #Ignore Mac stuff
 .DS_Store
 *.settings
+
+#Ignore Node Modules
+node_modules/
+bower_components/
+dist/
+node/
