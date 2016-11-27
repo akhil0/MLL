@@ -55,7 +55,7 @@
          ng-class="{ 'has-success': ctrl.generalForm.beatRate.$valid && ctrl.generalForm.$submitted,
                      'has-error': ctrl.generalForm.beatRate.$invalid && ctrl.generalForm.$submitted }">
         <label for="beat-rate" class="col-xs-2 asterisk-label">
-            Beat Rate/Minute
+            Beat Rate/Minute <span class="glyphicon glyphicon-question-sign" uib-tooltip="Tooltip to be added"></span>
         </label>
         <div class="col-xs-10">
             <input type="number" name="beatRate" class="form-control" id="beat-rate"
@@ -106,7 +106,7 @@
          ng-class="{ 'has-success': ctrl.generalForm.primaryGenre.$valid && ctrl.generalForm.$submitted,
                      'has-error': ctrl.generalForm.primaryGenre.$invalid && ctrl.generalForm.$submitted }">
         <label class="col-xs-2 asterisk-label">
-            Primary Genre
+            Primary Genre <span class="glyphicon glyphicon-question-sign" uib-tooltip="Tooltip to be added"></span>
         </label>
         <div class="col-xs-10">
             <select name="primaryGenre" class="form-control" ng-model="ctrl.data.primaryGenre"
@@ -126,7 +126,7 @@
 
     <div class="form-group" ng-show="ctrl.data.primaryGenre">
         <label class="col-xs-2">
-            Secondary Genre
+            Secondary Genre <span class="glyphicon glyphicon-question-sign" uib-tooltip="Tooltip to be added"></span>
         </label>
         <div class="col-xs-10">
             <select name="secondaryGenre" class="form-control" ng-model="ctrl.data.secondaryGenre"
