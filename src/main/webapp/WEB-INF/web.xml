@@ -73,4 +73,14 @@
     <servlet-name>ARTrackingServlet</servlet-name>
     <url-pattern>/ARTrackingServlet/*</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>PlaylistReferenceServlet</display-name>
+    <servlet-name>PlaylistReferenceServlet</servlet-name>
+    <servlet-class>mll.servlets.PlaylistReferenceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PlaylistReferenceServlet</servlet-name>
+    <url-pattern>/PlaylistReferenceServlet/*</url-pattern>
+  </servlet-mapping>
 </web-app>
