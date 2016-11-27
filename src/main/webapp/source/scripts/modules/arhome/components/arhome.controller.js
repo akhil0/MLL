@@ -16,15 +16,21 @@
 	    var ctrl = this;	
 
 	    ctrl.new_playlist_data1 = true;
-	    
+
 	    ctrl.add = function() {
 	    	if(ctrl.input){
-		    	arHomeSerivce.add(userId,ctrl.input).success(function(response){
-		    		ctrl.myList = response.playlists;
-
-		    	})    		
+				if(ctrl.input.length > 15){
+					ctrl.errormsg = "Please enter a name of less than 15 character";
+					ctrl.error_message = true;
+				}else {
+					arHomeSerivce.add(userId,ctrl.input).success(function(response){
+						ctrl.myList = response.playlists;
+					})	; 
+					ctrl.error_message = false;
+				}
 	    	}else{
-	    		ctrl.responseMessage = "Give a name for playlist";
+	    		ctrl.errormsg = "Give a name for playlist";
+				ctrl.error_message = true;
 	    	}
 	    
 	    	ctrl.input = null;
@@ -36,6 +42,7 @@
 	     ctrl.addplaylist = function(){
 	    	 ctrl.new_playlist_data = true;
 	    	 ctrl.new_playlist_data1 = false;
+			 
 	     };
 	     
 	     function getAllPlaylists(){
@@ -48,7 +55,8 @@
     	 
     	 
     	 ctrl.getPlayListId = function (id){
-    		 console.log("PLAYLIST ID " + id)
+    		 console.log("PLAYLIST ID " + id) 
     	 }
  	}
+	
 })(window.angular);
