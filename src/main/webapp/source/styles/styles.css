@@ -150,19 +150,97 @@ html {
   background-color: #428bca;
 }
 
-.italic-font{font-style:italic;font-family:cursive}
-.card-container .card{padding:40px}
-.no-padding{padding:0}
-.card{background-color:#F7F7F7;padding:20px 25px 30px;-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;-moz-box-shadow:0 2px 2px rgba(0,0,0,.3);-webkit-box-shadow:0 2px 2px rgba(0,0,0,.3);box-shadow:0 2px 2px rgba(0,0,0,.3)}
-img{vertical-align:middle}
-a{color:#5f9ea0}
-.nav>li>a:focus,.nav>li>a:hover{color:#fff}
-.profile-img-card{width:96px;height:96px;margin:0 auto 10px;display:block;-moz-border-radius:50%;-webkit-border-radius:50%;border-radius:50%}
-.navbar-inverse{background-color:inherit}
-.circular-image{border-radius:50%;-moz-border-radius:50%;-webkit-border-radius:50%}
-.navbar-fixed-top{position:fixed}
-.black-bg{background-color:#000}
+.italic-font {
+	font-style:italic;
+	font-family:cursive
+}
+
+.card-container .card {
+	padding:40px
+}
+
+.no-padding{
+	padding:0
+}
+
+.card{
+	background-color:#F7F7F7;
+	padding:20px 25px 30px;
+	-moz-border-radius:2px;
+	-webkit-border-radius:2px;
+	border-radius:2px;
+	-moz-box-shadow:0 2px 2px rgba(0,0,0,.3);
+	-webkit-box-shadow:0 2px 2px rgba(0,0,0,.3);
+	box-shadow:0 2px 2px rgba(0,0,0,.3)
+}
+
+img {
+	vertical-align:middle
+}
+
+a {
+	color:#5f9ea0
+}
+
+.nav>li>a:focus,.nav>li>a:hover {
+	color:#fff
+}
+
+.profile-img-card {
+	width:96px;
+	height:96px;
+	margin:0 auto 10px;
+	display:block;
+	-moz-border-radius:50%;
+	-webkit-border-radius:50%;
+	border-radius:50%
+}
+
+.navbar-inverse {
+	background-color:inherit
+}
+
+.circular-image {
+	border-radius:50%;
+	-moz-border-radius:50%;
+	-webkit-border-radius:50%
+}
+
+.navbar-fixed-top {
+	position:fixed
+}
+
+.black-bg {
+	background-color:#000
+}
 
 .metadata{
     padding-right: 10px;
+}
+
+.textSearch {
+	width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 10px 10px 10px 10px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+.textSearch:focus {
+	width: 100%;
+}
+
+.btn-search {
+	float: right;
+}
+
+.search-group {
+	display:inline;
 }

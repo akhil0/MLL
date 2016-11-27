@@ -3,6 +3,16 @@
         <div class="col-xs-10 col-xs-offset-1 well">
             <h3 class="text-center no-margin">Welcome!</h3>
         </div>
+        <form class="col-sm-10 col-xs-offset-1">
+            <div class="input-group input-group-search search-group">
+                <input class="textSearch" type="text" name="search" placeholder="Search.." ng-model="ctrl.searchTitle" required>
+                <button ng-click="ctrl.search()" class="btn-search btn-primary" ng-disabled="search.$invalid">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    Search
+                </button>
+                <input type="hidden" name="mode" value="web"/>
+            </div>
+        </form>
     </div>
 
 
@@ -46,6 +56,12 @@
                                 <td class="metadata"><b> Title: </b>
                                 </td>
                                 <td> {{track.Title}} 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="metadata"><b> File Name: </b>
+                                </td>
+                                <td> {{track.fileName}} 
                                 </td>
                             </tr>
                             <tr>
