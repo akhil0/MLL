@@ -24,8 +24,6 @@ public class PlaylistReferenceService {
 		
 		JSONObject responseObject = new JSONObject();
 		
-		System.out.println("REQUEST  " + request.getParameter("actionType"));
-		
 		if(request != null) {
 			if(request.getParameter("actionType").equals("add")) {
 				int userId = Integer.parseInt(request.getParameter("userId"));
