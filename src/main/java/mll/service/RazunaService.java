@@ -126,7 +126,10 @@ public class RazunaService
 			songsdata=httputil.readResponseOfSongsRetrieval(httputil.callRazunaAPI(reqMap, config.Razuna_CREATE_FOLDER_METHOD));
 			System.out.println("RetrieveSongs "+songsdata);
 			songs= retrieveMetaDataOfSongs(songsdata);
+			if(songs.get(0)!=null &&songs.getJSONObject(0).has("fileName") && songs.getJSONObject(0).getInt("fileName")==0)
+				songs=new JSONArray();
 		}
+		
 		return songs;
 	}
 	
@@ -246,8 +249,7 @@ public class RazunaService
 		for(int i=0;i<array.length();i++)
 		{
 			JSONObject obj=array.getJSONObject(i);
-			if(!obj.getString("FOLDER_ID").equalsIgnoreCase("60B5709518AE40359B63EF998C4751F0") ||obj.getString("FOLDER_ID").equalsIgnoreCase("FAD17A81A1D64AFEB7C4540835B3D576") ||obj.getString("FOLDER_ID").equalsIgnoreCase("1E6DD69A48F34224BDFE56AB68F5B920")
-					 ||obj.getString("FOLDER_ID").equalsIgnoreCase("B8F174CADC834B8DB9A15D61C6AF87FE"))
+			if(!obj.getString("FOLDER_ID").equalsIgnoreCase("40E5FD89FF8945B5A94719E8613217D8"))
 			{
 				HashMap<String,String> map=new HashMap<String,String>();
 				reqMap.put("method", "removefolder");

@@ -38,15 +38,7 @@ public class RazunaServiceTest
 			RazunaService razunaService = new RazunaService();
 			ArrayList<String> assetIds=new ArrayList<String>();
 			List<Metadata> metadatas = getMetadata();
-			for(Metadata m:metadatas){
-//				String response = new MultipartUtility(new Configuration().RAZUNA_URL, "UTF-8").finish();
-//				String assetId=RazunaUtility.parseRazunaResponse(response);
-//				System.out.println(assetId);
-//				if(assetId != null){
-//				assetIds.add(assetId);
-//				}
-			}
-			ArrayList<String> assetids=razunaService.uploadMedia(metadatas, "8181F7DD7FFF432C9DE8F13F662ED754");
+			ArrayList<String> assetids=razunaService.uploadMedia(metadatas, "40E5FD89FF8945B5A94719E8613217D8");
 			
 			HashMap<String,String> reqMap=new HashMap<String,String>();
 			reqMap.put("method", "remove");
@@ -79,14 +71,10 @@ public class RazunaServiceTest
 	@Test
 	public void addMetaData1() throws JSONException, IOException{
 		RazunaService razunaService = new RazunaService();
-		razunaService.addMetaData(getMetadata().get(0), "8181F7DD7FFF432C9DE8F13F662ED754");
+		razunaService.addMetaData(getMetadata().get(0), "40E5FD89FF8945B5A94719E8613217D8");
 	}
 	
-	@Test
-	public void addMetaData2() throws JSONException, IOException{
-		RazunaService razunaService = new RazunaService();
-		razunaService.addMetaData(getMetadata().get(0), "3E4A99288E294FD1B4537E1588743C45");
-	}
+	
 	
 	@Test(expected = NullPointerException.class)
 	public void addMetaData3() throws NullPointerException, JSONException{
@@ -149,7 +137,7 @@ public class RazunaServiceTest
 	{
 		RazunaService service=new RazunaService();
 		try {
-			assertEquals(true,service.RetrieveSongs("60B5709518AE40359B63EF998C4751F0").length()>0);
+			assertEquals(true,service.RetrieveSongs("40E5FD89FF8945B5A94719E8613217D8").length()>0);
 		} catch (ParseException | JSONException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -161,7 +149,7 @@ public class RazunaServiceTest
 	{
 		RazunaService service=new RazunaService();
 		try {
-			assertEquals(true,service.RetrieveSongs("123445").getJSONObject(0).getInt("fileName")==0);
+			assertEquals(true,service.RetrieveSongs("123445").length()==0);
 		} catch (ParseException | JSONException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -173,7 +161,7 @@ public class RazunaServiceTest
 	{
 		RazunaService service=new RazunaService();
 		try {
-			assertEquals(true,service.RetrieveSongs("").getJSONObject(0).getInt("fileName")==0);
+			assertEquals(true,service.RetrieveSongs("").length()==0);
 		} catch (ParseException | JSONException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
