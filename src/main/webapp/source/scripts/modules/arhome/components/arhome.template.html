@@ -1,0 +1,16 @@
+<div  ng-controller="ArhomeController" class="cont">
+    
+    <div class = "scrollmenu well well-ng">
+        <div class='item' ng-repeat="x in myList"> {{ x }} </div>
+    </div>
+	
+	<button type="submit" ng-click="addplaylist()" ng-show="new_playlist_data1">add new playlist</button>
+    
+    <div ng-show="new_playlist_data" >
+        
+          <input type="text" placeholder="Enter Title" ng-model="input" id="input" focus>
+          <button type="submit" ng-click ="add()"> submit</button>
+          
+    </div>
+
+</div>
