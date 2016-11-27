@@ -168,6 +168,34 @@ a{color:#5f9ea0}
     padding-right: 10px;
 }
 
+.textSearch {
+	width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 10px 10px 10px 10px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+.textSearch:focus {
+	width: 100%;
+}
+
+.btn-search {
+	float: right;
+}
+
+.search-group {
+	display:inline;
+}
+
+
 /* Playlist */
 @import "bourbon";
 $melon: #F97D75;
