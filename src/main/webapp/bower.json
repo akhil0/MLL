@@ -22,6 +22,8 @@
     "angular-ui-router": "^0.2.18",
     "font-awesome": "^4.5.0",
     "angular-bootstrap": "^1.2.4",
-    "bootstrap-social": "^4.12.0"
+    "bootstrap-social": "^4.12.0",
+    "angular-cookies": "^1.5.9",
+    "angular-mocks": "^1.5.9"
   }
 }
