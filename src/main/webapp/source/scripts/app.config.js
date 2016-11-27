@@ -8,7 +8,8 @@
     function config($stateProvider, $urlRouterProvider, $sceDelegateProvider) {
     	$sceDelegateProvider.resourceUrlWhitelist([
             'self',   // trust all resources from the same origin
-            '*://35.163.135.77:8081//**'   // trust all resources from `www.youtube.com`
+            '*://35.163.135.77:8081//**'   // trust all resources from
+											// `www.youtube.com`
         ]);
         $urlRouterProvider.otherwise('/');
 
@@ -92,7 +93,12 @@
                             return $templateCache.get('sidebar.template.html');
                         }
                     },
-                    center: { template: '' },
+                    center: {
+	                        controller: 'ArhomeController as ctrl',
+	                        templateProvider: function($templateCache) {
+	                            return $templateCache.get('arhome.template.html');
+	                             }
+                    		},
                       right: { template: '' }
                 },
                 resolve: {
