@@ -13,6 +13,10 @@
             token: this.inviteToken
         };
 
+        this.form = { invalid: true, submitted: false };
+
+        this.validate = (isChecked) => this.form.invalid = !isChecked;
+
         this.register = () => {
             if (this.registrationForm.$invalid) this.registrationForm.$submitted = true;
 
