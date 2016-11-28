@@ -28,7 +28,10 @@
 		this.track = function(){
             $state.go("track", { id: userId});        	
 		};		
-				this.about = function(){
+		this.about = function(){
+			if (this.authService.details.data.type == 'musician') {
+				this.authService.details.data.permissions.browse=true;
+			}
             $state.go("about");        	
         };
         

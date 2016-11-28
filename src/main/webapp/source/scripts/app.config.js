@@ -356,12 +356,20 @@ The MLL provides students with real-world music licensing experience, exposes mu
                             }
 
                             else if (!authenticationService.details.data.permissions.browse) {
+                            	console.log("else if");
+                            	console.log(authenticationService.details.data);
                                 $state.go(authenticationService.details.data.type,
                                     { id: authenticationService.details.data.id });
                                 deferred.reject();
                             }
 
-                            else deferred.resolve(+$stateParams.id);
+                            else {
+                            	console.log("else");
+                            	console.log(authenticationService.details.data);
+                            	deferred.resolve(+$stateParams.id);
+                            }
+                            
+                            
                         }, 0);
 
                         return deferred.promise;

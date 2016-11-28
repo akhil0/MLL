@@ -431,6 +431,54 @@ button {
   color:black;
 }
 
+#search input[type="text"] {
+            background: no-repeat 10px 6px #fcfcfc;
+            border: 1px solid #d1d1d1;
+            font: bold 12px Arial,Helvetica,Sans-serif;
+            color: #bebebe;
+            padding: 6px 15px 6px 35px;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 20px;
+            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+            -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+            -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+            -webkit-transition: all 0.7s ease 0s;
+            -moz-transition: all 0.7s ease 0s;
+            -o-transition: all 0.7s ease 0s;
+            transition: all 0.7s ease 0s;
+        }
+
+        #search input[type="text"]:focus {
+            width: 200px;
+        }
+
+
+/*** Audio Tag Styles ***/
+audio:hover, audio:focus, audio:active
+{
+-webkit-box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+-moz-box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+-webkit-transform: scale(1.05);
+-moz-transform: scale(1.05);
+transform: scale(1.05);
+}
+
+audio
+{
+-webkit-transition:all 0.5s linear;
+-moz-transition:all 0.5s linear;
+-o-transition:all 0.5s linear;
+transition:all 0.5s linear;
+-moz-box-shadow: 2px 2px 4px 0px #730000;
+-webkit-box-shadow:  2px 2px 4px 0px #730000;
+box-shadow: 2px 2px 4px 0px #730000;
+-moz-border-radius:7px 7px 7px 7px ;
+-webkit-border-radius:7px 7px 7px 7px ;
+border-radius:7px 7px 7px 7px ;
+}
 
 /*** Table Styles **/
 
@@ -452,8 +500,6 @@ th {
   background:#1b1e24;
   border-bottom:4px solid #9ea7af;
   border-right: 1px solid #343a45;
-  /*font-size:23px;
-  font-weight: 100;*/
   padding:24px;
   text-align:left;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
@@ -473,7 +519,6 @@ tr {
   border-top: 1px solid #C1C3D1;
   border-bottom-: 1px solid #C1C3D1;
   color:#666B85;
-  /*font-size:16px;*/
   font-weight:normal;
   text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
 }
@@ -515,8 +560,6 @@ td {
   padding:20px;
   text-align:left;
   vertical-align:middle;
-  font-weight:300;
-  /*font-size:18px;*/
   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
   border-right: 1px solid #C1C3D1;
 }
