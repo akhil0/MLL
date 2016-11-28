@@ -27,6 +27,8 @@
         	var mSearchUrl = searchUrl + searchTitle;
         	return $http.post(mSearchUrl)
                 .then((response) => {
+                	console.log("after servelet");
+                	console.log(response);
                     return response.data;
                 })
                 .catch((rejection) => rejection);
