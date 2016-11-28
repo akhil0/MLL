@@ -41,6 +41,7 @@ html {
 .app__footer {
     background-color: black;
     border-top: 1px solid black;
+    color:#dd1d1d;
 }
 
 .app__main {
@@ -187,7 +188,14 @@ a:hover {
   background-color: black;
   color: #dd1d1d;
 }
+a:active {
+  background-color: black;
+  color: #dd1d1d;
+}
 span:hover {
+  color:#dd1d1d;
+}
+span:active {
   color:#dd1d1d;
 }
 
@@ -201,6 +209,11 @@ span:hover {
 }
 
 .ablackwhite:hover {
+   color: #dd1d1d;
+   background-color: black;
+}
+
+.ablackwhite:active {
    color: #dd1d1d;
    background-color: black;
 }
@@ -334,4 +347,8 @@ display: inline-block;
 
 .nuLogo {
 	max-height: 100px;
+}
+
+.navbar-brand {
+	font-family: cursive;
 }

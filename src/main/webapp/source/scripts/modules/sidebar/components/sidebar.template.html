@@ -1,14 +1,14 @@
 <nav class="col-sm-3 col-md-2 sidebar" ng-controller="SidebarController">
     <ul class="nav nav-sidebar">
-        <li id="alist"><a ng-click="ctrl.home()" ng-class="{'active': $location.url() == '/home/user/profile/id/21'}">Home <span class="sr-only"> Home of UCB App</span></a>
+        <li id="alist"><a ng-click="ctrl.home()" ng-class="{'active': $location.url() == '/home/user/profile/id/21'}"><span>Home</span> <span class="sr-only"> Home of UCB App</span></a>
         </li>
 
         <li id="alist" ng-hide="ctrl.userType.indexOf('musician') >= 0">
-            <a ng-click="ctrl.invite()">Invite</a>
+            <a ng-click="ctrl.invite()"><span>Invite</span></a>
         </li>
 
         <li id="alist" ng-hide="ctrl.userType.indexOf('musician') >= 0">
-            <a ng-click="ctrl.track()" ng-class="{'active': $location.url() == '/track'}">Track</a>
+            <a ng-click="ctrl.track()" ng-class="{'active': $location.url() == '/track'}"><span>Track</span></a>
         </li>	
 
 		<li id="alist" ng-show="ctrl.userType.indexOf('musician') >= 0 && ctrl.authService.details.isAuth && ctrl.authService.details.data.permissions.upload">
@@ -17,6 +17,6 @@
             </a>
         </li>
 
-		<li id="alist"><a ng-click="ctrl.about()">About</a></li>	
+		<li id="alist"><a ng-click="ctrl.about()"><span>About</span></a></li>	
     </ul>
 </nav>
