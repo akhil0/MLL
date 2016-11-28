@@ -23,9 +23,10 @@
 					ctrl.errormsg = "Please enter a name of less than 15 character";
 					ctrl.error_message = true;
 				}else {
-					arHomeSerivce.add(userId,ctrl.input).success(function(response){
+				    arHomeSerivce.add(userId,ctrl.input).success(function(response){
 						ctrl.myList = response.playlists;
 					})	; 
+			
 					ctrl.error_message = false;
 				}
 	    	}else{
@@ -44,7 +45,11 @@
 	    	 ctrl.new_playlist_data1 = false;
 			 
 	     };
-	     
+	     ctrl.delete_item = function(index){
+	    	 ctrl.myList.splice(index, 1);
+	    				 
+	     };
+
 	     function getAllPlaylists(){
 	    	 arHomeSerivce.getAllPlaylists(userId).success(function(response){
 		    	ctrl.myList = response.playlists;	    		
@@ -56,7 +61,7 @@
     	 
     	 ctrl.getPlayListId = function (id){
     		 console.log("PLAYLIST ID " + id) 
-    	 }
+    	 } 
  	}
 	
 })(window.angular);
