@@ -290,20 +290,42 @@ public class RazunaService
 				
 		
 	}
-	
-public static void main(String[] args)
- {
-	 RazunaService service=new RazunaService();
-	 try {
-		 JSONArray songs=service.RetrieveSongs("4BB7CA2D4E3F40BDA52C829E0F09C693");
-		 System.out.println(songs.length());
-		
-		//service.deleteFolders();
-	} catch ( Exception  e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+	public JSONArray searchKeyword(String folder_id, String searchWord) throws ParseException, JSONException, IOException{
+		JSONArray songsarray=new JSONArray();
+		HashMap<String,JSONObject> songsdata=new HashMap<String,JSONObject>();
+		if(folder_id!=null && searchWord != null)
+		{
+			
+			HashMap<String,String> reqMap=new HashMap<String,String>();
+			reqMap.put("method", "searchassets");
+			reqMap.put("api_key", new Configuration().RAZUNA_KEY);
+			reqMap.put("folderid",folder_id);
+			reqMap.put("searchfor", searchWord);
+			
+			songsdata=httputil.readResponseOfSearchedSongs(httputil.callRazunaAPI(reqMap, config.RAZUNA_SEARCH_METHOD));
+			System.out.println(songsdata.size() + " Size of searched songs ");
+			songsarray = retrieveMetaDataOfSongs(songsdata);
+			return songsarray;
+		}
+		return null;
 	}
- }
+	
+//public static void main(String[] args)
+// {
+//	 RazunaService service=new RazunaService();
+//	 try {
+//		 JSONArray songs=service.RetrieveSongs("4BB7CA2D4E3F40BDA52C829E0F09C693");
+//		 System.out.println(songs.length());
+//		
+//		//service.deleteFolders();
+//		 JSONArray songs=service.searchKeyword("4BB7CA2D4E3F40BDA52C829E0F09C693", "adele");
+//		 System.out.println(songs.length());
+//		
+//	} catch ( Exception  e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	}
+// }
 	
 }
 
