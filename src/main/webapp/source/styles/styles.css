@@ -591,3 +591,7 @@ td.text-center {
 td.text-right {
   text-align: right;
 }
+
+.messageBoxSize{
+	height: 200px!important;
+}
