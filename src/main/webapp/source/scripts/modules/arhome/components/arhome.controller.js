@@ -6,9 +6,9 @@
          .controller('ArhomeController', ArhomeController);
  
      ArhomeController.$inject =
-         ['$scope',  'authenticationService', '$stateParams','arHomeSerivce'];
+         ['$scope',  'authenticationService', '$stateParams','arHomeSerivce', '$uibModal'];
  
-     function ArhomeController($scope,  authenticationService, $stateParams, arHomeSerivce) {
+     function ArhomeController($scope,  authenticationService, $stateParams, arHomeSerivce, $uibModal) {
  
 	    this.authService = authenticationService;
 	 
@@ -60,8 +60,17 @@
     	 
     	 
     	 ctrl.getPlayListId = function (id){
-    		 console.log("PLAYLIST ID " + id) 
-    	 } 
+     		console.log("PLAYLIST ID " + id)
+ 		    $uibModal.open({
+  		      templateUrl: 'single-playlist.html',
+  		      controller: 'SinglePlaylistController',
+  		      controllerAs: 'model',
+  		      resolve: {
+  		        id: function () { return id; }
+  		      }
+  		    });
+
+    	 }
  	}
 	
 })(window.angular);

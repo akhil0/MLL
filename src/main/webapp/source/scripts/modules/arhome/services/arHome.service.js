@@ -23,5 +23,11 @@
         	var playListUrl = '/MLL/PlaylistReferenceServlet/?userId=' + userId + '&actionType=add&playlistName=' + playlistName;
             return $http.get(playListUrl);
         }
+        
+        function getSongsInPlaylist(playlistId) {
+        	var playListUrl = '/MLL/PlaylistServlet/?playlistId=' + playlistId;
+//            return $http.get(playListUrl);
+            return null;
+        }
     }
 })(window.angular);

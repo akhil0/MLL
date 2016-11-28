@@ -4,7 +4,9 @@
         <div class='item' ng-repeat="x in ctrl.myList" > 
             <img src="dist/fonts/del.png" class='delete' ng-click = "ctrl.delete_item($index)">
         	<a href="#" ng-click="ctrl.getPlayListId($index)">{{ x.playlistName }}</a>
-<!--         	<a ng-click="ctrl.getPlayListId($index)">Delete</a> -->
+
+
+			<a ng-click="ctrl.getPlayListId($index)">Open</a>
         </div>
     </div>
 	 
