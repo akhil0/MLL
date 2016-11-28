@@ -1,40 +1,49 @@
-<div>     
-          <table class="table table-responsive table-striped table-hover ng-scope">
-            <thead>
-            <tr>
-                <th ng-click="ctrl.sortType='track'; ctrl.sortReverse = !ctrl.sortReverse">
-                    <span ng-show="ctrl.sortType == 'track'">
-					<span ng-show="!ctrl.sortReverse" class="glyphicon glyphicon-triangle-top"
-                          aria-hidden="true"></span>
-                    <span ng-show="ctrl.sortReverse" class="glyphicon glyphicon-triangle-bottom"></span></span>
-                    Track</th>
-                <th ng-click="ctrl.sortType='playCount'; ctrl.sortReverse = !ctrl.sortReverse">
-                    <span ng-show="ctrl.sortType == 'playCount'">
-					<span ng-show="!ctrl.sortReverse" class="glyphicon glyphicon-triangle-top"
-                          aria-hidden="true"></span>
-                    <span ng-show="ctrl.sortReverse" class="glyphicon glyphicon-triangle-bottom"></span></span>
-                    Play Count</th>
-                <th ng-click="ctrl.sortType='dateAdded'; ctrl.sortReverse = !ctrl.sortReverse">
-                    <span ng-show="ctrl.sortType == 'dateAdded'">
-					<span ng-show="!ctrl.sortReverse" class="glyphicon glyphicon-triangle-top"
-                          aria-hidden="true"></span>
-                    <span ng-show="ctrl.sortReverse" class="glyphicon glyphicon-triangle-bottom"></span></span>
-                    Date Added</th>
-            </tr>
-            </thead>
-            <tbody>
-    		 <tr ng-repeat= "track in model.tracks">
-    		 	<td>
-<!--     		 	ng-click="isCollapsed = !isCollapsed" -->
-       				<a >
-                        {{track.fileName}} <br/>
-                    </a>
-			        <audio src={{track.source}} controls>
+<div>
+	<table
+		class="table table-responsive table-striped table-hover ng-scope">
+		<thead>
+			<tr>
+				<th
+					ng-click="ctrl.sortType='track'; ctrl.sortReverse = !ctrl.sortReverse">
+					<span ng-show="ctrl.sortType == 'track'"> <span
+						ng-show="!ctrl.sortReverse"
+						class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+						<span ng-show="ctrl.sortReverse"
+						class="glyphicon glyphicon-triangle-bottom"></span></span> Track
+				</th>
+				<th
+					ng-click="ctrl.sortType='playCount'; ctrl.sortReverse = !ctrl.sortReverse">
+					<span ng-show="ctrl.sortType == 'playCount'"> <span
+						ng-show="!ctrl.sortReverse"
+						class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+						<span ng-show="ctrl.sortReverse"
+						class="glyphicon glyphicon-triangle-bottom"></span></span> ADD TO
+					PLAYLIST
+				</th>
+				<th
+					ng-click="ctrl.sortType='dateAdded'; ctrl.sortReverse = !ctrl.sortReverse">
+					<span ng-show="ctrl.sortType == 'dateAdded'"> <span
+						ng-show="!ctrl.sortReverse"
+						class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+						<span ng-show="ctrl.sortReverse"
+						class="glyphicon glyphicon-triangle-bottom"></span></span> Date Added
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="track in model.tracks">
+				<td>
+					<!--     		 	ng-click="isCollapsed = !isCollapsed" --> <a>
+						{{track.fileName}} <br />
+				</a> <audio src={{track.source}} controls>
 					</audio>
 				</td>
-			</tr>		
-			</tbody>
-			</table>
+				<td>
+				<span class="glyphicon glyphicon-plus"></span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 
 
@@ -43,4 +52,4 @@
 
 
 
-            
+

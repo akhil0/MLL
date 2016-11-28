@@ -18,6 +18,7 @@
 		}
 
 		function getSongsForMusician(folderId) {
+			console.log(folderId);
 			var arUrl = '/MLL/ARMusicianSongServlet/?folderId=' + folderId;
 			return $http.get(arUrl);
 		}
