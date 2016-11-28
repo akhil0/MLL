@@ -10,7 +10,6 @@
 	function SidebarController($state, $location, uploadLink, authenticationService ) {
 
        this.authService = authenticationService;
-       console.log(this.authService.details.data);
        var userId = this.authService.details.data.id;
        var userType = this.authService.details.data.type;
        this.userId = userId;

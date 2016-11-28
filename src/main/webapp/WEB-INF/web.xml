@@ -83,4 +83,15 @@
     <servlet-name>PlaylistReferenceServlet</servlet-name>
     <url-pattern>/PlaylistReferenceServlet/*</url-pattern>
   </servlet-mapping>
+  
+      <servlet>
+    <description></description>
+    <display-name>ARMusicianSongServlet</display-name>
+    <servlet-name>ARMusicianSongServlet</servlet-name>
+    <servlet-class>mll.servlets.ARMusicianSongServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ARMusicianSongServlet</servlet-name>
+    <url-pattern>/ARMusicianSongServlet/*</url-pattern>
+  </servlet-mapping>
 </web-app>
