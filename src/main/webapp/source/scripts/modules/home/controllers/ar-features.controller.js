@@ -33,12 +33,12 @@
         			model.unregisteredMusicians = unregisteredMusiciansObject;
         			model.registered = {
         					data : registeredMusiciansObject,
-//        					{{row.entity.musicianId}}
         					columnDefs: 
         					[
-        					  { field: 'name', displayName: 'First Name', width: "40%" , cellTemplate:'<a href="#">{{row.entity.name}}</a>'},
-                              { field: 'gender', displayName: 'Gender', width: "30%" },
-                              { field: 'age', width: "30%"}
+        						{ field: 'id', name: '', cellTemplate: 'edit-button.html', width: "30%" },
+        					  { field: 'name', displayName: 'First Name', width: "30%" , cellTemplate:'<a href="#">{{row.entity.name}}</a>'},
+                              { field: 'gender', displayName: 'Gender', width: "20%" },
+                              { field: 'age', width: "20%"}
                             ]
         			}
         			
