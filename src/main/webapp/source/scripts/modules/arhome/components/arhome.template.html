@@ -1,9 +1,11 @@
 <div  class="cont">
     
     <div class = "scrollmenu well well-ng">
-        <div class='item' ng-repeat="x in ctrl.myList" > 
+        <div class='item' ng-repeat="x in ctrl.myList" ng-click="ctrl.getPlayListId($index)"> 
             <img src="dist/fonts/del.png" class='delete' ng-click = "ctrl.delete_item($index)">
-        	<a ng-click="ctrl.getPlayListId($index)">{{ x.playlistName }}</a>
+
+        	<span>{{ x.playlistName }}</span>
+<!--         	<a ng-click="ctrl.getPlayListId($index)">Delete</a> -->
 
         </div>
     </div>
