@@ -1,6 +1,7 @@
 package mll.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -48,7 +49,7 @@ public class SearchServlet extends HttpServlet {
 	    if(session.getAttribute("folder_id")!=null)
 	    {
 	    	folderid=(String) session.getAttribute("folder_id");
-	    	searchWord = (String) session.getAttribute("search");
+            searchWord = request.getParameter("searchTitle");
 	    	System.out.println("folderid is "+folderid);
 	    	
 	    }
@@ -59,7 +60,10 @@ public class SearchServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	    response.setContentType("application/json");
+		PrintWriter out = response.getWriter();
+		out.print(songs);
+		out.flush();
 	}
 
 	/**
