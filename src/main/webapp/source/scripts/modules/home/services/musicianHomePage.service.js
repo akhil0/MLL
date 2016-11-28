@@ -5,15 +5,27 @@
         .module('mllApp.home')
         .factory('musicianHomePageSerivce', musicianHomePageSerivce);
 
-    musicianHomePageSerivce.$inject = ['$http', 'musicianUrl'];
+    musicianHomePageSerivce.$inject = ['$http', 'musicianUrl', 'searchUrl'];
 
     function musicianHomePageSerivce($http, musicianUrl) {
         return {
-            getSongs: getSongs
+            getSongs: getSongs,
+            searchSongs: searchSongs
         };
 
         function getSongs() {
         	return $http.post(musicianUrl)
+                .then((response) => {
+                    return response.data;
+                })
+                .catch((rejection) => rejection);
+        }
+        
+        function searchSongs(searchTitle) {
+        	console.log("in service");
+        	console.log(searchTitle);
+        	var mSearchUrl = searchUrl + searchTitle;
+        	return $http.post(mSearchUrl)
                 .then((response) => {
                     return response.data;
                 })

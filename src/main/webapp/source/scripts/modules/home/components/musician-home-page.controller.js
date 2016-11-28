@@ -19,15 +19,30 @@
        this.sortType = 'track';
        this.sortReverse = false;
        $scope.isCollapsed = false;
-       musicianHomePageSerivce.getSongs(this.userId)
+       musicianHomePageSerivce.getSongs()
        .then((response) => {
     	   var songs = response;
     	   this.data = {
                    userId: +this.userId,
                    tracks: songs
                };
-    	   console.log(this.data);
+    	   //console.log(this.data);
        })
        .catch((rejection) => rejection);
+       
+       this.search = (title) => {
+    	   	console.log("in controller");
+       		console.log(title);
+    	   musicianHomePageSerivce.searchSongs(title)
+    	   .then((response) => {
+    		   var songs = response;
+    		   this.data = {
+    				   userId: +this.userId,
+    				   tracks: songs
+    				   };
+    		   //console.log(this.data);
+    		   })
+    		   .catch((rejection) => rejection);
+    	   }
     }
 })(window.angular);
