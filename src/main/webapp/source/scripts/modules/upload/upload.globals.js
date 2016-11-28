@@ -11,10 +11,9 @@
         currentId: 0,
         submitFormId: 4,
         data: [
-            { title: 'License Agreement', isActive: true },
-            { title: 'Song Selection', isActive: false },
+        	{ title: 'Ownership Information', isActive: true },
             { title: 'General Information', isActive: false },
-            { title: 'Ownership Information', isActive: false },
+            { title: 'Song Selection', isActive: false },
             { title: 'Sound Ownership Information', isActive: false },
             { title: 'Summary', isActive: false }
         ]

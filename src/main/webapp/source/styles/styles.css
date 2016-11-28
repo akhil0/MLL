@@ -41,7 +41,7 @@ html {
 .app__footer {
     background-color: black;
     border-top: 1px solid black;
-    color:#dd1d1d;
+    color:#b5191b;
 }
 
 .app__main {
@@ -222,6 +222,18 @@ span:active {
   background-color: black;
 }
 
+#songTitle {
+	text-transform:uppercase;
+}
+#songTitle a {
+	color: black;
+}
+
+#songTitle a:hover{
+	color: maroon;
+	background-color: inherit;
+}
+
 .profile-img-card {
 	width:96px;
 	height:96px;
@@ -351,4 +363,69 @@ display: inline-block;
 
 .navbar-brand {
 	font-family: cursive;
+}
+
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+    color: #fff;
+    background-color: rgb(200, 45, 45);
+}
+
+
+.btn-dropbox {
+    color: #black;
+    background-color: rgb(200, 45, 45);
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: rgb(200, 45, 45);
+}
+
+.panel-info>.panel-heading {
+    color: maroon;
+    background-color: #d29b9b;
+    border-color: #af8585;
+}
+
+.panel-info {
+    border-color: #af8585;
+}
+
+button {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+table{
+    background-color: rgba(0,0,0,0.4);
+    padding: 30px;
+    border-color: black;
+}
+
+.table-responsive>.table {
+    background-color: #ded4d4;
+    border-color: black;
+}
+
+.table-hover>tbody>tr:hover {
+	background-color: #ded4d4;
+    border-color: black;
+}
+
+.table>thead {
+	background-color: black;
+	color: maroon;
+	border-color: black;
+}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+    padding: 3px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-color: black;
+}
+
+.pad-30 {
+	padding: 30px;
 }
