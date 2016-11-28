@@ -1,39 +1,62 @@
 <h1>PLAY LIST</h1>
 
-<div>     
-          <table class="table table-responsive table-striped table-hover ng-scope">
-            <thead>
-            <tr>
-                <th ng-click="ctrl.sortType='track'; ctrl.sortReverse = !ctrl.sortReverse">
-                    <span ng-show="ctrl.sortType == 'track'">
-					<span ng-show="!ctrl.sortReverse" class="glyphicon glyphicon-triangle-top"
-                          aria-hidden="true"></span>
-                    <span ng-show="ctrl.sortReverse" class="glyphicon glyphicon-triangle-bottom"></span></span>
-                    Track</th>
-                <th ng-click="ctrl.sortType='playCount'; ctrl.sortReverse = !ctrl.sortReverse">
-                    <span ng-show="ctrl.sortType == 'playCount'">
-					<span ng-show="!ctrl.sortReverse" class="glyphicon glyphicon-triangle-top"
-                          aria-hidden="true"></span>
-                    <span ng-show="ctrl.sortReverse" class="glyphicon glyphicon-triangle-bottom"></span></span>
-                    Play Count</th>
-                <th ng-click="ctrl.sortType='dateAdded'; ctrl.sortReverse = !ctrl.sortReverse">
-                    <span ng-show="ctrl.sortType == 'dateAdded'">
-					<span ng-show="!ctrl.sortReverse" class="glyphicon glyphicon-triangle-top"
-                          aria-hidden="true"></span>
-                    <span ng-show="ctrl.sortReverse" class="glyphicon glyphicon-triangle-bottom"></span></span>
-                    Date Added</th>
-            </tr>
-            </thead>
-            <tbody>
-               <tr>
-	              <audio src= "http://35.163.173.243:8080//razuna/assets/1/4BB7CA2D4E3F40BDA52C829E0F09C693/aud/9F431E6491724AE8A371386CA6B955AE/01_-_Suno_Na_SangemarmarMyMp3Song.Com.mp3" controls>
-						
-				 </audio>
-				  <a href="#" class="btn btn-info btn-sm" style="position:relative!important;top:-10px!important;">
-          				<span class="glyphicon glyphicon-trash" ></span> Trash 
-		        	</a>               
-               </tr>     
-<!--     		 <tr ng-repeat= "track in model.tracks">
+<div>
+	<table
+		class="table table-responsive table-striped table-hover ng-scope">
+		<thead>
+			<tr>
+				<th
+					ng-click="ctrl.sortType='track'; ctrl.sortReverse = !ctrl.sortReverse">
+					<span ng-show="ctrl.sortType == 'track'"> <span
+						ng-show="!ctrl.sortReverse"
+						class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+						<span ng-show="ctrl.sortReverse"
+						class="glyphicon glyphicon-triangle-bottom"></span></span> Track
+				</th>
+				<th
+					ng-click="ctrl.sortType='playCount'; ctrl.sortReverse = !ctrl.sortReverse">
+					<span ng-show="ctrl.sortType == 'playCount'"> <span
+						ng-show="!ctrl.sortReverse"
+						class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+						<span ng-show="ctrl.sortReverse"
+						class="glyphicon glyphicon-triangle-bottom"></span></span> Play Count
+				</th>
+				<th
+					ng-click="ctrl.sortType='dateAdded'; ctrl.sortReverse = !ctrl.sortReverse">
+					<span ng-show="ctrl.sortType == 'dateAdded'"> <span
+						ng-show="!ctrl.sortReverse"
+						class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+						<span ng-show="ctrl.sortReverse"
+						class="glyphicon glyphicon-triangle-bottom"></span></span> Date Added
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<tr>
+				<td>
+					<audio
+							src="http://35.163.173.243:8080//razuna/assets/1/4BB7CA2D4E3F40BDA52C829E0F09C693/aud/9F431E6491724AE8A371386CA6B955AE/01_-_Suno_Na_SangemarmarMyMp3Song.Com.mp3"
+							controls>
+	
+						</audio> 
+					<a href="#" class="btn btn-info btn-sm"
+						style="position: relative !important; top: -10px !important;">
+							<span class="glyphicon glyphicon-trash"></span> Trash
+					</a>
+				</td>
+			</tr>
+			<tr>
+				<td><audio
+						src=" http://35.163.173.243:8080//razuna/assets/1/4BB7CA2D4E3F40BDA52C829E0F09C693/aud/EA272313E2004410B1BC6689A3E7B58C/Adele_-_Someone_Like_You.mp3"
+						controls>
+
+					</audio> <a href="#" class="btn btn-info btn-sm"
+					style="position: relative !important; top: -10px !important;">
+						<span class="glyphicon glyphicon-trash"></span> Trash
+				</a></td>
+			</tr>
+			<!--     		 <tr ng-repeat= "track in model.tracks">
     		 	<td>
     		 	ng-click="isCollapsed = !isCollapsed"
        				<a >
@@ -43,8 +66,8 @@
 					</audio>
 				</td>
 			</tr>		 -->
-			</tbody>
-			</table>
+		</tbody>
+	</table>
 </div>
 
 
@@ -53,4 +76,4 @@
 
 
 
-            
+
