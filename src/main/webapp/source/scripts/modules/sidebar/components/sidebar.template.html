@@ -1,12 +1,22 @@
 <nav class="col-sm-3 col-md-2 sidebar" ng-controller="SidebarController">
     <ul class="nav nav-sidebar">
-        <li><a ng-click="ctrl.home()" ng-class="{'active': $location.url() == '/home/user/profile/id/21'}">Home <span class="sr-only"> Home of UCB App</span></a></li>
-        <li ng-hide="ctrl.userType.indexOf('musician') >= 0"><a ng-click="ctrl.invite()">Invite</a></li>
-        <li ng-hide="ctrl.userType.indexOf('musician') >= 0"><a ng-click="ctrl.track()" ng-class="{'active': $location.url() == '/track'}">Track</a></li>		
-		<li ng-show="ctrl.userType.indexOf('musician') >= 0 && ctrl.authService.details.isAuth && ctrl.authService.details.data.permissions.upload">
+        <li id="alist"><a ng-click="ctrl.home()" ng-class="{'active': $location.url() == '/home/user/profile/id/21'}">Home <span class="sr-only"> Home of UCB App</span></a>
+        </li>
+
+        <li id="alist" ng-hide="ctrl.userType.indexOf('musician') >= 0">
+            <a ng-click="ctrl.invite()">Invite</a>
+        </li>
+
+        <li id="alist" ng-hide="ctrl.userType.indexOf('musician') >= 0">
+            <a ng-click="ctrl.track()" ng-class="{'active': $location.url() == '/track'}">Track</a>
+        </li>	
+
+		<li id="alist" ng-show="ctrl.userType.indexOf('musician') >= 0 && ctrl.authService.details.isAuth && ctrl.authService.details.data.permissions.upload">
 			<a ng-click="ctrl.upload()" ui-sref="{{ctrl.uploadLink.href}}">
-                            <span ng-bind="ctrl.uploadLink.text"></span>
-                        </a>	
-		<li><a ng-click="ctrl.about()">About</a></li>	
+                <span ng-bind="ctrl.uploadLink.text"></span>
+            </a>
+        </li>
+
+		<li id="alist"><a ng-click="ctrl.about()">About</a></li>	
     </ul>
 </nav>
