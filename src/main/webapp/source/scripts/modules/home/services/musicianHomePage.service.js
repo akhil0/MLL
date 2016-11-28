@@ -7,7 +7,7 @@
 
     musicianHomePageSerivce.$inject = ['$http', 'musicianUrl', 'searchUrl'];
 
-    function musicianHomePageSerivce($http, musicianUrl) {
+    function musicianHomePageSerivce($http, musicianUrl, searchUrl) {
         return {
             getSongs: getSongs,
             searchSongs: searchSongs
