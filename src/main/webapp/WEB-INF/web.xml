@@ -98,6 +98,6 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>SearchServlet</servlet-name>
-    <url-pattern>/SearchServlet</url-pattern>
+    <url-pattern>/SearchServlet/*</url-pattern>
   </servlet-mapping>
 </web-app>
