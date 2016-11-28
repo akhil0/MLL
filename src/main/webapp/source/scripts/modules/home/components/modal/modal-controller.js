@@ -17,8 +17,10 @@
        
        function getSongs(){
            arHomePageSerivce.getSongsForMusician(row.entity.folderId)
-           .then((response) => {
+           .then((response) => {        	   
         	   var songs = response.data.songs;
+        	   console.log(songs);
+        	   console.log(songs.length);
         	   model.tracks = response.data.songs;
            })
            .catch((rejection) => rejection);
