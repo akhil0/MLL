@@ -87,7 +87,31 @@ public class HttpUtilityTest {
 		
 	}
 	
+	@Test
+	public void testReadResponseOfSearchedSongsFail() throws ParseException, JSONException, IOException
+	{
+		HashMap<String,String> reqMap=new HashMap<String,String>();
+		reqMap.put("method", "searchassets");
+		reqMap.put("api_key", new Configuration().RAZUNA_KEY);
+		reqMap.put("folderid","");
+		reqMap.put("searchfor", "song");
+		
+		HttpResponse response = util.callRazunaAPI(reqMap, new Configuration().RAZUNA_SEARCH_METHOD);
+		assertTrue(util.readResponseOfSearchedSongs(response).size()==0);
+	}
 	
+	@Test
+	public void testReadResponseOfSearchedSongsSuccess() throws ParseException, JSONException, IOException
+	{
+		HashMap<String,String> reqMap=new HashMap<String,String>();
+		reqMap.put("method", "searchassets");
+		reqMap.put("api_key", new Configuration().RAZUNA_KEY);
+		reqMap.put("folderid","4BB7CA2D4E3F40BDA52C829E0F09C693");
+		reqMap.put("searchfor", "adele");
+		
+		HttpResponse response = util.callRazunaAPI(reqMap, new Configuration().RAZUNA_SEARCH_METHOD);
+		assertTrue(util.readResponseOfSearchedSongs(response).size()>0);
+	}
 	
 
 }

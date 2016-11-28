@@ -154,6 +154,52 @@ public class HttpUtility {
 		
 		return null;
 	}
+	
+	public HashMap readResponseOfSearchedSongs(HttpResponse response) throws ParseException, JSONException, IOException
+	{
+				
+		
+		JSONArray responseArray=new JSONArray();
+		JSONArray columnarray=new JSONArray();
+		HashMap<String,JSONObject> songsdata=new HashMap<String,JSONObject>();
+		String ids=new String();
+		if(response!=null)
+		{
+			
+			JSONObject json = new JSONObject(EntityUtils.toString(response.getEntity()));
+			
+			if(json.has("DATA"))
+			{
+				JSONArray datarry=json.getJSONArray("DATA");
+				for(int i=0;i<datarry.length();i++)
+				{
+					JSONObject songobj=new JSONObject();
+					JSONArray songarry=datarry.getJSONArray(i);
+					String id=new String();
+					for(int j=0;j<songarry.length();j++)
+					{
+						if(j==0 && songarry.get(j)!=null)
+						{
+							id=songarry.getString(j);
+						}
+						if(j==1)
+							songobj.put("fileName", songarry.get(j));
+						if(j==22)
+							songobj.put("source", songarry.get(j));
+					}
+					songsdata.put(id, songobj);
+					
+				}
+			}
+			
+	
+			return songsdata;
+			
+		}
+		
+		return null;
+	}
+	
 	public JSONArray readResponseForCustomFields(HttpResponse response,HashMap<String,JSONObject> songsdata) throws ParseException, JSONException, IOException
 	{
 				

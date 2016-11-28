@@ -167,4 +167,18 @@ public class RazunaServiceTest
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void testSearchKeyword1() throws ParseException, JSONException, IOException{
+		RazunaService service=new RazunaService();
+		assertNull(service.searchKeyword(null, "rock"));
+		
+	}
+	
+	@Test
+	public void testSearchKeyword2() throws ParseException, JSONException, IOException{
+		RazunaService service=new RazunaService();
+		assertEquals(true,service.searchKeyword("4BB7CA2D4E3F40BDA52C829E0F09C693", "adele").length()>0);
+		
+	}
 }
