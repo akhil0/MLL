@@ -126,7 +126,7 @@ public class RazunaService
 			songsdata=httputil.readResponseOfSongsRetrieval(httputil.callRazunaAPI(reqMap, config.Razuna_CREATE_FOLDER_METHOD));
 			System.out.println("RetrieveSongs "+songsdata);
 			songs= retrieveMetaDataOfSongs(songsdata);
-			if(songs.get(0)!=null &&songs.getJSONObject(0).has("fileName") && songs.getJSONObject(0).getInt("fileName")==0)
+			if(songs.get(0)!=null && songs.length()==1 && !songs.getJSONObject(0).has("source"))
 				songs=new JSONArray();
 		}
 		
@@ -295,10 +295,10 @@ public static void main(String[] args)
  {
 	 RazunaService service=new RazunaService();
 	 try {
-		 JSONArray songs=service.RetrieveSongs("1234");
+		 JSONArray songs=service.RetrieveSongs("4BB7CA2D4E3F40BDA52C829E0F09C693");
 		 System.out.println(songs.length());
 		
-		service.deleteFolders();
+		//service.deleteFolders();
 	} catch ( Exception  e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

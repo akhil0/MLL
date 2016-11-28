@@ -137,7 +137,7 @@ public class RazunaServiceTest
 	{
 		RazunaService service=new RazunaService();
 		try {
-			assertEquals(true,service.RetrieveSongs("40E5FD89FF8945B5A94719E8613217D8").length()>0);
+			assertEquals(true,service.RetrieveSongs("4BB7CA2D4E3F40BDA52C829E0F09C693").length()>0);
 		} catch (ParseException | JSONException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
