@@ -41,8 +41,13 @@ public class ARHomePageService {
 	* @since   2016-11-23 
 	*/
 	public JSONObject getMusiciansForARUser(HttpServletRequest request, HttpServletResponse response) {
-		String userId = request.getSession().getAttribute("userId").toString();
-		return getMusiciansWithId(userId);		
+		if(request.getSession().getAttribute("userId").toString()!=null) {
+			String userId = request.getSession().getAttribute("userId").toString();
+			return getMusiciansWithId(userId);
+		}
+		else {
+			return null;
+		}
 	}
 		
 	/**

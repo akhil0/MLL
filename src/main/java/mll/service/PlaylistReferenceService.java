@@ -24,7 +24,7 @@ public class PlaylistReferenceService {
 		
 		JSONObject responseObject = new JSONObject();
 		
-		if(request != null) {
+		if(request.getSession().getAttribute("userId") != null) {
 			int userId = Integer.parseInt(request.getSession().getAttribute("userId").toString());
 			if(request.getParameter("actionType").equals("add")) {
 				String playlistName = request.getParameter("playlistName");
@@ -57,6 +57,7 @@ public class PlaylistReferenceService {
 		}
 		else {
 			responseObject.put("isValid", false);
+			responseObject.put("playlists", null);
 		}
 		return responseObject;
 	}
