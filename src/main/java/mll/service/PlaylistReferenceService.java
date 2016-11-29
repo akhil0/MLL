@@ -52,7 +52,12 @@ public class PlaylistReferenceService {
 				responseObject.put("isValid", true);
 			}
 			else if(request.getParameter("actionType").equals("delete")){
-				responseObject.put("isValid", false);
+				int playlistId = Integer.parseInt(request.getParameter("playlistId"));
+				boolean flag = deletePlaylistForUser(playlistId, userId);
+				List<PlaylistReference> playlists = getAllPlaylistsForUser(userId);
+				JSONArray playlistReferences = convertToJson(playlists);
+				responseObject.put("playlists", playlistReferences);
+				responseObject.put("isValid", true);
 			}
 		}
 		else {
@@ -61,6 +66,26 @@ public class PlaylistReferenceService {
 		}
 		return responseObject;
 	}
+	
+	public static void main(String args[]) {
+		boolean flag = new PlaylistReferenceService().deletePlaylistForUser(2,1);
+		System.out.println(flag);
+	}
+	
+	
+	
+	public boolean deletePlaylistForUser(int playlistId, int userId) {
+		
+		boolean flag = new PlaylistReferenceDAO().deletePlaylist(playlistId, userId);
+		return flag;
+		
+	}
+	
+	
+	
+	
+	
+	
 	
 	/*
 	 * This method takes in the user identifier and the playlist name and adds a 

@@ -93,9 +93,6 @@ public class PlaylistReferenceDAO {
         		p.setUserId(list.get(i).getUserId());
         		p.setPlaylistName(list.get(i).getPlaylistName());
         		
-        		System.out.print(list.get(i).getUserId());
-        		System.out.print(" -> " +  list.get(i).getId());
-        		System.out.println(" -> " + list.get(i).getPlaylistName());
         		playlists.add(p);        		
         	}
             
@@ -116,8 +113,53 @@ public class PlaylistReferenceDAO {
 		return playlists;
 	}
 	
-	public boolean deletePlaylist(PlaylistReference playlistReference) {
-		return false;	
+	
+	
+	
+	public boolean deletePlaylist(int playlistId, int userId) {
+		
+		
+		System.out.println("PlaylistId " + playlistId + " userId " + userId );
+		
+		Session session = null;
+		Transaction tx = null;
+		
+		
+		if(playlistId <= 0)
+			return false;
+		
+		
+		try
+		{
+			// Initialize the session and transaction
+			session = SessionFactoryUtil.getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();
+			
+			Query query = session.createQuery("FROM mll.beans.PlaylistReference pr where pr.userId=:userId AND pr.id=:playlistId");
+			query.setParameter("userId", userId);
+			query.setParameter("playlistId", playlistId);
+			
+			PlaylistReference pr = (PlaylistReference) query.uniqueResult();
+			
+			session.delete(pr);
+			
+			// Commit the transaction if all the data successfully saved
+	        if (!tx.wasCommitted()) {
+	        	tx.commit();
+	        }
+	        
+	    }
+		catch(Exception e)
+		{
+			if( null != tx)
+			{
+				// Rollback the transaction if any error comes during the process
+				 tx.rollback();
+			}
+			throw e;
+		}
+		return true;
+	
 	}
 	
 }

@@ -10,7 +10,8 @@
     function arHomeSerivce($http, authenticationService) {
         return {
         	getAllPlaylists: getAllPlaylists,
-            add: add
+            add: add,
+            deletePlayList : deletePlayList
         };
 
         function getAllPlaylists(userId) {
@@ -28,6 +29,13 @@
         	var playListUrl = '/MLL/PlaylistServlet/?playlistId=' + playlistId;
 //            return $http.get(playListUrl);
             return null;
+        }
+        
+        function deletePlayList(playlistId) {
+        	console.log("DELETE  " + playlistId)
+        	var playlistUrl = '/MLL/PlaylistReferenceServlet/?playlistId=' + playlistId + '&actionType=delete';
+        	console.log(playlistUrl);
+            return $http.get(playlistUrl);
         }
     }
 })(window.angular);

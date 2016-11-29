@@ -2,8 +2,7 @@
     <h1>Your Playlists</h1><br>
     <div class = "scrollmenu well well-ng">
         <div class='item' ng-repeat="x in ctrl.myList" ng-click="ctrl.getPlayListId($index)"> 
-            <img src="dist/fonts/del.png" class='delete' ng-click = "ctrl.delete_item($index)">
-
+            <img src="dist/fonts/del.png" class='delete' ng-click = "ctrl.deletePlayList(x.id)">
         	<span>{{ x.playlistName }}</span>
 <!--         	<a ng-click="ctrl.getPlayListId($index)">Delete</a> -->
 
