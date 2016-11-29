@@ -15,10 +15,15 @@
 
         this.form = { invalid: true, submitted: false };
 
-        this.validate = (isChecked) => this.form.invalid = !isChecked;
+        this.validate = (isChecked) => {
+            this.form.invalid = !isChecked;
+        }
 
         this.register = () => {
-            if (this.registrationForm.$invalid) this.registrationForm.$submitted = true;
+
+            if(this.form.invalid) this.registrationForm.$submitted = true;
+
+            else if (this.registrationForm.$invalid) this.registrationForm.$submitted = true;
 
             else
                 registrationService.register(this.data)
