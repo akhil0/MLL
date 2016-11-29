@@ -29,7 +29,7 @@ public class MailService
 		
 		try
 		{
-			sendMail(invite.getToken().getEmailId(), "Invite from Media Licencing Lab", "\n"+ invite.getToken().getMessageBody() + "\n\nHere is your personalized invitation link. Use it to create your profile in the platform :: " + invite.getUrl() + "\n\nIf you received this message in error, or if you have a problem during the registration process, please contact "+ conf.EMAIL_ADDRESS_FOR_SUPPORT +".\n\nThanks,\nMedia Team");
+			sendMail(invite.getToken().getEmailId(), "Invite from Media Licencing Lab", "\n"+ invite.getToken().getMessageBody() + "<br/><br/>" + "<html><a href="+invite.getUrl()+"> Click Here </a></html>" + "for your personalized invitation link. Use it to create your profile in the platform.<br/><br/>If you received this message in error, or if you have a problem during the registration process, please contact "+ conf.EMAIL_ADDRESS_FOR_SUPPORT +".<br/><br/>Thanks,<br/>Media Team");
 		}
 		catch(Exception e)
 		{
@@ -56,7 +56,6 @@ public class MailService
 			props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 			props.put("mail.smtp.auth", "true");
 			props.put("mail.smtp.port", "465");
-	
 			Session session = Session.getInstance(props, new javax.mail.Authenticator() 
 			{
 				@Override
@@ -70,7 +69,8 @@ public class MailService
 			message.setFrom(new InternetAddress(conf.FROM_EMAIL_ADDRESS, conf.FROM_NAME));
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(receiverMail));
 			message.setSubject(subjectLine);
-			message.setText(msg);
+			//message.setText(msg);
+			message.setContent(msg, "text/html; charset=utf-8");
 
 			Transport.send(message);
 		}
