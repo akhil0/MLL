@@ -45,8 +45,13 @@
 	    	 ctrl.new_playlist_data1 = false;
 			 
 	     };
-	     ctrl.delete_item = function(index){
-	    	 ctrl.myList.splice(index, 1);
+	     
+	     ctrl.deletePlayList = function(index){	    	 
+	    	 arHomeSerivce.deletePlayList(index).success(function(response){
+	    		 console.log(response);
+			    	ctrl.myList = response.playlists;	    		
+		    	 })
+//	    	 ctrl.myList.splice(index, 1);
 	    				 
 	     };
 
