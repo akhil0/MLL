@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet
 			responseObject.put("browse", login.isCanBrowse());
 			responseObject.put("upload", login.isCanUpload());
 			responseObject.put("email", login.getUser().getEmailId());
-			
+		
 			if (login.getType() == Login.musicianType) 
 			{
 				responseObject.put("name", login.getMusician().getName());
@@ -63,6 +63,7 @@ public class LoginServlet extends HttpServlet
 				responseObject.put("gender", login.getAdmin().getGender());
 				responseObject.put("preference", login.getAdmin().getPreference());
 				responseObject.put("age", login.getAdmin().getAge());
+				session.setAttribute("userId",login.getUser().getId());
 			}
 		}
 		else 

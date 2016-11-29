@@ -25,8 +25,8 @@ public class PlaylistReferenceService {
 		JSONObject responseObject = new JSONObject();
 		
 		if(request != null) {
+			int userId = Integer.parseInt(request.getSession().getAttribute("userId").toString());
 			if(request.getParameter("actionType").equals("add")) {
-				int userId = Integer.parseInt(request.getParameter("userId"));
 				String playlistName = request.getParameter("playlistName");
 				boolean isSuccess = addPlaylistForUser(userId, playlistName);
 				if(isSuccess) {
@@ -44,7 +44,7 @@ public class PlaylistReferenceService {
 			}
 			else if(request.getParameter("actionType").equals("get")) {
 				System.out.println("IN GET");
-				int userId = Integer.parseInt(request.getParameter("userId"));
+				
 				System.out.println("USER ID" + userId);
 				List<PlaylistReference> playlists = getAllPlaylistsForUser(userId);
 				JSONArray playlistReferences = convertToJson(playlists);
