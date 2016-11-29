@@ -44,6 +44,7 @@ public class RegistrationDAO
 					{
 						responseObject.put("isRegistered", true);
 						responseObject.put("userId", userId);
+						responseObject.put("type", userdetails.getType());
 						
 						if(userdetails.getType().equalsIgnoreCase("user"))
 						{
@@ -60,6 +61,7 @@ public class RegistrationDAO
 							session.save(userdetails.getMusician());
 					        responseObject.put("browse", false);
 							responseObject.put("upload", true);
+							responseObject.put("type", userdetails.getType());
 						}
 					}
 					else

@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.json.simple.JSONObject;
 import org.junit.Test;
 
+import mll.beans.User;
 import mll.beans.UserDetails;
 
 public class RegistrationDAOTest 
@@ -85,6 +86,27 @@ public class RegistrationDAOTest
 			UserDetails userDetails = new UserDetails();
 			userDetails.setUsers(null);
 			assertEquals(false, dao.registerUser(userDetails) == responseObject);
+		} 
+		catch (Exception e) 
+		{
+
+		}
+	}
+	
+	@Test
+	public void testRegisterUserType() 
+	{
+		try 
+		{
+			RegistrationDAO dao = new RegistrationDAO();
+			UserDetails userDetails = new UserDetails();
+			User users = new User();
+			users.setId(1);
+			users.setUserName("naomi");
+			users.setUserType("musician");
+			userDetails.setUsers(users);;
+			userDetails.setType("musician");
+			assertEquals(false, dao.registerUser(userDetails).get("type").equals("musician"));
 		} 
 		catch (Exception e) 
 		{
