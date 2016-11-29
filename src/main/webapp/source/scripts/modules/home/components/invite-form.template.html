@@ -50,8 +50,8 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="col-xs-12">
-                        <textarea class="form-control" rows="3" ng-model="ctrl.data.messageBody" placeholder="Message">
+                    <div class="col-xs-12" ng-init="ctrl.data.messageBody= 'Hi,\n You are  cordially invited to join Media Licensing Lab. MLL is a student-run music licensing program that will let you license your best songs and also connect with other Musicians, A&R representatives and the Northeastern Community'">
+                        <textarea class="form-control messageBoxSize" rows="3" ng-model="ctrl.data.messageBody" placeholder="Message">
                         </textarea>
                     </div>
                 </div>
