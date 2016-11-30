@@ -312,6 +312,22 @@ $black: #2E3641;
 width: 900px;
 }
 
+.scrollmenu .pldiv{
+    color: #fff;
+    font-size: 14px;
+    text-shadow: 0 0 3em #000;
+    background: linear-gradient(-0deg, #F9bD75, #CE4647);
+     width: 150px;
+     height: 150px;
+    border: 4px solid #Ffffff;
+    border-radius: 4px;
+     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+  box-shadow: 2px 2px 15px #888888;
+  line-height:100px;
+  text-align:center;
+    
+}
+
 .scrollmenu .item {
 display: inline-block;
      
@@ -320,17 +336,7 @@ display: inline-block;
     margin: 20px;
     margin-left: 10px;
     text-decoration: none;
-     background: linear-gradient(-0deg, #F9bD75, #CE4647);
-     width: 150px;
-     height: 150px;
-    border: 4px solid #Ffffff;
-    border-radius: 4px;
-     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
-  box-shadow: 2px 2px 15px #888888;
-}
-.scrollmenu .item  span{
-    position: relative;
-	left: -30px;
+     
 }
 
 .scrollmenu {
@@ -338,15 +344,11 @@ display: inline-block;
     overflow: auto;
     white-space: nowrap;
 }
-.scrollmenu .item:hover {
+.scrollmenu .pldiv:hover {
   box-shadow: 2px 2px 20px #222002;
     transition: 0.25s, ease-in;
 }
-.scrollmenu span{
-    color: #fff;
-    font-size: 14px;
-    text-shadow: 0 0 3em #000;
-}
+
 
 
 .cont input {
@@ -362,11 +364,12 @@ display: inline-block;
 }
 
 .delete{
-	height: 30px;
-	width: 30px;
+	height: 40px;
+	width: 40px;
 	position: relative;
     left: 118px;
-    top: -33px;
+    top:0.4em;
+    
 
 }
 
