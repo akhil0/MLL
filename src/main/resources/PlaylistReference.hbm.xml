@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Nov 7, 2016 2:03:42 AM by Hibernate Tools 5.1.0.Alpha1 -->
 <hibernate-mapping>
-    <class name="mll.beans.PlaylistReference">
+    <class name="mll.beans.PlaylistReference" table="PlaylistReference">
         <id name="id" type="int">
             <column name="id" />
             <generator class="assigned" />
