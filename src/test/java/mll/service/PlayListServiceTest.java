@@ -31,6 +31,9 @@ public class PlayListServiceTest {
 		assertEquals(true, result == false);
 	}
 	
+	
+	
+	
 	@Test
 	public void testPlayListDeletePlayList() throws Exception
 	{
@@ -46,4 +49,35 @@ public class PlayListServiceTest {
 		boolean result = playService.updatePlayList(null);
 		assertEquals(true, result == false);
 	}
+	
+	//11:32
+	@Test
+	public void testAddSongPlaylist1() throws Exception
+	{
+		PlaylistService playService = new PlaylistService();
+		boolean result = playService.addSongPlaylist(1, 1, null);
+		assertEquals(true, result == false);
+	}
+	
+	@Test
+	public void testAddSongPlaylist2() throws Exception
+	{
+		PlaylistService playService = new PlaylistService();
+		boolean result = playService.addSongPlaylist(1, 1, "");
+		assertEquals(true, result == false);
+	}
+	@Test
+	public void testAddSongPlaylist3() throws Exception
+	{
+		PlaylistService playService = new PlaylistService();
+		boolean result = playService.addSongPlaylist(1, 1, "----");
+		assertEquals(true, result == false);
+	}
+	
+	
+	
+	
+	
+	
+	
 }

@@ -51,4 +51,10 @@ public class PlaylistService {
 	public boolean updatePlayList(Playlist playlist) {
 		return false;
 	}	
+
+	
+	public boolean addSongPlaylist(int userId, int playlistId, String assetId) 
+    {
+          return false;
+    }
 }
