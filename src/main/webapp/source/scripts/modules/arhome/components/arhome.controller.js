@@ -54,7 +54,11 @@
 //	    	 ctrl.myList.splice(index, 1);
 	    				 
 	     };
-
+         
+		 
+		  ctrl.sharePlayList = function(index){	
+		           console.log(index);
+		   };
 	     function getAllPlaylists(){
 	    	 arHomeSerivce.getAllPlaylists(userId).success(function(response){
 		    	ctrl.myList = response.playlists;	    		
