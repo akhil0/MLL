@@ -135,6 +135,8 @@ public class HttpUtility {
 						{
 							id=songarry.getString(j);
 						}
+						if(j==0)
+							songobj.put("assetId", songarry.get(j));
 						if(j==1)
 							songobj.put("fileName", songarry.get(j));
 						if(j==19)
