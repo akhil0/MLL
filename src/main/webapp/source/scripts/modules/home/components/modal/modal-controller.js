@@ -14,6 +14,7 @@
        model.sortReverse = false;
        
        model.showPlaylistColumn = false
+       model.selctedPlaylist = {};
        function init(){
            getSongs();       
            getAllPlaylists();
@@ -42,12 +43,17 @@
        
        model.addToPlayList = function(assetId){
     	   console.log(assetId);
-    	   if(model.selectedPlaylist){	    		   
+    	   if(model.selectedPlaylist){
+    		   console.log(model.selectedPlaylist);
     		   arHomePageSerivce.addSongToPlaylist(assetId, model.selectedPlaylist.id).success(function(response){
-    		   console.log(response);
-
-	        	   model.showPlaylistColumn = true;
-	        	   model.showPlayList = trackName;	
+    			   console.log(response);
+    			   if(response.isValid){
+    	        	   model.showPlaylistColumn = true;
+    	        	   model.responseMessage = "Song added to your playlist";
+    			   }else{
+    				   model.responseMessage = "Song already exist in this playlist";
+    			   }
+	        	   model.selectedPlaylist = null;
 	    	   })
     	   }else{
 	    		   model.responseMessage = "Select a playlist";

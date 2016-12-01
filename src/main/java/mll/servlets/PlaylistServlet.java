@@ -40,7 +40,9 @@ public class PlaylistServlet extends HttpServlet {
 			PlaylistService playlistService = new PlaylistService();
 			if(action.equals("add"))  
 			{
-				playlistService.addSongPlaylist(userId, playlistId, assetId);
+				boolean isValid = playlistService.addSongPlaylist(userId, playlistId, assetId);
+				responseObject.put("isValid", isValid);
+				
 			}
 //			else if(action.equals("delete"))
 //			{
@@ -56,6 +58,7 @@ public class PlaylistServlet extends HttpServlet {
 		}
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
+		System.out.println(responseObject);
 		out.print(responseObject);
 		out.flush();
 	}

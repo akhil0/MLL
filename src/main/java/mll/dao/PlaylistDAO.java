@@ -38,6 +38,48 @@ public class PlaylistDAO {
 
 	public boolean addSongPlaylist(Playlist playlist) 
 	{
-		return false;
+		if(playlist == null || playlist.getSong_id()==null || playlist.getPlaylist_id()<=0)
+			return false;
+		
+		Session session = null;
+		Transaction tx = null;
+		
+		try
+		{
+			session = SessionFactoryUtil.getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();
+			
+			session.save(playlist);
+	 
+	        session.getTransaction().commit();
+	        
+			if (!tx.wasCommitted()) {
+	        	tx.commit();
+	        }
+	        
+			System.out.println("AYAYAYAYAYA");
+	    }
+		catch(HibernateException e) 
+		{
+			System.out.println("Inside Exception");
+			if( null != tx)
+			{
+				tx.rollback();
+			}
+			return false;
+		  // Error message for integrity constraint violation
+		}
+		catch(Exception e)
+		{
+			System.out.println("Inside Exception 1");
+			if( null != tx)
+			{
+				tx.rollback();
+			}
+			return false;
+		  //
+		}
+		
+		return true;
 	}
 }

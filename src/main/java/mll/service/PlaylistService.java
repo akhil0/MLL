@@ -55,6 +55,16 @@ public class PlaylistService {
 	
 	public boolean addSongPlaylist(int userId, int playlistId, String assetId) 
     {
-          return false;
+		System.out.println("ADD SONGS ");
+        Playlist playlist = new Playlist();
+        playlist.setPlaylist_id(playlistId);
+        if(assetId==null || assetId.equals(""))
+            return false;
+        else
+            assetId = assetId.trim();
+        playlist.setSong_id(assetId);
+        boolean flag = dao.addSongPlaylist(playlist);
+        System.out.println("Song " + assetId + " Playlist " + playlistId + "  " + flag);
+        return flag;
     }
 }
