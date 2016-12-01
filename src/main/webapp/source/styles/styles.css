@@ -609,3 +609,54 @@ td.text-right {
 .messageBoxSize{
 	height: 200px!important;
 }
+
+.tabs {
+  background: #333333;
+  border: 2px solid #F97D75;
+  border-bottom: none;
+}
+.tabs span {
+  margin-right: 0px;
+  width: 50%;
+  cursor: pointer;
+  position: relative;
+  padding: 18px 20px 18px;
+  display: inline-block;
+  color: #fff;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+.tabs span:hover {
+  background: #222;
+}
+.tabs .active {
+  background: #F97D75;
+  color: #ffffff;
+}
+.tabs .active:hover {
+  background: #F97D75;
+  color: #ffffff;
+}
+.tabs .active:after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  width: 0;
+  height: 0;
+  left: 10%;
+  margin-left: -10px;
+  border-style: solid;
+  border-width: 0 14px 14px 14px;
+  border-color: transparent transparent #ffffff transparent;
+}
+.tab-content {
+  border: 2px solid #F97D75;
+  border-top: none;
+  background: #ffffff;
+  clear: both;
+  overflow: hidden;
+  text-align: left;
+  padding: 3%;
+  margin-bottom: 30px;
+}

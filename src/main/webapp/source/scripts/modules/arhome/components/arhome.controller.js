@@ -17,6 +17,8 @@
 
 	    ctrl.new_playlist_data1 = true;
 
+        ctrl.selected ="1";
+		
 	    ctrl.add = function() {
 	    	if(ctrl.input){
 				if(ctrl.input.length > 15){
