@@ -1,21 +1,59 @@
-<div  class="cont">
-    <h1>Your Playlists</h1><br>
-    <div class = "scrollmenu well well-ng">
-        <div class='item' ng-repeat="x in ctrl.myList" > 
-            <img src="dist/fonts/delete.png" class='delete' ng-click = "ctrl.deletePlayList(x.id)">
-            <img src="dist/fonts/share.png" class='share' ng-click = "ctrl.sharePlayList(x.id)">
-        	<div class='pldiv' ng-click="ctrl.getPlayListId($index)">{{ x.playlistName }}</div>
-<!--         	<a ng-click="ctrl.getPlayListId($index)">Delete</a> -->
-
-        </div>
+<div class='tabs'>
+    <span ng-class="{'active': (ctrl.selected == '1')}" ng-click='ctrl.selected=1'>
+      Your Playlists
+    </span>
+    <span ng-class="{'active': (ctrl.selected == '2')}" ng-click='ctrl.selected=2'>
+      More Playlists
+    </span>
+ </div>
+<div class='tab-content'>
+    <div ng-show='ctrl.selected == 1'>
+		<div  class="cont">
+			<h1>Your Playlists</h1><br>
+			
+				<div class = "scrollmenu well well-ng">
+					<div class='item' ng-repeat="x in ctrl.myList" > 
+						<img src="dist/fonts/delete.png" class='delete' ng-click = "ctrl.deletePlayList(x.id)">
+						<img src="dist/fonts/share.png" class='share' ng-click = "ctrl.sharePlayList(x.id)">
+						<div class='pldiv' ng-click="ctrl.getPlayListId($index)">{{ x.playlistName }}</div>	</div></div>
+<!--   				      	<a ng-click="ctrl.getPlayListId($index)">Delete</a> -->
+				
+				<button type="submit" ng-click="ctrl.addplaylist()" ng-show="ctrl.new_playlist_data1">add new playlist</button>
+				
+				<div ng-show="ctrl.new_playlist_data" >        
+					<input type="text" placeholder="Enter Title" ng-model="ctrl.input" id="input" focus>
+					<button type="submit" ng-click ="ctrl.add()"> submit</button></div>
+					
+				<div class="alert alert-danger" ng-show="ctrl.error_message" >{{ctrl.errormsg}}</div>
+		</div>
     </div>
-	 
-	<button type="submit" ng-click="ctrl.addplaylist()" ng-show="ctrl.new_playlist_data1">add new playlist</button>
+    <div ng-show='ctrl.selected == 2'>
+      <h1>More Playlists</h1><br>
+    </div>
     
-    <div ng-show="ctrl.new_playlist_data" >        
-          <input type="text" placeholder="Enter Title" ng-model="ctrl.input" id="input" focus>
-          <button type="submit" ng-click ="ctrl.add()"> submit</button>      
-		  
+  </div>
+
+
+
+
+<!-- 
+<div class='tabs'>
+    <span ng-class="{'active': (selected == '1')}" ng-click='selected=1'>
+      First
+    </span>
+    <span ng-class="{'active': (selected == '2')}" ng-click='selected=2'>
+      Second
+    </span>
+ </div>
+ 
+  <div class='tab-content'>
+    <div ng-show='selected == 1'>
+      This is first content...
     </div>
-	<div class="alert alert-danger" ng-show="ctrl.error_message" >{{ctrl.errormsg}}</div>
+    <div ng-show='selected == 2'>
+      This is second content...
+    </div>
+    
+  </div>
 </div>
+-->
