@@ -59,7 +59,7 @@
     <servlet-name>MusicianHomePageServlet</servlet-name>
     <url-pattern>/MusicianHomePageServlet</url-pattern>
   </servlet-mapping>
-        <servlet>
+  <servlet>
     <description></description>
     <display-name>ARTrackingServlet</display-name>
     <servlet-name>ARTrackingServlet</servlet-name>
@@ -69,7 +69,7 @@
     <servlet-name>ARTrackingServlet</servlet-name>
     <url-pattern>/ARTrackingServlet/*</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>PlaylistReferenceServlet</display-name>
     <servlet-name>PlaylistReferenceServlet</servlet-name>
@@ -79,8 +79,7 @@
     <servlet-name>PlaylistReferenceServlet</servlet-name>
     <url-pattern>/PlaylistReferenceServlet/*</url-pattern>
   </servlet-mapping>
-  
-      <servlet>
+  <servlet>
     <description></description>
     <display-name>ARMusicianSongServlet</display-name>
     <servlet-name>ARMusicianSongServlet</servlet-name>
@@ -89,7 +88,7 @@
   <servlet-mapping>
     <servlet-name>ARMusicianSongServlet</servlet-name>
     <url-pattern>/ARMusicianSongServlet/*</url-pattern>
-     </servlet-mapping>
+  </servlet-mapping>
   <servlet>
     <description></description>
     <display-name>SearchServlet</display-name>
@@ -99,5 +98,15 @@
   <servlet-mapping>
     <servlet-name>SearchServlet</servlet-name>
     <url-pattern>/SearchServlet/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteAssetServlet</display-name>
+    <servlet-name>DeleteAssetServlet</servlet-name>
+    <servlet-class>mll.servlets.DeleteAssetServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteAssetServlet</servlet-name>
+    <url-pattern>/DeleteAssetServlet/*</url-pattern>
   </servlet-mapping>
 </web-app>
