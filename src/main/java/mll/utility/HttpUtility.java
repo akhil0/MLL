@@ -269,6 +269,21 @@ public class HttpUtility {
 		 
 		return params;
 	}
+	
+	public String readResponseForAssetDeletion(HttpResponse response) throws ParseException, JSONException, IOException {
+		
+		String message = "failure";
+		if(response!=null && response.getStatusLine().getStatusCode()==200)
+		{
+			JSONObject json = new JSONObject(EntityUtils.toString(response.getEntity()));
+			if(json.has("responsecode")){
+				if(json.getInt("responsecode") == 0){
+					message = json.getString("message");
+				}
+			}
+		}
+		return message;
+	}
 
 
 }

@@ -14,6 +14,7 @@ import mll.utility.Configuration;
 import mll.utility.HttpUtility;
 import mll.utility.MultipartUtility;
 
+import org.apache.http.HttpResponse;
 import org.apache.http.ParseException;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -277,17 +278,20 @@ public class RazunaService
 		
 	}
 	
-	public void deleteAsset(String assetId) throws JSONException
+	public String deleteAsset(String assetId) throws JSONException, ParseException, IOException
 	{
 		JSONArray array=new JSONArray();
 		
-		
-				HashMap<String,String> reqMap=new HashMap<String,String>();
-				reqMap.put("method", "remove");
-				reqMap.put("api_key", new Configuration().RAZUNA_KEY);
-				reqMap.put("folder_id",assetId);
-				httputil.callRazunaAPI(reqMap, config.RAZUNA_ASSET_METHOD);
-				
+		if(assetId != null){
+			HashMap<String,String> reqMap=new HashMap<String,String>();
+			reqMap.put("method", "remove");
+			reqMap.put("api_key", new Configuration().RAZUNA_KEY);
+			reqMap.put("assetid",assetId);
+			HttpResponse response = httputil.callRazunaAPI(reqMap, config.RAZUNA_ASSET_METHOD);
+			String res = httputil.readResponseForAssetDeletion(response);
+			return res;
+		}
+		return "Please choose a song to be deleted";		
 		
 	}
 	public JSONArray searchKeyword(String folder_id, String searchWord) throws ParseException, JSONException, IOException{
@@ -310,22 +314,24 @@ public class RazunaService
 		return null;
 	}
 	
-//public static void main(String[] args)
-// {
-//	 RazunaService service=new RazunaService();
-//	 try {
+public static void main(String[] args)
+ {
+	 RazunaService service=new RazunaService();
+	 try {
 //		 JSONArray songs=service.RetrieveSongs("4BB7CA2D4E3F40BDA52C829E0F09C693");
 //		 System.out.println(songs.length());
-//		
-//		//service.deleteFolders();
+		
+		//service.deleteFolders();
 //		 JSONArray songs=service.searchKeyword("4BB7CA2D4E3F40BDA52C829E0F09C693", "adele");
 //		 System.out.println(songs.length());
-//		
-//	} catch ( Exception  e) {
-//		// TODO Auto-generated catch block
-//		e.printStackTrace();
-//	}
-// }
+		 String res = service.deleteAsset("A25B4FD8AA55428CA1AF8EB0F62B17F5");
+		 System.out.println(res);
+		
+	} catch ( Exception  e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+ }
 	
 }
 

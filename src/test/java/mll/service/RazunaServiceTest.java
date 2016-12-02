@@ -20,6 +20,8 @@ import mll.beans.Metadata;
 import mll.beans.SongMetadata;
 import mll.utility.Configuration;
 import mll.utility.HttpUtility;
+import mll.utility.MultipartUtility;
+import mll.utility.RazunaUtility;
 
 
 public class RazunaServiceTest
@@ -176,9 +178,65 @@ public class RazunaServiceTest
 	}
 	
 	@Test
-	public void testSearchKeyword2() throws ParseException, JSONException, IOException{
+	public void testSearchKeyword2() throws Exception{
 		RazunaService service=new RazunaService();
-		assertEquals(true,service.searchKeyword("4BB7CA2D4E3F40BDA52C829E0F09C693", "adele").length()>0);
+		String fileName = "test";
+		String charset = "UTF-8";
+		String contentString = "test";
+		byte[] content = contentString.getBytes();
+		//positive path
+		MultipartUtility multipart = new MultipartUtility(new Configuration().RAZUNA_URL, charset);
+		multipart.addFormField("fa", "c.apiupload");
+		multipart.addFormField("api_key", new Configuration().RAZUNA_KEY);
+		multipart.addFormField("destfolderid", "4BB7CA2D4E3F40BDA52C829E0F09C693");
+		
+		multipart.addFilePart(fileName, content);
+		String response = multipart.finish();
+		assertEquals(true,service.searchKeyword("4BB7CA2D4E3F40BDA52C829E0F09C693", "test").length()>0);
+		String assetid=RazunaUtility.parseRazunaResponse(response);
+//		service.deleteAsset(assetid);
+		
+	}
+	
+	@Test
+	public void testdeleteassetsuccess() throws Exception
+	{
+		RazunaService service=new RazunaService();
+		String fileName = "test";
+		String charset = "UTF-8";
+		String contentString = "test";
+		byte[] content = contentString.getBytes();
+		//positive path
+		MultipartUtility multipart = new MultipartUtility(new Configuration().RAZUNA_URL, charset);
+		multipart.addFormField("fa", "c.apiupload");
+		multipart.addFormField("api_key", new Configuration().RAZUNA_KEY);
+		multipart.addFormField("destfolderid", "4BB7CA2D4E3F40BDA52C829E0F09C693");
+		
+		multipart.addFilePart(fileName, content);
+		String response = multipart.finish();
+		String assetid=RazunaUtility.parseRazunaResponse(response);
+		String res = service.deleteAsset(assetid);
+		assertEquals(true, res.contains("successfully") == true );
+		
+	}
+	
+	@Test
+	public void testdeleteassetsuccess2() throws Exception
+	{
+		RazunaService service=new RazunaService();
+		String assetid = "xdrtytyty";
+		String res = service.deleteAsset(assetid);
+		assertEquals(true, res.contains("successfully") == true );
+		
+	}
+	
+	@Test
+	public void testdeleteassetfailure() throws Exception
+	{
+		RazunaService service=new RazunaService();
+		String assetid = null;
+		String res = service.deleteAsset(assetid);
+		assertEquals(true, res.contains("choose a song to be deleted") == true );
 		
 	}
 }
