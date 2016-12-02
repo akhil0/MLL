@@ -59,7 +59,7 @@ public class SongRetrievalDAO {
 		JSONObject ownerInfo=null;
 		Session session = null;
 		Transaction tx = null;
-		if(set!=null)
+		if(set!=null && set.size() > 0)
 		{
 			ownerInfo=new JSONObject();
 			try
