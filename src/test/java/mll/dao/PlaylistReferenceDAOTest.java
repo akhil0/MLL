@@ -18,20 +18,7 @@ public class PlaylistReferenceDAOTest {
 		{
 		}
 	}
-	
-	@Test
-	public void testDeletePlaylist1() 
-	{
-		try 
-		{
-			PlaylistReferenceDAO dao = new PlaylistReferenceDAO();
-			assertEquals(true, dao.deletePlaylist(null) == false);
-		} 
-		catch (Exception e) 
-		{
-		}
-	}
-	
+		
 	@Test
 	public void testGetAllPlaylistsForUserId1()
 	{
