@@ -54,7 +54,10 @@
 	                    <p><b> File Name: </b> {{track.fileName}}  </p> </section>
 	                    
 	                    <section ng-show="isCollapsed">
-	                    <p><b> Artists: </b> {{track.Artists}}  </p> </section>
+	                    <p><b> Owner: </b> {{track.owner}}  </p> </section>
+	                    
+	                    <section ng-show="isCollapsed">
+	                    <p><b> Writer: </b> {{track.OwnerShipInfo.WRITER.Name}}  </p> </section>
 	                    
 	                    <section ng-show="isCollapsed">
 	                    <p><b> Copyright Number: </b> {{track.copyright_number}}  </p> </section>
@@ -66,66 +69,11 @@
 	                    <p><b> Secondary Genre: </b> {{track.secondary_genre}}  </p> </section>
 	                    
 	                    <section ng-show="isCollapsed">
-	                    <p><b> Beats Per Minute: </b> {{track.bits_per_minute}}  </p> </section>
+	                    <p><b> Beats Per Minute: </b> {{track.beats_per_minute}}  </p> </section>
 	                    
 	                    <section ng-show="isCollapsed">
 	                    <p><b> Publishing Company: </b> {{track.publishing_company}}  </p> </section>
                     </div>
-                    
-                    <!--  <div class="table" ng-show="isCollapsed">
-                    <table class="table-responsive table-striped metadata-table ng-scope">
-                        <tbody>
-                            <tr>
-                                <td class="metadata"><b> Title: </b>
-                                </td>
-                                <td> {{track.Title}} 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="metadata"><b> File Name: </b>
-                                </td>
-                                <td> {{track.fileName}} 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="metadata"><b> Artists: </b>
-                                </td>
-                                <td> {{track.Artists}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="metadata"><b> Copyright Number: </b>
-                                </td>
-                                <td> {{track.copyright_number}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="metadata"><b> Primary Genre: </b>
-                                </td>
-                                <td> {{track.primary_genre}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="metadata"><b> Secondary Genre: </b>
-                                </td>
-                                <td> {{track.secondary_genre}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="metadata"><b> Beats Per Minute: </b>
-                                </td>
-                                <td> {{track.bits_per_minute}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="metadata"><b> Publishing Company: </b>
-                                </td>
-                                <td> {{track.publishing_company}}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    </div>-->
                 </td>
                 <td class="text-left">
                     0

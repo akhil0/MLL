@@ -78,6 +78,16 @@
   <servlet-mapping>
     <servlet-name>PlaylistReferenceServlet</servlet-name>
     <url-pattern>/PlaylistReferenceServlet/*</url-pattern>
+  </servlet-mapping> 
+  <servlet>
+    <description></description>
+    <display-name>PlaylistServlet</display-name>
+    <servlet-name>PlaylistServlet</servlet-name>
+    <servlet-class>mll.servlets.PlaylistServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PlaylistServlet</servlet-name>
+    <url-pattern>/PlaylistServlet/*</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>

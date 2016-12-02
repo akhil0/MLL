@@ -20,30 +20,33 @@
 						class="glyphicon glyphicon-triangle-bottom"></span></span> ADD TO
 					PLAYLIST
 				</th>
-				<th
-					ng-click="ctrl.sortType='dateAdded'; ctrl.sortReverse = !ctrl.sortReverse">
-					<span ng-show="ctrl.sortType == 'dateAdded'"> <span
-						ng-show="!ctrl.sortReverse"
-						class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
-						<span ng-show="ctrl.sortReverse"
-						class="glyphicon glyphicon-triangle-bottom"></span></span> Date Added
-				</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr ng-repeat="track in model.tracks">
 				<td>
-					<!--     		 	ng-click="isCollapsed = !isCollapsed" --> <a>
-						{{track.fileName}} <br />
-				</a> <audio src={{track.source}} controls>
+					<!--     		 	ng-click="isCollapsed = !isCollapsed" --> 
+					<a>
+							{{track.fileName}} <br />
+					</a> 
+					<audio src={{track.source}} controls>
 					</audio>
 				</td>
 				<td>
-				<span class="glyphicon glyphicon-plus"></span>
-				</td>
-			</tr>
+					<select ng-change=model.selectPlaylist(playlist) ng-model="playlist">
+      					<option ng-repeat="playlist in model.playlists" value="{{playlist}}">{{playlist.playlistName}}</option>
+			    	</select>
+			    	</br>
+					<span class="glyphicon glyphicon-plus"
+						ng-click="model.addToPlayList(track.assetId)">
+					</span>
+					</br>
+				</td>	
+			</tr>		
+
 		</tbody>
 	</table>
+	{{model.responseMessage}}		
 </div>
 
 
