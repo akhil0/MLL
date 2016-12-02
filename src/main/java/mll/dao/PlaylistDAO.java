@@ -49,10 +49,12 @@ public class PlaylistDAO {
 			session = SessionFactoryUtil.getSessionFactory().getCurrentSession();
 			tx = session.beginTransaction();
 			
+			System.out.println("BEFORE");
 			session.save(playlist);
-	 
+			System.out.println("AFTER");
 	        session.getTransaction().commit();
 	        
+			System.out.println("AFTER TRANSACTION");
 			if (!tx.wasCommitted()) {
 	        	tx.commit();
 	        }

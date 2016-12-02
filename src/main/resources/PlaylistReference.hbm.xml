@@ -14,5 +14,11 @@
        <property name="playlistName">
             <column name="playlist_name" length="200" not-null="true"/>
         </property>
+        <property name="creationDate">
+			<column name="creation_date" not-null="true" />
+		</property>	
+		<property name="isShared">
+			<column name="is_shared" not-null="true" />
+		</property>
     </class>
 </hibernate-mapping>

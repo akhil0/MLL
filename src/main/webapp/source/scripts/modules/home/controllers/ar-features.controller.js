@@ -5,9 +5,9 @@
         .module('mllApp.home')
         .controller('ARFeaturesController', ARFeaturesController);
 
-    ARFeaturesController.$inject = 	['$stateParams', 'arHomePageSerivce'];
+    ARFeaturesController.$inject = 	['$scope', '$stateParams', 'arHomePageSerivce'];
 
-    function ARFeaturesController($stateParams, arHomePageService) {
+    function ARFeaturesController($scope, $stateParams, arHomePageService) {
 
     	var model = this;
         
@@ -33,22 +33,30 @@
         			model.unregisteredMusicians = unregisteredMusiciansObject;
         			model.registered = {
         					data : registeredMusiciansObject,
+        					paginationPageSizes: [1,2,3],
+        					enableFiltering: true,
+        				    onRegisterApi: function(gridApi){
+        				    	$scope.gridApi = gridApi;
+        				    },
         					columnDefs: 
         					[
         						{ field: 'id', name: '', cellTemplate: 'edit-button.html', width: "30%" },
-        					  { field: 'name', displayName: 'First Name', width: "30%" , cellTemplate:'<a href="#">{{row.entity.name}}</a>'},
-                              { field: 'gender', displayName: 'Gender', width: "20%" },
-                              { field: 'age', width: "20%"}
+        					  { field: 'name', displayName: 'First Name', width: "40%" , cellTemplate:'<div style="color:black">{{row.entity.name}}</div>'},
+                              { field: 'age', width: "30%"}
                             ]
         			}
         			
         			model.unregistered = {
         					data : unregisteredMusiciansObject,
+        					enableFiltering: true,
+        				    onRegisterApi: function(gridApi){
+        				      model.gridApi = gridApi;
+        				    },
+        					paginationPageSizes: [1,2,3],
         					columnDefs: 
         					[
-        					  { field: 'emailId', displayName: 'Email', width: "40%" },
-                              { field: 'tokenId', displayName: 'Token Id', width: "30%"},
-                              { field: 'tokenId', displayName: 'Send Invitation', width: "30%", cellTemplate:'<button>Send Invitation</button>'},
+        					  { field: 'emailId', displayName: 'Email', width: "60%" },
+                              { field: 'tokenId', displayName: 'Send Invitation', width: "40%", cellTemplate:'<button>Send Invitation</button>'},
                             ]
         			}
         		});
