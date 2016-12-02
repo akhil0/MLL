@@ -13,20 +13,7 @@ import mll.beans.PlaylistReference;
 
 
 public class PlaylistReferenceServiceTest {
-	
-	@Test
-	public void testAddPlaylist1() 
-	{
-		try 
-		{
-			PlaylistReferenceService service = new PlaylistReferenceService();
-			assertEquals(true, service.addPlaylistForUser(-1, "Test") == false);
-		} 
-		catch (Exception e) 
-		{
-		}
-	}
-	
+		
 	@Test
 	public void testGetAllPlaylistsForUserId1()
 	{
