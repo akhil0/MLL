@@ -44,13 +44,13 @@ public class DeleteAssetServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session=request.getSession();
 	    String assetId = new String();
-	    JSONArray songs=new JSONArray();
+	    String message = null;
 	    if(session.getAttribute("folder_id")!=null)
 	    {
 	    	assetId = request.getParameter("assetId");	
 	    }
 	    try {
-			razunaservice.deleteAsset(assetId);
+			message = razunaservice.deleteAsset(assetId);
 			
 		} catch (ParseException | JSONException e) {
 			// TODO Auto-generated catch block
@@ -58,7 +58,7 @@ public class DeleteAssetServlet extends HttpServlet {
 		}
 	    response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
-		out.print(songs);
+		out.print(message);
 		out.flush();
 	}
 
