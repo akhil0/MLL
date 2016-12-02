@@ -56,7 +56,7 @@ public class DeleteAssetServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    response.setContentType("application/json");
+	    response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		out.print(message);
 		out.flush();

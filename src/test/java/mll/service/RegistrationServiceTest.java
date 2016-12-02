@@ -170,7 +170,7 @@ public class RegistrationServiceTest
 	public JSONObject getMusicianData()
 	{
 		JSONObject jo = new JSONObject();
-		
+		jo.put("userName", "xyz");
 		return jo;
 	}
 	

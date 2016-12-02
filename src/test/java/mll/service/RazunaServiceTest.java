@@ -194,7 +194,7 @@ public class RazunaServiceTest
 		String response = multipart.finish();
 		assertEquals(true,service.searchKeyword("4BB7CA2D4E3F40BDA52C829E0F09C693", "test").length()>0);
 		String assetid=RazunaUtility.parseRazunaResponse(response);
-//		service.deleteAsset(assetid);
+		service.deleteAsset(assetid);
 		
 	}
 	

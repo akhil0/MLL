@@ -101,16 +101,31 @@ public class HttpUtilityTest {
 	}
 	
 	@Test
-	public void testReadResponseOfSearchedSongsSuccess() throws ParseException, JSONException, IOException
+	public void testReadResponseOfSearchedSongsSuccess() throws Exception
 	{
+		String fileName = "test";
+		String charset = "UTF-8";
+		String contentString = "test";
+		byte[] content = contentString.getBytes();
+		//positive path
+		MultipartUtility multipart = new MultipartUtility(new Configuration().RAZUNA_URL, charset);
+		multipart.addFormField("fa", "c.apiupload");
+		multipart.addFormField("api_key", new Configuration().RAZUNA_KEY);
+		multipart.addFormField("destfolderid", "4BB7CA2D4E3F40BDA52C829E0F09C693");
+		
+		multipart.addFilePart(fileName, content);
+		String res = multipart.finish();
+		
 		HashMap<String,String> reqMap=new HashMap<String,String>();
 		reqMap.put("method", "searchassets");
 		reqMap.put("api_key", new Configuration().RAZUNA_KEY);
 		reqMap.put("folderid","4BB7CA2D4E3F40BDA52C829E0F09C693");
-		reqMap.put("searchfor", "adele");
+		reqMap.put("searchfor", "test");
 		
 		HttpResponse response = util.callRazunaAPI(reqMap, new Configuration().RAZUNA_SEARCH_METHOD);
 		assertTrue(util.readResponseOfSearchedSongs(response).size()>0);
+		String assetid=RazunaUtility.parseRazunaResponse(res);
+		new RazunaService().deleteAsset(assetid);
 	}
 	
 
