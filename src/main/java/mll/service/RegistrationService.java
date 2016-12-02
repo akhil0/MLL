@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -58,6 +59,7 @@ public class RegistrationService {
 	{
 		StringBuffer requestStr = new StringBuffer();
 		BufferedReader reader = request.getReader();
+		HttpSession session=request.getSession();
 		String line = null;
 		while ((line = reader.readLine()) != null) {
 			requestStr.append(line);
@@ -85,6 +87,7 @@ public class RegistrationService {
 		{
 			userdetails.getUsers().setUserType("musician");
 			userdetails.setMusician(populateMusician(mainObject));
+			session.setAttribute("folder_id", userdetails.getMusician().getFolderId());
 		}
 
 		return userdetails;

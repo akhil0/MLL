@@ -25,6 +25,16 @@
     
     <!-- Simple memory-only cache -->
     <property name="hibernate.cache.provider_class">org.hibernate.cache.HashtableCacheProvider</property>
+    
+    
+    
+    <property name="c3p0.min_size">5</property>
+	<property name="c3p0.max_size">20</property>
+	<property name="c3p0.timeout">1800</property>
+	<property name="c3p0.max_statements">50</property>
+	<property name="connection.provider_class">
+   org.hibernate.connection.C3P0ConnectionProvider</property>
+<!-- no "connection.pool_size" entry! -->
 
   	<!-- Enable Hibernate's automatic session context management -->
  	<property name="current_session_context_class">thread</property>
