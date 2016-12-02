@@ -35,6 +35,7 @@
                           aria-hidden="true"></span>
                     <span ng-show="ctrl.sortReverse" class="glyphicon glyphicon-triangle-bottom"></span></span>
                     Date Added</th>
+                <th> aaa </th>
             </tr>
             </thead>
             <tbody class="table-hover">
@@ -80,6 +81,17 @@
                 </td>
                 <td class="text-left">
                     {{track.dateAdded}}
+                </td>
+                <td>
+                	<a href="" class="btn btn-danger" ng-click="ctrl.deleteSong(track.assetId)"
+                	uib-tooltip="{{ctrl.message}}" tooltip-is-open="ctrl.isOpen"
+                                tooltip-placement="bottom" tooltip-trigger="none"
+                                tooltip-class="{{ctrl.isDeleted ? 'tooltip-alert-success' : 'tooltip-alert-error'}}">
+                       <span class="glyphicon glyphicon-remove incrsize"></span>
+                    </a>
+                	<a href="" class="btn btn-info" ng-click="ctrl.edit($index)">
+                         <span class="glyphicon glyphicon-pencil incrsize"></span>
+               	 	</a>
                 </td>
             </tr>
             </tbody>
