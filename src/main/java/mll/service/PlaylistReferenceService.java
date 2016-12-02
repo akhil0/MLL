@@ -1,5 +1,6 @@
 package mll.service;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +24,7 @@ public class PlaylistReferenceService {
 	public JSONObject handlePlaylistReferenceRequest(HttpServletRequest request, HttpServletResponse response) {
 		
 		JSONObject responseObject = new JSONObject();
-		
+		System.out.println(request.getParameter("actionType"));
 		if(request.getSession().getAttribute("userId") != null) {
 			int userId = Integer.parseInt(request.getSession().getAttribute("userId").toString());
 			if(request.getParameter("actionType").equals("add")) {
@@ -42,6 +43,13 @@ public class PlaylistReferenceService {
 					responseObject.put("isValid", false);
 				}
 			}
+			else if(request.getParameter("actionType").equals("shared")) {
+				System.out.println("shared");
+				List<PlaylistReference> playlists = getSharedPlaylists();
+				JSONArray playlistReferences = convertToJson(playlists);
+				responseObject.put("playlists", playlistReferences);
+				responseObject.put("isValid", true);
+			}
 			else if(request.getParameter("actionType").equals("get")) {
 				System.out.println("IN GET");
 				
@@ -59,6 +67,10 @@ public class PlaylistReferenceService {
 				responseObject.put("playlists", playlistReferences);
 				responseObject.put("isValid", true);
 			}
+			else if(request.getParameter("actionType").equals("addToShare")) {
+				int playlistId = Integer.parseInt(request.getParameter("playlistId"));
+				responseObject = setPlaylistToGlobal(userId, playlistId);
+			}
 		}
 		else {
 			responseObject.put("isValid", false);
@@ -68,8 +80,8 @@ public class PlaylistReferenceService {
 	}
 	
 	public static void main(String args[]) {
-		boolean flag = new PlaylistReferenceService().deletePlaylistForUser(2,1);
-		System.out.println(flag);
+		List<PlaylistReference> playlists = new PlaylistReferenceService().getSharedPlaylists();
+		System.out.println(playlists.size());
 	}
 	
 	
@@ -81,6 +93,11 @@ public class PlaylistReferenceService {
 		
 	}
 	
+	public List<PlaylistReference> getSharedPlaylists() {
+
+		boolean shared = true;
+		return new PlaylistReferenceDAO().getSharedPlaylists(shared);
+	}
 	
 	
 	
@@ -101,6 +118,8 @@ public class PlaylistReferenceService {
 		playlistReference.setId(0);
 		playlistReference.setPlaylistName(playlistName);
 		playlistReference.setUserId(userId);
+		playlistReference.setIsShared(false);
+		playlistReference.setCreationDate(new Date());
 		boolean flag = playlistReferenceDAO.addPlaylist(playlistReference);
 		return flag;
 	}
@@ -138,9 +157,27 @@ public class PlaylistReferenceService {
 			object.put("id", playlistReference.get(i).getId());
 			object.put("userId", playlistReference.get(i).getUserId());
 			object.put("playlistName", playlistReference.get(i).getPlaylistName());
+			object.put("isShared", playlistReference.get(i).getIsShared());
+			object.put("creationDate", playlistReference.get(i).getCreationDate());
 			jsonArrayPlaylist.add(object);			
 		}
 		return jsonArrayPlaylist;
+	}
+	
+	
+	@SuppressWarnings("unchecked")
+	public JSONObject setPlaylistToGlobal(int userId, int playlistId) {
+		
+		
+		System.out.println("IN SERVICE  " + playlistId);
+		boolean isPlaylistUpdated = new PlaylistReferenceDAO().setPlaylistToGlobal(userId, playlistId);
+		List<PlaylistReference> playlists = getAllPlaylistsForUser(userId);
+		JSONArray playlistReferences = convertToJson(playlists);
+		JSONObject responseObject = new JSONObject();
+		responseObject.put("playlists", playlistReferences);
+		responseObject.put("isValid", isPlaylistUpdated);
+		System.out.println(isPlaylistUpdated);
+		return responseObject;
 	}
 	
 }

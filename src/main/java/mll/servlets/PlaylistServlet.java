@@ -30,13 +30,9 @@ public class PlaylistServlet extends HttpServlet {
 		JSONObject responseObject = new JSONObject();
 		if(action != null || request.getSession().getAttribute("userId") != null)
 		{
-			System.out.println("HIIII");
 			int userId = Integer.parseInt(request.getSession().getAttribute("userId").toString());
-			System.out.println("USer ID  HII" + userId);
 			String assetId = request.getParameter("assetId");
-			System.out.println("HIIII AssetId   "  + assetId);
 			int playlistId = Integer.parseInt(request.getParameter("playlistId"));
-			System.out.println("HIIII PlaylistId   "  + playlistId);
 			PlaylistService playlistService = new PlaylistService();
 			if(action.equals("add"))  
 			{
@@ -58,7 +54,6 @@ public class PlaylistServlet extends HttpServlet {
 		}
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
-		System.out.println(responseObject);
 		out.print(responseObject);
 		out.flush();
 	}

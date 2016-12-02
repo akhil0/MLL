@@ -2,7 +2,7 @@
     <span ng-class="{'active': (ctrl.selected == '1')}" ng-click='ctrl.selected=1'>
       Your Playlists
     </span>
-    <span ng-class="{'active': (ctrl.selected == '2')}" ng-click='ctrl.selected=2'>
+    <span ng-class="{'active': (ctrl.selected == '2')}" ng-click='ctrl.morePlaylist()'>
       More Playlists
     </span>
  </div>
@@ -29,6 +29,11 @@
     </div>
     <div ng-show='ctrl.selected == 2'>
       <h1>More Playlists</h1><br>
+      <div ng-repeat="playlist in ctrl.playlists">
+      	{{playlist.playlistName}}
+      </div>
+	<div ui-grid="ctrl.gridPlaylists"></div>
+      
     </div>
     
   </div>

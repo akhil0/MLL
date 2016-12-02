@@ -19,6 +19,31 @@
 
         ctrl.selected ="1";
 		
+        
+        
+        ctrl.morePlaylist = function(){
+        	console.log("MOREEE");
+        	ctrl.selected=2;
+        	getMorePlaylists();
+        }
+        
+	     function getMorePlaylists(){
+	    	 arHomeSerivce.getMorePlaylists().success(function(response){
+	    		 console.log(response.playlists);	 
+	    		 ctrl.playlists = response.playlists;
+	    	   	ctrl.gridPlaylists = {
+     					data : response.playlists,
+     					columnDefs: 
+     					[
+     						{ field: 'playlistName', name: 'PlaylistName', width: "40%"},
+     					  { field: 'userId', displayName: 'User Id', width: "40%" , cellTemplate:'<div style="color:black">{{row.entity.name}}</div>'},
+                         ]
+     			}
+	    	 })	    	 
+	     }
+
+	    
+        
 	    ctrl.add = function() {
 	    	if(ctrl.input){
 				if(ctrl.input.length > 15){
@@ -58,8 +83,12 @@
 	     };
          
 		 
-		  ctrl.sharePlayList = function(index){	
-		           console.log(index);
+		  ctrl.sharePlayList = function(playlistId){
+			  console.log(playlistId);
+		    	 arHomeSerivce.sharePlayList(playlistId).success(function(response){
+		    		 	console.log(response);
+//				    	ctrl.myList = response.playlists;	    		
+			    	 })	    	 
 		   };
 	     function getAllPlaylists(){
 	    	 arHomeSerivce.getAllPlaylists(userId).success(function(response){

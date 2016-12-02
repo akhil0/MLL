@@ -108,17 +108,11 @@ public class PlaylistReferenceDAO {
 			}
 			e.printStackTrace();
 			throw e;
-		}
-		
+		}		
 		return playlists;
 	}
 	
-	
-	
-	
-	public boolean deletePlaylist(int playlistId, int userId) {
-		
-		
+	public boolean deletePlaylist(int playlistId, int userId) {		
 		System.out.println("PlaylistId " + playlistId + " userId " + userId );
 		
 		Session session = null;
@@ -127,7 +121,6 @@ public class PlaylistReferenceDAO {
 		
 		if(playlistId <= 0)
 			return false;
-		
 		
 		try
 		{
@@ -160,6 +153,88 @@ public class PlaylistReferenceDAO {
 		}
 		return true;
 	
+	}
+		
+public List<PlaylistReference> getSharedPlaylists(boolean flag) {
+		
+		// we add playlists from db to this variable and return this
+		List<PlaylistReference>  playlists = new ArrayList<PlaylistReference>();
+		Session session = null;
+		Transaction tx = null;
+		
+		try
+		{
+			// Initialize the session and transaction
+			session = SessionFactoryUtil.getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();
+			Query query = session.createQuery("FROM mll.beans.PlaylistReference pr where pr.isShared=:isShared");
+			query.setParameter("isShared", flag);
+			List<PlaylistReference> list = (ArrayList<PlaylistReference>) query.list();
+	       
+        	for(int i = 0;i<list.size();i++) {
+        		PlaylistReference p = new PlaylistReference();
+        		p.setId(list.get(i).getId());
+        		p.setUserId(list.get(i).getUserId());
+        		p.setPlaylistName(list.get(i).getPlaylistName());
+        		//(list.get(i).getUser().getUserName());
+        		System.out.print(list.get(i).getUserId());
+        		System.out.print(" -> " +  list.get(i).getId());
+        		System.out.println(" -> " + list.get(i).getPlaylistName());
+        		System.out.println(" -> " + list.get(i).getCreationDate());
+        		System.out.println(" -> " + list.get(i).getIsShared());
+        		playlists.add(p);        		
+        	}
+            
+			// Commit the transaction if all the data is successfully saved
+			tx.commit();
+		}
+		catch(Exception e)
+		{
+			if( null != tx)
+			{
+				// Rollback the transaction if any error comes during the process
+				tx.rollback();
+			}
+			e.printStackTrace();
+			throw e;
+		}
+		
+		return playlists;
+	}
+
+	public boolean setPlaylistToGlobal(int userId, int playlistId) {
+		
+		Session session = null;
+		Transaction tx = null;
+		
+		try {
+			session = SessionFactoryUtil.getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();
+			System.out.println(playlistId);
+			Query query = session.createQuery("FROM mll.beans.PlaylistReference pr WHERE pr.userId=:userId AND pr.id=:playlistId");
+			query.setParameter("userId", userId);
+			query.setParameter("playlistId", playlistId);
+			
+			PlaylistReference pr = (PlaylistReference) query.uniqueResult();
+			
+			if(pr == null)
+				return false;
+			
+			pr.setIsShared(true);
+			
+			session.update(pr);
+			
+			tx.commit();
+					
+		}
+		catch(Exception e) {
+			
+			if (tx!=null) {
+				tx.rollback();
+			}
+	        e.printStackTrace();
+		}
+		return true;
 	}
 	
 }

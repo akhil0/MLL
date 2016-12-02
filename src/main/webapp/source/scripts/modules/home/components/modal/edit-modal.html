@@ -26,14 +26,14 @@
 			<tr ng-repeat="track in model.tracks">
 				<td>
 					<!--     		 	ng-click="isCollapsed = !isCollapsed" --> 
-					<a>
+					<a class="gridColor">
 							{{track.fileName}} <br />
 					</a> 
 					<audio src={{track.source}} controls>
 					</audio>
 				</td>
 				<td>
-					<select ng-change=model.selectPlaylist(playlist) ng-model="playlist">
+					<select ng-change=model.selectPlaylist(playlist) ng-model="playlist" class="gridColor"> 
       					<option ng-repeat="playlist in model.playlists" value="{{playlist}}">{{playlist.playlistName}}</option>
 			    	</select>
 			    	</br>
