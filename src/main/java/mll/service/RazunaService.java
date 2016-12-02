@@ -314,24 +314,24 @@ public class RazunaService
 		return null;
 	}
 	
-public static void main(String[] args)
- {
-	 RazunaService service=new RazunaService();
-	 try {
-//		 JSONArray songs=service.RetrieveSongs("4BB7CA2D4E3F40BDA52C829E0F09C693");
-//		 System.out.println(songs.length());
-		
-		//service.deleteFolders();
-//		 JSONArray songs=service.searchKeyword("4BB7CA2D4E3F40BDA52C829E0F09C693", "adele");
-//		 System.out.println(songs.length());
-		 String res = service.deleteAsset("A25B4FD8AA55428CA1AF8EB0F62B17F5");
-		 System.out.println(res);
-		
-	} catch ( Exception  e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
- }
+//public static void main(String[] args)
+// {
+//	 RazunaService service=new RazunaService();
+//	 try {
+////		 JSONArray songs=service.RetrieveSongs("4BB7CA2D4E3F40BDA52C829E0F09C693");
+////		 System.out.println(songs.length());
+//		
+//		//service.deleteFolders();
+////		 JSONArray songs=service.searchKeyword("4BB7CA2D4E3F40BDA52C829E0F09C693", "adele");
+////		 System.out.println(songs.length());
+//		 String res = service.deleteAsset("A25B4FD8AA55428CA1AF8EB0F62B17F5");
+//		 System.out.println(res);
+//		
+//	} catch ( Exception  e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	}
+// }
 	
 }
 
