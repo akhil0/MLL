@@ -7,9 +7,7 @@ import org.hibernate.Transaction;
 import mll.beans.Token;
 import mll.utility.SessionFactoryUtil;
 
-public class TokenDAO {
-
-	
+public class TokenDAO {	
 	@SuppressWarnings("unchecked")
 	public Token getTokenForTokenId(String tokenId) throws Exception 
 	{
@@ -18,7 +16,32 @@ public class TokenDAO {
 		}
 		
 		Token token = null;
+		Session session = null;
+		Transaction tx = null;
 		
+		try
+		{
+			session = SessionFactoryUtil.getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();
+			
+			Query query = session.createQuery("From Token t where t.token=:usertoken");
+			query.setString("usertoken", tokenId);
+			
+			List<Token> tokens = query.list();
+			if(tokens != null && tokens.size() > 0) {
+				token = tokens.get(0);
+			}
+			tx.commit();
+		}
+		catch(Exception e)
+		{
+			if( null != tx)
+			{
+				tx.rollback();
+			}
+			e.printStackTrace();
+			throw e;
+		}
 
 		return token;
 	}
