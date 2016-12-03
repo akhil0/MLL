@@ -1,34 +1,74 @@
 package mll.dao;
 
 import static org.junit.Assert.assertEquals;
+import java.util.Date;
 import org.junit.Test;
-import mll.dao.PlaylistReferenceDAO;
+import mll.beans.PlaylistReference;
 
 public class PlaylistReferenceDAOTest {
-
+	
 	@Test
-	public void testAddPlaylist1() 
+	public void testGetAllPlaylistsForUserId() 
 	{
 		try 
 		{
-			PlaylistReferenceDAO dao = new PlaylistReferenceDAO();
-			assertEquals(true, dao.addPlaylist(null) == false);
-		} 
-		catch (Exception e) 
+			int userId = 1;
+			assertEquals(true, new PlaylistReferenceDAO().getAllPlaylistsForUserId(userId) != null);
+			
+		} catch (Exception e) 
 		{
+		
 		}
 	}
-		
+	
 	@Test
-	public void testGetAllPlaylistsForUserId1()
+	public void testGetSharedPlaylists() 
 	{
 		try 
 		{
-			PlaylistReferenceDAO dao = new PlaylistReferenceDAO();
-			assertEquals(true, dao.getAllPlaylistsForUserId(-1) == null);
-		} 
-		catch (Exception e) 
+			boolean flag = true;
+			assertEquals(true, new PlaylistReferenceDAO().getSharedPlaylists(flag) != null);
+			
+		} catch (Exception e) 
 		{
+		
+		}
+	}
+	
+	@Test
+	public void testAddPlaylist() 
+	{
+		try 
+		{
+			PlaylistReference playlistReference = new PlaylistReference();
+			playlistReference.setUserId(1);
+			playlistReference.setIsShared(false);
+			playlistReference.setPlaylistName("Vishal");
+			playlistReference.setId(0);
+			playlistReference.setCreationDate(new Date());
+			PlaylistReferenceDAO playlistReferenceDAO = new PlaylistReferenceDAO();
+			playlistReferenceDAO.addPlaylist(playlistReference);
+			boolean flag = playlistReference.getIsShared();
+			assertEquals(true, flag == false);
+			
+		} catch (Exception e) 
+		{
+		
+		}
+	}
+	
+	@Test
+	public void testDeletePlaylist() 
+	{
+		try 
+		{
+			PlaylistReferenceDAO playlistReferenceDAO = new PlaylistReferenceDAO();
+			boolean flag = playlistReferenceDAO.deletePlaylist(0,1);
+			assertEquals(false, flag == true);
+			
+		} catch (Exception e) 
+		{
+		
 		}
 	}
 }

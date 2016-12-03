@@ -49,21 +49,14 @@ public class PlaylistDAO {
 			session = SessionFactoryUtil.getSessionFactory().getCurrentSession();
 			tx = session.beginTransaction();
 			
-			System.out.println("BEFORE");
 			session.save(playlist);
-			System.out.println("AFTER");
-	        session.getTransaction().commit();
-	        
-			System.out.println("AFTER TRANSACTION");
+	        session.getTransaction().commit();	       
 			if (!tx.wasCommitted()) {
 	        	tx.commit();
 	        }
-	        
-			System.out.println("AYAYAYAYAYA");
 	    }
 		catch(HibernateException e) 
 		{
-			System.out.println("Inside Exception");
 			if( null != tx)
 			{
 				tx.rollback();
@@ -73,7 +66,6 @@ public class PlaylistDAO {
 		}
 		catch(Exception e)
 		{
-			System.out.println("Inside Exception 1");
 			if( null != tx)
 			{
 				tx.rollback();

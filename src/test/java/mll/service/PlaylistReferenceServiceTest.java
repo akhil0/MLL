@@ -3,6 +3,7 @@ package mll.service;
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.json.simple.JSONArray;
@@ -39,6 +40,8 @@ public class PlaylistReferenceServiceTest {
 			playlistReference.setId(1);
 			playlistReference.setPlaylistName("Test");
 			playlistReference.setUserId(1);
+			playlistReference.setCreationDate(new Date());
+			playlistReference.setIsShared(false);
 			playlists.add(playlistReference);
 			JSONArray jsonArray = new JSONArray();
 			JSONObject object = new JSONObject();
