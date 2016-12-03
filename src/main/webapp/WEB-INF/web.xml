@@ -119,4 +119,14 @@
     <servlet-name>DeleteAssetServlet</servlet-name>
     <url-pattern>/DeleteAssetServlet/*</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>ResendEmailServlet</display-name>
+    <servlet-name>ResendEmailServlet</servlet-name>
+    <servlet-class>mll.servlets.ResendEmailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ResendEmailServlet</servlet-name>
+    <url-pattern>/ResendEmailServlet/*</url-pattern>
+  </servlet-mapping>
 </web-app>
