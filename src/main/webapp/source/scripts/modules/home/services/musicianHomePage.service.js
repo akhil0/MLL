@@ -11,7 +11,8 @@
         return {
             getSongs: getSongs,
             searchSongs: searchSongs,
-            deleteSong: deleteSong
+            deleteSong: deleteSong,
+            editSong: editSong
         };
 
         function getSongs() {
@@ -34,6 +35,15 @@
         function deleteSong(assetId) {
         	var mDeleteUrl = deleteUrl + assetId;
         	return $http.post(mDeleteUrl)
+                .then((response) => {
+                	console.log(response);
+                    return response;
+                })
+                .catch((rejection) => rejection);
+        }
+        
+        function editSong(track) {
+        	return $http.post(editUrl, track)
                 .then((response) => {
                 	console.log(response);
                     return response;
