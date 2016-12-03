@@ -1,5 +1,8 @@
 package mll.service;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -44,16 +47,13 @@ public class PlaylistReferenceService {
 				}
 			}
 			else if(request.getParameter("actionType").equals("shared")) {
-				System.out.println("shared");
 				List<PlaylistReference> playlists = getSharedPlaylists();
 				JSONArray playlistReferences = convertToJson(playlists);
 				responseObject.put("playlists", playlistReferences);
 				responseObject.put("isValid", true);
 			}
 			else if(request.getParameter("actionType").equals("get")) {
-				System.out.println("IN GET");
-				
-				System.out.println("USER ID" + userId);
+				System.out.println("IN GET");				
 				List<PlaylistReference> playlists = getAllPlaylistsForUser(userId);
 				JSONArray playlistReferences = convertToJson(playlists);
 				responseObject.put("playlists", playlistReferences);
@@ -98,11 +98,6 @@ public class PlaylistReferenceService {
 		boolean shared = true;
 		return new PlaylistReferenceDAO().getSharedPlaylists(shared);
 	}
-	
-	
-	
-	
-	
 	
 	/*
 	 * This method takes in the user identifier and the playlist name and adds a 
@@ -151,14 +146,16 @@ public class PlaylistReferenceService {
 	@SuppressWarnings("unchecked")
 	public JSONArray convertToJson(List<PlaylistReference> playlistReference) {
 		JSONArray jsonArrayPlaylist = new JSONArray();
-		
 		for(int i = 0; i< playlistReference.size(); i++){
 			JSONObject object = new JSONObject();
 			object.put("id", playlistReference.get(i).getId());
 			object.put("userId", playlistReference.get(i).getUserId());
 			object.put("playlistName", playlistReference.get(i).getPlaylistName());
 			object.put("isShared", playlistReference.get(i).getIsShared());
-			object.put("creationDate", playlistReference.get(i).getCreationDate());
+			DateFormat format = new SimpleDateFormat("dd-mm-yyyy");
+			object.put("creationDate", (playlistReference.get(i).getCreationDate().getMonth() + 1) + "-" + 
+						playlistReference.get(i).getCreationDate().getDate() + "-" + (playlistReference.get(i).getCreationDate().getYear() + 1900));
+
 			jsonArrayPlaylist.add(object);			
 		}
 		return jsonArrayPlaylist;
@@ -167,16 +164,13 @@ public class PlaylistReferenceService {
 	
 	@SuppressWarnings("unchecked")
 	public JSONObject setPlaylistToGlobal(int userId, int playlistId) {
-		
-		
-		System.out.println("IN SERVICE  " + playlistId);
+
 		boolean isPlaylistUpdated = new PlaylistReferenceDAO().setPlaylistToGlobal(userId, playlistId);
 		List<PlaylistReference> playlists = getAllPlaylistsForUser(userId);
 		JSONArray playlistReferences = convertToJson(playlists);
 		JSONObject responseObject = new JSONObject();
 		responseObject.put("playlists", playlistReferences);
 		responseObject.put("isValid", isPlaylistUpdated);
-		System.out.println(isPlaylistUpdated);
 		return responseObject;
 	}
 	

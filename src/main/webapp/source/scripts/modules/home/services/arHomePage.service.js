@@ -11,7 +11,8 @@
 			getRegisteredMusician : getRegisteredMusician,
 			getSongsForMusician : getSongsForMusician,
 			getAllPlaylists : getAllPlaylists,
-			addSongToPlaylist : addSongToPlaylist
+			addSongToPlaylist : addSongToPlaylist,
+			sendInvitation: sendInvitation
 			
 		};
 
@@ -36,5 +37,13 @@
         	console.log(playListUrl)
             return $http.get(playListUrl);
         }   
+        
+        
+        function sendInvitation(row){
+        	console.log(row);
+        	var playlistUrl = '/MLL/ResendEmailServlet/?token=' + row.entity.tokenNumber;
+            return $http.get(playlistUrl);
+        }
+
 	}
 })(window.angular);
