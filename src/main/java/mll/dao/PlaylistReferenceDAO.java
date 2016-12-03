@@ -92,6 +92,8 @@ public class PlaylistReferenceDAO {
         		p.setId(list.get(i).getId());
         		p.setUserId(list.get(i).getUserId());
         		p.setPlaylistName(list.get(i).getPlaylistName());
+        		System.out.println("DATEEEE  " + list.get(i).getCreationDate());
+        		p.setCreationDate(list.get(i).getCreationDate());
         		
         		playlists.add(p);        		
         	}
@@ -176,6 +178,7 @@ public List<PlaylistReference> getSharedPlaylists(boolean flag) {
         		p.setId(list.get(i).getId());
         		p.setUserId(list.get(i).getUserId());
         		p.setPlaylistName(list.get(i).getPlaylistName());
+        		p.setCreationDate(list.get(i).getCreationDate());
         		//(list.get(i).getUser().getUserName());
         		System.out.print(list.get(i).getUserId());
         		System.out.print(" -> " +  list.get(i).getId());

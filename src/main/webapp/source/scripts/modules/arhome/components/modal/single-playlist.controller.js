@@ -7,14 +7,18 @@
     SinglePlaylistController.$inject = ['arHomeSerivce', 'authenticationService', 'id'];
 
 	function SinglePlaylistController(arHomeSerivce, authenticationService, id) {
-       this.authService = authenticationService;     
-  
+       this.authService = authenticationService;
        console.log("ID   " + id);
        var model = this;
        model.sortType = 'track';
        model.sortReverse = false;
        
        getSongsInPlaylist();       
+       
+       
+       model.showPlaylist = function(){
+    	   
+       }
        
        function getSongsInPlaylist(){
 //    	   arHomeSerivce.getSongsInPlaylist(id)

@@ -9,13 +9,20 @@
 <div class='tab-content'>
     <div ng-show='ctrl.selected == 1'>
 		<div  class="cont">
-			<h1>Your Playlists</h1><br>
-			
-				<div class = "scrollmenu well well-ng">
+			<h1 ng-show="ctrl.showPlaylist">Your Playlists</h1><br>
+			<h1 ng-show="!ctrl.showPlaylist">Your Playlist is Empty</h1><br>
+				<div 
+					uib-tooltip="Playlist Shared" tooltip-is-open="ctrl.isOpen"
+                     tooltip-placement="bottom" tooltip-trigger="none"
+                     tooltip-class="{{ctrl.isGenerated ? 'tooltip-alert-success' : 'tooltip-alert-error'}}"	>
+				</div>
+				<div class = "scrollmenu well well-ng" ng-show="ctrl.showPlaylist">
 					<div class='item' ng-repeat="x in ctrl.myList" > 
 						<img src="dist/fonts/delete.png" class='delete' ng-click = "ctrl.deletePlayList(x.id)">
 						<img src="dist/fonts/share.png" class='share' ng-click = "ctrl.sharePlayList(x.id)">
-						<div class='pldiv' ng-click="ctrl.getPlayListId($index)">{{ x.playlistName }}</div>	</div></div>
+						<div class='pldiv' ng-click="ctrl.getPlayListId(x.id)">{{ x.playlistName }}</div>	
+					</div>
+				</div>
 <!--   				      	<a ng-click="ctrl.getPlayListId($index)">Delete</a> -->
 				
 				<button type="submit" ng-click="ctrl.addplaylist()" ng-show="ctrl.new_playlist_data1">add new playlist</button>
@@ -29,13 +36,10 @@
     </div>
     <div ng-show='ctrl.selected == 2'>
       <h1>More Playlists</h1><br>
-      <div ng-repeat="playlist in ctrl.playlists">
-      	{{playlist.playlistName}}
+      <div ng-if="ctrl.datareceived">
+	      <div ui-grid=ctrl.gridOptions ></div> 
       </div>
-	<div ui-grid="ctrl.gridPlaylists"></div>
-      
-    </div>
-    
+    </div>    
   </div>
 
 

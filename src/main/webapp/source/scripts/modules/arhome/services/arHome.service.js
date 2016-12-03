@@ -13,7 +13,7 @@
         	getMorePlaylists: getMorePlaylists,
         	sharePlayList: sharePlayList,
             add: add,
-            deletePlayList : deletePlayList
+            deletePlayList : deletePlayList,
         };
 
         
@@ -27,7 +27,9 @@
 		
         function getAllPlaylists(userId) {
         	var playListUrl = '/MLL/PlaylistReferenceServlet/?userId=' + userId + '&actionType=get';
-        	console.log($http.get(playListUrl));
+        	console.log($http.get(playListUrl).success(function(response){
+        		console.log(response);
+        	}));
             return $http.get(playListUrl);
         }        
         
@@ -56,5 +58,6 @@
         	console.log(playlistUrl);
             return $http.get(playlistUrl);
         }
+        
     }
 })(window.angular);

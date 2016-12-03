@@ -6,9 +6,9 @@
          .controller('ArhomeController', ArhomeController);
  
      ArhomeController.$inject =
-         ['$scope',  'authenticationService', '$stateParams','arHomeSerivce', '$uibModal'];
+         ['$scope',  'authenticationService', '$stateParams','arHomeSerivce', '$uibModal', '$timeout'];
  
-     function ArhomeController($scope,  authenticationService, $stateParams, arHomeSerivce, $uibModal) {
+     function ArhomeController($scope,  authenticationService, $stateParams, arHomeSerivce, $uibModal, $timeout) {
  
 	    this.authService = authenticationService;
 	 
@@ -27,23 +27,37 @@
         	getMorePlaylists();
         }
         
+        
+        
 	     function getMorePlaylists(){
 	    	 arHomeSerivce.getMorePlaylists().success(function(response){
-	    		 console.log(response.playlists);	 
+	    		 ctrl.datareceived = true;
+	    		 
+	    		 console.log(response.playlists);
+	    		 
+	    		 for(var i = 0; i < response.playlists.length; i++){
+	    			 console.log(new Date(Date.parse(response.playlists[i].creationDate)));
+	    			 
+	    		 }
+	    		 
 	    		 ctrl.playlists = response.playlists;
-	    	   	ctrl.gridPlaylists = {
-     					data : response.playlists,
-     					columnDefs: 
-     					[
-     						{ field: 'playlistName', name: 'PlaylistName', width: "40%"},
-     					  { field: 'userId', displayName: 'User Id', width: "40%" , cellTemplate:'<div style="color:black">{{row.entity.name}}</div>'},
-                         ]
-     			}
+	    		 ctrl.gridOptions = {
+	    				 data : ctrl.playlists,
+	    				 enableSorting: false,
+	    				 enableFiltering:true,
+	    				  columnDefs: [ 
+	    				    { field: 'playlistName', name : 'Playlist name'},
+	    				    { field: 'creationDate' , name : 'Creation Date'},
+		    				{ field: '', name : 'Songs', cellTemplate: 'show-playlist-button.html', enableFiltering:false},
+	    				  ]
+	    		 
+	    		 		
+	    				};
 	    	 })	    	 
 	     }
-
-	    
         
+	     
+
 	    ctrl.add = function() {
 	    	if(ctrl.input){
 				if(ctrl.input.length > 15){
@@ -52,6 +66,7 @@
 				}else {
 				    arHomeSerivce.add(userId,ctrl.input).success(function(response){
 						ctrl.myList = response.playlists;
+						ctrl.showPlaylist = true;
 					})	; 
 			
 					ctrl.error_message = false;
@@ -76,7 +91,12 @@
 	     ctrl.deletePlayList = function(index){	    	 
 	    	 arHomeSerivce.deletePlayList(index).success(function(response){
 	    		 console.log(response);
-			    	ctrl.myList = response.playlists;	    		
+	    		 if(response.playlists.length !=0){		    			
+	    			 ctrl.myList = response.playlists;
+	    			 ctrl.showPlaylist = true;
+	    		 }else{
+	    			 ctrl.showPlaylist = false;
+	    		 }
 		    	 })
 //	    	 ctrl.myList.splice(index, 1);
 	    				 
@@ -86,13 +106,21 @@
 		  ctrl.sharePlayList = function(playlistId){
 			  console.log(playlistId);
 		    	 arHomeSerivce.sharePlayList(playlistId).success(function(response){
-		    		 	console.log(response);
-//				    	ctrl.myList = response.playlists;	    		
+		    		 	ctrl.isOpen = true;
+		    		 	ctrl.isGenerated = true;
+//				    	ctrl.myList = response.playlists;
+                        $timeout(() => ctrl.isOpen = false, 5000);
 			    	 })	    	 
 		   };
 	     function getAllPlaylists(){
 	    	 arHomeSerivce.getAllPlaylists(userId).success(function(response){
-		    	ctrl.myList = response.playlists;	    		
+	    		 console.log(response);
+	    		 if(response.playlists.length !=0){		    			
+	    			 ctrl.myList = response.playlists;
+	    			 ctrl.showPlaylist = true;
+	    		 }else{
+	    			 ctrl.showPlaylist = false;
+	    		 }
 	    	 })	    	 
 	     }
 	     
