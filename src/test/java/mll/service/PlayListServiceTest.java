@@ -66,13 +66,14 @@ public class PlayListServiceTest {
 		boolean result = playService.addSongPlaylist(1, 1, "");
 		assertEquals(true, result == false);
 	}
-	@Test
-	public void testAddSongPlaylist3() throws Exception
-	{
-		PlaylistService playService = new PlaylistService();
-		boolean result = playService.addSongPlaylist(1, 1, "----");
-		assertEquals(true, result == false);
-	}
+	
+//	@Test
+//	public void testAddSongPlaylist3() throws Exception
+//	{
+//		PlaylistService playService = new PlaylistService();
+//		boolean result = playService.addSongPlaylist(1, 1, "qwe");
+//		assertEquals(true, result == false);
+//	}
 	
 	
 	
