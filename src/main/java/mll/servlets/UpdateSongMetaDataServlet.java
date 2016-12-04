@@ -16,7 +16,7 @@ import org.json.JSONException;
 import mll.service.RazunaService;
 import mll.service.UpdateSongMetadataService;
 
-public class UpdateSongMetaDataServlet {
+public class UpdateSongMetaDataServlet extends HttpServlet{
 
 	RazunaService razunaservice =new RazunaService();
 	UpdateSongMetadataService updateservice=new UpdateSongMetadataService();
