@@ -25,7 +25,6 @@
 		<tbody>
 			<tr ng-repeat="track in model.tracks">
 				<td>
-					<!--     		 	ng-click="isCollapsed = !isCollapsed" --> 
 					<a class="gridColor">
 							{{track.fileName}} <br />
 					</a> 
@@ -33,12 +32,16 @@
 					</audio>
 				</td>
 				<td>
-					<select ng-change=model.selectPlaylist(playlist) ng-model="playlist" class="gridColor"> 
+					<select ng-change=model.selectPlaylist(playlist) ng-model="playlist" class="gridColor" ng-show="model.playlistExist"> 
       					<option ng-repeat="playlist in model.playlists" value="{{playlist}}">{{playlist.playlistName}}</option>
 			    	</select>
 			    	</br>
+			    	<div ng-show="!model.playlistExist">
+			    		You have no playlist
+			    		<button ng-click="model.addNewPlaylist()" class="btn tomatobttn"> Add new playlist</button>
+			    	</div>
 					<span class="glyphicon glyphicon-plus"
-						ng-click="model.addToPlayList(track.assetId)">
+						ng-click="model.addToPlayList(track.assetId)" ng-show="model.playlistExist">
 					</span>
 					</br>
 				</td>	

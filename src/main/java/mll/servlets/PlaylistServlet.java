@@ -41,10 +41,19 @@ public class PlaylistServlet extends HttpServlet {
 				boolean isValid = playlistService.addSongPlaylist(userId, playlistId, assetId);
 				responseObject.put("isValid", isValid);				
 			}
-//			else if(action.equals("delete"))
-//			{
-//				playlistService.deleteSongPlaylist(userId, playlistId, assetId);
-//			}
+			else if(action.equals("delete"))
+			{
+				JSONArray deleteSongPlaylist = null;
+				try {
+					deleteSongPlaylist = playlistService.deleteSongPlaylist(userId, playlistId, assetId);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				System.out.println(deleteSongPlaylist);
+				responseObject.put("songs", deleteSongPlaylist);
+				responseObject.put("isDeleted", true);
+			}
 			else if(action.equals("get")) 
 			{
 				JSONArray songsFromPlaylist = playlistService.getSongsFromPlaylist(playlistId);
