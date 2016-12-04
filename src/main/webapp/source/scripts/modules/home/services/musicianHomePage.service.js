@@ -11,8 +11,8 @@
         return {
             getSongs: getSongs,
             searchSongs: searchSongs,
-            deleteSong: deleteSong,
-            editSong: editSong
+            deleteSong: deleteSong//,
+            //editSong: editSong
         };
 
         function getSongs() {
@@ -42,13 +42,13 @@
                 .catch((rejection) => rejection);
         }
         
-        function editSong(track) {
-        	return $http.post(editUrl, track)
-                .then((response) => {
-                	console.log(response);
-                    return response;
-                })
-                .catch((rejection) => rejection);
-        }
+//        function editSong(track) {
+//        	return $http.post(editUrl, track)
+//                .then((response) => {
+//                	console.log(response);
+//                    return response;
+//                })
+//                .catch((rejection) => rejection);
+//        }
     }
 })(window.angular);
