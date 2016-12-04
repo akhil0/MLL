@@ -34,6 +34,7 @@
         			model.registered = {
         					data : registeredMusiciansObject,
         					paginationPageSizes: [1,2,3],
+        					paginationPageSize: 1,
         					enableFiltering: true,
         				    onRegisterApi: function(gridApi){
         				    	$scope.gridApi = gridApi;
@@ -49,6 +50,8 @@
         			model.unregistered = {
         					data : unregisteredMusiciansObject,
         					enableFiltering: true,
+        					paginationPageSizes: [1,2,3],
+        					paginationPageSize: 1,
         				    onRegisterApi: function(gridApi){
         				      model.gridApi = gridApi;
         				    },

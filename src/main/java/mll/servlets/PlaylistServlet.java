@@ -7,6 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONArray;
 import org.json.simple.JSONObject;
 import mll.service.PlaylistService;
 
@@ -37,17 +39,18 @@ public class PlaylistServlet extends HttpServlet {
 			if(action.equals("add"))  
 			{
 				boolean isValid = playlistService.addSongPlaylist(userId, playlistId, assetId);
-				responseObject.put("isValid", isValid);
-				
+				responseObject.put("isValid", isValid);				
 			}
 //			else if(action.equals("delete"))
 //			{
 //				playlistService.deleteSongPlaylist(userId, playlistId, assetId);
 //			}
-			/*else if(action.equals("get")) 
+			else if(action.equals("get")) 
 			{
-				playlistService.getSongsPlaylist(userId, playlistId, assetId);
-			}*/
+				JSONArray songsFromPlaylist = playlistService.getSongsFromPlaylist(playlistId);
+				
+				responseObject.put("songs", songsFromPlaylist);
+			}
 			else {
 				responseObject.put("isValid", false);
 			}

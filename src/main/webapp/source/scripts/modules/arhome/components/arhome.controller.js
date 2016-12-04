@@ -50,8 +50,6 @@
 	    				    { field: 'creationDate' , name : 'Creation Date'},
 		    				{ field: '', name : 'Songs', cellTemplate: 'show-playlist-button.html', enableFiltering:false},
 	    				  ]
-	    		 
-	    		 		
 	    				};
 	    	 })	    	 
 	     }
@@ -127,14 +125,15 @@
     	 getAllPlaylists();
     	 
     	 
-    	 ctrl.getPlayListId = function (id){
+    	 ctrl.getSongsInPlaylist = function (id){
      		console.log("PLAYLIST ID " + id)
  		    $uibModal.open({
   		      templateUrl: 'single-playlist.html',
   		      controller: 'SinglePlaylistController',
-  		      controllerAs: 'model',
+  		      controllerAs: 'ctrl',
   		      resolve: {
-  		        id: function () { return id; }
+  		        id: function () { return id; },
+  		        deleteSong : function () { return true;},
   		      }
   		    });
 
