@@ -146,7 +146,7 @@ public class RazunaService
 	
 		
 
-	
+
 	
 	public JSONArray retrieveMetaDataOfSongs(HashMap<String,JSONObject> songsdata) throws JSONException, ParseException, IOException
 	{
@@ -345,6 +345,7 @@ public static void main(String[] args)
 		e.printStackTrace();
 	}
  }
+<<<<<<< HEAD
 
 public JSONArray retrieveSongsUsingAssetId(String assetId) throws ParseException, JSONException, IOException
 {
@@ -368,6 +369,8 @@ public JSONArray retrieveSongsUsingAssetId(String assetId) throws ParseException
 	
 	return songs;
 }
+=======
+>>>>>>> master
 	
 }
 

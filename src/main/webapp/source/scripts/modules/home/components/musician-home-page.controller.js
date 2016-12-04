@@ -5,7 +5,7 @@
         .module("mllApp.home")
         .controller("MusicianHomeController", MusicianHomeController);
     
-    MusicianHomeController.$inject = ['$scope', '$state', '$location', 'musicGenres', 'musicianHomePageSerivce', 'authenticationService' ];
+    MusicianHomeController.$inject = ['$scope', '$state', '$location', 'musicianHomePageSerivce', 'authenticationService' ];
 
 	function MusicianHomeController($scope, $state, $location, musicianHomePageSerivce, authenticationService ) {
 
@@ -74,22 +74,22 @@
        
        // EDIT SONG
        
-       this.editSong = (track) => {
-    	   this.failureMessage = null;
-           this.successMessage = null;
-    	   musicianHomePageSerivce.editSong(track)
-    	   .then((response) => {
-   		   var res = response;
-   		   console.log(response);
-   		if( res.data === "Data Updated Successfully") {
-			this.successeMessage = res.data;
-		   }
-		   else {
-			this.failureMessage = res.data;
-		   }
-		   })
-		   .catch((rejection) => rejection);
-	   $state.reload();
-       }
+//       this.editSong = (track) => {
+//    	   this.failureMessage = null;
+//           this.successMessage = null;
+//    	   musicianHomePageSerivce.editSong(track)
+//    	   .then((response) => {
+//   		   var res = response;
+//   		   console.log(response);
+//   		if( res.data === "Data Updated Successfully") {
+//			this.successeMessage = res.data;
+//		   }
+//		   else {
+//			this.failureMessage = res.data;
+//		   }
+//		   })
+//		   .catch((rejection) => rejection);
+//	   $state.reload();
+//       }
     }
 })(window.angular);

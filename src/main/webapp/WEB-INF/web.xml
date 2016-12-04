@@ -119,6 +119,7 @@
     <servlet-name>DeleteAssetServlet</servlet-name>
     <url-pattern>/DeleteAssetServlet/*</url-pattern>
   </servlet-mapping>
+
     <servlet>
     <description></description>
     <display-name>ResendEmailServlet</display-name>
@@ -128,5 +129,17 @@
   <servlet-mapping>
     <servlet-name>ResendEmailServlet</servlet-name>
     <url-pattern>/ResendEmailServlet/*</url-pattern>
+  </servlet-mapping>
+
+  
+   <servlet>
+    <description></description>
+    <display-name>UpdateSongMetaDataServlet</display-name>
+    <servlet-name>UpdateSongMetaDataServlet</servlet-name>
+    <servlet-class>mll.servlets.UpdateSongMetaDataServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateSongMetaDataServlet</servlet-name>
+    <url-pattern>/UpdateSongMetaDataServlet</url-pattern>
   </servlet-mapping>
 </web-app>

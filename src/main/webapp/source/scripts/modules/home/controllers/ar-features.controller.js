@@ -42,7 +42,7 @@
         					columnDefs: 
         					[
         					  { field: 'id', name: '', cellTemplate: 'edit-button.html', width: "30%" },
-        					  { field: 'name', displayName: 'First Name', width: "40%" , cellTemplate:'<div style="color:black">{{row.entity.name}}</div>'},
+        					  { field: 'name', displayName: 'First Name', width: "40%" , cellTemplate:'<div style="color:black; margin-left:10px;">{{row.entity.name}}</div>'},
                               { field: 'age', width: "30%"}
                             ]
         			}
@@ -59,7 +59,7 @@
         					columnDefs: 
         					[
         					  { field: 'emailId', displayName: 'Email', width: "60%" },
-                              { field: 'tokenId', displayName: 'Send Invitation', width: "40%", cellTemplate:'<button class="btn primary" ng-click="grid.appScope.sendInvitation(row)">Send Invitation</button>'},
+                              { field: 'tokenId', displayName: 'Reminder', width: "40%", cellTemplate:'<button class="btn primary" ng-click="grid.appScope.sendInvitation(row)">Send Invitation</button>'},
                             ]
         			}        		
         		});

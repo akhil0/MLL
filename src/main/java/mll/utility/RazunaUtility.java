@@ -124,4 +124,74 @@ public class RazunaUtility {
 
 
 	}
+	
+	
+	public static String createJsonForCustomFieldsUpdate(JSONObject smd) throws JSONException {
+		JSONArray customFields=new JSONArray();
+
+		if(smd.has("Title"))
+		{
+			JSONArray title=new JSONArray();
+			title.put(conf.RAZUNA_TITLE);
+			title.put(smd.get("Title"));
+			customFields.put(title);
+		}
+
+		if(smd.has("beats_per_minute"))
+		{
+			JSONArray bits=new JSONArray();
+			bits.put(conf.RAZUNA_BITS_PER_RATE);
+			bits.put(smd.get("beats_per_minute"));
+			customFields.put(bits);
+		}
+		if(smd.has("publishing_company"))
+		{
+			JSONArray arr=new JSONArray();
+			arr.put(conf.RAZUNA_COPY_RIGHT_DATE);
+			arr.put(smd.get("publishing_company"));
+			customFields.put(arr);
+		}
+		if(smd.has("primary_genre"))
+		{
+			JSONArray arr=new JSONArray();
+			arr.put(conf.RAZUNA_COPY_RIGHT_NUMBER);
+			arr.put(smd.get("primary_genre"));
+			customFields.put(arr);
+		}
+		if(smd.has("secondary_genre"))
+		{
+			JSONArray arr=new JSONArray();
+			arr.put(conf.RAZUNA_LYRICS);
+			arr.put(smd.get("secondary_genre"));
+			customFields.put(arr);
+		}
+		if(smd.has("copyright_number"))
+		{
+			JSONArray arr=new JSONArray();
+			arr.put(conf.RAZUNA_PRIMAY_GENRE);
+			arr.put(smd.get("copyright_number"));
+			customFields.put(arr);
+		}
+		if(smd.has("pro"))
+		{
+			JSONArray arr=new JSONArray();
+			arr.put(conf.RAZUNA_SEC_GENRE);
+			arr.put(smd.get("pro"));
+			customFields.put(arr);
+		}
+		
+		if(smd.has("Artists"))
+		{
+			JSONArray arr=new JSONArray();
+			arr.put(conf.RAZUNA_ARTISTS);
+			arr.put(smd.get("Artists"));
+			customFields.put(arr);
+		}
+
+
+		//System.out.println(customFields.toString());
+		return customFields.toString();
+
+
+	}
 }
