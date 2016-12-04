@@ -333,7 +333,8 @@
                         }
                     },
                    center: { template:
-                        `<div class="well well-lg">
+                        `<div class="well well-lg aboutmll">
+                       
 						    <h2> About Media Licensing Lab</h2>
                             <p>
                                The Media Licensing Lab (MLL) is a Northeastern University initiative to establish the first student-run music licensing program in the United States. The MLL links musicians, student A&R representatives, the Northeastern community, and the music industry.

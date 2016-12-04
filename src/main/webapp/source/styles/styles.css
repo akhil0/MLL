@@ -311,7 +311,10 @@ $black: #2E3641;
 .cont {
 width: 900px;
 }
-
+.aboutmll{
+	 background: linear-gradient(-0deg, #F9bD75, #CE4647);
+	
+}
 .scrollmenu .pldiv{
     color: #fff;
     font-size: 14px;
@@ -377,10 +380,14 @@ display: inline-block;
 
 	
 }
-.cont button {
+
+	
+}
+
+.gridColor button, .tomatobttn {
   background-color: #F97D75;
   border: 0;
-  padding: 8px 20px;
+  padding: 4px 20px;
   color: white;
   text-transform: uppercase;
   cursor: pointer; 
@@ -398,9 +405,13 @@ display: inline-block;
 .nuLogo {
 	max-height: 100px;
 }
-
+.nuLogohd {
+	max-height: 35px;
+	display: inline-block;
+}
 .navbar-brand {
 	font-family: cursive;
+
 }
 
 
@@ -664,4 +675,11 @@ td.text-right {
 
 .gridColor{
 	color:black;
+	font-weight:bold;
+	background: white;
 }
+
+.navbar-brand>img {
+    display:inline-block;
+}
+
