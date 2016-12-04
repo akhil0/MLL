@@ -284,6 +284,55 @@ public class HttpUtility {
 		}
 		return message;
 	}
+	
+	
+	public HashMap readResponseOfEachSong(HttpResponse response) throws ParseException, JSONException, IOException
+	{
+				
+		System.out.println("read called");
+		JSONArray responseArray=new JSONArray();
+		JSONArray columnarray=new JSONArray();
+		HashMap<String,JSONObject> songsdata=new HashMap<String,JSONObject>();
+		String ids=new String();
+		
+		if(response!=null)
+		{			
+			JSONObject json = new JSONObject(EntityUtils.toString(response.getEntity()));
+			System.out.println(json);
+			if(json.has("DATA"))
+			{
+				JSONArray datarry=json.getJSONArray("DATA");
+				for(int i=0;i<datarry.length();i++)
+				{
+					JSONObject songobj=new JSONObject();
+					JSONArray songarry=datarry.getJSONArray(i);
+					String id=new String();
+					for(int j=0;j<songarry.length();j++)
+					{
+						if(j==0 && songarry.get(j)!=null)
+						{
+							id=songarry.getString(j);
+						}
+						if(j==2)
+							songobj.put("fileName", songarry.get(j));
+						if(j==21)
+							songobj.put("source", songarry.get(j));
+						if(j==16)
+							songobj.put("dateAdded", songarry.get(j));
+					}
+					songsdata.put(id, songobj);
+					
+				}
+			}
+			System.out.println("HashMap");
+			System.out.println(songsdata);
+	
+			return songsdata;
+			
+		}
+		
+		return null;
+	}
 
 
 }

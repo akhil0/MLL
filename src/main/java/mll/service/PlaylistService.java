@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -52,11 +53,29 @@ public class PlaylistService {
 		return false;
 	}	
 
+	@SuppressWarnings("unchecked")
+	public JSONObject getSongsFromPlaylist(HttpServletRequest request, HttpServletResponse response) {
+		int playlistId = Integer.parseInt(request.getParameter("playlistId"));
+		System.out.println("PLAY LIST ID  " + playlistId);
+		List<Playlist> songs = null;
+		try {
+			 songs = dao.getAllSongsForPlaylist(playlistId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		JSONArray jsonArray = convertToJSON(songs);
+		
+		JSONObject responseObject = new JSONObject();
+		responseObject.put("songs", jsonArray);
+		responseObject.put("playlistId", playlistId);
+		return responseObject;
+	}
 	
 	public boolean addSongPlaylist(int userId, int playlistId, String assetId) 
     {
 		System.out.println("ADD SONGS ");
         Playlist playlist = new Playlist();
+        playlist.setId(0);
         playlist.setPlaylist_id(playlistId);
         if(assetId==null || assetId.equals(""))
             return false;
@@ -67,4 +86,22 @@ public class PlaylistService {
         System.out.println("Song " + assetId + " Playlist " + playlistId + "  " + flag);
         return flag;
     }
+	
+	
+	@SuppressWarnings("unchecked")
+	public JSONArray convertToJSON(List<Playlist> songs) {
+		JSONArray jsonArray = new JSONArray();
+		for(int i = 0; i < songs.size(); i++) {
+			JSONObject object = new JSONObject();
+			System.out.println(songs.get(i).getPlaylist_id() + "  " + songs.get(i).getSong_id());
+			object.put("assetId", songs.get(i).getSong_id());
+			jsonArray.add(object);
+		}
+		return jsonArray;
+	}
+	
+	
+	public static void main(String[] args) {
+		
+	}
 }

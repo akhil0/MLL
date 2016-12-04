@@ -135,6 +135,29 @@ public class RazunaService
 	}
 	
 	
+	public JSONArray retrieveSongsUsingAssetId(String assetId) throws ParseException, JSONException, IOException
+	{
+		HashMap<String,JSONObject> songsdata=new HashMap<String,JSONObject>();
+		JSONArray songs=new JSONArray();
+		if(assetId!=null)
+		{
+			
+			HashMap<String,String> reqMap=new HashMap<String,String>();
+			reqMap.put("method", "getasset");
+			reqMap.put("api_key", new Configuration().RAZUNA_KEY);
+			reqMap.put("assetid", assetId);
+			reqMap.put("assettype", "aud");
+			System.out.println(httputil.callRazunaAPI(reqMap, config.RAZUNA_ASSET_METHOD));
+			songsdata=httputil.readResponseOfEachSong(httputil.callRazunaAPI(reqMap, config.RAZUNA_ASSET_METHOD));
+			System.out.println("RetrieveSongs "+songsdata);
+			songs= retrieveMetaDataOfSongs(songsdata);
+//			if(songs.get(0)!=null &&songs.getJSONObject(0).has("fileName") && songs.getJSONObject(0).getInt("fileName")==0)
+//				songs=new JSONArray();
+		}
+		
+		return songs;
+	}
+	
 //	public JSONArray retrieveMetaDataOfSongs(JSONArray songsArray) throws JSONException, ParseException, IOException
 //	{
 //		JSONArray songs=new JSONArray(); 

@@ -3,11 +3,15 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="mll.beans.Playlist" table="Playlist">
-         <id name="playlist_id" column="id">
-		</id>
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+       <property name="playlist_id" type="java.lang.Integer">
+            <column name="playlist_id"/>
+       </property>        
        <property name="song_id">
             <column name="song_id" length="200" />
-        </property>
-        
+        </property>        
     </class>
 </hibernate-mapping>

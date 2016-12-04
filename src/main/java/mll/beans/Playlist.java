@@ -1,10 +1,16 @@
 package mll.beans;
 
-public class Playlist {
-	
+public class Playlist{
+	private int id;
 	private int playlist_id;
 	private String song_id;
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public int getPlaylist_id() {
 		return playlist_id;
 	}
@@ -18,6 +24,6 @@ public class Playlist {
 		this.song_id = song_id;
 	}
 	
-	
 
+	
 }
