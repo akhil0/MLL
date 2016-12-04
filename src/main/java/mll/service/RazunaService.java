@@ -346,7 +346,7 @@ public class RazunaService
 		}
 	 }
 
-	public JSONArray retrieveSongsUsingAssetId(String assetId) throws ParseException, JSONException, IOException
+	public JSONObject retrieveSongsUsingAssetId(String assetId) throws ParseException, JSONException, IOException
 	{
 		
 		
@@ -363,10 +363,13 @@ public class RazunaService
 			System.out.println(httputil.callRazunaAPI(reqMap, config.RAZUNA_ASSET_METHOD));
 			songsdata=httputil.readResponseOfEachSong(httputil.callRazunaAPI(reqMap, config.RAZUNA_ASSET_METHOD));
 			System.out.println("RetrieveSongs "+songsdata);
+			if(songsdata!= null){
+				return songsdata.get("aud");
+			}
 			songs= retrieveMetaDataOfSongs(songsdata);
 		}
 		
-		return songs;
+		return null;
 	}
 	
 }
