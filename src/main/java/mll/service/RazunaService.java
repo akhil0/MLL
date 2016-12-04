@@ -331,46 +331,41 @@ public class RazunaService
 		return null;
 	}
 	
-public static void main(String[] args)
-{
-	 RazunaService service=new RazunaService();
-	 try {
-	 //JSONArray songs=service.RetrieveSongs("4BB7CA2D4E3F40BDA52C829E0F09C693");
-	 //System.out.println(songs.length());
-		// service.updateMetaData(new JSONObject(), "FCD433C107A14F0D9FDE89A9A4DFF9E6");
-		 service.deleteFolders();
-		
-	} catch ( Exception  e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
- }
-<<<<<<< HEAD
-
-public JSONArray retrieveSongsUsingAssetId(String assetId) throws ParseException, JSONException, IOException
-{
-	HashMap<String,JSONObject> songsdata=new HashMap<String,JSONObject>();
-	JSONArray songs=new JSONArray();
-	if(assetId!=null)
+	public static void main(String[] args)
 	{
+		 RazunaService service=new RazunaService();
+		 try {
+		 //JSONArray songs=service.RetrieveSongs("4BB7CA2D4E3F40BDA52C829E0F09C693");
+		 //System.out.println(songs.length());
+			// service.updateMetaData(new JSONObject(), "FCD433C107A14F0D9FDE89A9A4DFF9E6");
+			 service.deleteFolders();
+			
+		} catch ( Exception  e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	 }
+
+	public JSONArray retrieveSongsUsingAssetId(String assetId) throws ParseException, JSONException, IOException
+	{
+		HashMap<String,JSONObject> songsdata=new HashMap<String,JSONObject>();
+		JSONArray songs=new JSONArray();
+		if(assetId!=null)
+		{
+			
+			HashMap<String,String> reqMap=new HashMap<String,String>();
+			reqMap.put("method", "getasset");
+			reqMap.put("api_key", new Configuration().RAZUNA_KEY);
+			reqMap.put("assetid", assetId);
+			reqMap.put("assettype", "aud");
+			System.out.println(httputil.callRazunaAPI(reqMap, config.RAZUNA_ASSET_METHOD));
+			songsdata=httputil.readResponseOfEachSong(httputil.callRazunaAPI(reqMap, config.RAZUNA_ASSET_METHOD));
+			System.out.println("RetrieveSongs "+songsdata);
+			songs= retrieveMetaDataOfSongs(songsdata);
+		}
 		
-		HashMap<String,String> reqMap=new HashMap<String,String>();
-		reqMap.put("method", "getasset");
-		reqMap.put("api_key", new Configuration().RAZUNA_KEY);
-		reqMap.put("assetid", assetId);
-		reqMap.put("assettype", "aud");
-		System.out.println(httputil.callRazunaAPI(reqMap, config.RAZUNA_ASSET_METHOD));
-		songsdata=httputil.readResponseOfEachSong(httputil.callRazunaAPI(reqMap, config.RAZUNA_ASSET_METHOD));
-		System.out.println("RetrieveSongs "+songsdata);
-		songs= retrieveMetaDataOfSongs(songsdata);
-//		if(songs.get(0)!=null &&songs.getJSONObject(0).has("fileName") && songs.getJSONObject(0).getInt("fileName")==0)
-//			songs=new JSONArray();
+		return songs;
 	}
-	
-	return songs;
-}
-=======
->>>>>>> master
 	
 }
 
