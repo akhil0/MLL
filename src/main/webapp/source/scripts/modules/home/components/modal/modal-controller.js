@@ -4,9 +4,9 @@
         .module("mllApp.home")
         .controller("ModalController", ModalController);
     
-    ModalController.$inject = ['arHomePageSerivce', 'authenticationService', 'row'];
+    ModalController.$inject = ['arHomePageSerivce', 'authenticationService', 'row','$state', '$uibModalInstance'];
 
-	function ModalController(arHomePageSerivce, authenticationService, row) {
+	function ModalController(arHomePageSerivce, authenticationService, row, $state, $uibModalInstance) {
        this.authService = authenticationService;     
   
        var model = this;
@@ -25,7 +25,13 @@
     	   arHomePageSerivce.getAllPlaylists().success(function(response){
     		   console.log("ALL PLAYLISTS");
 				 console.log(response.playlists);
-				 model.playlists = response.playlists;
+				 if(response.playlists.length > 0){
+					 model.playlists = response.playlists;
+					 model.playlistExist = true;   
+				 }else{
+					 model.playlistExist = false;   
+				 }
+
 			 })	    	 
 //	    	 model.playlists = ["HIP-HOP", "Classical", "Indian"];
 	     }
@@ -59,6 +65,10 @@
 	    		   model.responseMessage = "Select a playlist";
 	    	   }
     	   
+       }
+       model.addNewPlaylist = function(){
+           $state.go(this.authService.details.data.type, { id: model.authService.details.data.id });
+           $uibModalInstance.dismiss('cancel');
        }
               
        model.selectPlaylist = function(playlist){

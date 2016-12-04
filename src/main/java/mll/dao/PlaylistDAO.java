@@ -128,6 +128,45 @@ public class PlaylistDAO {
 	}
 	
 	
+	public JSONArray deleteSongPlaylist(int playlistId, String assetId) throws Exception
+	{
+		JSONArray allSongsForPlaylist = new JSONArray();
+		if(playlistId <= 0 || assetId == null)
+			return allSongsForPlaylist;
+		
+		Session session = null;
+		Transaction tx = null;
+		
+		try
+		{
+			session = SessionFactoryUtil.getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();
+			Query query = session.createQuery("FROM mll.beans.Playlist pl where pl.playlist_id=:playlistId AND pl.song_id=:songId");
+			query.setParameter("playlistId", playlistId);
+			query.setParameter("songId", assetId);
+			Playlist playlist = (Playlist) query.uniqueResult();
+			session.delete(playlist);
+
+			if(playlist != null){
+				allSongsForPlaylist = getAllSongsForPlaylist(playlistId);
+				return allSongsForPlaylist;
+			}
+			if(!tx.wasCommitted())
+				tx.commit();
+		}
+		catch(Exception e)
+		{
+			if( null != tx)
+			{
+				tx.rollback();
+			}
+			throw e;
+		}
+		return allSongsForPlaylist;
+	}
+	
+	
+	
 	public static void main(String[] args) throws Exception {
 //		List<Playlist> allSongsForPlaylist = new PlaylistDAO().getAllSongsForPlaylist(129);
 //		System.out.println(allSongsForPlaylist);

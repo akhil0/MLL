@@ -87,6 +87,11 @@ public class PlaylistService {
         return flag;
     }
 	
+	public JSONArray deleteSongPlaylist(int userId, int playlistId, String assetId) throws Exception 
+	{
+		return 	dao.deleteSongPlaylist(playlistId, assetId);
+		 
+	}
 	
 //	@SuppressWarnings("unchecked")
 //	public JSONArray convertToJSON(List<Playlist> songs) {
@@ -99,6 +104,7 @@ public class PlaylistService {
 //		}
 //		return jsonArray;
 //	}
+	
 	
 	
 	public static void main(String[] args) {

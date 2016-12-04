@@ -1,5 +1,5 @@
-<h1>PLAY LIST</h1>
-<div>
+<h1 style="text-align: center;">PLAY LIST</h1>
+<div ng-show="ctrl.playlistExist">
 	<table
 		class="table table-responsive table-striped table-hover ng-scope">
 		<thead>
@@ -20,7 +20,7 @@
 						<span ng-show="ctrl.sortReverse"
 						class="glyphicon glyphicon-triangle-bottom"></span></span> Date Added
 				</th>
-				<th ng-show="ctrl.deleteSong" >
+				<th ng-show="ctrl.deleteSongBoolean" >
 					<span ng-show="ctrl.sortType == 'playCount'"> <span
 						ng-show="!ctrl.sortReverse"
 						class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
@@ -42,7 +42,7 @@
 				<td>
 					{{track.dateAdded}}
 				</td>
-				<td ng-show="ctrl.deleteSong">
+				<td ng-show="ctrl.deleteSongBoolean">
 					<a ng-click="ctrl.deleteSong(track.assetId)" class="btn btn-info btn-sm"
 						style="position: relative !important; top: -10px !important;">
 							<span class="glyphicon glyphicon-trash"></span> Remove
@@ -51,6 +51,10 @@
 			</tr>
 		</tbody>
 	</table>
+</div>
+<div ng-show="!ctrl.playlistExist">
+	<h2 style="text-align: center;">Your playlist is empty</h2>
+	<div style="text-align: center;"><button ng-click="ctrl.track()"  class="tomatobttn"> View Songs of musicians</button></div>
 </div>
 
 
