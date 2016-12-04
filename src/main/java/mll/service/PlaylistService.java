@@ -7,8 +7,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import mll.beans.Playlist;
@@ -54,21 +54,21 @@ public class PlaylistService {
 	}	
 
 	@SuppressWarnings("unchecked")
-	public JSONObject getSongsFromPlaylist(HttpServletRequest request, HttpServletResponse response) {
-		int playlistId = Integer.parseInt(request.getParameter("playlistId"));
+	public JSONArray getSongsFromPlaylist(int playlistId) {
+
 		System.out.println("PLAY LIST ID  " + playlistId);
-		List<Playlist> songs = null;
+		JSONArray songs = new JSONArray();
 		try {
 			 songs = dao.getAllSongsForPlaylist(playlistId);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		JSONArray jsonArray = convertToJSON(songs);
+//		JSONArray jsonArray = convertToJSON(songs);
 		
 		JSONObject responseObject = new JSONObject();
-		responseObject.put("songs", jsonArray);
-		responseObject.put("playlistId", playlistId);
-		return responseObject;
+//		responseObject.put("songs", jsonArray);
+//		responseObject.put("playlistId", playlistId);
+		return songs;
 	}
 	
 	public boolean addSongPlaylist(int userId, int playlistId, String assetId) 
@@ -88,17 +88,17 @@ public class PlaylistService {
     }
 	
 	
-	@SuppressWarnings("unchecked")
-	public JSONArray convertToJSON(List<Playlist> songs) {
-		JSONArray jsonArray = new JSONArray();
-		for(int i = 0; i < songs.size(); i++) {
-			JSONObject object = new JSONObject();
-			System.out.println(songs.get(i).getPlaylist_id() + "  " + songs.get(i).getSong_id());
-			object.put("assetId", songs.get(i).getSong_id());
-			jsonArray.add(object);
-		}
-		return jsonArray;
-	}
+//	@SuppressWarnings("unchecked")
+//	public JSONArray convertToJSON(List<Playlist> songs) {
+//		JSONArray jsonArray = new JSONArray();
+//		for(int i = 0; i < songs.size(); i++) {
+//			JSONObject object = new JSONObject();
+//			System.out.println(songs.get(i).getPlaylist_id() + "  " + songs.get(i).getSong_id());
+//			object.put("assetId", songs.get(i).getSong_id());
+//			jsonArray.add(object);
+//		}
+//		return jsonArray;
+//	}
 	
 	
 	public static void main(String[] args) {

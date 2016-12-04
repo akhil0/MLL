@@ -288,13 +288,8 @@ public class HttpUtility {
 	
 	public HashMap readResponseOfEachSong(HttpResponse response) throws ParseException, JSONException, IOException
 	{
-				
-		System.out.println("read called");
-		JSONArray responseArray=new JSONArray();
-		JSONArray columnarray=new JSONArray();
+
 		HashMap<String,JSONObject> songsdata=new HashMap<String,JSONObject>();
-		String ids=new String();
-		
 		if(response!=null)
 		{			
 			JSONObject json = new JSONObject(EntityUtils.toString(response.getEntity()));

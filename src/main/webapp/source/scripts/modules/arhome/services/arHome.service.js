@@ -14,6 +14,8 @@
         	sharePlayList: sharePlayList,
             add: add,
             deletePlayList : deletePlayList,
+            getSongsInPlaylist: getSongsInPlaylist,
+            deleteSong: deleteSong,
         };
 
         
@@ -47,9 +49,10 @@
         }
         
         function getSongsInPlaylist(playlistId) {
-        	var playListUrl = '/MLL/PlaylistServlet/?playlistId=' + playlistId;
-//            return $http.get(playListUrl);
-            return null;
+        	var playlistUrl = '/MLL/PlaylistServlet/?playlistId=' + playlistId + '&actionType=get';
+        	console.log("GET SONGS IN PLAYLIST")
+        	console.log(playlistUrl)
+            return $http.get(playlistUrl);
         }
         
         function deletePlayList(playlistId) {
@@ -57,6 +60,12 @@
         	var playlistUrl = '/MLL/PlaylistReferenceServlet/?playlistId=' + playlistId + '&actionType=delete';
         	console.log(playlistUrl);
             return $http.get(playlistUrl);
+        }
+        
+        function deleteSong(playlistId, assetId){
+        	var playlistUrl = '/MLL/PlaylistServlet/?playlistId=' + playlistId + '&assetId='+ assetId +'&actionType=delete';
+        	console.log(playlistUrl);
+        	return $http.get(playlistUrl);        	
         }
         
     }

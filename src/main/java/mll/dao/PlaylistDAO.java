@@ -8,6 +8,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import mll.beans.Playlist;
 import mll.service.RazunaService;
@@ -38,7 +39,7 @@ public class PlaylistDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Playlist> getAllSongsForPlaylist(int playlistId) throws Exception {
+	public JSONArray getAllSongsForPlaylist(int playlistId) throws Exception {
 		
 		if(playlistId <= 0) {
 			return null;
@@ -75,15 +76,14 @@ public class PlaylistDAO {
 		}
 		
 		RazunaService service = new RazunaService();
-		System.out.println("SONG SIZE   " + songs.size());
+		JSONArray retrieveSongsUsingAssetId = new JSONArray();
 		for(int i = 0; i  < songs.size(); i++){
-			System.out.println("SONGS   ID   " + songs.get(i).getSong_id());
-			JSONArray retrieveSongsUsingAssetId = service.retrieveSongsUsingAssetId(songs.get(i).getSong_id());
-			System.out.println("RETRIEVE SONGS\n\n\n\n\n\n\n\n\n");
-			System.out.println(retrieveSongsUsingAssetId);
-		}
-		
-		return songs;
+			
+			JSONObject receivedObject = service.retrieveSongsUsingAssetId(songs.get(i).getSong_id());
+			retrieveSongsUsingAssetId.put(receivedObject.put("assetId", songs.get(i).getSong_id()));			
+			
+		}		
+		return retrieveSongsUsingAssetId;
 	}
 	
 	public boolean addSongPlaylist(Playlist playlist) 
@@ -129,12 +129,12 @@ public class PlaylistDAO {
 	
 	
 	public static void main(String[] args) throws Exception {
-		List<Playlist> allSongsForPlaylist = new PlaylistDAO().getAllSongsForPlaylist(129);
-		System.out.println(allSongsForPlaylist);
-		for(int i = 0; i < allSongsForPlaylist.size(); i++){
-			System.out.println("MAIN SONG ID    " + allSongsForPlaylist.get(i).getSong_id());
-			System.out.println(allSongsForPlaylist.get(i).getPlaylist_id());
-		}
+//		List<Playlist> allSongsForPlaylist = new PlaylistDAO().getAllSongsForPlaylist(129);
+//		System.out.println(allSongsForPlaylist);
+//		for(int i = 0; i < allSongsForPlaylist.size(); i++){
+//			System.out.println("MAIN SONG ID    " + allSongsForPlaylist.get(i).getSong_id());
+//			System.out.println(allSongsForPlaylist.get(i).getPlaylist_id());
+//		}
 		
 	}
 }

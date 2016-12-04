@@ -14,9 +14,10 @@
     		    $uibModal.open({
     		      templateUrl: 'single-playlist.html',
     		      controller: 'SinglePlaylistController',
-    		      controllerAs: 'model',
+    		      controllerAs: 'ctrl',
     		      resolve: {
-    		        id: function () { return row.entity.id; }
+    		        id: function () { return row.entity.id; },
+    		        deleteSong : function () { return false; }
     		      }
     		    });
     		  }
