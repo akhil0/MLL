@@ -144,9 +144,7 @@ public class RazunaService
 		return songs;
 	}
 	
-	
-
-	
+		
 
 	public JSONArray retrieveMetaDataOfSongs(HashMap<String,JSONObject> songsdata) throws JSONException, ParseException, IOException
 	{
