@@ -306,7 +306,7 @@ span:active {
 
 /* Playlist */
 @import "bourbon";
-$melon: #F97D75;
+$melon: #C82D2D;
 $black: #2E3641;
 .cont {
 width: 900px;
@@ -385,7 +385,7 @@ display: inline-block;
 }
 
 .gridColor button, .tomatobttn {
-  background-color: #F97D75;
+  background-color: #C82D2D;
   border: 0;
   padding: 4px 20px;
   color: white;
@@ -623,7 +623,7 @@ td.text-right {
 
 .tabs {
   background: #333333;
-  border: 2px solid #F97D75;
+  border: 2px solid #C82D2D;
   border-bottom: none;
 }
 .tabs span {
@@ -642,11 +642,11 @@ td.text-right {
   background: #222;
 }
 .tabs .active {
-  background: #F97D75;
+  background: #C82D2D;
   color: #ffffff;
 }
 .tabs .active:hover {
-  background: #F97D75;
+  background: #C82D2D;
   color: #ffffff;
 }
 .tabs .active:after {
@@ -662,7 +662,7 @@ td.text-right {
   border-color: transparent transparent #ffffff transparent;
 }
 .tab-content {
-  border: 2px solid #F97D75;
+  border: 2px solid #C82D2D;
   border-top: none;
   background: #ffffff;
   clear: both;
