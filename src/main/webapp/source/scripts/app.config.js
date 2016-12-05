@@ -207,6 +207,53 @@
                     }
                 }
             })
+            //new code 12/4
+            .state('musicianProfile', {
+                url: '/musician/dashboard/id/:id',
+                views: {
+                    left: { 
+                    	controller: 'SidebarController as ctrl',
+                    	templateProvider: function ($templateCache) {
+                            return $templateCache.get('sidebar.template.html'); 
+                    	}
+                    },
+                    center: {
+                        controller: 'MusicianProfileController as ctrl',
+                        templateProvider: function ($templateCache) {
+                            return $templateCache.get('musician-profile-full-center.view.html');
+                        }
+                    },
+                    right: { template: '' }
+                },
+                resolve: {
+                    userId: function($state, $stateParams, $q, $timeout, authenticationService) {
+                        let deferred = $q.defer();
+                        console.log("in resolve");
+                        $timeout(() => {
+                            if (!authenticationService.details.isAuth) {
+                            	console.log("in if");
+                                $state.go('login');
+                                deferred.reject();
+                            }
+
+                            else if (authenticationService.details.data.id !== +$stateParams.id) {
+                            	console.log("in else if");
+                                $state.go(authenticationService.details.data.type,
+                                    { id: authenticationService.details.data.id });
+                                deferred.reject();
+                            }
+
+                            else {
+                            	console.log("in else");
+                            	deferred.resolve(+$stateParams.id);
+                            }
+                            
+                        }, 0);
+
+                        return deferred.promise;
+                    }
+                }
+            })
             .state('musicianUpload', {
                 url: '/musician/upload',
                 views: {

@@ -16,6 +16,12 @@
                 <span ng-bind="ctrl.uploadLink.text"></span>
             </a>
         </li>
+        
+        <li id="alist" ng-show="ctrl.userType.indexOf('musician') >= 0">
+			<a ng-click="ctrl.profile()" ui-sref="{{ctrl.profileLink.href}}">
+                <span ng-bind="ctrl.profileLink.text"></span>
+            </a>
+        </li>
 
 		<li id="alist"><a ng-click="ctrl.about()"><span>About</span></a></li>	
     </ul>
