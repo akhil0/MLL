@@ -5,14 +5,14 @@
         .module('mllApp.home')
         .factory('musicianHomePageSerivce', musicianHomePageSerivce);
 
-    musicianHomePageSerivce.$inject = ['$http', 'musicianUrl', 'searchUrl', 'deleteUrl'];
+    musicianHomePageSerivce.$inject = ['$http', 'musicianUrl', 'searchUrl', 'deleteUrl', 'editUrl'];
 
-    function musicianHomePageSerivce($http, musicianUrl, searchUrl, deleteUrl) {
+    function musicianHomePageSerivce($http, musicianUrl, searchUrl, deleteUrl, editUrl) {
         return {
             getSongs: getSongs,
             searchSongs: searchSongs,
-            deleteSong: deleteSong//,
-            //editSong: editSong
+            deleteSong: deleteSong,
+            editSong: editSong
         };
 
         function getSongs() {
@@ -42,13 +42,36 @@
                 .catch((rejection) => rejection);
         }
         
-//        function editSong(track) {
+        function editSong(data) {
+        	console.log("in edit service");
+        	let fd = new FormData();
+
+        	console.log("from edit service");
+        	console.log(data);
+        	
+        	
+            Object.keys(data).forEach((key) =>
+                fd.append(key, (key === 'file') ? data[key] : JSON.stringify(data[key])));
+
+        	return $http.post(editUrl, data)
+            .then((response) => {
+            	console.log("after servlet hit");
+                	console.log(response);
+                    //return response;
+                })
+                .catch((rejection) => rejection);
+//            return $http.post(editUrl, fd, {
+//                transformRequest: angular.identity,
+//                headers: {
+//                    'Content-Type': undefined
+//                }
+//            });
 //        	return $http.post(editUrl, track)
 //                .then((response) => {
 //                	console.log(response);
 //                    return response;
 //                })
 //                .catch((rejection) => rejection);
-//        }
+        }
     }
 })(window.angular);

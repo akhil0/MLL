@@ -83,7 +83,7 @@
 
 							<section ng-show="isCollapsed && !isEditable">
 								<p>
-									<b> Writer: </b> {{track.OwnerShipInfo.WRITER.Name}}
+									<b> Writer: </b> {{track.OwnerShipInfo.WRITER[0].Name}}
 								</p>
 							</section>
 
@@ -154,7 +154,7 @@
 									<label for="inputWriter" class="col-sm-2 control-label">Writer:
 									</label>
 									<div class="col-sm-10">
-										<input type="text" ng-model="track.OwnerShipInfo.WRITER.Name"
+										<input type="text" ng-model="track.OwnerShipInfo.WRITER[0].Name"
 											class="form-control" id="inputWriter" placeholder="Writer">
 									</div>
 								</div>
@@ -209,7 +209,7 @@
 									</div>
 								</div>
 							</form>
-							<a href="" class="btn btn-info" ng-click="ctrl.editSong(track) && isEditable = !isEditable">
+							<a href="" class="btn btn-info" ng-click="ctrl.editSong(track) "> <!-- && isEditable = !isEditable -->
 								<span class="glyphicon glyphicon-pencil incrsize">SAVE</span>
 						</div></td>
 					<td class="text-left">0</td>
