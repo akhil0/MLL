@@ -29,6 +29,8 @@ public class UpdateSongMetadataServiceTest {
 	@Test
 	public void testUpdateSongWithJSONObject() throws ParseException, JSONException, IOException
 	{
+		RazunaService service=new RazunaService();
+		
 		JSONObject dataobj=new JSONObject();
 		dataobj.put("primayPhone", "8578299424");
 		dataobj.put("Name","sai mahanth");
