@@ -12,6 +12,8 @@
 	let about = { text: 'About'};
 	
 	let uploadLink = { text: 'Upload', href: 'musicianUpload' };
+	
+	let profileLink = { text: 'Profile', href: 'musicianProfile' };
     
 
     angular
@@ -20,6 +22,7 @@
         .constant('inviteLink', inviteLink)
         .constant('trackLink', trackLink)
         .constant('uploadLink', uploadLink)
+        .constant('profileLink', profileLink)
         .constant('faqslink', faqslink)
         .constant('about', about);
 })(window.angular);

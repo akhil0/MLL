@@ -5,9 +5,9 @@
         .module("mllApp.sidebar")
         .controller("SidebarController", SidebarController);
     
-	    SidebarController.$inject = [ '$state', '$location', 'uploadLink', 'authenticationService' ];
+	    SidebarController.$inject = [ '$state', '$location', 'uploadLink', 'profileLink', 'authenticationService' ];
 
-	function SidebarController($state, $location, uploadLink, authenticationService ) {
+	function SidebarController($state, $location, uploadLink, profileLink, authenticationService ) {
 
        this.authService = authenticationService;
        var userId = this.authService.details.data.id;
@@ -15,6 +15,7 @@
        this.userId = userId;
        this.userType = userType;
        this.uploadLink = uploadLink;
+       this.profileLink = profileLink;
        
         this.home = function(){
         	console.log(this.authService.details.data.type);
@@ -37,6 +38,12 @@
         
         this.upload = () => {
             $state.go(uploadLink.href, {}, { reload: true });
+        };
+        
+        this.profile = () => {
+        	console.log("in sidebar controller -> profile");
+        	console.log(profileLink);
+            $state.go(profileLink.href, { id: userId });
         };
         
     }
