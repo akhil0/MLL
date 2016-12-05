@@ -147,35 +147,35 @@ public class RazunaUtility {
 		if(smd.has("publishing_company"))
 		{
 			JSONArray arr=new JSONArray();
-			arr.put(conf.RAZUNA_COPY_RIGHT_DATE);
+			arr.put(conf.RAZUNA_PUBLISHING_COMPNAY);
 			arr.put(smd.get("publishing_company"));
 			customFields.put(arr);
 		}
 		if(smd.has("primary_genre"))
 		{
 			JSONArray arr=new JSONArray();
-			arr.put(conf.RAZUNA_COPY_RIGHT_NUMBER);
+			arr.put(conf.RAZUNA_PRIMAY_GENRE);
 			arr.put(smd.get("primary_genre"));
 			customFields.put(arr);
 		}
 		if(smd.has("secondary_genre"))
 		{
 			JSONArray arr=new JSONArray();
-			arr.put(conf.RAZUNA_LYRICS);
+			arr.put(conf.RAZUNA_SEC_GENRE);
 			arr.put(smd.get("secondary_genre"));
 			customFields.put(arr);
 		}
 		if(smd.has("copyright_number"))
 		{
 			JSONArray arr=new JSONArray();
-			arr.put(conf.RAZUNA_PRIMAY_GENRE);
+			arr.put(conf.RAZUNA_COPY_RIGHT_NUMBER);
 			arr.put(smd.get("copyright_number"));
 			customFields.put(arr);
 		}
 		if(smd.has("pro"))
 		{
 			JSONArray arr=new JSONArray();
-			arr.put(conf.RAZUNA_SEC_GENRE);
+			arr.put(conf.RAZUNA_PRO);
 			arr.put(smd.get("pro"));
 			customFields.put(arr);
 		}
@@ -189,7 +189,7 @@ public class RazunaUtility {
 		}
 
 
-		//System.out.println(customFields.toString());
+		System.out.println("custom json " +customFields.toString());
 		return customFields.toString();
 
 

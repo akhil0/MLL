@@ -70,7 +70,7 @@ public class UpdateSongMetadataDAO {
 		String primary_email_id = new String();
 		String secondary_email_id = new String();
 		 
-		 int id = Integer.parseInt(obj.getString("id"));
+		 int id = Integer.parseInt(obj.getString("Id"));
 		 String name=obj.getString("Name");
 		 if(obj.has("divisionOfOwnership"))
 			  divison_of_ownership= obj.getString("divisionOfOwnership");

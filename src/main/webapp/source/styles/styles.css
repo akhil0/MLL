@@ -306,20 +306,20 @@ span:active {
 
 /* Playlist */
 @import "bourbon";
-$melon: #F97D75;
+$melon: #c82d2d;
 $black: #2E3641;
 .cont {
 width: 900px;
 }
 .aboutmll{
-	 background: linear-gradient(-0deg, #F9bD75, #CE4647);
+	 background: linear-gradient(-0deg, #e78a61, #c82d2d);
 	
 }
 .scrollmenu .pldiv{
     color: #fff;
     font-size: 14px;
     text-shadow: 0 0 3em #000;
-    background: linear-gradient(-0deg, #F9bD75, #CE4647);
+    background: linear-gradient(-0deg, #e78a61, #c82d2d);
      width: 150px;
      height: 150px;
     border: 4px solid #Ffffff;
@@ -385,7 +385,7 @@ display: inline-block;
 }
 
 .gridColor button, .tomatobttn {
-  background-color: #F97D75;
+  background-color: #c82d2d;
   border: 0;
   padding: 4px 20px;
   color: white;
@@ -623,7 +623,7 @@ td.text-right {
 
 .tabs {
   background: #333333;
-  border: 2px solid #F97D75;
+  border: 2px solid #c82d2d;
   border-bottom: none;
 }
 .tabs span {
@@ -642,11 +642,11 @@ td.text-right {
   background: #222;
 }
 .tabs .active {
-  background: #F97D75;
+  background: #c82d2d;
   color: #ffffff;
 }
 .tabs .active:hover {
-  background: #F97D75;
+  background: #c82d2d;
   color: #ffffff;
 }
 .tabs .active:after {
@@ -662,7 +662,7 @@ td.text-right {
   border-color: transparent transparent #ffffff transparent;
 }
 .tab-content {
-  border: 2px solid #F97D75;
+  border: 2px solid #c82d2d;
   border-top: none;
   background: #ffffff;
   clear: both;
