@@ -10,8 +10,9 @@
       Your Playlists
     </span>
     <span ng-class="{'active': (ctrl.selected == '2')}" ng-click='ctrl.morePlaylist()'>
-      More Playlists
+      More Playlists		
     </span>
+
  </div>
 <div class='tab-content'>
     <div ng-show='ctrl.selected == 1'>
@@ -32,17 +33,22 @@
 				</div>
 <!--   				      	<a ng-click="ctrl.getPlayListId($index)">Delete</a> -->
 				
-				<button class='tomatobttn' type="submit" ng-click="ctrl.addplaylist()" ng-show="ctrl.new_playlist_data1">add new playlist</button>
+
+				<button type="submit" ng-click="ctrl.addplaylist()" ng-show="ctrl.new_playlist_data1" class="tomatobttn">add new playlist</button>
 				
 				<div ng-show="ctrl.new_playlist_data" >        
 					<input type="text" placeholder="Enter Title" ng-model="ctrl.input" id="input" focus>
-					<button class='tomatobttn' type="submit" ng-click ="ctrl.add()"> submit</button></div>
+					<button type="submit" ng-click ="ctrl.add()" class="tomatobttn"> submit</button></div>
+
+
 					
 				<div class="alert alert-danger" ng-show="ctrl.error_message" >{{ctrl.errormsg}}</div>
 		</div>
     </div>
     <div ng-show='ctrl.selected == 2'>
       <h1>More Playlists</h1><br>
+      <span ng-show="ctrl.addMyPlaylistPrompt" style="color:green;">Added to your playlist</span>
+<!--       <span ng-show="!ctrl.notAddMyPlaylistPrompt" style="color:red;">Already exist in your playlist</span> -->
       <div ng-if="ctrl.datareceived">
 	      <div ui-grid=ctrl.gridOptions ></div> 
       </div>

@@ -1,19 +1,20 @@
 package mll.beans;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class PlaylistReference {
+public class PlaylistReference implements Serializable{
 	
-	private Integer id;
+	private int id;
 	private int userId;
 	private String playlistName;
 	private Date creationDate;
 	private Boolean isShared = false;
 	
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getPlaylistName() {

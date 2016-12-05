@@ -16,13 +16,13 @@
 	    var ctrl = this;	
 
 	    ctrl.new_playlist_data1 = true;
-
+	    ctrl.addMyPlaylistPrompt = false;
+	    ctrl.notAddMyPlaylistPrompt = true;
         ctrl.selected ="1";
 		
         
         
         ctrl.morePlaylist = function(){
-        	console.log("MOREEE");
         	ctrl.selected=2;
         	getMorePlaylists();
         }
@@ -49,12 +49,29 @@
 	    				    { field: 'playlistName', name : 'Playlist name'},
 	    				    { field: 'creationDate' , name : 'Creation Date'},
 		    				{ field: '', name : 'Songs', cellTemplate: 'show-playlist-button.html', enableFiltering:false},
+		    				{field: '', name: 'AddPlaylist', cellTemplate: '<button class="tomatobttn" type="button" ng-click="grid.appScope.addtoMyPlaylist(row.entity.id)" >ADD</button> ', enableFiltering:false}, 
 	    				  ]
 	    				};
+	    		 
+	    		 ctrl.gridOptions.appScopeProvider = ctrl;
 	    	 })	    	 
 	     }
         
-	     
+	     ctrl.addtoMyPlaylist = function(id){
+	    	 console.log(id);
+	    	 arHomeSerivce.addtoMyPlaylist(id).success(function(response){
+	    		console.log(response.isValid);
+	    		if(response.isValid){
+		    		ctrl.addMyPlaylistPrompt = response.isValid;	
+		    		ctrl.notAddMyPlaylistPrompt = response.isValid
+	    		}else{
+		    		ctrl.addMyPlaylistPrompt = response.isValid;	    			
+		    		ctrl.notAddMyPlaylistPrompt = response.isValid	    			
+	    		}
+
+	    		getAllPlaylists();
+	    	 })
+	     }
 
 	    ctrl.add = function() {
 	    	if(ctrl.input){
