@@ -127,16 +127,17 @@
     	 getAllPlaylists();
     	 
     	 
-    	 ctrl.getPlayListId = function (id){
-     		console.log("PLAYLIST ID " + id)
- 		    $uibModal.open({
-  		      templateUrl: 'single-playlist.html',
-  		      controller: 'SinglePlaylistController',
-  		      controllerAs: 'model',
-  		      resolve: {
-  		        id: function () { return id; }
-  		      }
-  		    });
+    	 ctrl.getPlayListId = function (id,plname){
+      		console.log("PLAYLIST ID " + id)
+  		    $uibModal.open({
+   		      templateUrl: 'single-playlist.html',
+   		      controller: 'SinglePlaylistController',
+   		      controllerAs: 'model',
+   		      resolve: {
+   		        id: function () { return id; },
+  		        plname : function () {return plname;}
+   		      }
+   		    });
 
     	 }
  	}

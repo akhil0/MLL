@@ -4,9 +4,9 @@
         .module("mllApp.arhome")
         .controller("SinglePlaylistController", SinglePlaylistController);
     
-    SinglePlaylistController.$inject = ['arHomeSerivce', 'authenticationService', 'id'];
+    SinglePlaylistController.$inject = ['arHomeSerivce', 'authenticationService', 'id','plname'];
 
-	function SinglePlaylistController(arHomeSerivce, authenticationService, id) {
+	function SinglePlaylistController(arHomeSerivce, authenticationService, id,plname) {
        this.authService = authenticationService;
        console.log("ID   " + id);
        var model = this;
@@ -15,7 +15,7 @@
        
        getSongsInPlaylist();       
        
-       
+       model.plname=plname;
        model.showPlaylist = function(){
     	   
        }

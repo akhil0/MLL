@@ -27,7 +27,7 @@
 					<div class='item' ng-repeat="x in ctrl.myList" > 
 						<img src="dist/fonts/delete.png" class='delete' ng-click = "ctrl.deletePlayList(x.id)">
 						<img src="dist/fonts/share.png" class='share' ng-click = "ctrl.sharePlayList(x.id)">
-						<div class='pldiv' ng-click="ctrl.getPlayListId(x.id)">{{ x.playlistName }}</div>	
+						<div class='pldiv' ng-click="ctrl.getPlayListId(x.id,x.playlistName)">{{ x.playlistName }}</div>	
 					</div>
 				</div>
 <!--   				      	<a ng-click="ctrl.getPlayListId($index)">Delete</a> -->
