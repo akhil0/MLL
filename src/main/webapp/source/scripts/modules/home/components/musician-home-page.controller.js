@@ -5,13 +5,16 @@
         .module("mllApp.home")
         .controller("MusicianHomeController", MusicianHomeController);
     
-    MusicianHomeController.$inject = ['$scope', '$state', '$location', 'musicianHomePageSerivce', 'authenticationService' ];
+    MusicianHomeController.$inject = ['$scope', '$state', '$location', 'musicForms', 'musicData', 'musicianHomePageSerivce', 'authenticationService' ];
 
-	function MusicianHomeController($scope, $state, $location, musicianHomePageSerivce, authenticationService ) {
+	function MusicianHomeController($scope, $state, $location, musicForms, musicData, musicianHomePageSerivce, authenticationService ) {
 
        this.authService = authenticationService;
        //this.failureMessage = null;
        //this.successMessage = null;
+      // this.forms = angular.copy(musicForms);
+
+       this.editData = angular.copy(musicData);
        
        this.data = {
                userId: +this.userId,
@@ -36,6 +39,12 @@
        
     	   //SEARCH SONG
        this.search = (title) => {
+
+    	   // new edits
+    	   // ***********
+    	   console.log("in search function"+title)
+    	   // ***********
+    	   
     	   musicianHomePageSerivce.searchSongs(title)
     	   .then((response) => {
     		   var songs = response;
@@ -72,9 +81,37 @@
    	   $state.reload();
    	   }
        
+       this.prepare = (data) => {
+           let obj = {
+               generalInformation: data.generalInformation,
+               ownershipInformation: data.ownershipInformation,
+               soundInformation: data.soundInformation
+           };
+
+           return obj;
+       };
+       
        // EDIT SONG
        
-//       this.editSong = (track) => {
+      this.editSong = (track) => {
+    	  console.log("in edit controller");
+    	  let data = this.prepare(this.editData);
+    	  
+
+          let promise = musicianHomePageSerivce.editSong(track, 'file');
+
+          promise.then((response) => {
+        	  console.log("in promise");
+        	  console.log(data);
+        	  console.log(track);
+        	  console.log(response);
+              //this.data.serverInformation.message = response.data.message;
+          })
+          .catch((reject) => {
+        	  console.log("in catch");
+              //this.data.serverInformation.isUploaded = false;
+              //this.data.serverInformation.message = reject;
+          });
 //    	   this.failureMessage = null;
 //           this.successMessage = null;
 //    	   musicianHomePageSerivce.editSong(track)
@@ -89,7 +126,7 @@
 //		   }
 //		   })
 //		   .catch((rejection) => rejection);
-//	   $state.reload();
-//       }
+	   $state.reload();
+       };
     }
 })(window.angular);
