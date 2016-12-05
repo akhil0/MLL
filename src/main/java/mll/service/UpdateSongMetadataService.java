@@ -36,8 +36,9 @@ public class UpdateSongMetadataService {
 	   				requestStr.append(line);
 	   			}
    
-	   		
-	   			JSONObject songobj = (JSONObject) parser.parse(requestStr.toString());
+	   			System.out.println("Edit object is "+requestStr.toString());
+	   			JSONObject songobj = new JSONObject(requestStr.toString());
+	   			
 	   			return updateSong(songobj);
 
 	   		}
@@ -45,11 +46,7 @@ public class UpdateSongMetadataService {
 	   			// TODO Auto-generated catch block
 	   			e.printStackTrace();
 	   			response="Data cannot be updated, Try again";
-	   		} catch (ParseException e) {
-	   			// TODO Auto-generated catch block
-	   			e.printStackTrace();
-	   			response="Data cannot be updated, Try again";
-	   		}
+	   		} 
 	   	}
 	   	else
 	   		response="Data cannot be updated, Try again";
@@ -60,15 +57,17 @@ public class UpdateSongMetadataService {
 	
 	public String updateSong(JSONObject songobj) throws JSONException, org.apache.http.ParseException, IOException
 	{
+		System.out.println("inside the function updateSong()");
 		String response=null;
 		if(songobj != null)
 		{
+			System.out.println("inside  if block of updateSong");
 			String songid=new String();
 			JSONObject ownershipinfo=new JSONObject();
 			JSONArray recordinginfo=new JSONArray();
 			JSONArray  writerinfo=new JSONArray();
-			if(songobj.get("Assetid") !=null)
-				songid= songobj.getString("Assetid");
+			if(songobj.get("assetId") !=null)
+				songid= songobj.getString("assetId");
 			if(songobj.has("OwnerShipInfo") && songobj.get("OwnerShipInfo")!=null)
 			{
 				JSONObject ownerinfo=songobj.getJSONObject("OwnerShipInfo");
@@ -81,6 +80,7 @@ public class UpdateSongMetadataService {
 				{
 					writerinfo=ownerinfo.getJSONArray("WRITER");
 				}
+			}
 			
 				String dbmsg=updatedao.updateSongMetadata(writerinfo, recordinginfo);
 				String razunasmsg=razunaservice.updateMetaData(songobj, songid);
@@ -88,7 +88,7 @@ public class UpdateSongMetadataService {
 					response ="Data Updated Successfully";
 				else
 					response= "Data cannot be updated, Try again";
-			}
+			
 		
 		}  
 		else
