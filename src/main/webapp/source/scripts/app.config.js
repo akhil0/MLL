@@ -226,30 +226,35 @@
                     right: { template: '' }
                 },
                 resolve: {
-                    userId: function($state, $stateParams, $q, $timeout, authenticationService) {
+                	userId: function($state, $stateParams, $q, $timeout, authenticationService) {
                         let deferred = $q.defer();
-                        console.log("in resolve");
+
                         $timeout(() => {
+                        	console.log("resolve");
+                        	console.log("authenticationService.details.data.id");
+                        	console.log(authenticationService.details.data.id);
+                        	console.log("$stateParams.id");
+                        	console.log($stateParams.id);
+                        	
                             if (!authenticationService.details.isAuth) {
-                            	console.log("in if");
+                            	console.log("if");
                                 $state.go('login');
                                 deferred.reject();
                             }
-
-                            else if (authenticationService.details.data.id !== +$stateParams.id) {
-                            	console.log("in else if");
-                                $state.go(authenticationService.details.data.type,
-                                    { id: authenticationService.details.data.id });
-                                deferred.reject();
-                            }
+                            
+//                            else if (authenticationService.details.data.id !== +$stateParams.id) {
+//                            	console.log("else if");
+//                                $state.go(authenticationService.details.data.type,
+//                                    { id: authenticationService.details.data.id });
+//                                deferred.reject();
+//                            }
 
                             else {
-                            	console.log("in else");
+                            	console.log("else");
                             	deferred.resolve(+$stateParams.id);
                             }
-                            
                         }, 0);
-
+                        console.log("before return");
                         return deferred.promise;
                     }
                 }
@@ -257,7 +262,12 @@
             .state('musicianUpload', {
                 url: '/musician/upload',
                 views: {
-                    left: { template: '' },
+                    left: { 
+                    	controller: 'SidebarController as ctrl',
+                    	templateProvider: function ($templateCache) {
+                            return $templateCache.get('sidebar.template.html'); 
+                    	}
+            },
                     center: {
                         controller: 'MusicianUploadController as ctrl',
                         templateProvider: function ($templateCache) {

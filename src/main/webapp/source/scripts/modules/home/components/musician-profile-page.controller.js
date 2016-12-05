@@ -3,11 +3,11 @@
 	'use strict';
     angular
         .module("mllApp.home")
-        .controller("MusicianProfileController", MusicianProfileController);
+        .controller("MusicianProfilePageController", MusicianProfilePageController);
     
-    MusicianProfileController.$inject = ['$scope', '$state', '$location', 'musicianHomePageSerivce', 'authenticationService' ];
+    MusicianProfilePageController.$inject = ['$scope', '$state', '$location', 'musicianHomePageSerivce', 'authenticationService' ];
 
-	function MusicianProfileController($scope, $state, $location, musicianHomePageSerivce, authenticationService ) {
+	function MusicianProfilePageController($scope, $state, $location, musicianHomePageSerivce, authenticationService ) {
 
 		this.firstName = "Medhavi";
 		this.lastName = "Mahansaria";
