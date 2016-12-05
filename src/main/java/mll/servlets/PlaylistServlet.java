@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
 import org.json.simple.JSONObject;
+
+import mll.service.ImportPlaylistService;
 import mll.service.PlaylistService;
 
 
@@ -36,6 +38,7 @@ public class PlaylistServlet extends HttpServlet {
 			String assetId = request.getParameter("assetId");
 			int playlistId = Integer.parseInt(request.getParameter("playlistId"));
 			PlaylistService playlistService = new PlaylistService();
+			ImportPlaylistService imp = new ImportPlaylistService();
 			if(action.equals("add"))  
 			{
 				boolean isValid = playlistService.addSongPlaylist(userId, playlistId, assetId);
@@ -59,6 +62,13 @@ public class PlaylistServlet extends HttpServlet {
 				JSONArray songsFromPlaylist = playlistService.getSongsFromPlaylist(playlistId);
 				
 				responseObject.put("songs", songsFromPlaylist);
+			}
+			
+			else if(action.equals("addToMyPlaylist")) 
+			{
+				boolean importPlaylist = imp.importPlaylist(userId, playlistId);
+				System.out.println("CHECK AGAIN " + importPlaylist);
+				responseObject.put("isValid", importPlaylist);
 			}
 			else {
 				responseObject.put("isValid", false);
