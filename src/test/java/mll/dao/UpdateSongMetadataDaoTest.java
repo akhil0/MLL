@@ -47,7 +47,7 @@ public class UpdateSongMetadataDaoTest {
 		obj.put("primayPhone", "8578299424");
 		obj.put("Name","sai mahanth");
 		obj.put("divisionOfOwnership","full");
-		obj.put("id","1");
+		obj.put("Id","1");
 		JSONArray arry=new JSONArray();
 		arry.put(obj);
 		
