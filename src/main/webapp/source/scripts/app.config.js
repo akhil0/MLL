@@ -251,8 +251,8 @@
                             return $templateCache.get('sidebar.template.html');
                         }
                     },
-                    center: { template: '' },
-                    right: {
+                    right: { template: '' },
+                    center: {
                         controller: 'UserFeaturesController as ctrl',
                         templateProvider: function ($templateCache) {
                             return $templateCache.get('user-profile-right.view.html');
@@ -342,8 +342,7 @@ Selected musicians are invited by A&R student representatives to upload their mu
 The MLL provides students with real-world music licensing experience, exposes musicians to a wider audience, and enables music licensees to discover the perfect piece of music for their project, at a fraction of the cost of typical content libraries.
                             </p>
                         </div>`
-                    },
-                     right: { template:''}
+                    }
                     
                 },
                 resolve: {
