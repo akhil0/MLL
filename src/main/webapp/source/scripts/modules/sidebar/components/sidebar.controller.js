@@ -43,6 +43,7 @@
         this.profile = () => {
         	console.log("in sidebar controller -> profile");
         	console.log(profileLink);
+        	console.log(userId);
             $state.go(profileLink.href, { id: userId });
         };
         

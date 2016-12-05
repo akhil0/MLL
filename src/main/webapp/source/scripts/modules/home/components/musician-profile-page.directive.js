@@ -10,7 +10,7 @@
         return {
             restrict: 'AE',
             scope: {},
-            controller: 'MusicianProfileController',
+            controller: 'MusicianProfilePageController',
             controllerAs: 'ctrl',
             templateUrl: 'musician-profile-home.template.html',
             bindToController: {
