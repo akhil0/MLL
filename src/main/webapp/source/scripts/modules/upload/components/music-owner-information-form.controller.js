@@ -5,17 +5,20 @@
         .module('mllApp.upload')
         .controller('MusicOwnerInformationFormController', MusicOwnerInformationFormController);
     
-    MusicOwnerInformationFormController.$inject = ['musicContributions'];
+    MusicOwnerInformationFormController.$inject = ['musicContributions', 'musicianRoles'];
 
-    function MusicOwnerInformationFormController(musicContributions) {
+    function MusicOwnerInformationFormController(musicContributions, musicianRoles) {
 
     	this.musicContributions = angular.copy(musicContributions);
+    	this.musicianRoles = angular.copy(musicianRoles);
     	
         this.addWriter = () => this.data.songwriters.push({
             name: '', primaryPhone: '', secondaryPhone: '', primaryEmail: '', secondaryEmail: ''
         });
 
         this.selectContribution = (contribution) => { if(!contribution) this.data.contribution = null; };
+        
+        this.selectRole = (role) => { if(!role) this.data.musicianRole = null; };
         
         this.removeWriter = (i) => this.data.songwriters.splice(i, 1);
 
