@@ -230,31 +230,16 @@
                         let deferred = $q.defer();
 
                         $timeout(() => {
-                        	console.log("resolve");
-                        	console.log("authenticationService.details.data.id");
-                        	console.log(authenticationService.details.data.id);
-                        	console.log("$stateParams.id");
-                        	console.log($stateParams.id);
                         	
                             if (!authenticationService.details.isAuth) {
-                            	console.log("if");
                                 $state.go('login');
                                 deferred.reject();
                             }
-                            
-//                            else if (authenticationService.details.data.id !== +$stateParams.id) {
-//                            	console.log("else if");
-//                                $state.go(authenticationService.details.data.type,
-//                                    { id: authenticationService.details.data.id });
-//                                deferred.reject();
-//                            }
 
                             else {
-                            	console.log("else");
                             	deferred.resolve(+$stateParams.id);
                             }
                         }, 0);
-                        console.log("before return");
                         return deferred.promise;
                     }
                 }
@@ -413,16 +398,12 @@ The MLL provides students with real-world music licensing experience, exposes mu
                             }
 
                             else if (!authenticationService.details.data.permissions.browse) {
-                            	console.log("else if");
-                            	console.log(authenticationService.details.data);
                                 $state.go(authenticationService.details.data.type,
                                     { id: authenticationService.details.data.id });
                                 deferred.reject();
                             }
 
                             else {
-                            	console.log("else");
-                            	console.log(authenticationService.details.data);
                             	deferred.resolve(+$stateParams.id);
                             }
                             

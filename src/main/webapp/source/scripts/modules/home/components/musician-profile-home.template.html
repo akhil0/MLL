@@ -1,5 +1,77 @@
-<div>
-	<b>First Name:</b> &nbsp; {{ctrl.firstName}} <br/>
-	<b>Last Name: </b>&nbsp; {{ctrl.lastName}} <br/>
-	<b>Email:</b> &nbsp; {{ctrl.email}}
+
+<div class="container-fluid" align="center">
+    <h1 class="page-header">{{ctrl.user.details.firstName}}&nbsp;{{ctrl.user.details.lastName}}&nbsp;</h1>
+
+    <br/>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label label-left">Username&nbsp;</label>
+            <div id="profileDetails" class="col-sm-7">
+                {{ctrl.user.details.username}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label label-left">First Name&nbsp;</label>
+            <div id="profileDetails" class="col-sm-7">
+                {{ctrl.user.details.firstName}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label label-left">Last Name&nbsp;</label>
+            <div id="profileDetails" class="col-sm-7">
+                {{ctrl.user.details.lastName}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Primary Phone&nbsp;</label>
+            <div id="profileDetails" class="col-sm-7">
+                {{ctrl.user.details.primaryPhone}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Secondary Phone&nbsp;</label>
+            <div id="profileDetails" class="col-sm-7">
+                {{ctrl.user.details.secondaryPhone}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Primary Email&nbsp;</label>
+            <div id="profileDetails" class="col-sm-7">
+                {{ctrl.user.details.primaryEmail}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Secondary Email&nbsp;</label>
+            <div id="profileDetails" class="col-sm-7">
+                {{ctrl.user.details.secondaryEmail}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Contribution&nbsp;</label>
+            <div id="profileDetails" class="col-sm-7">
+                {{ctrl.user.details.contribution}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Ownership (%)&nbsp;</label>
+            <div id="profileDetails" class="col-sm-7">
+                {{ctrl.user.details.ownershipPercent}}%
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Role&nbsp;</label>
+            <div id="profileDetails" class="col-sm-7">
+                {{ctrl.user.details.musicianRole}}
+            </div>
+        </div>
+        <div class="form-group" ng-show="ctrl.user.bands">
+            <label class="col-sm-2 control-label">BANDS</label>
+            <ul ng-repeat="band in ctrl.user.bands">
+                <li>{{band}}</li>
+            </ul>
+        </div>
+    </div>
+
 </div>
+
+        

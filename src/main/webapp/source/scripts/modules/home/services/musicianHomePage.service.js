@@ -43,12 +43,7 @@
         }
         
         function editSong(data) {
-        	console.log("in edit service");
         	let fd = new FormData();
-
-        	console.log("from edit service");
-        	console.log(data);
-        	
         	
             Object.keys(data).forEach((key) =>
                 fd.append(key, (key === 'file') ? data[key] : JSON.stringify(data[key])));
@@ -60,18 +55,6 @@
                     //return response;
                 })
                 .catch((rejection) => rejection);
-//            return $http.post(editUrl, fd, {
-//                transformRequest: angular.identity,
-//                headers: {
-//                    'Content-Type': undefined
-//                }
-//            });
-//        	return $http.post(editUrl, track)
-//                .then((response) => {
-//                	console.log(response);
-//                    return response;
-//                })
-//                .catch((rejection) => rejection);
         }
     }
 })(window.angular);
