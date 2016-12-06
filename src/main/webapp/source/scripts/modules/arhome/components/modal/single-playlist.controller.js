@@ -13,12 +13,7 @@
        model.sortType = 'track';
        model.sortReverse = false;
        model.deleteSongBoolean = deleteSong;
-       console.log(model.deleteSongBoolean);
        getSongsInPlaylist();       
-       
-       model.showPlaylist = function(){
-    	   
-       }
        
        model.deleteSong = function(assetId){
     	   arHomeSerivce.deleteSong(id,assetId).success(function(response){
@@ -28,7 +23,6 @@
     		   }else{
     			   model.playlistExist = false;
     		   }
-
     	   })
        }
        
@@ -37,11 +31,11 @@
             $state.go("track", { id: userId});
             $uibModalInstance.dismiss('cancel');
 		};		
+		
        function getSongsInPlaylist(){
     	   arHomeSerivce.getSongsInPlaylist(id)
            .then((response) => {
-        	   console.log(response);
-        	   console.log(response.data.songs.length);
+
     		   if(response.data.songs.length > 0){
             	   model.tracks = response.data.songs;
     			   model.playlistExist = true;

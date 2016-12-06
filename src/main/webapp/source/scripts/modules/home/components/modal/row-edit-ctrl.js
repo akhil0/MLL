@@ -18,8 +18,7 @@
     		        row: function () { return row; }
     		      }
     		    });
-    		  }
-    	
+    		  }    	
     }
         
 })(window.angular);
