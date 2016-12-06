@@ -9,8 +9,7 @@
     function PlaylistModalController($stateParams,  $uibModal) {
     	var ctrl = this;
     	ctrl.showPlaylist = function (grid, row) {
-    		console.log("ROW   " + row.entity.id);
-    		console.log("MODAL OPEN  ")
+    			// Modal to show the songs in playlist
     		    $uibModal.open({
     		      templateUrl: 'single-playlist.html',
     		      controller: 'SinglePlaylistController',
@@ -20,8 +19,7 @@
     		        deleteSong : function () { return false; }
     		      }
     		    });
-    		  }
-    	
+    		  }    	
     }
         
 })(window.angular);

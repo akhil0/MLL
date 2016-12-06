@@ -60,6 +60,70 @@ public class PlaylistReferenceDAO {
 	}
 	
 	
+	public int addPlaylist1(PlaylistReference playlistReference) {
+		Session session = null;
+		Transaction tx = null;
+        int id = 0;
+		
+		if(playlistReference==null)
+			return 0;
+		
+		
+		try
+		{
+			// Initialize the session and transaction
+			session = SessionFactoryUtil.getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();
+			
+	
+			//Save the playlist in database
+	        session.save(playlistReference);
+	 
+	        	
+
+	        System.out.println("IDDDDDD   " + playlistReference.getId());
+	        //Commit the transaction
+	        session.getTransaction().commit();
+	        
+	        
+			// Commit the transaction if all the data successfully saved
+	        if (!tx.wasCommitted()) {
+	        	tx.commit();
+	        }
+	        
+	        System.out.println("JUGAAD BEFORE");
+	        try{
+				session = SessionFactoryUtil.getSessionFactory().getCurrentSession();
+				tx = session.beginTransaction();
+			
+				Query q = session.createQuery("From mll.beans.PlaylistReference p ORDER BY p.id DESC LIMIT 1");
+				q.setMaxResults(1);
+				PlaylistReference pr = (PlaylistReference) q.uniqueResult();
+				tx.commit();
+				System.out.println("JUGAAD " +pr.getId());
+				id =  pr.getId();
+	        }catch(Exception e){
+				if( null != tx)
+				{
+					// Rollback the transaction if any error comes during the process
+					 tx.rollback();
+				}
+				throw e;
+	        }
+	        
+	    }
+		catch(Exception e)
+		{
+			if( null != tx)
+			{
+				// Rollback the transaction if any error comes during the process
+				 tx.rollback();
+			}
+			throw e;
+		}
+		return id;
+	}
+	
 
 	/*
 	 * Tis method takes in userId and gets all the playlists for the user
@@ -238,6 +302,80 @@ public List<PlaylistReference> getSharedPlaylists(boolean flag) {
 	        e.printStackTrace();
 		}
 		return true;
+	}
+	
+	
+	public boolean isExistingPlaylistForUser(int userId, int playlistId) {
+		boolean doesExist = false;
+		Session session = null;
+		Transaction tx = null;
+
+		try
+		{
+			// Initialize the session and transaction
+			session = SessionFactoryUtil.getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();
+
+			Query query = session.createQuery("FROM mll.beans.PlaylistReference pr WHERE pr.userId=:userId AND pr.id=:playlistId");
+			query.setParameter("userId", userId);
+			query.setParameter("playlistId", playlistId);
+
+			List<PlaylistReference> list = (ArrayList<PlaylistReference>) query.list();
+
+			if(list.size() > 0) {
+				doesExist = true;
+			}
+
+			// Commit the transaction if all the data is successfully saved
+			tx.commit();
+		}
+		catch(Exception e)
+		{
+			if( null != tx)
+			{
+				// Rollback the transaction if any error comes during the process
+				tx.rollback();
+			}
+			e.printStackTrace();
+			throw e;
+		}
+
+		return doesExist;
+	}
+	
+	
+	public String getPlaylistName(int playlistId) {
+
+		if(playlistId < 1) {
+			return null;
+		}
+
+		Session session = null;
+		Transaction tx = null;
+		PlaylistReference reference = null;
+		
+		try {
+			session = SessionFactoryUtil.getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();
+			Query query = session.createQuery("FROM mll.beans.PlaylistReference pr WHERE pr.id=:playlistId");
+			query.setParameter("playlistId", playlistId);
+
+			reference = (PlaylistReference) query.list().get(0);
+			
+			if(reference == null)
+				return null;
+			
+			tx.commit();
+		}
+		catch(Exception e) {
+			
+			if (tx!=null) {
+				tx.rollback();
+			}
+	        e.printStackTrace();
+		}
+
+		return reference.getPlaylistName();
 	}
 	
 }

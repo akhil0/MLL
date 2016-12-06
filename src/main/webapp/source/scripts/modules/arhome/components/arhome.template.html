@@ -1,19 +1,14 @@
-<div>
-
-
-
-
-</div>
-
 <div class='tabs'>
     <span ng-class="{'active': (ctrl.selected == '1')}" ng-click='ctrl.selected=1'>
       Your Playlists
     </span>
     <span ng-class="{'active': (ctrl.selected == '2')}" ng-click='ctrl.morePlaylist()'>
-      More Playlists
+      More Playlists		
     </span>
- </div>
+</div>
+
 <div class='tab-content'>
+<!-- 	Tab content to show my playlist -->
     <div ng-show='ctrl.selected == 1'>
 		<div  class="cont">
 			<h1 ng-show="ctrl.showPlaylist">Your Playlists</h1><br>
@@ -30,46 +25,26 @@
 						<div class='pldiv' ng-click="ctrl.getSongsInPlaylist(x.id)">{{ x.playlistName }}</div>	
 					</div>
 				</div>
-<!--   				      	<a ng-click="ctrl.getPlayListId($index)">Delete</a> -->
 				
-				<button class='tomatobttn' type="submit" ng-click="ctrl.addplaylist()" ng-show="ctrl.new_playlist_data1">add new playlist</button>
+
+				<button type="submit" ng-click="ctrl.addplaylist()" ng-show="ctrl.new_playlist_data1" class="tomatobttn">add new playlist</button>
 				
 				<div ng-show="ctrl.new_playlist_data" >        
 					<input type="text" placeholder="Enter Title" ng-model="ctrl.input" id="input" focus>
-					<button class='tomatobttn' type="submit" ng-click ="ctrl.add()"> submit</button></div>
+					<button type="submit" ng-click ="ctrl.add()" class="tomatobttn"> submit</button></div>
+
+
 					
 				<div class="alert alert-danger" ng-show="ctrl.error_message" >{{ctrl.errormsg}}</div>
 		</div>
     </div>
+<!--     Tab to show More playlist -->
     <div ng-show='ctrl.selected == 2'>
       <h1>More Playlists</h1><br>
+      <span ng-show="ctrl.addMyPlaylistPrompt" style="color:green;">Added to your playlist</span>
+<!--       <span ng-show="!ctrl.notAddMyPlaylistPrompt" style="color:red;">Already exist in your playlist</span> -->
       <div ng-if="ctrl.datareceived">
 	      <div ui-grid=ctrl.gridOptions ></div> 
       </div>
     </div>    
   </div>
-
-
-
-
-<!-- 
-<div class='tabs'>
-    <span ng-class="{'active': (selected == '1')}" ng-click='selected=1'>
-      First
-    </span>
-    <span ng-class="{'active': (selected == '2')}" ng-click='selected=2'>
-      Second
-    </span>
- </div>
- 
-  <div class='tab-content'>
-    <div ng-show='selected == 1'>
-      This is first content...
-    </div>
-    <div ng-show='selected == 2'>
-      This is second content...
-    </div>
-    
-  </div>
-</div>
--->
