@@ -11,7 +11,7 @@
         this.authService = authenticationService;
 
         this.quit = () => {
-            $state.go(this.authService.details.data.type, { id: this.authService.details.data.id });
+            $state.go(this.authService.details.data.type, { id: this.authService.details.data.id }, {reload: true});
         };
     }
 })(window.angular);
