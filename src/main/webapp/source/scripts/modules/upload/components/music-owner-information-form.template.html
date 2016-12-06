@@ -2,7 +2,7 @@
     <!--  <legend>Ownership Information</legend>-->
     <div ng-repeat="songwriter in ctrl.data.songwriters">
         <ng-form name="writerForm">
-            <legend class="inner-legend">Songwriter<small ng-show="$index">&nbsp;#{{$index + 1}}</small></legend>
+            <legend class="inner-legend">Contributors<small ng-show="$index">&nbsp;#{{$index + 1}}</small></legend>
             <div class="form-group has-feedback"
                  ng-class="{ 'has-success': writerForm.name.$valid && ctrl.ownerForm.$submitted,
                              'has-error': writerForm.name.$invalid && ctrl.ownerForm.$submitted }">
