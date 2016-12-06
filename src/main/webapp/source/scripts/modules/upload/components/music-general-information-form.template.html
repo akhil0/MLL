@@ -107,11 +107,23 @@
             </select>
         </div>
     </div>
+    
+    <div class="form-group">
+        <label class="col-xs-2">
+            Type of Track <span class="glyphicon glyphicon-question-sign" uib-tooltip="Tooltip to be added"></span>
+        </label>
+        <div class="col-xs-10">
+            <select name="trackType" class="form-control" ng-model="ctrl.data.trackType"
+                    ng-options="type for type in ctrl.trackTypes">
+                <option value="">Select Track Type...</option>
+            </select>
+        </div>
+    </div>
 
     <div class="form-group">
-        <div class="col-xs-3 col-xs-offset-6">
+       <!--   <div class="col-xs-3 col-xs-offset-6">
             <button class="btn btn-block btn-default" ng-click="ctrl.reset()">Previous</button>
-        </div>
+        </div>-->
         <div class="col-xs-3">
             <button class="btn btn-block btn-primary" ng-click="ctrl.submit()">Next</button>
         </div>

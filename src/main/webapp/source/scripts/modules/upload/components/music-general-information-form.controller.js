@@ -5,11 +5,12 @@
         .module('mllApp.upload')
         .controller('MusicGeneralInformationFormController', MusicGeneralInformationFormController);
 
-    MusicGeneralInformationFormController.$inject = ['musicGenres'];
+    MusicGeneralInformationFormController.$inject = ['musicGenres', 'trackTypes'];
 
-    function MusicGeneralInformationFormController(musicGenres) {
+    function MusicGeneralInformationFormController(musicGenres, trackTypes) {
 
         this.genres = angular.copy(musicGenres);
+        this.trackTypes = angular.copy(trackTypes);
 
         this.addArtist = () => this.data.artists.push({ name: '' });
 

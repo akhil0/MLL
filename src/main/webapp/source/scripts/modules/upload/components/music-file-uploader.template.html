@@ -15,8 +15,7 @@ d. Summary (as is)
  		<!--   General Information / Recording Information -->
         <uib-tab index="0" heading="{{ctrl.forms.data[0].title}}" disable="true">
             <mll-music-general-information-form data="ctrl.data.generalInformation"
-                                                on-next="ctrl.next()"
-                                                on-previous="ctrl.previous()">
+                                                on-next="ctrl.next()">
             </mll-music-general-information-form>
         </uib-tab>
   
@@ -35,7 +34,8 @@ d. Summary (as is)
         
         <!--   Song Selection / Recording Upload -->
         <uib-tab index="2" heading="{{ctrl.forms.data[2].title}}" disable="true">
-            <mll-file-form on-next="ctrl.submit()" data="ctrl.data.fileInformation"></mll-file-form>
+            <mll-file-form on-next="ctrl.submit()" on-previous="ctrl.previous()" 
+            				data="ctrl.data.fileInformation"></mll-file-form>
         </uib-tab>
         
         <!-- Summary -->

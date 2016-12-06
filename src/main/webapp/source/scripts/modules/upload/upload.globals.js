@@ -55,6 +55,10 @@
 
     let musicContributions = ['Lyrics', 'Music', 'Lyrics and Music'].sort();
     
+    let trackTypes = ['Vocal', 'Instrumental', 'Vocal/Instrumental'].sort();
+    
+    let musicianRoles = ['Vocals', 'Backup Vocals', 'Percussion', 'Guitar', 'Drums', 'Keyboard'].sort();
+    
     let musicUrl = {
         direct: '/MLL/SubmissionServlet',
         cloud: '/MLL/SubmissionServlet'
@@ -68,5 +72,7 @@
         .constant('musicData', musicData)
         .constant('musicSize', musicSize)
         .constant('musicContributions', musicContributions)
+        .constant('trackTypes', trackTypes)
+        .constant('musicianRoles', musicianRoles)
         .constant('musicUrl', musicUrl);
 })(window.angular);
