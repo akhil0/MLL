@@ -1,4 +1,4 @@
-<h1> Hello A&R member </h1>
+<h3> Hello A&R member </h3>
 <div class='tabs'>
     <span ng-class="{'active': (ctrl.selected == '1')}" ng-click='ctrl.selected=1'>
       Your Playlists
@@ -12,8 +12,8 @@
 <!-- 	Tab content to show my playlist -->
     <div ng-show='ctrl.selected == 1'>
 		<div  class="cont">
-			<h1 ng-show="ctrl.showPlaylist">Your Playlists</h1><br>
-			<h1 ng-show="!ctrl.showPlaylist">Your Playlist is Empty</h1><br>
+			
+			<h3 ng-show="!ctrl.showPlaylist">Your Playlist is Empty</h3><br>
 				<div 
 					uib-tooltip="Playlist Shared" tooltip-is-open="ctrl.isOpen"
                      tooltip-placement="bottom" tooltip-trigger="none"
@@ -39,7 +39,7 @@
     </div>
 <!--     Tab to show More playlist -->
     <div ng-show='ctrl.selected == 2'>
-      <h1>More Playlists</h1><br>
+  
 		<div class="makeCenter"
       			uib-tooltip="{{ctrl.tooltipResponse}}" tooltip-is-open="ctrl.isUnshare"
                 tooltip-placement="top" tooltip-trigger="none"
