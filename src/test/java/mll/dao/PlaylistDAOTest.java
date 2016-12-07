@@ -13,25 +13,6 @@ public class PlaylistDAOTest
 {
 	
 	@Test
-	public void testAddSongPlaylist2()
-	{
-		Playlist playlist = new Playlist();
-		playlist.setSong_id("Abcdef");;
-		playlist.setPlaylist_id(10003);
-		PlaylistDAO dao = new PlaylistDAO();
-		try 
-		{
-			boolean addResult = dao.addSongPlaylist(playlist); 
-			assertEquals(true, addResult);
-		}
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-	}
-	
-	
-	@Test
 	public void testDeleteSongPlaylist()
 	{
 		try
