@@ -86,12 +86,6 @@ public class PlaylistReferenceService {
 		return responseObject;
 	}
 	
-	public static void main(String args[]) {
-		List<PlaylistReference> playlists = new PlaylistReferenceService().getSharedPlaylists();
-		System.out.println(playlists.size());
-	}
-	
-	
 	
 	public boolean deletePlaylistForUser(int playlistId, int userId) {
 		
