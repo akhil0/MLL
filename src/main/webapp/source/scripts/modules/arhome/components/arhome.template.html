@@ -1,52 +1,59 @@
-<h3> Hello A&R member </h3>
+<h3>Hello A&R member</h3>
 <div class='tabs'>
-    <span ng-class="{'active': (ctrl.selected == '1')}" ng-click='ctrl.selected=1'>
-      Your Playlists
-    </span>
-    <span ng-class="{'active': (ctrl.selected == '2')}" ng-click='ctrl.morePlaylist()'>
-      More Playlists		
-    </span>
+	<span ng-class="{'active': (ctrl.selected == '1')}"
+		ng-click='ctrl.selected=1'> Your Playlists </span> <span
+		ng-class="{'active': (ctrl.selected == '2')}"
+		ng-click='ctrl.morePlaylist()'> More Playlists </span>
 </div>
 
 <div class='tab-content'>
-<!-- 	Tab content to show my playlist -->
-    <div ng-show='ctrl.selected == 1'>
-		<div  class="cont">
-			
-			<h3 ng-show="!ctrl.showPlaylist">Your Playlist is Empty</h3><br>
-				<div 
-					uib-tooltip="Playlist Shared" tooltip-is-open="ctrl.isOpen"
-                     tooltip-placement="bottom" tooltip-trigger="none"
-                     tooltip-class="{{ctrl.isGenerated ? 'tooltip-alert-success' : 'tooltip-alert-error'}}"	>
-				</div>
-				<div class = "scrollmenu well well-ng" ng-show="ctrl.showPlaylist">
-					<div class='item' ng-repeat="x in ctrl.myList" > 
-						<img src="dist/fonts/delete.png" class='delete' ng-click = "ctrl.deletePlayList(x.id)">
-						<img src="dist/fonts/share.png" class='share' ng-click = "ctrl.sharePlayList(x.id)">
-						<div class='pldiv' ng-click="ctrl.getSongsInPlaylist(x.id,x.playlistName)">{{ x.playlistName }}</div>	
-					</div>
-				</div>
-				
+	<!-- 	Tab content to show my playlist -->
+	<div ng-show='ctrl.selected == 1'>
+		<div class="cont">
 
-				<button type="submit" ng-click="ctrl.addplaylist()" ng-show="ctrl.new_playlist_data1" class="tomatobttn">add new playlist</button>
-				
-				<div ng-show="ctrl.new_playlist_data" >        
-					<input type="text" placeholder="Enter Title" ng-model="ctrl.input" id="input" focus>
-					<button type="submit" ng-click ="ctrl.add()" class="tomatobttn"> submit</button></div>
-					
-				<div class="alert alert-danger" ng-show="ctrl.error_message" >{{ctrl.errormsg}}</div>
+			<h3 ng-show="!ctrl.showPlaylist">Your Playlist is Empty</h3>
+			<br>
+			<div uib-tooltip="Playlist Shared" tooltip-is-open="ctrl.isOpen"
+				tooltip-placement="bottom" tooltip-trigger="none"
+				tooltip-class="{{ctrl.isGenerated ? 'tooltip-alert-success' : 'tooltip-alert-error'}}">
+			</div>
+			<div class="scrollmenu well well-ng" ng-show="ctrl.showPlaylist">
+				<div class='item' ng-repeat="x in ctrl.myList">
+					<img src="dist/fonts/delete.png" class='delete'
+						ng-click="ctrl.deletePlayList(x.id)"> <img
+						src="dist/fonts/share.png" class='share'
+						ng-click="ctrl.sharePlayList(x.id)">
+					<div class='pldiv'
+						ng-click="ctrl.getSongsInPlaylist(x.id,x.playlistName)">{{
+						x.playlistName }}</div>
+				</div>
+			</div>
+
+
+			<button type="submit" ng-click="ctrl.addplaylist()"
+				ng-show="ctrl.new_playlist_data1" class="tomatobttn">add
+				new playlist</button>
+
+			<div ng-show="ctrl.new_playlist_data">
+				<input type="text" placeholder="Enter Title" ng-model="ctrl.input"
+					id="input" focus>
+				<button type="submit" ng-click="ctrl.add()" class="tomatobttn">
+					submit</button>
+			</div>
+
+			<div class="alert alert-danger" ng-show="ctrl.error_message">{{ctrl.errormsg}}</div>
 		</div>
-    </div>
-<!--     Tab to show More playlist -->
-    <div ng-show='ctrl.selected == 2'>
-  
-		<div class="makeCenter"
-      			uib-tooltip="{{ctrl.tooltipResponse}}" tooltip-is-open="ctrl.isUnshare"
-                tooltip-placement="top" tooltip-trigger="none"
-                tooltip-class="{{ctrl.isGenerated ? 'tooltip-alert-success' : 'tooltip-alert-error'}}"></div>
-<!--       <span ng-show="!ctrl.notAddMyPlaylistPrompt" style="color:red;">Already exist in your playlist</span> -->
-      <div ng-if="ctrl.datareceived">
-	      <div ui-grid=ctrl.gridOptions ></div> 
-      </div>
-    </div>    
-  </div>
+	</div>
+	<!--     Tab to show More playlist -->
+	<div ng-show='ctrl.selected == 2'>
+
+		<div class="makeCenter" uib-tooltip="{{ctrl.tooltipResponse}}"
+			tooltip-is-open="ctrl.isUnshare" tooltip-placement="top"
+			tooltip-trigger="none"
+			tooltip-class="{{ctrl.isGenerated ? 'tooltip-alert-success' : 'tooltip-alert-error'}}"></div>
+		<!--       <span ng-show="!ctrl.notAddMyPlaylistPrompt" style="color:red;">Already exist in your playlist</span> -->
+		<div ng-if="ctrl.datareceived">
+			<div ui-grid=ctrl.gridOptions></div>
+		</div>
+	</div>
+</div>

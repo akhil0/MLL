@@ -145,14 +145,14 @@
     	 getAllPlaylists();
     	 
     	 // Modal for displaying songs in playlist
-    	 ctrl.getSongsInPlaylist = function (id,name){
+    	 ctrl.getSongsInPlaylist = function (id, name){
  		    $uibModal.open({
   		      templateUrl: 'single-playlist.html',
   		      controller: 'SinglePlaylistController',
   		      controllerAs: 'ctrl',
   		      resolve: {
   		        id: function () { return id; },
-                        name: function () { return name; },
+                name: function () { return name; },
   		        deleteSong : function () { return true;},
   		      }
   		    });

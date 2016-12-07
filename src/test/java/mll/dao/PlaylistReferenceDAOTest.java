@@ -86,5 +86,72 @@ public class PlaylistReferenceDAOTest {
 		}
 	}
 	
-
+	@Test
+	public void testAddPlaylist5()
+	{
+		try
+		{
+			assertEquals(false, new PlaylistReferenceDAO().addPlaylist(null));
+		}
+		catch(Exception e)
+		{
+			
+		}
+	}
+	
+	@Test
+	public void testAddPlaylist6()
+	{
+		try
+		{
+			assertEquals(true, new PlaylistReferenceDAO().addPlaylist1(null)==0);
+		}
+		catch(Exception e)
+		{
+			
+		}
+	}
+	
+	@Test
+	public void testAddPlaylist7()
+	{
+		try
+		{
+			PlaylistReference pr = new PlaylistReference();
+			pr.setId(0);
+			pr.setPlaylistName("Test");
+			pr.setUserId(0);
+			assertEquals(true, new PlaylistReferenceDAO().addPlaylist1(pr) != 0);
+		}
+		catch(Exception e)
+		{
+			
+		}
+	}
+	
+	@Test
+	public void testIsExistingPlaylistForUser()
+	{
+		try
+		{
+			assertEquals(false, new PlaylistReferenceDAO().isExistingPlaylistForUser(0, 100));
+		}
+		catch(Exception e)
+		{
+			
+		}
+	}
+	
+	@Test
+	public void testGetPlaylistName()
+	{
+		try
+		{
+			assertEquals(true, new PlaylistReferenceDAO().getPlaylistName(0)==null);
+		}
+		catch(Exception e)
+		{
+			
+		}
+	}
 }
