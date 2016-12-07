@@ -1,6 +1,7 @@
 package mll.service;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,9 +30,24 @@ public class RegistrationService {
 	public JSONObject register(HttpServletRequest request, HttpServletResponse response) 
 	{
 		JSONObject responseObject = new JSONObject();
+		try
+		{
+		StringBuffer requestStr = new StringBuffer();
+		BufferedReader reader = request.getReader();
+		HttpSession session=request.getSession();
+		String line = null;
+		while ((line = reader.readLine()) != null) {
+			requestStr.append(line);
+		}
 
-		try {
-			UserDetails userdetails = populateUserDetailBeanFromRequest(request);
+		JSONParser parser = new JSONParser();
+		JSONObject mainObject = (JSONObject) parser.parse(requestStr.toString());
+			if(dao.checkAlreadyExists((String) mainObject.get("userName"))){
+				responseObject.put("isRegistered", false);
+				responseObject.put("errorMessage", "Username already exists. Please choose another username!");
+				return responseObject;
+			}
+			UserDetails userdetails = populateUserDetailBeanFromRequest(mainObject, session);
 
 			if (null != userdetails) {
 				responseObject = dao.registerUser(userdetails);
@@ -44,7 +60,6 @@ public class RegistrationService {
 			responseObject.put("isRegistered", false);
 			responseObject.put("errorMessage", "Error while registration. Please submit with proper user details.");
 		}
-
 		return responseObject;
 	}
 
@@ -56,18 +71,8 @@ public class RegistrationService {
 	 * @version 1.0
 	 * @since 2016-03-24
 	 */
-	public UserDetails populateUserDetailBeanFromRequest(HttpServletRequest request) throws Exception 
+	public UserDetails populateUserDetailBeanFromRequest(JSONObject mainObject, HttpSession session) throws Exception 
 	{
-		StringBuffer requestStr = new StringBuffer();
-		BufferedReader reader = request.getReader();
-		HttpSession session=request.getSession();
-		String line = null;
-		while ((line = reader.readLine()) != null) {
-			requestStr.append(line);
-		}
-
-		JSONParser parser = new JSONParser();
-		JSONObject mainObject = (JSONObject) parser.parse(requestStr.toString());
 
 		UserDetails userdetails = new UserDetails();
 		

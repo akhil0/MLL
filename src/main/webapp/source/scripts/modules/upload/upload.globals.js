@@ -11,11 +11,16 @@
         currentId: 0,
         submitFormId: 4,
         data: [
-        	{ title: 'Ownership Information', isActive: true },
-            { title: 'General Information', isActive: false },
-            { title: 'Song Selection', isActive: false },
-            { title: 'Sound Ownership Information', isActive: false },
+        	{ title: 'Recording Information', isActive: true },
+            { title: 'Song Ownership Information', isActive: false },
+            { title: 'Recording Upload', isActive: false },
             { title: 'Summary', isActive: false }
+        	
+//        	{ title: 'Ownership Information', isActive: true },
+//            { title: 'General Information', isActive: false },
+//            { title: 'Song Selection', isActive: false },
+//            { title: 'Sound Ownership Information', isActive: false },
+//            { title: 'Summary', isActive: false }
         ]
     };
 
@@ -48,6 +53,12 @@
 
     let musicSize = 10 * 1024 * 1024;
 
+    let musicContributions = ['Lyrics', 'Music', 'Lyrics and Music'].sort();
+    
+    let trackTypes = ['Vocal', 'Instrumental', 'Vocal/Instrumental'].sort();
+    
+    let musicianRoles = ['Vocals', 'Backup Vocals', 'Percussion', 'Guitar', 'Drums', 'Keyboard'].sort();
+    
     let musicUrl = {
         direct: '/MLL/SubmissionServlet',
         cloud: '/MLL/SubmissionServlet'
@@ -60,5 +71,8 @@
         .constant('musicForms', musicForms)
         .constant('musicData', musicData)
         .constant('musicSize', musicSize)
+        .constant('musicContributions', musicContributions)
+        .constant('trackTypes', trackTypes)
+        .constant('musicianRoles', musicianRoles)
         .constant('musicUrl', musicUrl);
 })(window.angular);

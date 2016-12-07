@@ -1,62 +1,74 @@
 <div>
     <uib-tabset active="ctrl.forms.currentId" justified="true" type="pills">
-    <!--
+        
+        
+        <!-- 	1	Order of upload process:
+a. Recording Information: information about the sound recording and the artists involved. 
+This would encompass the tabs currently called "General Information" and "Sound Ownership Information"
+b. Song Ownership Information: information about the ownership of the song, songwriters. etc. 
+This tab is currently called "Ownership Information".
+c. Recording Upload: currently called "Song Selection"
+d. Summary (as is)
+ -->
+ 
+ 
+ 		<!--   General Information / Recording Information -->
         <uib-tab index="0" heading="{{ctrl.forms.data[0].title}}" disable="true">
-            <mll-music-agreement-form on-next="ctrl.next()"></mll-music-agreement-form>
-        </uib-tab>
-    
-        <uib-tab index="1" heading="{{ctrl.forms.data[1].title}}" disable="true">
-            <mll-file-form on-next="ctrl.next()" on-previous="ctrl.previous()"
-                           data="ctrl.data.fileInformation"></mll-file-form>
-        </uib-tab>
-        <uib-tab index="2" heading="{{ctrl.forms.data[2].title}}" disable="true">
             <mll-music-general-information-form data="ctrl.data.generalInformation"
-                                                on-next="ctrl.next()"
-                                                on-previous="ctrl.previous()">
+                                                on-next="ctrl.next()">
             </mll-music-general-information-form>
         </uib-tab>
-        <uib-tab index="3" heading="{{ctrl.forms.data[3].title}}" disable="true">
+  
+        <!-- Ownership Information / Song Ownership Information-->
+       <uib-tab index="1" heading="{{ctrl.forms.data[1].title}}" disable="true">
+       		<mll-music-sound-information-form data="ctrl.data.soundInformation">
+            </mll-music-sound-information-form>
             <mll-music-owner-information-form data="ctrl.data.ownershipInformation"
                                               on-next="ctrl.next()"
                                               on-previous="ctrl.previous()">
             </mll-music-owner-information-form>
+            
         </uib-tab>
-        <uib-tab index="4" heading="{{ctrl.forms.data[4].title}}" disable="true">
-            <mll-music-sound-information-form data="ctrl.data.soundInformation"
-                                              on-next="ctrl.submit()"
-                                              on-previous="ctrl.previous()" >
-            </mll-music-sound-information-form>
+        
+        
+        
+        <!--   Song Selection / Recording Upload -->
+        <uib-tab index="2" heading="{{ctrl.forms.data[2].title}}" disable="true">
+            <mll-file-form on-next="ctrl.submit()" on-previous="ctrl.previous()" 
+            				data="ctrl.data.fileInformation"></mll-file-form>
         </uib-tab>
-        <uib-tab index="5" heading="{{ctrl.forms.data[5].title}}" disable="true">
+        
+        <!-- Summary -->
+        <uib-tab index="3" heading="{{ctrl.forms.data[3].title}}" disable="true">
             <mll-music-summary-form data="ctrl.data.serverInformation"
                                     on-again="ctrl.again()" >
             </mll-music-summary-form>
         </uib-tab>
-        -->
         
-        <!-- Ownership Information -->
-        <uib-tab index="0" heading="{{ctrl.forms.data[0].title}}" disable="true">
+ 
+        <!-- Ownership Information / Song Ownership Information-->
+  <!--       <uib-tab index="0" heading="{{ctrl.forms.data[0].title}}" disable="true">
             <mll-music-owner-information-form data="ctrl.data.ownershipInformation"
                                               on-next="ctrl.next()"
                                               on-previous="ctrl.previous()">
             </mll-music-owner-information-form>
         </uib-tab>
         
-        <!--   General Information -->
-        <uib-tab index="1" heading="{{ctrl.forms.data[1].title}}" disable="true">
+        <!--   General Information / Recording Information -->
+  <!--        <uib-tab index="1" heading="{{ctrl.forms.data[1].title}}" disable="true">
             <mll-music-general-information-form data="ctrl.data.generalInformation"
                                                 on-next="ctrl.next()"
                                                 on-previous="ctrl.previous()">
             </mll-music-general-information-form>
         </uib-tab>
         
-        <!--   Song Selection -->
-         <uib-tab index="2" heading="{{ctrl.forms.data[2].title}}" disable="true">
+        <!--   Song Selection / Recording Upload -->
+  <!--         <uib-tab index="2" heading="{{ctrl.forms.data[2].title}}" disable="true">
             <mll-file-form on-next="ctrl.next()" data="ctrl.data.fileInformation"></mll-file-form>
         </uib-tab>
         
-        <!-- Song Ownership Information -->
-        <uib-tab index="3" heading="{{ctrl.forms.data[3].title}}" disable="true">
+        <!-- Song Ownership Information / Recording Information-->
+  <!--        <uib-tab index="3" heading="{{ctrl.forms.data[3].title}}" disable="true">
             <mll-music-sound-information-form data="ctrl.data.soundInformation"
                                               on-next="ctrl.submit()"
                                               on-previous="ctrl.previous()" >
@@ -64,11 +76,12 @@
         </uib-tab>
         
         <!-- Summary -->
-        <uib-tab index="4" heading="{{ctrl.forms.data[4].title}}" disable="true">
+  <!--        <uib-tab index="4" heading="{{ctrl.forms.data[4].title}}" disable="true">
             <mll-music-summary-form data="ctrl.data.serverInformation"
                                     on-again="ctrl.again()" >
             </mll-music-summary-form>
         </uib-tab>
+        -->
         
     </uib-tabset>
 </div>

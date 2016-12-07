@@ -14,11 +14,15 @@
             currentId: 0,
             submitFormId: 4,
             data: [
-            	{ title: 'Ownership Information', isActive: true },
-                { title: 'General Information', isActive: false },
-                { title: 'Song Selection', isActive: false },
-                { title: 'Sound Ownership Information', isActive: false },
+            	{ title: 'Recording Information', isActive: true },
+                { title: 'Song Ownership Information', isActive: false },
+                { title: 'Recording Upload', isActive: false },
                 { title: 'Summary', isActive: false }
+//            	{ title: 'Ownership Information', isActive: true },
+//                { title: 'General Information', isActive: false },
+//                { title: 'Song Selection', isActive: false },
+//                { title: 'Sound Ownership Information', isActive: false },
+//                { title: 'Summary', isActive: false }
             ]
     };
     

@@ -54,7 +54,7 @@
     <div class="form-group has-feedback"
          ng-class="{ 'has-success': ctrl.generalForm.beatRate.$valid && ctrl.generalForm.$submitted,
                      'has-error': ctrl.generalForm.beatRate.$invalid && ctrl.generalForm.$submitted }">
-        <label for="beat-rate" class="col-xs-2 asterisk-label">
+        <label for="beat-rate" class="col-xs-2">
             Beat Rate/Minute <span class="glyphicon glyphicon-question-sign" uib-tooltip="Tooltip to be added"></span>
         </label>
         <div class="col-xs-10">
@@ -63,9 +63,6 @@
             <div class="alert alert-danger" role="alert"
                  ng-show="ctrl.generalForm.beatRate.$invalid && ctrl.generalForm.$submitted">
                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                <span ng-show="ctrl.generalForm.beatRate.$error.required">
-                    Please, provide a beat rate!
-                </span>
                 <span ng-show="ctrl.generalForm.beatRate.$error.min">
                     Beat rate could not be below zero!
                 </span>
@@ -75,32 +72,7 @@
             </div>
         </div>
     </div>
-
-    <div class="form-group has-feedback"
-         ng-class="{ 'has-success': ctrl.generalForm.agreement.$valid && ctrl.generalForm.$submitted,
-                     'has-error': ctrl.generalForm.agreement.$invalid && ctrl.generalForm.$submitted }">
-        <label  class="col-xs-2 asterisk-label">
-            Any Written Agreements <span class="glyphicon glyphicon-question-sign" uib-tooltip="Licenses, etc."></span>
-        </label>
-        <div class="col-xs-10">
-            <label class="radio-inline">
-                <input type="radio" name="agreement" ng-model="ctrl.data.agreement" ng-value="true" required>
-                <span>Yes</span>
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="agreement" ng-model="ctrl.data.agreement" ng-value="false" required>
-                <span>No</span>
-            </label>
-
-            <div class="alert alert-danger" role="alert"
-                 ng-show="ctrl.generalForm.agreement.$invalid && ctrl.generalForm.$submitted">
-                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                <span ng-show="ctrl.generalForm.agreement.$error.required">
-                    Please, specify whether you have any additional agreements or no!
-                </span>
-            </div>
-        </div>
-    </div>
+ 
 
     <div class="form-group has-feedback"
          ng-class="{ 'has-success': ctrl.generalForm.primaryGenre.$valid && ctrl.generalForm.$submitted,
@@ -135,11 +107,23 @@
             </select>
         </div>
     </div>
+    
+    <div class="form-group">
+        <label class="col-xs-2">
+            Type of Track <span class="glyphicon glyphicon-question-sign" uib-tooltip="Tooltip to be added"></span>
+        </label>
+        <div class="col-xs-10">
+            <select name="trackType" class="form-control" ng-model="ctrl.data.trackType"
+                    ng-options="type for type in ctrl.trackTypes">
+                <option value="">Select Track Type...</option>
+            </select>
+        </div>
+    </div>
 
     <div class="form-group">
-        <div class="col-xs-3 col-xs-offset-6">
+       <!--   <div class="col-xs-3 col-xs-offset-6">
             <button class="btn btn-block btn-default" ng-click="ctrl.reset()">Previous</button>
-        </div>
+        </div>-->
         <div class="col-xs-3">
             <button class="btn btn-block btn-primary" ng-click="ctrl.submit()">Next</button>
         </div>

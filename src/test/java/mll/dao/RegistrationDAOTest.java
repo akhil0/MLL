@@ -113,6 +113,46 @@ public class RegistrationDAOTest
 
 		}
 	}
+	@Test
+	public void testcheckAlreadyExistsTrue() 
+	{
+		try 
+		{
+			RegistrationDAO dao = new RegistrationDAO();
+			assertEquals(true, dao.checkAlreadyExists("aruser"));
+		} 
+		catch (Exception e) 
+		{
+
+		}
+	}
+	@Test
+	public void testcheckAlreadyExistsFalse() 
+	{
+		try 
+		{	double i = Math.random();
+			RegistrationDAO dao = new RegistrationDAO();
+			assertEquals(false, dao.checkAlreadyExists("test"+i));
+		} 
+		catch (Exception e) 
+		{
+
+		}
+	}
+	
+	@Test
+	public void testcheckAlreadyExistsNull() 
+	{
+		try 
+		{
+			RegistrationDAO dao = new RegistrationDAO();
+			assertEquals(false, dao.checkAlreadyExists(null));
+		} 
+		catch (Exception e) 
+		{
+
+		}
+	}
 }
 
 
