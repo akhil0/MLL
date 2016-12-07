@@ -21,10 +21,6 @@ public class ImportPlaylistService
 		playlistDAO = new PlaylistDAO();
 	}
 	
-	
-	public static void main(String a[]) {
-		System.out.println(new ImportPlaylistService().importPlaylist(2, 141));
-	}
 
 	public boolean importPlaylist(int destUserId, int playlistId) {
 	
@@ -72,19 +68,6 @@ public class ImportPlaylistService
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-
-//
-//		System.out.println("PLAY LIST SIZE  " + playlists.size());
-//		for(Playlist pl : playlists) {
-//			Playlist p = new Playlist();
-//			p.setPlaylist_id(destid);
-//			p.setSong_id(pl.getSong_id());
-//
-//			boolean success = playlistDAO.addPlaylist(p);
-//			if(success == false) {
-//				return false;
-//			}
-//		}
 		return true;
 	}
 }

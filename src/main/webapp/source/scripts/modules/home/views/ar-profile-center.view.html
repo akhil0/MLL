@@ -1,5 +1,6 @@
 <h2>Musicians</h2>
-<div   ui-grid="model.registered" class="grid changeFontSize gridColor " style="height: {{model.registered.data.length*30 +30}}px; color:black;" ></div>
-                
+<div  ng-if="model.isMusicians" ui-grid="model.registered" class="grid changeFontSize gridColor " style="height: {{model.registered.data.length*30 +30}}px; color:black;" ></div>
+<div  ng-show="!model.isMusicians" >No musicians accepted your request</div>                                
 <h2>Invitees</h2>
-<div ui-grid="model.unregistered" class="myGrid grid changeFontSize gridColor " style="height: {{model.unregistered.data.length*30 +30}}px; color:black;"></div>
+<div ng-if="model.isInvitees" ui-grid="model.unregistered" class="myGrid grid changeFontSize gridColor " style="height: {{model.unregistered.data.length*30 +30}}px; color:black;"></div>
+<div  ng-show="!model.isInvitees" >No pending request</div>                

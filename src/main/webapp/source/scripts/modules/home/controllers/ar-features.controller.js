@@ -5,12 +5,13 @@
         .module('mllApp.home')
         .controller('ARFeaturesController', ARFeaturesController);
 
-    ARFeaturesController.$inject = 	['$scope', '$stateParams', 'arHomePageSerivce'];
+    ARFeaturesController.$inject = 	['$scope', '$stateParams', 'arHomePageSerivce', 'authenticationService'];
 
-    function ARFeaturesController($scope, $stateParams, arHomePageService) {
+    function ARFeaturesController($scope, $stateParams, arHomePageService, authenticationService) {
 
     	var model = this;
-        
+        model.authService = authenticationService;
+        var userId = model.authService.details.data.id;
     	// Get userId from $stateParams
     	var userId = $stateParams.id;
 
@@ -25,10 +26,12 @@
         			var unregisteredMusiciansObject = [];
         			
         			for(var i=0; i< response.registeredMusicians.length; i++){
+        				model.isMusicians = true;
         				registeredMusiciansObject.push(response.registeredMusicians[i]);        				
         			}
         			
         			for(var j=0; j< response.unregisteredMusicians.length; j++){
+        				model.isInvitees = true;
         				unregisteredMusiciansObject.push(response.unregisteredMusicians[j]);        				
         			}    
         			
@@ -75,6 +78,10 @@
         		});        	
         }    
        
+		model.invite = function(){
+            $state.go("invite", { id: userId});        	
+		};
+		
         $scope.sendInvitation = function(row){        	
         	arHomePageService.sendInvitation(row).success(function(response){
         	})
