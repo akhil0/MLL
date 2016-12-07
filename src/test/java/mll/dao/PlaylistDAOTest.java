@@ -79,7 +79,7 @@ public class PlaylistDAOTest
 	{
 		try
 		{
-			assertEquals(true, new PlaylistDAO().getAllSongsForPlaylist(1)==null);
+			assertEquals(true, new PlaylistDAO().getAllSongsForPlaylist(1)!=null);
 		}
 		catch(Exception e)
 		{
