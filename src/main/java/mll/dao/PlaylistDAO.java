@@ -19,9 +19,6 @@ public class PlaylistDAO {
 	@SuppressWarnings("unchecked")
 	public JSONArray getAllSongsForPlaylist(int playlistId) throws Exception {
 		
-		if(playlistId <= 0) {
-			return null;
-		}
 		
 		// we add songs from db to this variable and return this
 		Session session = null;
@@ -109,8 +106,6 @@ public class PlaylistDAO {
 	public JSONArray deleteSongPlaylist(int playlistId, String assetId) throws Exception
 	{
 		JSONArray allSongsForPlaylist = new JSONArray();
-		if(playlistId <= 0 || assetId == null)
-			return allSongsForPlaylist;
 		
 		Session session = null;
 		Transaction tx = null;
@@ -143,15 +138,4 @@ public class PlaylistDAO {
 		return allSongsForPlaylist;
 	}
 	
-	
-	
-	public static void main(String[] args) throws Exception {
-//		List<Playlist> allSongsForPlaylist = new PlaylistDAO().getAllSongsForPlaylist(129);
-//		System.out.println(allSongsForPlaylist);
-//		for(int i = 0; i < allSongsForPlaylist.size(); i++){
-//			System.out.println("MAIN SONG ID    " + allSongsForPlaylist.get(i).getSong_id());
-//			System.out.println(allSongsForPlaylist.get(i).getPlaylist_id());
-//		}
-		
-	}
 }

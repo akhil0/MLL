@@ -33,7 +33,6 @@ public class PlaylistService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-//		JSONArray jsonArray = convertToJSON(songs);
 		
 		JSONObject responseObject = new JSONObject();
 //		responseObject.put("songs", jsonArray);
@@ -43,7 +42,6 @@ public class PlaylistService {
 	
 	public boolean addSongPlaylist(int userId, int playlistId, String assetId) 
     {
-		System.out.println("ADD SONGS ");
         Playlist playlist = new Playlist();
         playlist.setId(0);
         playlist.setPlaylist_id(playlistId);
@@ -62,22 +60,5 @@ public class PlaylistService {
 		return 	dao.deleteSongPlaylist(playlistId, assetId);
 		 
 	}
-	
-//	@SuppressWarnings("unchecked")
-//	public JSONArray convertToJSON(List<Playlist> songs) {
-//		JSONArray jsonArray = new JSONArray();
-//		for(int i = 0; i < songs.size(); i++) {
-//			JSONObject object = new JSONObject();
-//			System.out.println(songs.get(i).getPlaylist_id() + "  " + songs.get(i).getSong_id());
-//			object.put("assetId", songs.get(i).getSong_id());
-//			jsonArray.add(object);
-//		}
-//		return jsonArray;
-//	}
-	
-	
-	
-	public static void main(String[] args) {
-		
-	}
+			
 }
