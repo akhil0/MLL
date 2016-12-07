@@ -694,9 +694,8 @@ td.text-right {
 }
 
 .addmoresongs{
-	position: relative;
+	
 	border-radius: 5px;
         padding : 10px;
-        float:right;
-        top:-30px;
+
 }
