@@ -1,4 +1,5 @@
 <h1 style="text-align: center;"> {{ctrl.name}}</h1>
+	<div style="text-align: center;"><button ng-click="ctrl.track()"  class="tomatobttn addmoresongs"> Add Songs</button></div>
 <div ng-show="ctrl.playlistExist">
 	<table
 		class="table table-responsive table-striped table-hover ng-scope">
@@ -54,7 +55,7 @@
 </div>
 <div ng-show="!ctrl.playlistExist">
 	<h2 style="text-align: center;">Your playlist is empty</h2>
-	<div style="text-align: center;"><button ng-click="ctrl.track()"  class="tomatobttn"> View Songs of musicians</button></div>
+
 </div>
 
 

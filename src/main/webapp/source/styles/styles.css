@@ -313,6 +313,7 @@ width: 900px;
 }
 .aboutmll{
 	 background: linear-gradient(-0deg, #e78a61, #c82d2d);
+         color:white;
 	
 }
 .scrollmenu .pldiv{
@@ -689,3 +690,9 @@ td.text-right {
 	margin-left: 20%;
 }
 
+.addmoresongs{
+	position: relative;
+	border-radius: 5px;
+        padding : 10px;
+        float:right;
+        top:-30px;
