@@ -22,37 +22,7 @@ public class PlaylistService {
 		dao = new PlaylistDAO();
 	}
 	
-	// This method returns all playlists for a given user id
-	public List<Playlist> getAllPlaylistsForUserId(HttpServletRequest request, HttpServletResponse response) {
-		List<Playlist> playlists = null;
-		
-		return playlists;
-	}
 	
-	public List<Playlist> getPlaylistsForPlayListId(HttpServletRequest request, HttpServletResponse response) {
-		List<Playlist> playlists = new ArrayList<Playlist>();		
-		return playlists;
-	}
-	
-	public Playlist getPlayList(int playlist_id) {		
-		return new Playlist();
-	}
-	
-	// Add a playlist
-	public boolean addPlayList(HttpServletRequest request, HttpServletResponse response) {
-		return false;
-	}
-	
-	// Delete a playlist
-	public boolean deletePlayList(HttpServletRequest request, HttpServletResponse response) {
-
-		return false;
-	}
-	
-	public boolean updatePlayList(Playlist playlist) {
-		return false;
-	}	
-
 	@SuppressWarnings("unchecked")
 	public JSONArray getSongsFromPlaylist(int playlistId) {
 

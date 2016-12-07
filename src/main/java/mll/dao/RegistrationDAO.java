@@ -44,14 +44,16 @@ public class RegistrationDAO
 						
 						if(null != userId)
 						{
+
 							responseObject.put("isRegistered", true);
 							responseObject.put("userId", userId);
 							responseObject.put("type", userdetails.getType());
+
 							
 							if(userdetails.getType().equalsIgnoreCase("user"))
 							{
-								userdetails.getAdminUser().setId(userId);
-								session.save(userdetails.getAdminUser());
+								userdetails.getAruser().setId(userId);
+							        session.save(userdetails.getAruser());
 						        responseObject.put("browse", true);
 								responseObject.put("upload", false);
 								

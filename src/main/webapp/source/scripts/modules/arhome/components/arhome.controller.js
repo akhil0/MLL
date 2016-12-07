@@ -39,6 +39,7 @@
 	    				    { field: 'creationDate' , name : 'Creation Date'},
 		    				{ field: '', name : 'Songs', cellTemplate: 'show-playlist-button.html', enableFiltering:false},
 		    				{field: '', name: 'Add to my playlist', cellTemplate: '<button class="tomatobttn" type="button" ng-click="grid.appScope.addtoMyPlaylist(row.entity.id)" >ADD</button> ', enableFiltering:false}, 
+		    				{field: '', name: 'Unshare', cellTemplate: '<button class="tomatobttn" type="button" ng-click="grid.appScope.unShare(row.entity.id)" >Un Share</button> ', enableFiltering:false}, 
 	    				  ]
 	    				};	    		 
 	    		 ctrl.gridOptions.appScopeProvider = ctrl;
@@ -46,6 +47,7 @@
 	     }
         
 	     ctrl.addtoMyPlaylist = function(id){
+	    	 console.log("ADD TO MY PLAYLIST")
 	    	 arHomeSerivce.addtoMyPlaylist(id).success(function(response){
 	    		if(response.isValid){
 		    		ctrl.addMyPlaylistPrompt = response.isValid;	
@@ -55,6 +57,27 @@
 		    		ctrl.notAddMyPlaylistPrompt = response.isValid	    			
 	    		}
 	    		getAllPlaylists();
+	    	 })
+	     }
+	     
+	     
+	     ctrl.unShare = function(id){
+	    	 console.log("GET ID " + id)
+	    	 arHomeSerivce.unShare(id).success(function(response){
+	    		 console.log("RESPONSE");
+	    		 console.log(response);
+	    		 
+	    		 if(response.success){
+	    			 ctrl.isUnshare = true;
+	    			 ctrl.tooltipResponse = "Playlist Unshared";
+                     $timeout(() => ctrl.isUnshare = false, 1500);
+	    			 getMorePlaylists();
+	    		 }else{
+	    			 ctrl.isUnshare = true;
+	    			 ctrl.tooltipResponse = "Cannot share global playlist";
+	    			 $timeout(() => ctrl.isUnshare = false, 1500);
+	    		 }
+
 	    	 })
 	     }
 
@@ -103,7 +126,8 @@
 		    	 arHomeSerivce.sharePlayList(playlistId).success(function(response){
 		    		 	ctrl.isOpen = true;
 		    		 	ctrl.isGenerated = true;
-                        $timeout(() => ctrl.isOpen = false, 5000);
+		    		 	ctrl.tooltipResponse = "Added to your playlist";
+                        $timeout(() => ctrl.isOpen = false, 1500);
 			    	 })	    	 
 		   };
 		   

@@ -17,6 +17,7 @@
             getSongsInPlaylist: getSongsInPlaylist,
             deleteSong: deleteSong,
             addtoMyPlaylist: addtoMyPlaylist,
+            unShare: unShare
         };
 
         
@@ -63,6 +64,13 @@
         function addtoMyPlaylist(playlistId){
         	var playlistUrl = '/MLL/PlaylistServlet/?playlistId=' + playlistId + '&actionType=addToMyPlaylist';
         	return $http.get(playlistUrl);
-        }        
+        }
+        
+
+        function unShare(playlistId){
+        	var playlistUrl = '/MLL/PlaylistReferenceServlet/?playlistId=' + playlistId + '&actionType=unShare';
+        	console.log(playlistUrl)
+        	return $http.get(playlistUrl);
+        }
     }
 })(window.angular);

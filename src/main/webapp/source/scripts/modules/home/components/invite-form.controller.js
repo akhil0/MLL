@@ -13,7 +13,7 @@
         };
 
         this.types = [
-            { label: 'General User', value: 'user' },
+            { label: 'AR User', value: 'user' },
             { label: 'Musician', value: 'musician' }
         ];
 

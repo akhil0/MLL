@@ -12,6 +12,11 @@ public class ResendEmailtoMusicianService
 		dao = new TokenDAO();
 	}
 	
+	public static void main(String args[])
+	{
+		System.out.println(new ResendEmailtoMusicianService().sendEmail("MLLTKN26"));
+	}
+	
 	public boolean sendEmail(String token)
 	{
 		Token tokenObj = null;

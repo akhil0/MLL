@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import mll.beans.ARuser;
 import mll.beans.AdminUser;
 import mll.beans.Musician;
 import mll.beans.Token;
@@ -75,6 +76,8 @@ public class RegistrationService {
 
 		UserDetails userdetails = new UserDetails();
 		
+		System.out.println(mainObject);
+		System.out.println(mainObject.get("type"));
 		userdetails.setToken(populateToken(mainObject));
 		userdetails.setType((String) mainObject.get("type"));
 
@@ -85,8 +88,8 @@ public class RegistrationService {
 		
 		if (userdetails.getType().equalsIgnoreCase("user")) 
 		{
-			userdetails.getUsers().setUserType("admin");
-			userdetails.setAdminUser(populateAdminUser(mainObject));
+			userdetails.getUsers().setUserType("user");
+			userdetails.setAruser(populateArUser(mainObject));
 
 		} else
 		{
@@ -147,6 +150,41 @@ public class RegistrationService {
 		return au;
 	}
 
+	public ARuser populateArUser(JSONObject jo)
+	{
+		ARuser au = null;
+		if (null != jo) 
+		{
+			au = new ARuser();
+			au.setFirstName((String) jo.get("firstName"));
+			au.setLastName((String) jo.get("lastName"));
+			au.setCollege((String) jo.get("college"));
+			au.setLevel((String) jo.get("level"));
+			au.setGender((String) jo.get("gender"));
+			
+			if(null != jo.get("major") && !"".equals(jo.get("major")))
+			{
+				au.setMajor((String) jo.get("major"));
+			}
+			else
+			{
+				au.setMajor(" ");
+			}
+			
+			if(null != jo.get("minor") && !"".equals(jo.get("minor")))
+			{
+				au.setMinor((String) jo.get("minor"));
+			}
+			else
+			{
+				au.setMinor(" ");
+			}
+			
+			au.setPreference((String) jo.get("preference"));
+			au.setAge(((Long) jo.get("age")).intValue());
+		}
+		return au;
+	}
 	public Musician populateMusician(JSONObject jo) 
 	{
 		RazunaService rs=new RazunaService();
