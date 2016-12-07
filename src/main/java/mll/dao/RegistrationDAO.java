@@ -53,7 +53,7 @@ public class RegistrationDAO
 							if(userdetails.getType().equalsIgnoreCase("user"))
 							{
 								userdetails.getAdminUser().setId(userId);
-							    session.save(userdetails.getAdminUser());
+								session.save(userdetails.getAdminUser());
 						        responseObject.put("browse", true);
 								responseObject.put("upload", false);
 								
