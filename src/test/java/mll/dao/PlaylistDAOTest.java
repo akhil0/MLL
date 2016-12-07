@@ -11,116 +11,36 @@ import mll.beans.Playlist;
 
 public class PlaylistDAOTest 
 {
-	@Test
-	public void testAddPlaylist()
-	{
-		Playlist playlist = null;
-		PlaylistDAO dao = new PlaylistDAO();
-		try 
-		{
-			boolean addResult = dao.addPlaylist(playlist); 
-			assertEquals(false, addResult);
-		}
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-	}
-	
-	@Test
-	public void testGetAllPlaylistForUserId()
-	{
-		PlaylistDAO dao = new PlaylistDAO();
-		try 
-		{
-			List<Playlist> result = dao.getAllPlaylistsForUserId(-1); 
-			assertEquals(true, result != null);
-		}
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-	}
-	
-	
-	@Test
-	public void testGetAllPlaylistForPlaylistId()
-	{
-		PlaylistDAO dao = new PlaylistDAO();
-		try 
-		{
-			List<Playlist> result = dao.getPlaylistsForPlayListId(-1); 
-			assertEquals(true, result != null);
-		}
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-	}
-	
-	@Test
-	public void testDeletePlaylist()
-	{
-		Playlist playlist = null;
-		PlaylistDAO dao = new PlaylistDAO();
-		try 
-		{
-			boolean addResult = dao.deletePlaylist(playlist); 
-			assertEquals(false, addResult);
-		}
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-	}
-	
-	//
-	@Test
-	public void testDeletePlaylist1()
-	{
-		Playlist playlist = null;
-		PlaylistDAO dao = new PlaylistDAO();
-		try 
-		{
-			boolean addResult = dao.deletePlaylist(playlist); 
-			assertEquals(false, addResult);
-		}
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-	}
-	
-	@Test
-	public void testAddSongPlaylist1()
-	{
-		Playlist playlist = null;
-		PlaylistDAO dao = new PlaylistDAO();
-		try 
-		{
-			boolean addResult = dao.addSongPlaylist(playlist); 
-			assertEquals(false, addResult);
-		}
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-	}
 	
 	@Test
 	public void testAddSongPlaylist2()
 	{
 		Playlist playlist = new Playlist();
-		playlist.setPlaylist_id(0);
+		playlist.setSong_id("Abcdef");;
+		playlist.setPlaylist_id(10003);
 		PlaylistDAO dao = new PlaylistDAO();
 		try 
 		{
 			boolean addResult = dao.addSongPlaylist(playlist); 
-			assertEquals(false, addResult);
+			assertEquals(true, addResult);
 		}
 		catch (Exception e) 
 		{
 			e.printStackTrace();
+		}
+	}
+	
+	
+	@Test
+	public void testDeleteSongPlaylist()
+	{
+		try
+		{
+			assertEquals(true, new PlaylistDAO().deleteSongPlaylist(10003, "Abcdef")!=null);
+		}
+		catch(Exception e)
+		{
+			
 		}
 	}
 	
@@ -153,6 +73,19 @@ public class PlaylistDAOTest
 
 		}
 	}
+	
+	@Test
+	public void testGetAllSongsForPlaylist1()
+	{
+		try
+		{
+			assertEquals(true, new PlaylistDAO().getAllSongsForPlaylist(1)==null);
+		}
+		catch(Exception e)
+		{
+
+		}
+	}
 
 	@Test
 	public void testAddSongPlaylist4()
@@ -167,6 +100,36 @@ public class PlaylistDAOTest
 		}
 	}
 
+	@Test
+	public void testAddSongPlaylist5()
+	{
+		try
+		{	
+			Playlist playlist = new Playlist();
+			playlist.setSong_id(null);
+			playlist.setPlaylist_id(-1);
+			assertEquals(true, new PlaylistDAO().addSongPlaylist(playlist) == false);
+		}
+		catch(Exception e)
+		{
+
+		}
+	}
 	
+	@Test
+	public void testAddSongPlaylist6()
+	{
+		try
+		{			
+			Playlist playlist = new Playlist();
+			playlist.setPlaylist_id(-1);
+			playlist.setSong_id("abc");
+			assertEquals(true, new PlaylistDAO().addSongPlaylist(playlist)==false);
+		}
+		catch(Exception e)
+		{
+
+		}
+	}
 	
 }

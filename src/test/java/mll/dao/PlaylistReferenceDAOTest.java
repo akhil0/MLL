@@ -120,7 +120,7 @@ public class PlaylistReferenceDAOTest {
 			PlaylistReference pr = new PlaylistReference();
 			pr.setId(0);
 			pr.setPlaylistName("Test");
-			pr.setUserId(0);
+			pr.setUserId(100000);
 			assertEquals(true, new PlaylistReferenceDAO().addPlaylist1(pr) != 0);
 		}
 		catch(Exception e)
@@ -147,7 +147,7 @@ public class PlaylistReferenceDAOTest {
 	{
 		try
 		{
-			assertEquals(true, new PlaylistReferenceDAO().getPlaylistName(0)==null);
+			assertEquals(true, new PlaylistReferenceDAO().getPlaylistName(1000000)==null);
 		}
 		catch(Exception e)
 		{

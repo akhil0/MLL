@@ -79,9 +79,6 @@ public class PlaylistReferenceDAO {
 			//Save the playlist in database
 	        session.save(playlistReference);
 	 
-	        	
-
-	        System.out.println("IDDDDDD   " + playlistReference.getId());
 	        //Commit the transaction
 	        session.getTransaction().commit();
 	        
@@ -90,8 +87,7 @@ public class PlaylistReferenceDAO {
 	        if (!tx.wasCommitted()) {
 	        	tx.commit();
 	        }
-	        
-	        System.out.println("JUGAAD BEFORE");
+	 
 	        try{
 				session = SessionFactoryUtil.getSessionFactory().getCurrentSession();
 				tx = session.beginTransaction();
@@ -100,7 +96,6 @@ public class PlaylistReferenceDAO {
 				q.setMaxResults(1);
 				PlaylistReference pr = (PlaylistReference) q.uniqueResult();
 				tx.commit();
-				System.out.println("JUGAAD " +pr.getId());
 				id =  pr.getId();
 	        }catch(Exception e){
 				if( null != tx)
@@ -156,7 +151,6 @@ public class PlaylistReferenceDAO {
         		p.setId(list.get(i).getId());
         		p.setUserId(list.get(i).getUserId());
         		p.setPlaylistName(list.get(i).getPlaylistName());
-        		System.out.println("DATEEEE  " + list.get(i).getCreationDate());
         		p.setCreationDate(list.get(i).getCreationDate());
         		
         		playlists.add(p);        		
@@ -192,8 +186,7 @@ public class PlaylistReferenceDAO {
 		{
 			// Initialize the session and transaction
 			session = SessionFactoryUtil.getSessionFactory().getCurrentSession();
-			tx = session.beginTransaction();
-			
+			tx = session.beginTransaction();			
 			Query query = session.createQuery("FROM mll.beans.PlaylistReference pr where pr.userId=:userId AND pr.id=:playlistId");
 			query.setParameter("userId", userId);
 			query.setParameter("playlistId", playlistId);
