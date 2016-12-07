@@ -26,6 +26,7 @@
         function getProfile(id) {
         	console.log("in getProfile");
         	var user = {
+                    username:"medhavimusic",
                 	firstName:"Medhavi",
                 	lastName:"Mahansaria",
                 	primaryPhone:"123-123-1234",
