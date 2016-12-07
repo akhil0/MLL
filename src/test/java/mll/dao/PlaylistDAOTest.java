@@ -141,6 +141,32 @@ public class PlaylistDAOTest
 		}
 	}
 	
+	@Test
+	public void testGetAllSongsForPlaylist()
+	{
+		try
+		{
+			assertEquals(true, new PlaylistDAO().getAllSongsForPlaylist(1)!=null);
+		}
+		catch(Exception e)
+		{
+
+		}
+	}
+
+	@Test
+	public void testAddSongPlaylist4()
+	{
+		try
+		{			
+			assertEquals(false, new PlaylistDAO().addSongPlaylist(null));
+		}
+		catch(Exception e)
+		{
+
+		}
+	}
+
 	
 	
 }

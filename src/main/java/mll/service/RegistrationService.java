@@ -88,8 +88,8 @@ public class RegistrationService {
 		
 		if (userdetails.getType().equalsIgnoreCase("user")) 
 		{
-			userdetails.getUsers().setUserType("user");
-			userdetails.setAruser(populateArUser(mainObject));
+			userdetails.getUsers().setUserType("user");	
+			userdetails.setAdminUser(populateAdminUser(mainObject));
 
 		} else
 		{

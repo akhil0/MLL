@@ -122,8 +122,9 @@ public class PlaylistReferenceServiceTest {
 	{
 		try 
 		{
+			
 			int playlistId = 100000;
-			int userId = 100000;
+			int userId = 100000;			
 			assertEquals(false, new PlaylistReferenceService().deletePlaylistForUser(playlistId, userId));
 		}
 		catch(Exception e)
@@ -145,5 +146,19 @@ public class PlaylistReferenceServiceTest {
 		{
 			
 		}
+	}
+	
+	@Test
+	public void testRemoveFromShare()
+	{
+		try
+		{
+			assertEquals(true, new PlaylistReferenceService().removeFromShare(1, 10000)!=null);
+		}
+		catch(Exception e)
+		{
+
+		}
+
 	}
 }

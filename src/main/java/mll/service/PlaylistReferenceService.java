@@ -181,7 +181,7 @@ public class PlaylistReferenceService {
 		return responseObject;
 	}
 		
-	private JSONObject removeFromShare(int userId, int playlistId) {
+	public JSONObject removeFromShare(int userId, int playlistId) {
 		JSONObject responseObject = new JSONObject();
 		return responseObject;
 	}
