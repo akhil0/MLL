@@ -382,7 +382,13 @@
                                The Media Licensing Lab (MLL) is a Northeastern University initiative to establish the first student-run music licensing program in the United States. The MLL links musicians, student A&R representatives, the Northeastern community, and the music industry.
 Selected musicians are invited by A&R student representatives to upload their music into the MLL platform. Students evaluate the music and license the best songs into tv shows, film, video games, and other media.
 The MLL provides students with real-world music licensing experience, exposes musicians to a wider audience, and enables music licensees to discover the perfect piece of music for their project, at a fraction of the cost of typical content libraries.
-                            </p>
+                            </p><hr>
+<p><b>Team members:-</b><br>
+Ashish Kumar (kumar.as@husky.neu.edu)<br>
+Dishant Shah (shah.dis@husky.neu.edu)<br>
+Meha Verma(verma.me@husky.neu.edu)<br>
+Vishal Kotak (kotak.v@husky.neu.edu)
+</p>
                         </div>`
                     }
                     
