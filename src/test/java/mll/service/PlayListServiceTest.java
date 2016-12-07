@@ -9,8 +9,7 @@ import org.junit.Test;
 import mll.beans.Playlist;
 
 public class PlayListServiceTest {
-	 	 
-	
+	 	 	
 	@Test
 	public void testAddSongPlaylist1() throws Exception
 	{

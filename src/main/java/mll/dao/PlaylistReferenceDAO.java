@@ -372,6 +372,39 @@ public List<PlaylistReference> getSharedPlaylists(boolean flag) {
 	}
 	
 	public boolean removePlaylistFromGlobal(int userId, int playlistId) {
-		return false;
+		System.out.println("Remove from playlist");
+		System.out.println("USER ID " + userId);
+		System.out.println("PLAYLIST ID " + playlistId);
+		Session session = null;
+		Transaction tx = null;
+
+		try {
+			session = SessionFactoryUtil.getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();
+			System.out.println(playlistId);
+			Query query = session.createQuery("FROM mll.beans.PlaylistReference pr WHERE pr.userId=:userId AND pr.id=:playlistId");
+			query.setParameter("userId", userId);
+			query.setParameter("playlistId", playlistId);
+
+			PlaylistReference pr = (PlaylistReference) query.uniqueResult();
+
+			if(pr == null)
+				return false;
+
+			pr.setIsShared(false);
+
+			session.update(pr);
+
+			tx.commit();
+
+		}
+		catch(Exception e) {
+
+			if (tx!=null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+		}
+		return true;
 	}
 }

@@ -177,6 +177,8 @@ public class PlaylistReferenceService {
 		
 	public JSONObject removeFromShare(int userId, int playlistId) {
 		JSONObject responseObject = new JSONObject();
+		boolean success = new PlaylistReferenceDAO().removePlaylistFromGlobal(userId,playlistId);
+		responseObject.put("success", success);
 		return responseObject;
 	}
 	
