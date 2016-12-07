@@ -4,13 +4,14 @@
         .module("mllApp.arhome")
         .controller("SinglePlaylistController", SinglePlaylistController);
     
-    SinglePlaylistController.$inject = ['arHomeSerivce', 'authenticationService', 'id', 'deleteSong', '$state', '$uibModalInstance'];
+    SinglePlaylistController.$inject = ['arHomeSerivce', 'authenticationService', 'id','name', 'deleteSong', '$state', '$uibModalInstance'];
 
-	function SinglePlaylistController(arHomeSerivce, authenticationService, id, deleteSong, $state, $uibModalInstance) {
+	function SinglePlaylistController(arHomeSerivce, authenticationService, id, name,deleteSong, $state, $uibModalInstance) {
        this.authService = authenticationService;
        var model = this;
        var userId = model.authService.details.data.id;
        model.sortType = 'track';
+       model.name= name;
        model.sortReverse = false;
        model.deleteSongBoolean = deleteSong;
        getSongsInPlaylist();       
