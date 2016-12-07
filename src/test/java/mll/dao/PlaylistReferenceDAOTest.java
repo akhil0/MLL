@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.Date;
 import org.junit.Test;
 import mll.beans.PlaylistReference;
+import mll.service.PlaylistReferenceService;
 
 public class PlaylistReferenceDAOTest {
 	
@@ -71,4 +72,19 @@ public class PlaylistReferenceDAOTest {
 		
 		}
 	}
+	
+	@Test
+	public void testRemovePlaylistFromGlobal()
+	{
+		try
+		{
+			assertEquals(false, new PlaylistReferenceDAO().removePlaylistFromGlobal(1, 10000));
+		}
+		catch(Exception e)
+		{
+
+		}
+	}
+	
+
 }
