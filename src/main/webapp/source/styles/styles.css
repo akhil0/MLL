@@ -393,7 +393,10 @@ display: inline-block;
   text-transform: uppercase;
   cursor: pointer; 
 }
-
+.tabbttn{
+  width:100%;
+  border-radius:5px;
+}
 .searchbar-style {
   background-color:#000;
   border-bottom-color:#000 

@@ -38,8 +38,8 @@
 	    				    { field: 'playlistName', name : 'Playlist name'},
 	    				    { field: 'creationDate' , name : 'Creation Date'},
 		    				{ field: '', name : 'Songs', cellTemplate: 'show-playlist-button.html', enableFiltering:false},
-		    				{field: '', name: 'Add to my playlist', cellTemplate: '<button class="tomatobttn" type="button" ng-click="grid.appScope.addtoMyPlaylist(row.entity.id)" >ADD</button> ', enableFiltering:false}, 
-		    				{field: '', name: 'Unshare', cellTemplate: '<button class="tomatobttn" type="button" ng-click="grid.appScope.unShare(row.entity.id)" >Un Share</button> ', enableFiltering:false}, 
+		    				{field: '', name: 'Add to my playlist', cellTemplate: '<button class="tomatobttn tabbttn" type="button" ng-click="grid.appScope.addtoMyPlaylist(row.entity.id)" >ADD</button> ', enableFiltering:false}, 
+		    				{field: '', name: 'Unshare', cellTemplate: '<button class="tomatobttn tabbttn" type="button" ng-click="grid.appScope.unShare(row.entity.id)" >Un Share</button> ', enableFiltering:false}, 
 	    				  ]
 	    				};	    		 
 	    		 ctrl.gridOptions.appScopeProvider = ctrl;
