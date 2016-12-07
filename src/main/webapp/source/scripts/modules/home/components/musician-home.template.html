@@ -117,24 +117,26 @@
 								</p>
 							</section>
 
-							<a ng-click="isEditable = !isEditable"> <b>EDIT</b><br />
+							<a ng-click="isEditable = !isEditable" class="btn btn-sm btn-warning" type="button"> <b>EDIT</b><br />
 							</a>
 						</div>
 						<div class="container-fluid" ng-show="isEditable && isCollapsed">
 							<form role="form" class="form-horizontal">
 								<div class="form-group">
-									<label for="inputTitle" class="col-sm-2 control-label">Title:
+									<label for="inputTitle" class="ontrol-label">Title:
 									</label>
-									<div class="col-sm-10">
+									</br>
+									<div>
 										<input type="text" ng-model="track.Title" class="form-control"
 											id="inputTitle" placeholder="Title">
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label for="inputfileName" class="col-sm-2 control-label">File
+									<label for="inputfileName" class="control-label">File
 										Name: </label>
-									<div class="col-sm-10">
+									</br>
+									<div>
 										<input type="text" ng-model="track.fileName"
 											class="form-control" id="inputfileName"
 											placeholder="File Name">
@@ -142,27 +144,29 @@
 								</div>
 
 								<div class="form-group">
-									<label for="inputOwner" class="col-sm-2 control-label">Owner:
+									<label for="inputOwner" class="control-label">Owner:
 									</label>
-									<div class="col-sm-10">
+									</br>
+									<div>
 										<input type="text" ng-model="track.owner" class="form-control"
 											id="inputOwner" placeholder="Owner">
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label for="inputWriter" class="col-sm-2 control-label">Writer:
+									<label for="inputWriter" class="control-label">Writer:
 									</label>
-									<div class="col-sm-10">
+									<div>
 										<input type="text" ng-model="track.OwnerShipInfo.WRITER[0].Name"
 											class="form-control" id="inputWriter" placeholder="Writer">
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label for="inputCopyrightNum" class="col-sm-2 control-label">Copyright
+									<label for="inputCopyrightNum" class="control-label">Copyright
 										Number: </label>
-									<div class="col-sm-10">
+										</br>
+									<div>
 										<input type="text" ng-model="track.copyright_number"
 											class="form-control" id="inputCopyrightNum"
 											placeholder="Copyright Number">
@@ -170,9 +174,9 @@
 								</div>
 
 								<div class="form-group">
-									<label for="inputPrimaryGenre" class="col-sm-2 control-label">Primary
+									<label for="inputPrimaryGenre" class="control-label">Primary
 										Genre: </label>
-									<div class="col-sm-10">
+									<div>
 										<input type="text" ng-model="track.primary_genre"
 											class="form-control" id="inputPrimaryGenre"
 											placeholder="Primary Genre">
@@ -180,9 +184,9 @@
 								</div>
 
 								<div class="form-group">
-									<label for="inputSecondaryGenre" class="col-sm-2 control-label">Secondary
+									<label for="inputSecondaryGenre" class="control-label">Secondary
 										Genre: </label>
-									<div class="col-sm-10">
+									<div>
 										<input type="text" ng-model="track.secondary_genre"
 											class="form-control" id="inputSecondaryGenre"
 											placeholder="Secondary Genre">
@@ -190,9 +194,9 @@
 								</div>
 
 								<div class="form-group">
-									<label for="inputBPM" class="col-sm-2 control-label">Beats
+									<label for="inputBPM" class="control-label">Beats
 										Per Minute: </label>
-									<div class="col-sm-10">
+									<div>
 										<input type="text" ng-model="track.beats_per_minute"
 											class="form-control" id="inputBPM"
 											placeholder="Beats Per Minute">
@@ -200,9 +204,9 @@
 								</div>
 
 								<div class="form-group">
-									<label for="inputPublishCompany" class="col-sm-2 control-label">Publishing
+									<label for="inputPublishCompany" class="control-label">Publishing
 										Company: </label>
-									<div class="col-sm-10">
+									<div>
 										<input type="text" ng-model="track.publishing_company"
 											class="form-control" id="inputPublishCompany"
 											placeholder="Publishing Company">
@@ -210,7 +214,7 @@
 								</div>
 							</form>
 							<a href="" class="btn btn-info" ng-click="ctrl.editSong(track) "> <!-- && isEditable = !isEditable -->
-								<span class="glyphicon glyphicon-pencil incrsize">SAVE</span>
+								<span class="glyphicon incrsize">SAVE</span>
 						</div></td>
 					<td class="text-left">0</td>
 					<td class="text-left">{{track.dateAdded}}</td>
