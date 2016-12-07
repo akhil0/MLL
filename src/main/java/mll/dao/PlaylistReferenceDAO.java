@@ -378,4 +378,7 @@ public List<PlaylistReference> getSharedPlaylists(boolean flag) {
 		return reference.getPlaylistName();
 	}
 	
+	public boolean removePlaylistFromGlobal(int userId, int playlistId) {
+		return false;
+	}
 }

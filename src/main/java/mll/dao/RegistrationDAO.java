@@ -48,8 +48,8 @@ public class RegistrationDAO
 						
 						if(userdetails.getType().equalsIgnoreCase("user"))
 						{
-							userdetails.getAdminUser().setId(userId);
-							session.save(userdetails.getAdminUser());
+							userdetails.getAruser().setId(userId);
+							session.save(userdetails.getAruser());
 					        responseObject.put("browse", true);
 							responseObject.put("upload", false);
 							

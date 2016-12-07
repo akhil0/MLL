@@ -19,4 +19,18 @@ public class ResendEmailtoMusicianServiceTest {
 		}
 	}
 	
+	@Test
+	public void testSendEmail()
+	{
+		try
+		{
+			String token = "MLLTKN26";
+			assertEquals(true, new ResendEmailtoMusicianService().sendEmail(token));
+		}
+		catch(Exception e)
+		{
+			
+		}
+	}
+	
 }

@@ -683,3 +683,9 @@ td.text-right {
     display:inline-block;
 }
 
+
+.makeCenter{
+	display:block;
+	margin-left: 20%;
+}
+

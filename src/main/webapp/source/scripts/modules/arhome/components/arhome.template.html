@@ -32,8 +32,6 @@
 				<div ng-show="ctrl.new_playlist_data" >        
 					<input type="text" placeholder="Enter Title" ng-model="ctrl.input" id="input" focus>
 					<button type="submit" ng-click ="ctrl.add()" class="tomatobttn"> submit</button></div>
-
-
 					
 				<div class="alert alert-danger" ng-show="ctrl.error_message" >{{ctrl.errormsg}}</div>
 		</div>
@@ -41,7 +39,10 @@
 <!--     Tab to show More playlist -->
     <div ng-show='ctrl.selected == 2'>
       <h1>More Playlists</h1><br>
-      <span ng-show="ctrl.addMyPlaylistPrompt" style="color:green;">Added to your playlist</span>
+		<div class="makeCenter"
+      			uib-tooltip="{{ctrl.tooltipResponse}}" tooltip-is-open="ctrl.isUnshare"
+                tooltip-placement="top" tooltip-trigger="none"
+                tooltip-class="{{ctrl.isGenerated ? 'tooltip-alert-success' : 'tooltip-alert-error'}}"></div>
 <!--       <span ng-show="!ctrl.notAddMyPlaylistPrompt" style="color:red;">Already exist in your playlist</span> -->
       <div ng-if="ctrl.datareceived">
 	      <div ui-grid=ctrl.gridOptions ></div> 

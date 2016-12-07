@@ -71,6 +71,13 @@ public class PlaylistReferenceService {
 				int playlistId = Integer.parseInt(request.getParameter("playlistId"));
 				responseObject = setPlaylistToGlobal(userId, playlistId);
 			}
+			else if(request.getParameter("actionType").equals("unShare")) 
+			{
+				System.out.println("UNSHARE ");
+				int playlistId = Integer.parseInt(request.getParameter("playlistId"));
+				responseObject = removeFromShare(userId, playlistId);
+			}
+
 		}
 		else {
 			responseObject.put("isValid", false);
@@ -173,7 +180,11 @@ public class PlaylistReferenceService {
 		responseObject.put("isValid", isPlaylistUpdated);
 		return responseObject;
 	}
-	
+		
+	private JSONObject removeFromShare(int userId, int playlistId) {
+		JSONObject responseObject = new JSONObject();
+		return responseObject;
+	}
 	
 	
 }
