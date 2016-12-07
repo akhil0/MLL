@@ -1,3 +1,4 @@
+<h1> Hello A&R member </h1>
 <div class='tabs'>
     <span ng-class="{'active': (ctrl.selected == '1')}" ng-click='ctrl.selected=1'>
       Your Playlists
@@ -22,7 +23,7 @@
 					<div class='item' ng-repeat="x in ctrl.myList" > 
 						<img src="dist/fonts/delete.png" class='delete' ng-click = "ctrl.deletePlayList(x.id)">
 						<img src="dist/fonts/share.png" class='share' ng-click = "ctrl.sharePlayList(x.id)">
-						<div class='pldiv' ng-click="ctrl.getSongsInPlaylist(x.id)">{{ x.playlistName }}</div>	
+						<div class='pldiv' ng-click="ctrl.getSongsInPlaylist(x.id,x.playlistName)">{{ x.playlistName }}</div>	
 					</div>
 				</div>
 				
