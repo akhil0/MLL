@@ -6,6 +6,7 @@
     let deleteUrl = '/MLL/DeleteAssetServlet/?assetId=';
     let editUrl = '/MLL/UpdateSongMetaDataServlet';
     let addBandUrl = '/MLL/ProfileServlet';
+    let getBandDetailsUrl = '/MLL/BandServlet/?bandId=';
     
 
     let musicForms = {
@@ -69,5 +70,6 @@
     	.constant('bandData', bandData)
     	.constant('musicContributions', musicContributions)
     	.constant('musicianRoles', musicianRoles)
+    	.constant('getBandDetailsUrl', getBandDetailsUrl)
     	.constant('musicForms', musicForms);
 })(window.angular);

@@ -15,11 +15,11 @@
 
        this.authService = authenticationService;
        var userId = this.authService.details.data.id;
-       
+       var allBands = this.authService.details.data.bands;
        this.user = {
                userId: +this.userId,
                details: '',
-               bands: []
+               bands: allBands
            };
 
        this.user.details = musicianProfilePageSerivce.getProfile(this.user.userId);
@@ -27,7 +27,7 @@
        this.user.bands = musicianProfilePageSerivce.getBands(this.user.userId);
        
        this.addBand = () => {
-    	   $state.go("addBand", { id: userId}); 
+    	   $state.go("addBand", { id: userId}, {reload: true}); 
        }
     }
 })(window.angular);
