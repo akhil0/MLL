@@ -11,7 +11,7 @@ public class ImportPlaylistServiceTest {
 	{
 		try 
 		{
-			assertEquals(true, new ImportPlaylistService().importPlaylist(13, 194) == true);
+			assertEquals(true, new ImportPlaylistService().importPlaylist(13, 2) == true);
 			
 		} catch (Exception e) 
 		{
