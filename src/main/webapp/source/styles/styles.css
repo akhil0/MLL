@@ -396,6 +396,8 @@ display: inline-block;
 .tabbttn{
   width:100%;
   border-radius:5px;
+    font-size: 12px;
+    padding: 6px;
 }
 .searchbar-style {
   background-color:#000;
