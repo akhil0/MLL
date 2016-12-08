@@ -75,10 +75,13 @@ public class PlaylistServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.print(responseObject);
 		out.flush();
-	}
+	} 
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		doGet(request, response);
 	}
+	
+	
 }
