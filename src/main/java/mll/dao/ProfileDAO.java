@@ -51,7 +51,11 @@ public class ProfileDAO {
 		{	
 			band.setmusician_id(musician_id);
 			band.setName(bandName);
-			band_id = (int) session.save(band);
+			System.out.println(band.getId());
+			System.out.println(band.getName());
+			System.out.println(band.getmusician_id());
+			band.setId((Integer) session.save(band));
+			band_id = band.getId();
 		}
 		return band_id;
 	}
