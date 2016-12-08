@@ -49,12 +49,13 @@
                 };
     
     let musicContributions = ['Lyrics', 'Music', 'Lyrics and Music'].sort();
-    let bandData = { 
+    let bandData = { ownershipInformation: { 
     		bandName:'',
     		songwriters: [{ 
     			name: '', primaryEmail: '', primaryPhone: '', secondaryPhone: '', contribution:'', ownershipPercent: 0, musicianRole:'' 
     		}
-        ]};
+        ]}
+};
     let musicianRoles = ['Vocals', 'Backup Vocals', 'Percussion', 'Guitar', 'Drums', 'Keyboard'].sort();
     
     angular

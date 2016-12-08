@@ -13,7 +13,7 @@
     	this.musicianRoles = angular.copy(musicianRoles);
     	this.data = angular.copy(bandData);
     	
-        this.addWriter = () => this.data.songwriters.push({
+        this.addWriter = () => this.data.ownershipInformation.songwriters.push({
             name: '', primaryPhone: '', secondaryPhone: '', primaryEmail: '', secondaryEmail: '', contribution:'', ownershipPercent: 0, musicianRole:''
         });
 
