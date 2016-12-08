@@ -39,18 +39,18 @@ public class PlayListServiceTest {
 		}
 	}
 	
-	@Test
-	public void testAddSongPlaylist()
-	{
-		try
-		{
-			assertEquals(true, new PlaylistService().addSongPlaylist(100000, 100001, "abc"));
-		}
-		catch(Exception e)
-		{
-
-		}
-	}
+//	@Test
+//	public void testAddSongPlaylist()
+//	{
+//		try
+//		{
+//			assertEquals(true, new PlaylistService().addSongPlaylist(100000, 100001, "abc"));
+//		}
+//		catch(Exception e)
+//		{
+//
+//		}
+//	}
 	
 	@Test
 	public void testDeleteSongPlaylist1()

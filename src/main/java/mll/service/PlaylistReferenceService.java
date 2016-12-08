@@ -14,6 +14,7 @@ import org.json.simple.JSONObject;
 
 import mll.beans.PlaylistReference;
 import mll.dao.AdminDAO;
+import mll.dao.ArUserDAO;
 import mll.dao.PlaylistReferenceDAO;
 
 public class PlaylistReferenceService {
@@ -115,7 +116,7 @@ public class PlaylistReferenceService {
 		playlistReference.setId(0);
 		playlistReference.setPlaylistName(playlistName);
 		playlistReference.setUserId(userId);
-		String userName = new AdminDAO().getUserName(userId);
+		String userName = new ArUserDAO().getUserName(userId);
 		if(userName == null)
 			return false;
 		playlistReference.setUserName(userName);

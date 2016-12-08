@@ -3,6 +3,7 @@ package mll.service;
 import mll.beans.Playlist;
 import mll.beans.PlaylistReference;
 import mll.dao.AdminDAO;
+import mll.dao.ArUserDAO;
 import mll.dao.PlaylistDAO;
 import mll.dao.PlaylistReferenceDAO;
 import java.util.Date;
@@ -34,7 +35,7 @@ public class ImportPlaylistService
 		PlaylistReference newPlaylistreference = new PlaylistReference();
 		newPlaylistreference.setPlaylistName(playlistName);
 		newPlaylistreference.setUserId(destUserId);
-		String userName = new AdminDAO().getUserName(destUserId);
+		String userName = new ArUserDAO().getUserName(destUserId);
 		if(userName == null)
 			return false;
 		newPlaylistreference.setUserName(userName);
