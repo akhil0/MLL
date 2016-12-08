@@ -6,7 +6,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.json.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 
 import mll.beans.ARuser;
 import mll.beans.AdminUser;
@@ -188,6 +188,7 @@ public class LoginDAO {
 								bandarray.put(obj);
 							}
 							login.setBands(bandarray);
+							System.out.println(login.getBands());
 						}
 					}
 					else if(userType!=null && userType.equalsIgnoreCase("ARUser"))
