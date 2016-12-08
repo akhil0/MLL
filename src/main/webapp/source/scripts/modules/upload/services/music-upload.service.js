@@ -14,6 +14,8 @@
         };
 
         function submitCloud (data) {
+        	console.log("music upload service**");
+            console.log(data);
             return $http.post(musicUrl.direct, data);
         }
 
@@ -24,7 +26,7 @@
                 fd.append(key, (key === fileProp) ? data[key] : JSON.stringify(data[key])));
 
             console.log("music upload service");
-            console.log(data);
+            console.log(fd);
             return $http.post(musicUrl.cloud, fd, {
                 transformRequest: angular.identity,
                 headers: {
