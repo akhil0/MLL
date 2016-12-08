@@ -2,6 +2,8 @@ package mll.beans;
 
 import java.io.Serializable;
 
+import org.json.JSONArray;
+
 public class Login implements Serializable {
 	
 	private static final long serialVersionUID = 4923954637381909334L;
@@ -13,6 +15,7 @@ public class Login implements Serializable {
 	private AdminUser admin = new AdminUser();
 	private ARuser aruser=new ARuser();
 	private Musician musician = new Musician();
+	private JSONArray bands=new JSONArray();
 	private boolean isValidUser;
 	private String errMsg;
 	private String type;
@@ -72,6 +75,13 @@ public class Login implements Serializable {
 	}
 	public void setAruser(ARuser aruser) {
 		this.aruser = aruser;
+	}
+	
+	public JSONArray getBands() {
+		return bands;
+	}
+	public void setBands(JSONArray bands) {
+		this.bands = bands;
 	}
 	
 }

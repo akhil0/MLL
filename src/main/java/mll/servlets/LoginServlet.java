@@ -53,6 +53,9 @@ public class LoginServlet extends HttpServlet
 			{
 				responseObject.put("name", login.getMusician().getName());
 				session.setAttribute("folder_id",login.getMusician().getFolderId());
+				session.setAttribute("musician_id", login.getMusician().getId());
+				responseObject.put("bands", login.getBands());
+				System.out.println("bands "+login.getBands());
 			} 
 			else 
 			{
