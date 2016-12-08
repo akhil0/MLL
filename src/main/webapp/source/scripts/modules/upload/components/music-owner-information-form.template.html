@@ -8,7 +8,7 @@
 			<div class="col-xs-7">
 				<select name="band" class="form-control"
 					  ng-model="ctrl.selectedBand"
-					ng-options="band.name for band.name in ctrl.bands"
+					ng-options="band.name for band in ctrl.bands"
 					ng-change="ctrl.getBandDetails(band)">
 					<option value="">Select Band...</option>
 				</select>

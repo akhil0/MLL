@@ -13,10 +13,11 @@
     	this.musicianRoles = angular.copy(musicianRoles);
     	this.authService = authenticationService;
     	this.bands = this.authService.bands;
+    	console.log(this.bands);
     	this.selectedBand = null;
     	
         this.addWriter = () => this.data.songwriters.push({
-            name: '', primaryPhone: '', secondaryPhone: '', primaryEmail: '', secondaryEmail: ''
+            name: '', primaryPhone: '', secondaryPhone: '', primaryEmail: '', secondaryEmail: '', contribution:'', ownershipPercent: 0, musicianRole:''
         });
 
         this.selectContribution = (contribution) => { if(!contribution) this.data.contribution = null; };
@@ -33,7 +34,10 @@
 
         this.reset = () => this.onPrevious();
         
-        //this.getBandDetails = (band) => 
+        this.getBandDetails = (band) => {
+        	console.log("MusicOwnerInformationFormController");
+        	console.log(band);
+        };
 
     }
 })(window.angular);
