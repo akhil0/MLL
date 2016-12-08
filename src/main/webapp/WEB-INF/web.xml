@@ -147,6 +147,18 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ProfileServlet</servlet-name>
-    <url-pattern>/ProfileServlet/*</url-pattern>
+    <url-pattern>/ProfileServlet/</url-pattern>
   </servlet-mapping>
+  
+    <servlet>
+    <description></description>
+    <display-name>BandServlet</display-name>
+    <servlet-name>BandServlet</servlet-name>
+    <servlet-class>mll.servlets.RetrieveBandInformationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BandServlet</servlet-name>
+    <url-pattern>/BandServlet/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
 </web-app>
