@@ -39,18 +39,44 @@ public class PlayListServiceTest {
 		}
 	}
 	
-//	@Test
-//	public void testAddSongPlaylist()
-//	{
-//		try
-//		{
-//			assertEquals(true, new PlaylistService().addSongPlaylist(100000, 100001, "abc"));
-//		}
-//		catch(Exception e)
-//		{
-//
-//		}
-//	}
+	@Test
+	public void testAddSongPlaylist() 
+	{
+		try
+		{
+			assertEquals(false, new PlaylistService().addSongPlaylist(100000, 100001, null));
+		}
+		catch(Exception e)
+		{
+
+		}
+	}
+	
+	@Test
+	public void testAddSongPlaylist3()
+	{
+		try
+		{
+			assertEquals(false, new PlaylistService().addSongPlaylist(100000, 100001, ""));
+		}
+		catch(Exception e)
+		{
+
+		}
+	}
+	
+	@Test
+	public void testAddSongPlaylist4()
+	{
+		try
+		{
+			assertEquals(false, new PlaylistService().addSongPlaylist(3, 1, "FCD433C107A14F0D9FDE89A9A4DFF9E6"));
+		}
+		catch(Exception e)
+		{
+
+		}
+	}
 	
 	@Test
 	public void testDeleteSongPlaylist1()
