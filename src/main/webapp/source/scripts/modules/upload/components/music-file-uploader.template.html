@@ -21,7 +21,9 @@ d. Summary (as is)
   
         <!-- Ownership Information / Song Ownership Information-->
        <uib-tab index="1" heading="{{ctrl.forms.data[1].title}}" disable="true">
-       		<mll-music-sound-information-form data="ctrl.data.soundInformation">
+       		<mll-music-sound-information-form data="ctrl.data.soundInformation"
+       										  on-next="ctrl.next()"
+                                              on-previous="ctrl.previous()">
             </mll-music-sound-information-form>
             <mll-music-owner-information-form data="ctrl.data.ownershipInformation"
                                               on-next="ctrl.next()"

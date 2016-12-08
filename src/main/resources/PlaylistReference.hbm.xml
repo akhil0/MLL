@@ -20,5 +20,9 @@
 		<property name="isShared">
 			<column name="is_shared" not-null="true" />
 		</property>
+		<property name="userName">
+			<column name="user_name" length="200" not-null="true" />
+		</property>
+		
     </class>
 </hibernate-mapping>

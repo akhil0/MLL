@@ -2,11 +2,9 @@ package mll.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import mll.beans.PlaylistReference;
 import mll.utility.SessionFactoryUtil;
 
@@ -152,7 +150,7 @@ public class PlaylistReferenceDAO {
         		p.setUserId(list.get(i).getUserId());
         		p.setPlaylistName(list.get(i).getPlaylistName());
         		p.setCreationDate(list.get(i).getCreationDate());
-        		
+        		p.setUserName(list.get(i).getUserName());
         		playlists.add(p);        		
         	}
             
@@ -214,7 +212,7 @@ public class PlaylistReferenceDAO {
 	
 	}
 		
-public List<PlaylistReference> getSharedPlaylists(boolean flag) {
+	public List<PlaylistReference> getSharedPlaylists(boolean flag) {
 		
 		// we add playlists from db to this variable and return this
 		List<PlaylistReference>  playlists = new ArrayList<PlaylistReference>();
@@ -236,6 +234,7 @@ public List<PlaylistReference> getSharedPlaylists(boolean flag) {
         		p.setUserId(list.get(i).getUserId());
         		p.setPlaylistName(list.get(i).getPlaylistName());
         		p.setCreationDate(list.get(i).getCreationDate());
+        		p.setUserName(list.get(i).getUserName());
         		//(list.get(i).getUser().getUserName());
         		System.out.print(list.get(i).getUserId());
         		System.out.print(" -> " +  list.get(i).getId());
@@ -345,18 +344,18 @@ public List<PlaylistReference> getSharedPlaylists(boolean flag) {
 
 		Session session = null;
 		Transaction tx = null;
-		PlaylistReference reference = null;
+		List<PlaylistReference> reference = null;
 		
 		try {
 			session = SessionFactoryUtil.getSessionFactory().getCurrentSession();
 			tx = session.beginTransaction();
 			Query query = session.createQuery("FROM mll.beans.PlaylistReference pr WHERE pr.id=:playlistId");
 			query.setParameter("playlistId", playlistId);
-
-			reference = (PlaylistReference) query.list().get(0);
 			
-			if(reference == null)
-				return null;
+			reference = (List<PlaylistReference>) query.list();
+		
+			if(reference == null || reference.size() == 0)
+				return "";
 			
 			tx.commit();
 		}
@@ -368,7 +367,7 @@ public List<PlaylistReference> getSharedPlaylists(boolean flag) {
 	        e.printStackTrace();
 		}
 
-		return reference.getPlaylistName();
+		return reference.get(0).getPlaylistName();
 	}
 	
 	public boolean removePlaylistFromGlobal(int userId, int playlistId) {

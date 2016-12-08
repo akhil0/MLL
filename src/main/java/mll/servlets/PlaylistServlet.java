@@ -53,21 +53,18 @@ public class PlaylistServlet extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				System.out.println(deleteSongPlaylist);
 				responseObject.put("songs", deleteSongPlaylist);
 				responseObject.put("isDeleted", true);
 			}
 			else if(action.equals("get")) 
 			{
-				JSONArray songsFromPlaylist = playlistService.getSongsFromPlaylist(playlistId);
-				
+				JSONArray songsFromPlaylist = playlistService.getSongsFromPlaylist(playlistId);				
 				responseObject.put("songs", songsFromPlaylist);
 			}
 			
 			else if(action.equals("addToMyPlaylist")) 
 			{
 				boolean importPlaylist = imp.importPlaylist(userId, playlistId);
-				System.out.println("CHECK AGAIN " + importPlaylist);
 				responseObject.put("isValid", importPlaylist);
 			}
 			else {

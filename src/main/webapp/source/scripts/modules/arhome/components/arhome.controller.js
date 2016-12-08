@@ -27,6 +27,7 @@
         
 	     function getMorePlaylists(){
 	    	 arHomeSerivce.getMorePlaylists().success(function(response){
+	    		 console.log(response)
 	    		 ctrl.datareceived = true;
 	    		 ctrl.playlists = response.playlists;
 	    		 ctrl.gridOptions = {
@@ -35,11 +36,15 @@
 	    				 enableFiltering:true,
 	    				 enableHiding:false, 
 	    				  columnDefs: [ 
-	    				    { field: 'playlistName', name : 'Playlist Name', width : '20%'},
+
+	    				    { field: 'playlistName', name : 'Playlist Name', width : '15%'},
+			       			{ field: 'userName' , name : 'User',width : '15%'},
 	    				    { field: 'creationDate' , name : 'Date',width : '15%'},
-		    				{ field: '', name : 'Songs', cellTemplate: 'show-playlist-button.html', enableFiltering:false,width : '20%'},
-		    				{field: '', name: 'Add Playlist', cellTemplate: '<button class="tomatobttn tabbttn" type="button" ng-click="grid.appScope.addtoMyPlaylist(row.entity.id)" >ADD</button> ', enableFiltering:false, width : '25%'}, 
+		    				{ field: '', name : 'Songs', cellTemplate: 'show-playlist-button.html', enableFiltering:false,width : '15%'},
+		    				{field: '', name: 'Add Playlist', cellTemplate: '<button class="tomatobttn tabbttn" type="button" ng-click="grid.appScope.addtoMyPlaylist(row.entity.id)" >ADD</button> ', enableFiltering:false, width : '20%'}, 
 		    				{field: '', name: 'Unshare', cellTemplate: '<button class="tomatobttn tabbttn" type="button" ng-click="grid.appScope.unShare(row.entity.id)" >Un Share</button> ', enableFiltering:false, width : '20%'}, 
+
+	    				   
 	    				  ]
 	    				};	    		 
 	    		 ctrl.gridOptions.appScopeProvider = ctrl;
