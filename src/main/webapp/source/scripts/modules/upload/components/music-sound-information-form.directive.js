@@ -10,7 +10,8 @@
             restrict: 'AE',
             replace: true,
             scope: {},
-            controller: 'MusicSoundInformationFormController',
+            //controller: 'MusicSoundInformationFormController',
+            controller: 'MusicOwnerInformationFormController',
             controllerAs: 'ctrl',
             bindToController: {
                 data: '=',
