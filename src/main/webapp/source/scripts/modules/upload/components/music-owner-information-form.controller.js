@@ -12,7 +12,7 @@
     	this.musicContributions = angular.copy(musicContributions);
     	this.musicianRoles = angular.copy(musicianRoles);
     	this.authService = authenticationService;
-    	this.bands = this.authService.bands;
+    	this.bands = this.authService.details.data.bands;
     	console.log("medhavi");
     	console.log(this.bands);
     	console.log(this.authService);

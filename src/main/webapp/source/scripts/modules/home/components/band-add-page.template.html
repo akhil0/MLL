@@ -1,4 +1,4 @@
-<form name="ctrl.ownerForm" class="form-horizontal form-tab" novalidate>
+<form name="ctrl.ownerForm" class="form-horizontal form-tab" autocomplete="on" novalidate>
 
 <legend>ADD BAND</legend>
 
@@ -8,7 +8,7 @@
 			<label class="col-xs-3 asterisk-label">Band Name</label>
 			<div class="col-xs-7">
 				<input type="text" name="name" class="form-control"
-					ng-model="ctrl.data.bandName" required />
+					ng-model="ctrl.data.ownershipInformation.bandName" required />
 				<div class="alert alert-danger" role="alert"
 					ng-show="writerForm.name.$invalid && ctrl.ownerForm.$submitted">
 					<span class="glyphicon glyphicon-exclamation-sign"
