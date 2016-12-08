@@ -13,6 +13,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import mll.beans.PlaylistReference;
+import mll.dao.AdminDAO;
 import mll.dao.PlaylistReferenceDAO;
 
 public class PlaylistReferenceService {
@@ -114,6 +115,10 @@ public class PlaylistReferenceService {
 		playlistReference.setId(0);
 		playlistReference.setPlaylistName(playlistName);
 		playlistReference.setUserId(userId);
+		String userName = new AdminDAO().getUserName(userId);
+		if(userName == null)
+			return false;
+		playlistReference.setUserName(userName);
 		playlistReference.setIsShared(false);
 		playlistReference.setCreationDate(new Date());
 		boolean flag = playlistReferenceDAO.addPlaylist(playlistReference);
@@ -156,7 +161,7 @@ public class PlaylistReferenceService {
 			DateFormat format = new SimpleDateFormat("dd-mm-yyyy");
 			object.put("creationDate", (playlistReference.get(i).getCreationDate().getMonth() + 1) + "-" + 
 						playlistReference.get(i).getCreationDate().getDate() + "-" + (playlistReference.get(i).getCreationDate().getYear() + 1900));
-
+			object.put("userName", playlistReference.get(i).getUserName());
 			jsonArrayPlaylist.add(object);			
 		}
 		return jsonArrayPlaylist;

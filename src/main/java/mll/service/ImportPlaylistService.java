@@ -2,13 +2,12 @@ package mll.service;
 
 import mll.beans.Playlist;
 import mll.beans.PlaylistReference;
+import mll.dao.AdminDAO;
 import mll.dao.PlaylistDAO;
 import mll.dao.PlaylistReferenceDAO;
 import java.util.Date;
-import java.util.List;
-
 import org.json.JSONArray;
-import org.json.JSONObject;
+
 
 public class ImportPlaylistService 
 {
@@ -35,6 +34,10 @@ public class ImportPlaylistService
 		PlaylistReference newPlaylistreference = new PlaylistReference();
 		newPlaylistreference.setPlaylistName(playlistName);
 		newPlaylistreference.setUserId(destUserId);
+		String userName = new AdminDAO().getUserName(destUserId);
+		if(userName == null)
+			return false;
+		newPlaylistreference.setUserName(userName);
 		newPlaylistreference.setCreationDate(new Date());
 		newPlaylistreference.setIsShared(false);
 
@@ -45,7 +48,8 @@ public class ImportPlaylistService
 		return songsAdded;
 	}
 
-	private boolean addSongsToPlaylist(int sourceid, int destid) {
+	public boolean addSongsToPlaylist(int sourceid, int destid) {
+		
 		System.out.println(sourceid);
 		System.out.println(destid);
 		try{
