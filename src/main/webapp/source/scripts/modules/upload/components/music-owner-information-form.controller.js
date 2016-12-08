@@ -39,7 +39,13 @@
         this.getBandDetails = (band) => {
         	console.log("MusicOwnerInformationFormController");
         	console.log(band);
-        	//musicianProfilePageSerivce.
+        	musicianProfilePageSerivce.getBandDetails(band.id)
+        	.then((response) => {
+     		   var bandDetails = response;
+     		   console.log(response);
+     		  this.data.songwriters = bandDetails;
+        	})
+     		   .catch((rejection) => rejection);
         };
 
     }

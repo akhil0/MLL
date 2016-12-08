@@ -5,11 +5,12 @@
         .module('mllApp.home')
         .factory('musicianProfilePageSerivce', musicianProfilePageSerivce);
 
-    musicianProfilePageSerivce.$inject = ['$http', 'addBandUrl'];
+    musicianProfilePageSerivce.$inject = ['$http', 'addBandUrl', 'getBandDetailsUrl'];
 
-    function musicianProfilePageSerivce($http, addBandUrl) {
+    function musicianProfilePageSerivce($http, addBandUrl, getBandDetailsUrl) {
         return {
             getBands: getBands,
+            getBandDetails: getBandDetails,
             addBand: addBand,
             getProfile: getProfile,
             editProfile: editProfile,
@@ -24,6 +25,17 @@
         	return bands;
         }
         
+        function getBandDetails(id) {
+        	var bandUrl = getBandDetailsUrl + id;
+        	return $http.post(bandUrl)
+        	.then((response) => {
+            	console.log("after servlet hit");
+                	console.log(response);
+                   // return response.data;
+                })
+                .catch((rejection) => rejection);
+        }
+        
         function addBand(data){
         	console.log("in add band in service");
         	console.log(data);
@@ -31,7 +43,7 @@
         	.then((response) => {
             	console.log("after servlet hit");
                 	console.log(response);
-                    return response;
+                    return response.data;
                 })
                 .catch((rejection) => rejection);
         }
