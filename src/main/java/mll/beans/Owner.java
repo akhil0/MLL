@@ -15,7 +15,7 @@ public class Owner implements Serializable
 	private String secondaryPhone;	 
 	private String primaryEmail;
 	private String secondaryEmail;
-	private long owner_percent;
+	private Long owner_percent;
 	private String contribution;
 	private String role;
 	private Integer band_id;
