@@ -6,23 +6,16 @@
     let deleteUrl = '/MLL/DeleteAssetServlet/?assetId=';
     let editUrl = '/MLL/UpdateSongMetaDataServlet';
     
-    //let musicGenres = [ 'Alternative', 'Blues', 'Children\'s Music', 'Christian & Gospel', 'Comedy', 'Classical',
-    //    'Country', 'Dance', 'Electronic', 'Hip - Hop / Rap', 'Pop', 'Jazz', 'Latino', 'R & B / Soul', 'Reggae',
-    //    'Metal', 'Rock', 'Singer / Songwriter', 'Folk / Americana', 'Funk' ].sort();
 
     let musicForms = {
             currentId: 0,
             submitFormId: 4,
             data: [
             	{ title: 'Recording Information', isActive: true },
+            	{ title: 'Master Owner Information', isActive: false },
                 { title: 'Song Ownership Information', isActive: false },
                 { title: 'Recording Upload', isActive: false },
                 { title: 'Summary', isActive: false }
-//            	{ title: 'Ownership Information', isActive: true },
-//                { title: 'General Information', isActive: false },
-//                { title: 'Song Selection', isActive: false },
-//                { title: 'Sound Ownership Information', isActive: false },
-//                { title: 'Summary', isActive: false }
             ]
     };
     

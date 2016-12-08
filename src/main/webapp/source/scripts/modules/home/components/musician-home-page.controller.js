@@ -5,20 +5,17 @@
         .module("mllApp.home")
         .controller("MusicianHomeController", MusicianHomeController);
     
-    MusicianHomeController.$inject = ['$scope', '$state', '$location', 'musicForms', 'musicData', 'musicianHomePageSerivce', 'authenticationService' ];
+    MusicianHomeController.$inject = ['$scope', '$state', '$location', 'musicData', 'musicianHomePageSerivce', 'authenticationService' ];
 
-	function MusicianHomeController($scope, $state, $location, musicForms, musicData, musicianHomePageSerivce, authenticationService ) {
+	function MusicianHomeController($scope, $state, $location, musicData, musicianHomePageSerivce, authenticationService ) {
 
        this.authService = authenticationService;
-       //this.failureMessage = null;
-       //this.successMessage = null;
-      // this.forms = angular.copy(musicForms);
 
        this.editData = angular.copy(musicData);
        
        this.data = {
                userId: +this.userId,
-               tracks: []
+               tracks: null
            };
        
        this.sortType = 'track';
@@ -39,12 +36,6 @@
        
     	   //SEARCH SONG
        this.search = (title) => {
-
-    	   // new edits
-    	   // ***********
-    	   console.log("in search function"+title)
-    	   // ***********
-    	   
     	   musicianHomePageSerivce.searchSongs(title)
     	   .then((response) => {
     		   var songs = response;
@@ -63,7 +54,6 @@
    	   musicianHomePageSerivce.deleteSong(assetId)
    	   .then((response) => {
    		   var res = response;
-   		   console.log(response);
    		   if( res.data === "Asset(s) have been removed successfully") {
    			   this.isDeleted = true;
    			this.successMessage = res.data;
@@ -94,38 +84,16 @@
        // EDIT SONG
        
       this.editSong = (track) => {
-    	  console.log("in edit controller");
     	  let data = this.prepare(this.editData);
     	  
 
           let promise = musicianHomePageSerivce.editSong(track, 'file');
 
           promise.then((response) => {
-        	  console.log("in promise");
-        	  console.log(data);
-        	  console.log(track);
-        	  console.log(response);
               //this.data.serverInformation.message = response.data.message;
           })
-          .catch((reject) => {
-        	  console.log("in catch");
-              //this.data.serverInformation.isUploaded = false;
-              //this.data.serverInformation.message = reject;
-          });
-//    	   this.failureMessage = null;
-//           this.successMessage = null;
-//    	   musicianHomePageSerivce.editSong(track)
-//    	   .then((response) => {
-//   		   var res = response;
-//   		   console.log(response);
-//   		if( res.data === "Data Updated Successfully") {
-//			this.successeMessage = res.data;
-//		   }
-//		   else {
-//			this.failureMessage = res.data;
-//		   }
-//		   })
-//		   .catch((rejection) => rejection);
+          .catch((reject) => reject
+          );
 	   $state.reload();
        };
     }

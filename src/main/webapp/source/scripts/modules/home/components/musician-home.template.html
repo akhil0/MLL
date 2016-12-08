@@ -22,7 +22,7 @@
 		<div ng-show="ctrl.successMessage" class="alert alert-success"
 			role="alert">{{ctrl.successMessage}}</div>
 
-		<table
+		<table ng-show="ctrl.data.tracks" 
 			class="table table-responsive table-striped table-hover table-fill ng-scope">
 			<thead>
 				<tr>
@@ -225,5 +225,6 @@
 				</tr>
 			</tbody>
 		</table>
+		<br/>
 	</div>
 </div>
