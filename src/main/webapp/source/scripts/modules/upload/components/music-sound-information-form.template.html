@@ -2,7 +2,7 @@
 	<legend>Sound Recording Ownership Information</legend>
 	<div ng-repeat="soundOwner in ctrl.data.soundOwners">
 		<ng-form name="masterForm"> <legend class="inner-legend">
-			Master Owner<small ng-show="$index">&nbsp;#{{$index + 1}}</small>
+			OLD Master Owner<small ng-show="$index">&nbsp;#{{$index + 1}}</small>
 		</legend>
 		<div class="form-group has-feedback"
 			ng-class="{ 'has-success': masterForm.name.$valid && ctrl.soundForm.$submitted,

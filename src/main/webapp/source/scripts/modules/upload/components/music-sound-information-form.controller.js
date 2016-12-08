@@ -20,7 +20,7 @@
 
         this.selectContribution = (contribution) => { if(!contribution) this.data.contribution = null; };
         
-        this.selectselectRole = (role) => { if(!role) this.data.musicianRole = null; };
+        this.selectRole = (role) => { if(!role) this.data.musicianRole = null; };
         
         this.submit = () => {
             if (this.soundForm.$invalid) { this.soundForm.$submitted = true; }

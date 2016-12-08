@@ -72,7 +72,18 @@
             </div>
         </div>
     </div>
- 
+    
+    <div class="form-group">
+        <label class="col-xs-2">
+            Type of Track <span class="glyphicon glyphicon-question-sign" uib-tooltip="Tooltip to be added"></span>
+        </label>
+        <div class="col-xs-10">
+            <select name="trackType" class="form-control" ng-model="ctrl.data.trackType"
+                    ng-options="type for type in ctrl.trackTypes">
+                <option value="">Select Track Type...</option>
+            </select>
+        </div>
+    </div>
 
     <div class="form-group has-feedback"
          ng-class="{ 'has-success': ctrl.generalForm.primaryGenre.$valid && ctrl.generalForm.$submitted,
@@ -104,18 +115,6 @@
             <select name="secondaryGenre" class="form-control" ng-model="ctrl.data.secondaryGenre"
                     ng-options="genre for genre in ctrl.genres">
                 <option value="">Select Genre...</option>
-            </select>
-        </div>
-    </div>
-    
-    <div class="form-group">
-        <label class="col-xs-2">
-            Type of Track <span class="glyphicon glyphicon-question-sign" uib-tooltip="Tooltip to be added"></span>
-        </label>
-        <div class="col-xs-10">
-            <select name="trackType" class="form-control" ng-model="ctrl.data.trackType"
-                    ng-options="type for type in ctrl.trackTypes">
-                <option value="">Select Track Type...</option>
             </select>
         </div>
     </div>

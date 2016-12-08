@@ -387,7 +387,11 @@ The MLL provides students with real-world music licensing experience, exposes mu
 Ashish Kumar (kumar.as@husky.neu.edu)<br>
 Dishant Shah (shah.dis@husky.neu.edu)<br>
 Meha Verma(verma.me@husky.neu.edu)<br>
-Vishal Kotak (kotak.v@husky.neu.edu)
+Vishal Kotak (kotak.v@husky.neu.edu)<br>
+Medhavi Mahansaria (mahansaria.m@husky.neu.edu)<br>
+Shivani Gowrishankar (gowrishankar.s@husky.neu.edu)<br>
+Naomi Joshi (joshi.nao@husky.neu.edu)<br>
+Sai Mahanth Maddela (maddela.s@husky.neu.edu)
 </p>
                         </div>`
                     }

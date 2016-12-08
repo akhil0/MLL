@@ -15,15 +15,24 @@
         this.addWriter = () => this.data.songwriters.push({
             name: '', primaryPhone: '', secondaryPhone: '', primaryEmail: '', secondaryEmail: ''
         });
+        
+        this.addOwner = () => this.data.soundOwners.push({
+            name: '', primaryPhone: '', secondaryPhone: '', primaryEmail: '', secondaryEmail: ''
+        });
 
         this.selectContribution = (contribution) => { if(!contribution) this.data.contribution = null; };
         
         this.selectRole = (role) => { if(!role) this.data.musicianRole = null; };
         
         this.removeWriter = (i) => this.data.songwriters.splice(i, 1);
-
+        //***
+        this.removeOwner = (i) => this.data.soundOwners.splice(i, 1);
+      //***
         this.submit = () => {
-            if (this.ownerForm.$invalid) this.ownerForm.$submitted = true;
+            if (this.ownerForm.$invalid || this.soundForm.$invalid) {
+            	this.ownerForm.$submitted = true;
+            	this.soundForm.$submitted = true;//***
+            }
             else this.onNext();
         };
 
