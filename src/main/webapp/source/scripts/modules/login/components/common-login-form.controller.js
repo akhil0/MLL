@@ -16,6 +16,8 @@
             else {
                 this.service.login(this.data)
                     .then((data) => {
+                    	console.log("login");
+                    	console.log(data);
                         this.processResponse(data);
                     })
                     .catch(() => { });
@@ -23,6 +25,7 @@
         };
 
         this.processResponse = (data) => {
+        	
             if (data.isValidUser) this.redirect(data.userId, data.type);
 
             else this.displayError(data.errorMessage);

@@ -31,7 +31,7 @@
 
             this.data.id = data.userId;
             this.data.type = data.type;
-
+	    this.data.bands = data.bands; //Medhavi
             this.data.permissions = {};
             this.data.permissions.browse = data.browse;
             this.data.permissions.upload = data.upload;
