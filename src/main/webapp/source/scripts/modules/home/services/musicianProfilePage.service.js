@@ -29,9 +29,9 @@
         	var bandUrl = getBandDetailsUrl + id;
         	return $http.post(bandUrl)
         	.then((response) => {
-            	console.log("after servlet hit");
-                	console.log(response);
-                   // return response.data;
+            	//console.log("after servlet hit");
+                //	console.log(response);
+                    return response.data;
                 })
                 .catch((rejection) => rejection);
         }
