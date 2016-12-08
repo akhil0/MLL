@@ -24,7 +24,6 @@ public class ImportPlaylistService
 
 	public boolean importPlaylist(int destUserId, int playlistId) {
 	
-		System.out.println("IMPORT PLAYLIST");
 		boolean playlistExistsForUser = dao.isExistingPlaylistForUser(destUserId, playlistId);
 		if(playlistExistsForUser) {
 			return false;
@@ -43,7 +42,6 @@ public class ImportPlaylistService
 		newPlaylistreference.setIsShared(false);
 
 		int newId = dao.addPlaylist1(newPlaylistreference);
-		System.out.println("NEW ID  " + newId);
 		boolean songsAdded = addSongsToPlaylist(playlistId, newId);
 
 		return songsAdded;
@@ -51,15 +49,10 @@ public class ImportPlaylistService
 
 	public boolean addSongsToPlaylist(int sourceid, int destid) {
 		
-		System.out.println(sourceid);
-		System.out.println(destid);
 		try{
-			JSONArray jsonarray = playlistDAO.getAllSongsForPlaylist(sourceid);
-			System.out.println("JSON ARRAY");
-			System.out.println(jsonarray);
+			JSONArray jsonarray = playlistDAO.getAllSongsForPlaylist(sourceid);	
 			for(int i =0; i < jsonarray.length(); i++) {
 				String object = jsonarray.getJSONObject(i).getString("assetId");
-				System.out.println(object.toString());
 				Playlist p = new Playlist();
 				p.setPlaylist_id(destid);
 				p.setSong_id(object);

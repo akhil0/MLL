@@ -5,13 +5,13 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.junit.Test;
-
 import mll.beans.PlaylistReference;
-
+import static org.mockito.Mockito.*;
 
 public class PlaylistReferenceServiceTest {
 		
@@ -161,4 +161,133 @@ public class PlaylistReferenceServiceTest {
 		}
 
 	}
+
+	public void testServlet2()
+	{
+		try
+		{
+			HttpServletRequest request = mock(HttpServletRequest.class);
+			HttpServletResponse response = mock(HttpServletResponse.class);
+			
+			when(request.getParameter("actionType")).thenReturn("add");
+			
+			JSONObject jsonObject = new PlaylistReferenceService().handlePlaylistReferenceRequest(request, response);
+			
+			assertEquals(true, jsonObject!=null);
+		}
+		catch(Exception e)
+		{
+			
+		}
+	}
+		
+	
+	@Test
+	public void testHandlePlaylistReferenceRequest2()
+	{
+		try
+		{
+			HttpServletRequest request = mock(HttpServletRequest.class);
+			HttpServletResponse response = mock(HttpServletResponse.class);
+			when(request.getParameter("actionType")).thenReturn("add");
+			when(request.getParameter("playlistName")).thenReturn("mlltest1");
+			when(request.getParameter("userId")).thenReturn("10000");
+			JSONObject jsonObject = new PlaylistReferenceService().handlePlaylistReferenceRequest(request, response);
+			assertEquals(true, jsonObject!=null);
+		}
+		catch(Exception e)
+		{
+			
+		}
+	}
+	
+	@Test
+	public void testHandlePlaylistReferenceRequest3()
+	{
+		try
+		{
+			HttpServletRequest request = mock(HttpServletRequest.class);
+			HttpServletResponse response = mock(HttpServletResponse.class);
+			when(request.getParameter("actionType")).thenReturn("shared");
+			JSONObject jsonObject = new PlaylistReferenceService().handlePlaylistReferenceRequest(request, response);
+			assertEquals(true, jsonObject!=null);
+		}
+		catch(Exception e)
+		{
+			
+		}
+	}
+	
+	@Test
+	public void testHandlePlaylistReferenceRequest4()
+	{
+		try
+		{
+			HttpServletRequest request = mock(HttpServletRequest.class);
+			HttpServletResponse response = mock(HttpServletResponse.class);
+			when(request.getParameter("actionType")).thenReturn("get");
+			when(request.getParameter("userId")).thenReturn("10000");
+			JSONObject jsonObject = new PlaylistReferenceService().handlePlaylistReferenceRequest(request, response);
+			assertEquals(true, jsonObject!=null);
+		}
+		catch(Exception e)
+		{
+			
+		}
+	}
+	
+	@Test
+	public void testHandlePlaylistReferenceRequest5()
+	{
+		try
+		{
+			HttpServletRequest request = mock(HttpServletRequest.class);
+			HttpServletResponse response = mock(HttpServletResponse.class);
+			when(request.getParameter("actionType")).thenReturn("delete");
+			when(request.getParameter("userId")).thenReturn("10000");
+			JSONObject jsonObject = new PlaylistReferenceService().handlePlaylistReferenceRequest(request, response);
+			assertEquals(true, jsonObject!=null);
+		}
+		catch(Exception e)
+		{
+			
+		}
+	}
+	
+	@Test
+	public void testHandlePlaylistReferenceRequest6()
+	{
+		try
+		{
+			HttpServletRequest request = mock(HttpServletRequest.class);
+			HttpServletResponse response = mock(HttpServletResponse.class);
+			when(request.getParameter("actionType")).thenReturn("addToShare");
+			when(request.getParameter("playlistId")).thenReturn("10000");
+			JSONObject jsonObject = new PlaylistReferenceService().handlePlaylistReferenceRequest(request, response);
+			assertEquals(true, jsonObject!=null);
+		}
+		catch(Exception e)
+		{
+			
+		}
+	}
+	
+	@Test
+	public void testHandlePlaylistReferenceRequest7()
+	{
+		try
+		{
+			HttpServletRequest request = mock(HttpServletRequest.class);
+			HttpServletResponse response = mock(HttpServletResponse.class);
+			when(request.getParameter("actionType")).thenReturn("unShare");
+			when(request.getParameter("playlistId")).thenReturn("10000");
+			JSONObject jsonObject = new PlaylistReferenceService().handlePlaylistReferenceRequest(request, response);
+			assertEquals(true, jsonObject!=null);
+		}
+		catch(Exception e)
+		{
+			
+		}
+	}
+	
 }
