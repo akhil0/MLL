@@ -244,6 +244,42 @@
                     }
                 }
             })
+            .state('addBand', {
+                url: '/musician/band/id/:id',
+                views: {
+                    left: { 
+                    	controller: 'SidebarController as ctrl',
+                    	templateProvider: function ($templateCache) {
+                            return $templateCache.get('sidebar.template.html'); 
+                    	}
+                    },
+                    center: {
+                        controller: 'BandProfileController as ctrl',
+                        templateProvider: function ($templateCache) {
+                            return $templateCache.get('band-add-profile.view.html');
+                        }
+                    },
+                    right: { template: '' }
+                },
+                resolve: {
+                	userId: function($state, $stateParams, $q, $timeout, authenticationService) {
+                        let deferred = $q.defer();
+
+                        $timeout(() => {
+                        	
+                            if (!authenticationService.details.isAuth) {
+                                $state.go('login');
+                                deferred.reject();
+                            }
+
+                            else {
+                            	deferred.resolve(+$stateParams.id);
+                            }
+                        }, 0);
+                        return deferred.promise;
+                    }
+                }
+            })
             .state('musicianUpload', {
                 url: '/musician/upload',
                 views: {

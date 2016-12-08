@@ -38,7 +38,7 @@
         },
         ownershipInformation: {
             songwriters: [
-                { name: '', primaryEmail: '', primaryPhone: '', secondaryPhone: '' }
+                { name: '', primaryEmail: '', primaryPhone: '', secondaryPhone: '', contribution:'', ownershipPercent: 0, musicianRole:'' }
             ],
             copyright: '',
             pubCompany: '',
@@ -46,7 +46,7 @@
         },
         soundInformation: {
             soundOwners: [
-                { name: '', primaryEmail: '', primaryPhone: '', secondaryPhone: '' }
+                { name: '', primaryEmail: '', primaryPhone: '', secondaryPhone: '', contribution:'', ownershipPercent: 0, musicianRole:'' }
             ]
         },
         serverInformation: { }

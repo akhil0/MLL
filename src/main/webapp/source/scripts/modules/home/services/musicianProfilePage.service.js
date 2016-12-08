@@ -10,6 +10,7 @@
     function musicianProfilePageSerivce($http) {
         return {
             getBands: getBands,
+            addBand: addBand,
             getProfile: getProfile,
             editProfile: editProfile,
             editBands: editBands
@@ -21,6 +22,18 @@
         	var bands = ['ABC', 'PQR', 'XYZ'];
         	console.log(bands);
         	return bands;
+        }
+        
+        function addBand(data){
+        	console.log("in add band in service");
+        	console.log(data);
+        	return $http.post(addBandUrl, data)
+        	.then((response) => {
+            	console.log("after servlet hit");
+                	console.log(response);
+                    //return response;
+                })
+                .catch((rejection) => rejection);
         }
         
         function getProfile(id) {

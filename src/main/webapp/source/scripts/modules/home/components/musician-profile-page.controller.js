@@ -14,6 +14,7 @@
 //		this.email = "medhavi@gmail.com"
 
        this.authService = authenticationService;
+       var userId = this.authService.details.data.id;
        
        this.user = {
                userId: +this.userId,
@@ -22,22 +23,11 @@
            };
 
        this.user.details = musicianProfilePageSerivce.getProfile(this.user.userId);
-//    	   .then((response) => {
-//    		   var res = response;
-//    		   this.user = {
-//    				   userId: +this.userId,
-//    				   details: res
-//    				   };
-//    		   })
-//    		   .catch((rejection) => rejection);
 
        this.user.bands = musicianProfilePageSerivce.getBands(this.user.userId);
-//	   .then((response) => {
-//		   var res = response;
-//		   this.user.bands = res;
-//		   console.log(this.user);
-//		   })
-//		   .catch((rejection) => rejection);
- 
+       
+       this.addBand = () => {
+    	   $state.go("addBand", { id: userId}); 
+       }
     }
 })(window.angular);

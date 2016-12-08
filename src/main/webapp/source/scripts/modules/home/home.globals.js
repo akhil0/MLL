@@ -33,7 +33,7 @@
                     },
                     ownershipInformation: {
                         songwriters: [
-                            { name: '', primaryEmail: '', primaryPhone: '', secondaryPhone: '' }
+                            { name: '', primaryEmail: '', primaryPhone: '', secondaryPhone: '', contribution:'', ownershipPercent: 0, musicianRole:'' }
                         ],
                         copyright: '',
                         pubCompany: '',
@@ -41,11 +41,20 @@
                     },
                     soundInformation: {
                         soundOwners: [
-                            { name: '', primaryEmail: '', primaryPhone: '', secondaryPhone: '' }
+                            { name: '', primaryEmail: '', primaryPhone: '', secondaryPhone: '', contribution:'', ownershipPercent: 0, musicianRole:'' }
                         ]
                     },
                     serverInformation: { }
                 };
+    
+    let musicContributions = ['Lyrics', 'Music', 'Lyrics and Music'].sort();
+    let bandData = { 
+    		bandName:'',
+    		songwriters: [{ 
+    			name: '', primaryEmail: '', primaryPhone: '', secondaryPhone: '', contribution:'', ownershipPercent: 0, musicianRole:'' 
+    		}
+        ]};
+    let musicianRoles = ['Vocals', 'Backup Vocals', 'Percussion', 'Guitar', 'Drums', 'Keyboard'].sort();
     
     angular
         .module('mllApp.home')
@@ -54,5 +63,8 @@
     	.constant('deleteUrl', deleteUrl)
     	.constant('editUrl', editUrl)
     	.constant('musicData', musicData)
+    	.constant('bandData', bandData)
+    	.constant('musicContributions', musicContributions)
+    	.constant('musicianRoles', musicianRoles)
     	.constant('musicForms', musicForms);
 })(window.angular);
