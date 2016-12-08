@@ -15,23 +15,6 @@ import mll.dao.ARHomePageDAO;
 
 public class ARHomePageService {
 	
-	public static List<String> getRecent(){
-		
-		return null;
-		
-	}
-	
-	public static String getGenre(String eachSong){
-		
-		return null;	
-	}
-	
-	public static String getUserWhoUploaded(String eachSong){
-	
-		return null;		
-	}
-	
-	
 	/**
 	* This method takes Http request input  
 	* gets the user id from the request and calls the getMusiciansWithId
