@@ -5,15 +5,19 @@
         .module('mllApp.upload')
         .controller('MusicOwnerInformationFormController', MusicOwnerInformationFormController);
     
-    MusicOwnerInformationFormController.$inject = ['$rootScope', 'musicContributions', 'musicianRoles'];
+    MusicOwnerInformationFormController.$inject = ['musicContributions', 'musicianRoles', 'authenticationService'];
 
-    function MusicOwnerInformationFormController($rootScope, musicContributions, musicianRoles) {
+    function MusicOwnerInformationFormController(musicContributions, musicianRoles, authenticationService) {
 
     	this.musicContributions = angular.copy(musicContributions);
     	this.musicianRoles = angular.copy(musicianRoles);
+    	this.authService = authenticationService;
+    	this.bands = this.authService.bands;
+    	console.log(this.bands);
+    	this.selectedBand = null;
     	
         this.addWriter = () => this.data.songwriters.push({
-            name: '', primaryPhone: '', secondaryPhone: '', primaryEmail: '', secondaryEmail: ''
+            name: '', primaryPhone: '', secondaryPhone: '', primaryEmail: '', secondaryEmail: '', contribution:'', ownershipPercent: 0, musicianRole:''
         });
 
         this.selectContribution = (contribution) => { if(!contribution) this.data.contribution = null; };
@@ -29,6 +33,11 @@
         };
 
         this.reset = () => this.onPrevious();
+        
+        this.getBandDetails = (band) => {
+        	console.log("MusicOwnerInformationFormController");
+        	console.log(band);
+        };
 
     }
 })(window.angular);

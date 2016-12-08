@@ -1,25 +1,29 @@
 <form name="ctrl.ownerForm" class="form-horizontal form-tab" novalidate>
 
-<legend>Sound Recording Ownership Information</legend>
-	<!--  <legend>Ownership Information</legend>-->
-	
-	<div>
-			<label class="col-xs-3">Band </label>
+<legend>ADD BAND</legend>
+
+	<div class="form-group has-feedback"
+			ng-class="{ 'has-success': writerForm.name.$valid && ctrl.ownerForm.$submitted,
+                             'has-error': writerForm.name.$invalid && ctrl.ownerForm.$submitted }">
+			<label class="col-xs-3 asterisk-label">Band Name</label>
 			<div class="col-xs-7">
-				<select name="band" class="form-control"
-					  ng-model="ctrl.selectedBand"
-					ng-options="band.name for band in ctrl.bands"
-					ng-change="ctrl.getBandDetails(band)">
-					<option value="">Select Band...</option>
-				</select>
+				<input type="text" name="name" class="form-control"
+					ng-model="ctrl.data.bandName" required />
+				<div class="alert alert-danger" role="alert"
+					ng-show="writerForm.name.$invalid && ctrl.ownerForm.$submitted">
+					<span class="glyphicon glyphicon-exclamation-sign"
+						aria-hidden="true"></span> <span
+						ng-show="writerForm.name.$error.required"> Please, provide
+						a band name! </span>
+				</div>
 			</div>
 		</div>
 		
-		
 	<div ng-repeat="songwriter in ctrl.data.songwriters">
 		<ng-form name="writerForm"> <legend class="inner-legend">
-			Song Writers<small ng-show="$index">&nbsp;#{{$index + 1}}</small>
+			Member<small ng-show="$index">&nbsp;#{{$index + 1}}</small>
 		</legend>
+		
 		<div class="form-group has-feedback"
 			ng-class="{ 'has-success': writerForm.name.$valid && ctrl.ownerForm.$submitted,
                              'has-error': writerForm.name.$invalid && ctrl.ownerForm.$submitted }">
@@ -188,50 +192,8 @@
 	<hr />
 
 	<div class="form-group">
-		<label for="copyright" class="col-xs-3">Copyright Number <span
-			class="glyphicon glyphicon-question-sign"
-			uib-tooltip="Tooltip to be added"></span>
-		</label>
-		<div class="col-xs-9">
-			<input type="text" class="form-control" name="copyright"
-				id="copyright" ng-model="ctrl.data.copyright">
-		</div>
-	</div>
-
-	<hr />
-
-	<div class="form-group">
-		<label for="pubCompany" class="col-xs-3">Publishing Company <span
-			class="glyphicon glyphicon-question-sign"
-			uib-tooltip="Tooltip to be added"></span>
-		</label>
-		<div class="col-xs-9">
-			<input type="text" class="form-control" name="pubCompany"
-				id="pubCompany" ng-model="ctrl.data.pubCompany">
-		</div>
-	</div>
-
-	<hr />
-
-	<div class="form-group">
-		<label for="pro" class="col-xs-3">PRO <span
-			class="glyphicon glyphicon-question-sign"
-			uib-tooltip="Tooltip to be added"></span>
-		</label>
-		<div class="col-xs-9">
-			<input type="text" class="form-control" name="pbo" id="pro"
-				ng-model="ctrl.data.pro">
-		</div>
-	</div>
-
-	<hr />
-
-	<div class="form-group">
-		<div class="col-xs-3 col-lg-offset-6">
-			<button class="btn btn-block btn-default" ng-click="ctrl.reset()">Previous</button>
-		</div>
 		<div class="col-xs-3">
-			<button class="btn btn-block btn-primary" ng-click="ctrl.submit()">Next</button>
+			<button class="btn btn-block btn-primary" ng-click="ctrl.submit(ctrl.data)">Save</button>
 		</div>
 	</div>
 </form>
