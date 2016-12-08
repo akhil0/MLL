@@ -35,7 +35,11 @@ public class RetrieveBandInformationDAO {
 			List<Owner> owners=query.list();
 			for(Owner owner : owners)
 			{
-				ownerArray.put(new JSONObject(mapper.writeValueAsString(owner)));
+				JSONObject obj=new JSONObject(mapper.writeValueAsString(owner));
+				obj.put("musicianRole", obj.get("role"));
+				obj.put("ownershipPercent", obj.get("owner_percent"));
+				
+				ownerArray.put(obj);
 			}
 			
 			
