@@ -400,6 +400,9 @@ public class SubmissionService
 			owner.setSecondaryEmail((String)writer.get("secondaryEmail"));
 			owner.setPrimaryPhone((String)writer.get("primaryPhone"));
 			owner.setSecondaryPhone((String)writer.get("secondaryPhone"));
+			owner.setContribution((String)writer.get("contribution"));
+			owner.setOwner_percent((Integer)writer.get("ownershipPercent"));
+			owner.setRole((String)writer.get("MusicianRole"));
 	    	
 	    	metadata.getOwners().add(owner);
 	    }
@@ -440,7 +443,10 @@ public class SubmissionService
 			owner.setSecondaryEmail((String)recorder.get("secondaryEmail"));
 			owner.setPrimaryPhone((String)recorder.get("primaryPhone"));
 			owner.setSecondaryPhone((String)recorder.get("secondaryPhone"));
-	    	
+			owner.setContribution((String)recorder.get("contribution"));
+			owner.setOwner_percent((Integer)recorder.get("ownershipPercent"));
+			owner.setRole((String)recorder.get("MusicianRole"));
+			
 	    	metadata.getOwners().add(owner);
 	    }
 	    
