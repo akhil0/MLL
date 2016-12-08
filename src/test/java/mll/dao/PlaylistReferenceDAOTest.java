@@ -42,7 +42,7 @@ public class PlaylistReferenceDAOTest {
 		try 
 		{
 			PlaylistReference playlistReference = new PlaylistReference();
-			playlistReference.setUserId(1);
+			playlistReference.setUserId(100000);
 			playlistReference.setIsShared(false);
 			playlistReference.setPlaylistName("Vishal");
 			playlistReference.setId(0);
@@ -147,7 +147,7 @@ public class PlaylistReferenceDAOTest {
 	{
 		try
 		{
-			assertEquals(true, new PlaylistReferenceDAO().getPlaylistName(1000000)==null);
+			assertEquals(true, new PlaylistReferenceDAO().getPlaylistName(1000000) == "");
 		}
 		catch(Exception e)
 		{

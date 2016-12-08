@@ -27,6 +27,7 @@
         
 	     function getMorePlaylists(){
 	    	 arHomeSerivce.getMorePlaylists().success(function(response){
+	    		 console.log(response)
 	    		 ctrl.datareceived = true;
 	    		 ctrl.playlists = response.playlists;
 	    		 ctrl.gridOptions = {
@@ -35,7 +36,8 @@
 	    				 enableFiltering:true,
 	    				 enableHiding:false, 
 	    				  columnDefs: [ 
-	    				    { field: 'playlistName', name : 'Playlist name'},
+	    				    { field: 'playlistName', name : 'Playlist name',},
+	    				    { field: 'userName' , name : 'User'},
 	    				    { field: 'creationDate' , name : 'Creation Date'},
 		    				{ field: '', name : 'Songs', cellTemplate: 'show-playlist-button.html', enableFiltering:false},
 		    				{field: '', name: 'Add to my playlist', cellTemplate: '<button class="tomatobttn tabbttn" type="button" ng-click="grid.appScope.addtoMyPlaylist(row.entity.id)" >ADD</button> ', enableFiltering:false}, 
