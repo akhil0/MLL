@@ -160,5 +160,4 @@
     <servlet-name>BandServlet</servlet-name>
     <url-pattern>/BandServlet/*</url-pattern>
   </servlet-mapping>
-  <servlet>
 </web-app>
