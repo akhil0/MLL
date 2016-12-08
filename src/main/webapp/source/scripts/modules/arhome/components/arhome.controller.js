@@ -36,12 +36,15 @@
 	    				 enableFiltering:true,
 	    				 enableHiding:false, 
 	    				  columnDefs: [ 
-	    				    { field: 'playlistName', name : 'Playlist name',},
-	    				    { field: 'userName' , name : 'User'},
-	    				    { field: 'creationDate' , name : 'Creation Date'},
-		    				{ field: '', name : 'Songs', cellTemplate: 'show-playlist-button.html', enableFiltering:false},
-		    				{field: '', name: 'Add to my playlist', cellTemplate: '<button class="tomatobttn tabbttn" type="button" ng-click="grid.appScope.addtoMyPlaylist(row.entity.id)" >ADD</button> ', enableFiltering:false}, 
-		    				{field: '', name: 'Unshare', cellTemplate: '<button class="tomatobttn tabbttn" type="button" ng-click="grid.appScope.unShare(row.entity.id)" >Un Share</button> ', enableFiltering:false}, 
+
+	    				    { field: 'playlistName', name : 'Playlist Name', width : '15%'},
+			       			{ field: 'userName' , name : 'User',width : '15%'},
+	    				    { field: 'creationDate' , name : 'Date',width : '15%'},
+		    				{ field: '', name : 'Songs', cellTemplate: 'show-playlist-button.html', enableFiltering:false,width : '15%'},
+		    				{field: '', name: 'Add Playlist', cellTemplate: '<button class="tomatobttn tabbttn" type="button" ng-click="grid.appScope.addtoMyPlaylist(row.entity.id)" >ADD</button> ', enableFiltering:false, width : '20%'}, 
+		    				{field: '', name: 'Unshare', cellTemplate: '<button class="tomatobttn tabbttn" type="button" ng-click="grid.appScope.unShare(row.entity.id)" >Un Share</button> ', enableFiltering:false, width : '20%'}, 
+
+	    				   
 	    				  ]
 	    				};	    		 
 	    		 ctrl.gridOptions.appScopeProvider = ctrl;
@@ -51,12 +54,16 @@
 	     ctrl.addtoMyPlaylist = function(id){
 	    	 console.log("ADD TO MY PLAYLIST")
 	    	 arHomeSerivce.addtoMyPlaylist(id).success(function(response){
+	    		 console.log(response)
 	    		if(response.isValid){
-		    		ctrl.addMyPlaylistPrompt = response.isValid;	
-		    		ctrl.notAddMyPlaylistPrompt = response.isValid
-	    		}else{
-		    		ctrl.addMyPlaylistPrompt = response.isValid;	    			
-		    		ctrl.notAddMyPlaylistPrompt = response.isValid	    			
+	    			 ctrl.isUnshare = true;
+	    			 ctrl.tooltipResponse = "Playlist added";
+                     $timeout(() => ctrl.isUnshare = false, 1500);
+	    			}else{
+	    			 ctrl.isUnshare = true;
+	    			 ctrl.tooltipResponse = "Your own Playlist";
+	    			 $timeout(() => ctrl.isUnshare = false, 1500);
+	    		   			
 	    		}
 	    		getAllPlaylists();
 	    	 })
@@ -71,10 +78,12 @@
 	    		 
 	    		 if(response.success){
 	    			 ctrl.isUnshare = true;
+	    			 ctrl.isGenerated = true;
 	    			 ctrl.tooltipResponse = "Playlist Unshared";
                      $timeout(() => ctrl.isUnshare = false, 1500);
 	    			 getMorePlaylists();
 	    		 }else{
+	    			 ctrl.isGenerated = false;
 	    			 ctrl.isUnshare = true;
 	    			 ctrl.tooltipResponse = "Cannot share global playlist";
 	    			 $timeout(() => ctrl.isUnshare = false, 1500);
