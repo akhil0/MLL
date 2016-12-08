@@ -5,9 +5,9 @@
         .module('mllApp.home')
         .controller('BandAddPageController', BandAddPageController);
     
-    BandAddPageController.$inject = ['musicContributions', 'musicianRoles', 'bandData', 'musicianProfilePageSerivce'];
+    BandAddPageController.$inject = ['$state', 'musicContributions', 'musicianRoles', 'bandData', 'musicianProfilePageSerivce'];
 
-    function BandAddPageController(musicContributions, musicianRoles, bandData, musicianProfilePageSerivce) {
+    function BandAddPageController($state, musicContributions, musicianRoles, bandData, musicianProfilePageSerivce) {
 
     	this.musicContributions = angular.copy(musicContributions);
     	this.musicianRoles = angular.copy(musicianRoles);
@@ -23,7 +23,8 @@
         
         this.removeWriter = (i) => this.data.songwriters.splice(i, 1);
         this.submit = () => {
-        	musicianProfilePageSerivce.addBand(this.data);
+        	var res = musicianProfilePageSerivce.addBand(this.data);
+        	$state.reload;
         };
     }
 })(window.angular);
