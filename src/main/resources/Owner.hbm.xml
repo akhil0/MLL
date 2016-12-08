@@ -40,6 +40,22 @@
 		<property name="secondaryEmail">
 			<column name="secondary_email_id" length="50" not-null="false" />
 		</property>
+		
+		<property name="owner_percent">
+			<column name="owner_percent" length="50" not-null="false" />
+		</property>
+		
+		<property name="contribution">
+			<column name="contribution" length="50" not-null="false"/>
+		</property>
+		
+		<property name="role">
+			<column name="role" length="50" not-null="false" />
+		</property>
+		
+		<property name="band_id">
+			<column name="band_id" length="50" not-null="false" />
+		</property>
 
 	</class>
 	

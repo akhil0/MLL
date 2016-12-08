@@ -176,6 +176,7 @@ public class SubmissionDAO
 				{
 					owner.setSongId(songId);
 					owner.setId((Integer)session.save(owner));
+					
 				}
 			}
 		}
