@@ -5,13 +5,15 @@
         .module('mllApp.upload')
         .controller('MusicSoundInformationFormController', MusicSoundInformationFormController);
 
-    MusicSoundInformationFormController.$inject = ['musicContributions', 'musicianRoles'];
+    MusicSoundInformationFormController.$inject = ['$scope', 'musicContributions', 'musicianRoles'];
     
-    function MusicSoundInformationFormController(musicContributions, musicianRoles) {
+    function MusicSoundInformationFormController($scope, musicContributions, musicianRoles) {
     	
     	this.musicContributions = angular.copy(musicContributions);
     	this.musicianRoles = angular.copy(musicianRoles);
-
+    	
+    	$scope.autoPopulate = false;
+    	
         this.addOwner = () => this.data.soundOwners.push({
             name: '', primaryPhone: '', secondaryPhone: '', primaryEmail: '', secondaryEmail: ''
         });
