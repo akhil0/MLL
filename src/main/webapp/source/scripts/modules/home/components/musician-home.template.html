@@ -22,6 +22,9 @@
 		<div ng-show="ctrl.successMessage" class="alert alert-success"
 			role="alert">{{ctrl.successMessage}}</div>
 
+		<div ng-hide="ctrl.data.tracks">
+			<h4> You have no uploaded songs yet! </h4>
+		</div>
 		<table ng-show="ctrl.data.tracks" 
 			class="table table-responsive table-striped table-hover table-fill ng-scope">
 			<thead>
@@ -34,14 +37,14 @@
 							<span ng-show="ctrl.sortReverse"
 							class="glyphicon glyphicon-triangle-bottom"></span></span> Track
 					</th>
-					<th class="text-center"
+					<!--  <th class="text-center"
 						ng-click="ctrl.sortType='playCount'; ctrl.sortReverse = !ctrl.sortReverse">
 						<span ng-show="ctrl.sortType == 'playCount'"> <span
 							ng-show="!ctrl.sortReverse"
 							class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
 							<span ng-show="ctrl.sortReverse"
 							class="glyphicon glyphicon-triangle-bottom"></span></span> Play Count
-					</th>
+					</th>-->
 					<th class="text-center"
 						ng-click="ctrl.sortType='dateAdded'; ctrl.sortReverse = !ctrl.sortReverse">
 						<span ng-show="ctrl.sortType == 'dateAdded'"> <span
@@ -216,7 +219,7 @@
 							<a href="" class="btn btn-info" ng-click="ctrl.editSong(track) "> <!-- && isEditable = !isEditable -->
 								<span class="glyphicon incrsize">SAVE</span>
 						</div></td>
-					<td class="text-left">0</td>
+					<!--  <td class="text-left">0</td>-->
 					<td class="text-left">{{track.dateAdded}}</td>
 					<td><a href="" class="btn btn-danger"
 						ng-click="ctrl.deleteSong(track.assetId)"> <span
