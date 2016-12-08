@@ -29,7 +29,6 @@ public class PlaylistReferenceService {
 	public JSONObject handlePlaylistReferenceRequest(HttpServletRequest request, HttpServletResponse response) {
 		
 		JSONObject responseObject = new JSONObject();
-		System.out.println(request.getParameter("actionType"));
 		if(request.getSession().getAttribute("userId") != null) {
 			int userId = Integer.parseInt(request.getSession().getAttribute("userId").toString());
 			if(request.getParameter("actionType").equals("add")) {
@@ -55,7 +54,6 @@ public class PlaylistReferenceService {
 				responseObject.put("isValid", true);
 			}
 			else if(request.getParameter("actionType").equals("get")) {
-				System.out.println("IN GET");				
 				List<PlaylistReference> playlists = getAllPlaylistsForUser(userId);
 				JSONArray playlistReferences = convertToJson(playlists);
 				responseObject.put("playlists", playlistReferences);
@@ -75,7 +73,6 @@ public class PlaylistReferenceService {
 			}
 			else if(request.getParameter("actionType").equals("unShare")) 
 			{
-				System.out.println("UNSHARE ");
 				int playlistId = Integer.parseInt(request.getParameter("playlistId"));
 				responseObject = removeFromShare(userId, playlistId);
 			}

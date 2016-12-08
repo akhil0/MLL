@@ -26,7 +26,6 @@ public class PlaylistService {
 	@SuppressWarnings("unchecked")
 	public JSONArray getSongsFromPlaylist(int playlistId) {
 
-		System.out.println("PLAY LIST ID  " + playlistId);
 		JSONArray songs = new JSONArray();
 		try {
 			 songs = dao.getAllSongsForPlaylist(playlistId);
@@ -51,7 +50,6 @@ public class PlaylistService {
             assetId = assetId.trim();
         playlist.setSong_id(assetId);
         boolean flag = dao.addSongPlaylist(playlist);
-        System.out.println("Song " + assetId + " Playlist " + playlistId + "  " + flag);
         return flag;
     }
 	
