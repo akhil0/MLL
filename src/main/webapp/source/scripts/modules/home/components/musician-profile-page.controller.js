@@ -24,7 +24,8 @@
 
        this.user.details = musicianProfilePageSerivce.getProfile(this.user.userId);
 
-       this.user.bands = musicianProfilePageSerivce.getBands(this.user.userId);
+       //this.user.bands = musicianProfilePageSerivce.getBands(this.user.userId);
+       this.user.bands = this.authService.details.data.bands;
        
        this.addBand = () => {
     	   $state.go("addBand", { id: userId}, {reload: true}); 

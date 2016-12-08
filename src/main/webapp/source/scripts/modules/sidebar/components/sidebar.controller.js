@@ -19,7 +19,7 @@
        
         this.home = function(){
         	console.log(this.authService.details.data.type);
-            $state.go(this.authService.details.data.type, { id: this.authService.details.data.id });
+            $state.go(this.authService.details.data.type, { id: this.authService.details.data.id }, { reload: true });
         };
         
 		this.invite = function(){
@@ -44,7 +44,7 @@
         	console.log("in sidebar controller -> profile");
         	console.log(profileLink);
         	console.log(userId);
-            $state.go(profileLink.href, { id: userId });
+            $state.go(profileLink.href, { id: userId }, { reload: true });
         };
         
     }

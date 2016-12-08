@@ -50,8 +50,8 @@
 
         	return $http.post(editUrl, data)
             .then((response) => {
-            	console.log("after servlet hit");
-                	console.log(response);
+            	//console.log("after servlet hit");
+                //	console.log(response);
                     //return response;
                 })
                 .catch((rejection) => rejection);
