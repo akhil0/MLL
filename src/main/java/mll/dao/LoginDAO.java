@@ -5,9 +5,12 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.json.JSONArray;
+import org.json.simple.JSONObject;
 
 import mll.beans.ARuser;
 import mll.beans.AdminUser;
+import mll.beans.Band;
 import mll.beans.Login;
 import mll.beans.Musician;
 import mll.beans.User;
@@ -162,10 +165,12 @@ public class LoginDAO {
 					if(userType!=null && userType.equalsIgnoreCase("Musician"))
 					{
 						Query musician = session.createQuery("from Musician m where m.id=:id");
+						Query band=session.createQuery("from Band b where b.musician_id=:id");
 						musician.setInteger("id", login.getUser().getId());
-					
+						JSONArray bandarray=new JSONArray();
+						band.setInteger("id", login.getUser().getId());
 						List<Musician> ms = musician.list();
-						
+						List<Band> bands=band.list();
 						if(null != ms && ms.size() > 0 && null != ms.get(0) && null != ms.get(0).getId())
 						{
 							login.setMusician(ms.get(0));
@@ -174,6 +179,16 @@ public class LoginDAO {
 							login.setCanUpload(true);
 							login.setCanBrowse(false);
 						} 
+						if(bands!=null && bands.size() >0){
+							for(Band ban:bands)
+							{
+								JSONObject obj=new JSONObject();
+								obj.put("id", ban.getId());
+								obj.put("name", ban.getName());
+								bandarray.put(obj);
+							}
+							login.setBands(bandarray);
+						}
 					}
 					else if(userType!=null && userType.equalsIgnoreCase("ARUser"))
 					{
