@@ -5,6 +5,7 @@
     let searchUrl = '/MLL/SearchServlet/?searchTitle=';
     let deleteUrl = '/MLL/DeleteAssetServlet/?assetId=';
     let editUrl = '/MLL/UpdateSongMetaDataServlet';
+    let addBandUrl = '/MLL/ProfileServlet';
     
 
     let musicForms = {
@@ -62,6 +63,7 @@
     	.constant('searchUrl', searchUrl)
     	.constant('deleteUrl', deleteUrl)
     	.constant('editUrl', editUrl)
+    	.constant('addBandUrl', addBandUrl)
     	.constant('musicData', musicData)
     	.constant('bandData', bandData)
     	.constant('musicContributions', musicContributions)

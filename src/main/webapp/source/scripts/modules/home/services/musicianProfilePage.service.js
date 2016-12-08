@@ -5,9 +5,9 @@
         .module('mllApp.home')
         .factory('musicianProfilePageSerivce', musicianProfilePageSerivce);
 
-    musicianProfilePageSerivce.$inject = ['$http'];
+    musicianProfilePageSerivce.$inject = ['$http', 'addBandUrl'];
 
-    function musicianProfilePageSerivce($http) {
+    function musicianProfilePageSerivce($http, addBandUrl) {
         return {
             getBands: getBands,
             addBand: addBand,
@@ -31,7 +31,7 @@
         	.then((response) => {
             	console.log("after servlet hit");
                 	console.log(response);
-                    //return response;
+                    return response;
                 })
                 .catch((rejection) => rejection);
         }
