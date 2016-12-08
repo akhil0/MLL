@@ -377,21 +377,22 @@
                    center: { template:
                         `<div class="well well-lg aboutmll">
                        
-						    <h2> About Media Licensing Lab</h2>
+						    <h2><i> About Media Licensing Lab</i></h2>
                             <p>
                                The Media Licensing Lab (MLL) is a Northeastern University initiative to establish the first student-run music licensing program in the United States. The MLL links musicians, student A&R representatives, the Northeastern community, and the music industry.
 Selected musicians are invited by A&R student representatives to upload their music into the MLL platform. Students evaluate the music and license the best songs into tv shows, film, video games, and other media.
 The MLL provides students with real-world music licensing experience, exposes musicians to a wider audience, and enables music licensees to discover the perfect piece of music for their project, at a fraction of the cost of typical content libraries.
                             </p><hr>
-<p><b>Team members:-</b><br>
-Ashish Kumar (kumar.as@husky.neu.edu)<br>
-Dishant Shah (shah.dis@husky.neu.edu)<br>
-Meha Verma(verma.me@husky.neu.edu)<br>
-Vishal Kotak (kotak.v@husky.neu.edu)<br>
-Medhavi Mahansaria (mahansaria.m@husky.neu.edu)<br>
-Shivani Gowrishankar (gowrishankar.s@husky.neu.edu)<br>
-Naomi Joshi (joshi.nao@husky.neu.edu)<br>
-Sai Mahanth Maddela (maddela.s@husky.neu.edu)
+<p><b><u>Team members:-</u></b><br>
+Ashish Kumar <<a href="mailto:kumar.as@husky.neu.edu">kumar.as@husky.neu.edu</a>><br>
+Dishant Shah <<a href="mailto:shah.dis@husky.neu.edu">shah.dis@husky.neu.edu</a>><br>
+Meha Verma <<a href="mailto:verma.me@husky.neu.edu">verma.me@husky.neu.edu</a>><br>
+Vishal Kotak <<a href="mailto:kotak.v@husky.neu.edu">kotak.v@husky.neu.edu</a>><br>
+Medhavi Mahansaria <<a href="mailto:mahansaria.m@husky.neu.edu">mahansaria.m@husky.neu.edu</a>><br>
+Shivani Gowrishankar <<a href="mailto:gowrishankar.s@husky.neu.edu">gowrishankar.s@husky.neu.edu</a>><br>
+Naomi Joshi <<a href="mailto:joshi.nao@husky.neu.edu">joshi.nao@husky.neu.edu</a>><br>
+Sai Mahanth Maddela <<a href="mailto:maddela.s@husky.neu.edu">maddela.s@husky.neu.edu</a>><br>
+Satya Akhil Chowdary Kuchipudi <<a href="mailto:kuchipudi.s@husky.neu.edu">kuchipudi.s@husky.neu.edu</a>>
 </p>
                         </div>`
                     }
