@@ -15,7 +15,7 @@ public class Owner implements Serializable
 	private String secondaryPhone;	 
 	private String primaryEmail;
 	private String secondaryEmail;
-	private Integer owner_percent;
+	private long owner_percent;
 	private String contribution;
 	private String role;
 	private Integer band_id;
@@ -74,10 +74,10 @@ public class Owner implements Serializable
 	public void setSecondaryEmail(String secondaryEmail) {
 		this.secondaryEmail = secondaryEmail;
 	}
-	public Integer getOwner_percent() {
+	public Long getOwner_percent() {
 		return owner_percent;
 	}
-	public void setOwner_percent(Integer owner_percent) {
+	public void setOwner_percent(Long owner_percent) {
 		this.owner_percent = owner_percent;
 	}
 	

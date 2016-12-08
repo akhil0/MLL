@@ -34,6 +34,7 @@ public class ProfileService {
 		JSONObject OwnerandBand = new JSONObject();
 		HttpSession session=request.getSession();
 		Integer musician_id=(Integer) session.getAttribute("musician_id");
+		System.out.println("Musician "+ musician_id);
 		try
 		{
 			
@@ -73,6 +74,7 @@ public class ProfileService {
     	JSONParser parser = new JSONParser();
     	JSONObject mainObject = (JSONObject) parser.parse(requestStr.toString());
 	    JSONObject ownershipInformation =  (JSONObject) mainObject.get("ownershipInformation");
+	    System.out.println("ownershipInformation "+ownershipInformation);
 	    
 	    // Populate Song Writers Information	 
 	    populateSongWriters(OwnerandBand, ownershipInformation);
@@ -105,7 +107,7 @@ public class ProfileService {
 			owner.setPrimaryPhone((String)writer.get("primaryPhone"));
 			owner.setSecondaryPhone((String)writer.get("secondaryPhone"));
 			owner.setContribution((String)writer.get("contribution"));
-			owner.setOwner_percent((Integer)writer.get("ownershipPercent"));
+			owner.setOwner_percent((Long)writer.get("ownershipPercent"));
 			owner.setRole((String)writer.get("MusicianRole"));
 	    	
 			owners.add(owner);
