@@ -12,6 +12,7 @@
         submitFormId: 4,
         data: [
         	{ title: 'Recording Information', isActive: true },
+        	{ title: 'Master Owner Information', isActive: false },
             { title: 'Song Ownership Information', isActive: false },
             { title: 'Recording Upload', isActive: false },
             { title: 'Summary', isActive: false }
