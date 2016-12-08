@@ -9,7 +9,7 @@ import org.junit.Test;
 import mll.beans.Playlist;
 
 public class PlayListServiceTest {
-	 	 	
+	 	 	 
 	@Test
 	public void testAddSongPlaylist1() throws Exception
 	{
@@ -65,18 +65,6 @@ public class PlayListServiceTest {
 		}
 	}
 	
-	@Test
-	public void testAddSongPlaylist4()
-	{
-		try
-		{
-			assertEquals(false, new PlaylistService().addSongPlaylist(3, 1, "FCD433C107A14F0D9FDE89A9A4DFF9E6"));
-		}
-		catch(Exception e)
-		{
-
-		}
-	}
 	
 	@Test
 	public void testDeleteSongPlaylist1()
