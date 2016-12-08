@@ -56,7 +56,7 @@
                      $timeout(() => ctrl.isUnshare = false, 1500);
 	    			}else{
 	    			 ctrl.isUnshare = true;
-	    			 ctrl.tooltipResponse = "cannot add more playlist";
+	    			 ctrl.tooltipResponse = "Your own Playlist";
 	    			 $timeout(() => ctrl.isUnshare = false, 1500);
 	    		   			
 	    		}
